@@ -22,6 +22,14 @@ https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configurin
   - sudo i2cdetect -y 1
     - "This shows that two I2C addresses are in use – 0x40 and 0x70."
 
+### install SPI
+- configure options
+  - sudo raspi-config
+  - select "Interfacing Options" --> "SPI" --> "yes" --> "ok"
+  - sudo reboot
+  - ls -l /dev/spidev*
+    - you should see two 'devices' one for each SPI bus
+    
 ### install python
 - sudo pip3 install rpi_ws281x adafruit-circuitpython-neopixel
 ### install previous work in the repo
