@@ -71,6 +71,9 @@ add code to file  /boot/config.txt
 ### Install Python libraries
 - sudo pip3 install RPI.GPIO
 - sudo pip3 install adafruit-blinka
+- sudo pip3 install --upgrade adafruit_blinka
+
+
 - "test python and libaries are working
 - sudo nano blinkatest.py
 - "add code to file"
