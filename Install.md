@@ -49,6 +49,22 @@ add code to file  /boot/config.txt
 - sudo reboot
 - <after reboot>
 - ls -l /dev/spidev*
+    - you should see 5 'devices' one for each SPI bus
+    - /dev/spidev0.0
+    - /dev/spidev0.1
+    - /dev/spidev1.0
+    - /dev/spidev1.1
+    - /dev/spidev1.2
+  
+### install python and pip
+- python3 -V
+- "verify verion 3 (Python 3.5.3)"
+- sudo apt-get install -y python3-pip
+- sudo apt-get install build-essential libssl-dev libffi-dev python-dev
+
+### Install Python libraries
+- sudo pip3 install RPI.GPIO
+- sudo pip3 install adafruit-blinka
 
 https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi
 
