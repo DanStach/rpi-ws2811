@@ -65,10 +65,38 @@ add code to file  /boot/config.txt
 ### Install Python libraries
 - sudo pip3 install RPI.GPIO
 - sudo pip3 install adafruit-blinka
+- "test python and libaries are working
+- sudo nano blinkatest.py
+- "add code to file"
+    ```python
+    import board
+    import digitalio
+    import busio
 
-https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuitpython-on-raspberry-pi
+    print("Hello blinka!")
 
-    
+    # Try to great a Digital input
+    pin = digitalio.DigitalInOut(board.D4)
+    print("Digital IO ok!")
+    # Try to create an I2C device
+    i2c = busio.I2C(board.SCL, board.SDA)
+    print("I2C ok!")
+    # Try to create an SPI device
+    spi = busio.SPI(board.SCLK, board.MOSI, board.MISO)
+    print("SPI ok!")
+    print("done!")
+    ```
+- <cntl + x>
+- <y>
+- <enter>
+- python3 blinkatest.py
+```
+  Hello blinka!
+Digital IO ok!
+I2C ok!
+SPI ok!
+done!
+```
 ### install python
 - sudo pip3 install rpi_ws281x adafruit-circuitpython-neopixel
 ### install previous work in the repo
