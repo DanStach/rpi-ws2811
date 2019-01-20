@@ -34,15 +34,19 @@ https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configurin
   - <after reboot>
   - ls -l /dev/spidev*
     - you should see two 'devices' one for each SPI bus
-    - /dev/spidev0.0
-    - /dev/spidev0.1
+    ```
+     /dev/spidev0.0
+     /dev/spidev0.1
+    ```
 
 ### Enabling Second SPI
 add code to file  /boot/config.txt 
 - sudo nano /boot/config.txt 
 - "add to bottom of file"
-  - # Enabling Second SPI
-  - dtoverlay=spi1-3cs
+```
+ # Enabling Second SPI
+ dtoverlay=spi1-3cs
+``` 
 - <cntl + x>
 - <y>
 - <enter>
@@ -50,11 +54,13 @@ add code to file  /boot/config.txt
 - <after reboot>
 - ls -l /dev/spidev*
     - you should see 5 'devices' one for each SPI bus
-    - /dev/spidev0.0
-    - /dev/spidev0.1
-    - /dev/spidev1.0
-    - /dev/spidev1.1
-    - /dev/spidev1.2
+    ```
+    /dev/spidev0.0
+    /dev/spidev0.1
+    /dev/spidev1.0
+    /dev/spidev1.1
+    /dev/spidev1.2
+    ```
   
 ### install python and pip
 - python3 -V
@@ -87,11 +93,11 @@ add code to file  /boot/config.txt
     print("done!")
     ```
 - <cntl + x>
-- <y>
+- < y >
 - <enter>
 - python3 blinkatest.py
 ```
-  Hello blinka!
+Hello blinka!
 Digital IO ok!
 I2C ok!
 SPI ok!
