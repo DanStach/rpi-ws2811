@@ -29,9 +29,9 @@ https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configurin
 https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-spi
 - configure options
   - `sudo raspi-config`
-  - select "Interfacing Options" --> "SPI" --> "yes" --> "ok"
+  - select Interfacing Options --> SPI --> yes --> ok
   - `sudo reboot`
-  - <after reboot>
+  - after reboot
   - `ls -l /dev/spidev*`
     - you should see two 'devices' one for each SPI bus
     ```
@@ -47,13 +47,13 @@ add code to file  /boot/config.txt
  # Enabling Second SPI
  dtoverlay=spi1-3cs
 ``` 
-- <cntl + x>
-- <y>
-- <enter>
+- cntl + x
+- y
+- enter
 - `sudo reboot`
-- <after reboot>
+- after reboot
 - `ls -l /dev/spidev*`
-    - you should see 5 'devices' one for each SPI bus
+    - you should see 5 devices one for each SPI bus
     ```
     /dev/spidev0.0
     /dev/spidev0.1
@@ -64,7 +64,7 @@ add code to file  /boot/config.txt
   
 ### install python and pip
 - `sudo python3 -V`
-- "verify verion 3 (Python 3.5.3)"
+- verify verion 3 (Python 3.5.3)
 - `sudo apt-get install -y python3-pip`
 - `sudo apt-get install build-essential libssl-dev libffi-dev python-dev`
 
@@ -76,7 +76,7 @@ add code to file  /boot/config.txt
 
 - "test python and libaries are working
 - `sudo nano blinkatest.py`
-- "add code to file"
+- add code to file
     ```python
     import board
     import digitalio
@@ -95,10 +95,11 @@ add code to file  /boot/config.txt
     print("SPI ok!")
     print("done!")
     ```
-- <cntl + x>
-- < y >
-- <enter>
-- python3 blinkatest.py
+- cntl + x
+- y
+- enter
+- `sudo python3 blinkatest.py`
+- you should see the following
 ```
 Hello blinka!
 Digital IO ok!
@@ -107,7 +108,7 @@ SPI ok!
 done!
 ```
 ### install python
-- sudo pip3 install rpi_ws281x adafruit-circuitpython-neopixel
+- `sudo pip3 install rpi_ws281x adafruit-circuitpython-neopixel`
 ### install previous work in the repo
-- sudo git clone https://github.com/DanStach/rpi-ws2811.git
+- `sudo git clone https://github.com/DanStach/rpi-ws2811.git`
 
