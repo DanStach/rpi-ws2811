@@ -19,39 +19,15 @@ pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=Fal
 
 wait_time = 1
 
-while True:
-    # make all pixels Red
-    pixels.fill((255, 0, 0)) # red
-    pixels.show()
-    time.sleep(wait_time)
-
-    # make all pixels Green
-    pixels.fill((0, 255, 0))
-    pixels.show()
-    time.sleep(wait_time)
-
-    # make all pixels Blue
-    pixels.fill((0, 0, 255))
-    pixels.show()
-    time.sleep(wait_time)
-
-    #2 color (red, green)
-    colorAll2Color((255, 0, 0),(0, 255, 0))
-
-    # rainbow cycle
-    rainbow_cycle(0.001)    # rainbow cycle with 1ms delay per step
-    time.sleep(wait_time)
-
 
 def colorAll2Color(c1, c2):
-   for i in range(num_pixels)
-        if(i % 2 == 0) //even
-           strip.setPixelColor(i, c1)
-        else // odd   
-           strip.setPixelColor(i, c2)
-    
+    for i in range(num_pixels):
+        if(i % 2 == 0): # even
+            pixels[i] = c1
+        else: # odd   
+            pixels[i] = c2
     pixels.show()
-    time.sleep(wait)
+    time.sleep(wait_time)
 
 
 def wheel(pos):
@@ -85,5 +61,26 @@ def rainbow_cycle(wait):
         time.sleep(wait)
 
 
+while True:
+    # make all pixels Red
+    pixels.fill((255, 0, 0)) # red
+    pixels.show()
+    time.sleep(wait_time)
 
+    # make all pixels Green
+    pixels.fill((0, 255, 0))
+    pixels.show()
+    time.sleep(wait_time)
+
+    # make all pixels Blue
+    pixels.fill((0, 0, 255))
+    pixels.show()
+    time.sleep(wait_time)
+
+    #2 color (red, green)
+    colorAll2Color((255, 0, 0),(0, 255, 0))
+
+    # rainbow cycle
+    rainbow_cycle(0.001)    # rainbow cycle with 1ms delay per step
+    time.sleep(wait_time)
 
