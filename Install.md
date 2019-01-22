@@ -6,33 +6,33 @@ code need to run the xmas lights ws2811 on a raspberry pi
 ### install OS
 - install raspbain os
 - run in terminal:
-  - sudo apt-get update
-  - sudo apt-get upgrade
+  - `sudo apt-get update`
+  - `sudo apt-get upgrade`
 
 ### install I2C
 https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c
 - tool install need, run in terminal:
-  - sudo apt-get install -y python-smbus
-  - sudo apt-get install -y i2c-tools
+  - `sudo apt-get install -y python-smbus`
+  - `sudo apt-get install -y i2c-tools`
 - configure options
-  - sudo raspi-config
-  - select "Interfacing Options" --> "I2C" --> "yes" --> "ok"
-  - sudo reboot
-  - <after reboot>
-  - sudo i2cdetect -y 1
-    - "This shows that two I2C addresses are in use – 0x40 and 0x70."
-    - i see the graph, but no in use
-  -  ls /dev/i2c*
+  - `sudo raspi-config`
+  - select Interfacing Options --> I2C--> yes --> ok
+  - `sudo reboot`
+  - after reboot
+  - `sudo i2cdetect -y 1`
+    - This shows that two I2C addresses are in use – 0x40 and 0x70.
+    - i see the graph, but no in use`
+  -  `ls /dev/i2c*`
      - see the responce "/dev/i2c-1"
 
 ### install SPI
 https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-spi
 - configure options
-  - sudo raspi-config
+  - `sudo raspi-config`
   - select "Interfacing Options" --> "SPI" --> "yes" --> "ok"
-  - sudo reboot
+  - `sudo reboot`
   - <after reboot>
-  - ls -l /dev/spidev*
+  - `ls -l /dev/spidev*`
     - you should see two 'devices' one for each SPI bus
     ```
      /dev/spidev0.0
@@ -41,7 +41,7 @@ https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configurin
 
 ### Enabling Second SPI
 add code to file  /boot/config.txt 
-- sudo nano /boot/config.txt 
+- `sudo nano /boot/config.txt`
 - "add to bottom of file"
 ```
  # Enabling Second SPI
@@ -50,9 +50,9 @@ add code to file  /boot/config.txt
 - <cntl + x>
 - <y>
 - <enter>
-- sudo reboot
+- `sudo reboot`
 - <after reboot>
-- ls -l /dev/spidev*
+- `ls -l /dev/spidev*`
     - you should see 5 'devices' one for each SPI bus
     ```
     /dev/spidev0.0
@@ -63,19 +63,19 @@ add code to file  /boot/config.txt
     ```
   
 ### install python and pip
-- python3 -V
+- `sudo python3 -V`
 - "verify verion 3 (Python 3.5.3)"
-- sudo apt-get install -y python3-pip
-- sudo apt-get install build-essential libssl-dev libffi-dev python-dev
+- `sudo apt-get install -y python3-pip`
+- `sudo apt-get install build-essential libssl-dev libffi-dev python-dev`
 
 ### Install Python libraries
-- sudo pip3 install RPI.GPIO
-- sudo pip3 install adafruit-blinka
-- sudo pip3 install --upgrade adafruit_blinka
+- `sudo pip3 install RPI.GPIO`
+- `sudo pip3 install adafruit-blinka`
+- `sudo pip3 install --upgrade adafruit_blinka`
 
 
 - "test python and libaries are working
-- sudo nano blinkatest.py
+- `sudo nano blinkatest.py`
 - "add code to file"
     ```python
     import board
