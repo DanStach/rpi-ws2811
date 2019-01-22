@@ -61,6 +61,31 @@ def rainbow_cycle(wait):
         time.sleep(wait)
 
 
+def RGBLoop(wait):
+    for j in range(num_pixels):
+        // Fade IN
+        for k in range(3):
+            if j = 0:
+                pixels.fill((k, 0, 0))
+            elif j = 1:
+                pixels.fill((0, k, 0))
+            else j = 2:
+                pixels.fill((0, 0, k))
+        pixels.show()
+        time.sleep(wait)
+
+        // Fade OUT
+        for k in range(3):
+            if j = 2:
+                pixels.fill((k, 0, 0))
+            elif j = 1:
+                pixels.fill((0, k, 0))
+            else j = 0:
+                pixels.fill((0, 0, k))
+        pixels.show()
+        time.sleep(wait)
+    
+
 while True:
     # make all pixels Red
     pixels.fill((255, 0, 0)) # red
