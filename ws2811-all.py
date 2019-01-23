@@ -84,7 +84,7 @@ def RGBLoop(delay):
             pixels.show()
             time.sleep(delay)
     
-def FadeInOut(red, green, blue, delay)
+def FadeInOut(red, green, blue, delay):
     r = 0
     g = 0
     b = 0
