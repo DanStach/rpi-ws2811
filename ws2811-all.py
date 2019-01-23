@@ -121,6 +121,12 @@ while True:
     pixels.show()
     time.sleep(wait_time)
 
+    # fade in/out a single color
+    FadeInOut(0xff, 0x00, 0x00)
+    FadeInOut(0xff, 0xff, 0xff)
+    FadeInOut(0x00, 0x00, 0xff)
+
+    # loops red green blue
     RGBLoop(0.01)
     time.sleep(wait_time)
 
