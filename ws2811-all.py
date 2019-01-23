@@ -2,6 +2,9 @@
 import time
 import board
 import neopixel
+import random
+import serial
+
 
 
 # Choose an open pin connected to the Data In of the NeoPixel strip, i.e. board.D18
@@ -115,6 +118,48 @@ def Strobe(red, green, blue, StrobeCount, FlashDelay, EndPause):
         time.sleep(FlashDelay)
  
     time.sleep(EndPause)
+
+
+	
+def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause):
+	# setup random function
+	ser = serial.Serial('/dev/ttyACM0')
+	ser_bytes = ser.readline()
+	random.seed(ser_bytes)
+
+	# define eye1 and eye2 location
+	# i = 0
+	StartPoint  = random.randint( 0, NUM_LEDS - (2*EyeWidth) - EyeSpace )
+	Start2ndEye = StartPoint + EyeWidth + EyeSpace
+
+	#  set color of eyes for given location
+	for i in range(EyeWidth):
+		pixels[StartPoint + i] = (red, green, blue)
+		pixels[Start2ndEye + i] = (red, green, blue)
+	pixels.show()
+
+	# if user wants fading, then fadeout pixel color
+	if Fade == true:
+		# float r, g, b
+		for j in range(Steps, 0, -1):
+			r = j * (red/Steps)
+			g = j * (green/Steps)
+			b = j * (blue/Steps)
+      
+			for i in range(EyeWidth):
+				pixels[StartPoint + i].fill((int(r), int(g), int(b)))
+				pixels[Start2ndEye + i].fill((int(r), int(g), int(b)))
+			}
+      
+			pixels.show()
+			time.sleep(FadeDelay)
+	
+	# Set all pixels to black
+	pixels.fill((0,0,0))
+
+	# pause before changing eye location
+	time.sleep(EndPause)
+}
 
 
 
