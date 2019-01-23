@@ -29,7 +29,6 @@ def colorAll2Color(c1, c2):
     pixels.show()
 
 
-
 def wheel(pos):
     # Input a value 0 to 255 to get a color value.
     # The colours are a transition r - g - b - back to r.
@@ -85,6 +84,26 @@ def RGBLoop(delay):
             pixels.show()
             time.sleep(delay)
     
+def FadeInOut(red, green, blue, delay)
+    r = 0
+    g = 0
+    b = 0
+      
+    for k in range(256):
+        r = (k/256.0)*red
+        g = (k/256.0)*green
+        b = (k/256.0)*blue
+        pixels.fill((r,g,b))
+        pixels.show()
+        time.sleep(delay)
+     
+    for k in range(256, 0, -1):
+        r = (k/256.0)*red
+        g = (k/256.0)*green
+        b = (k/256.0)*blue
+        pixels.fill((r,g,b))
+        pixels.show()
+        time.sleep(delay)
 
 while True:
     # make all pixels Red
