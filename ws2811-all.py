@@ -165,37 +165,48 @@ def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, 
 
 while True:
     # make all pixels Red
+	# fill(red, green, blue)
     pixels.fill((255, 0, 0)) # red
     pixels.show()
     time.sleep(wait_time)
 
     # make all pixels Green
+	# fill(red, green, blue)
     pixels.fill((0, 255, 0))
     pixels.show()
     time.sleep(wait_time)
 
     # make all pixels Blue
+	# fill(red, green, blue)
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
 
+	# make strand of pixels show HalloweenEyes
+	#HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause)
+	HalloweenEyes(255, 0, 0, 1, 4, true, 0.010, 0.080, 3)
+
     # make all pixels stobe (white)
+	# Strobe(red, green, blue, StrobeCount, FlashDelay, EndPause)
     Strobe(255, 255, 255, 10, .050, 1)
     time.sleep(wait_time)
 
 
     # fade in/out a single color (red / green / blue / white)
+	# FadeInOut(red, green, blue, delay)
     FadeInOut(255, 0, 0, 0.01)
     FadeInOut(0, 255, 0, 0.01)
     FadeInOut(0, 0, 255, 0.01)
     FadeInOut(255, 255, 255, 0.01)
 
     # loops red green blue
+	# RGBLoop(delay)
     RGBLoop(0.01)
     time.sleep(wait_time)
 
-    #2 color (red, green)
-    colorAll2Color((255, 0, 0),(0, 255, 0)) 
+    # shows 2 color every other pixel (red, green)
+	# colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
+    colorAll2Color((255, 0, 0), (0, 255, 0)) 
     time.sleep(wait_time)
 
     # rainbow cycle
