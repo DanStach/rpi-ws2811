@@ -105,6 +105,19 @@ def FadeInOut(red, green, blue, delay):
         pixels.show()
         time.sleep(delay)
 
+def Strobe(red, green, blue, StrobeCount, FlashDelay, EndPause)
+    for j in range(StrobeCount):
+        pixels.fill((red,green,blue))
+        pixels.show()
+        time.sleep(FlashDelay)
+        pixels.fill((0,0,0))
+        pixels.show()
+        time.sleep(FlashDelay)
+ 
+    time.sleep(EndPause)
+
+
+
 while True:
     # make all pixels Red
     pixels.fill((255, 0, 0)) # red
@@ -120,6 +133,11 @@ while True:
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
+
+    # make all pixels stobe (white)
+    Strobe(255, 255, 255, 10, 50, 1)
+    time.sleep(wait_time)
+
 
     # fade in/out a single color (red / green / blue / white)
     FadeInOut(255, 0, 0, 0.01)
