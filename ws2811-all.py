@@ -93,7 +93,7 @@ def FadeInOut(red, green, blue, delay):
         r = (k/256.0)*red
         g = (k/256.0)*green
         b = (k/256.0)*blue
-        pixels.fill((r,g,b))
+        pixels.fill((int(r), int(g), int(b))
         pixels.show()
         time.sleep(delay)
      
@@ -101,7 +101,7 @@ def FadeInOut(red, green, blue, delay):
         r = (k/256.0)*red
         g = (k/256.0)*green
         b = (k/256.0)*blue
-        pixels.fill((r,g,b))
+        pixels.fill((int(r), int(g), int(b))
         pixels.show()
         time.sleep(delay)
 
@@ -121,17 +121,18 @@ while True:
     pixels.show()
     time.sleep(wait_time)
 
-    # fade in/out a single color
-    FadeInOut(0xff, 0x00, 0x00)
-    FadeInOut(0xff, 0xff, 0xff)
-    FadeInOut(0x00, 0x00, 0xff)
+    # fade in/out a single color (red / green / blue / white)
+    FadeInOut(255, 0, 0, 0.01)
+    FadeInOut(0, 255, 0, 0.01)
+    FadeInOut(0, 0, 255, 0.01)
+    FadeInOut(255, 255, 255, 0.01)
 
     # loops red green blue
     RGBLoop(0.01)
     time.sleep(wait_time)
 
     #2 color (red, green)
-    colorAll2Color((255, 0, 0),(0, 255, 0))
+    colorAll2Color((255, 0, 0),(0, 255, 0)) 
     time.sleep(wait_time)
 
     # rainbow cycle
