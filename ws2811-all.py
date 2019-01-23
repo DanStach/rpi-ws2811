@@ -93,7 +93,7 @@ def FadeInOut(red, green, blue, delay):
         r = (k/256.0)*red
         g = (k/256.0)*green
         b = (k/256.0)*blue
-        pixels.fill((int(r), int(g), int(b))
+        pixels.fill((int(r), int(g), int(b)))
         pixels.show()
         time.sleep(delay)
      
@@ -101,7 +101,7 @@ def FadeInOut(red, green, blue, delay):
         r = (k/256.0)*red
         g = (k/256.0)*green
         b = (k/256.0)*blue
-        pixels.fill((int(r), int(g), int(b))
+        pixels.fill((int(r), int(g), int(b)))
         pixels.show()
         time.sleep(delay)
 
