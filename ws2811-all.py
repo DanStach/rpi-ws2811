@@ -27,7 +27,7 @@ def colorAll2Color(c1, c2):
         else: # odd   
             pixels[i] = c2
     pixels.show()
-    time.sleep(wait_time)
+
 
 
 def wheel(pos):
@@ -52,16 +52,16 @@ def wheel(pos):
     return (r, g, b) if ORDER == neopixel.RGB or ORDER == neopixel.GRB else (r, g, b, 0)
 
 
-def rainbow_cycle(wait):
+def rainbow_cycle(delay):
     for j in range(255):
         for i in range(num_pixels):
             pixel_index = (i * 256 // num_pixels) + j
             pixels[i] = wheel(pixel_index & 255)
         pixels.show()
-        time.sleep(wait)
+        time.sleep(delay)
 
 
-def RGBLoop(wait):
+def RGBLoop(delay):
     for j in range(3):
         # Fade IN
         for k in range(256):
@@ -72,7 +72,7 @@ def RGBLoop(wait):
             elif j == 2:
                 pixels.fill((0, 0, k))
             pixels.show()
-            time.sleep(wait)
+            time.sleep(delay)
 
         # Fade OUT
         for k in range(256):
@@ -83,7 +83,7 @@ def RGBLoop(wait):
             elif j == 0:
                 pixels.fill((0, 0, k))
             pixels.show()
-            time.sleep(wait)
+            time.sleep(delay)
     
 
 while True:
