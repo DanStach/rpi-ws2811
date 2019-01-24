@@ -97,7 +97,6 @@ def FadeInOut(red, green, blue, delay):
         g = (k/256.0)*green
         b = (k/256.0)*blue
         pixels.fill((int(r), int(g), int(b)))
-        print(k)
         pixels.show()
         time.sleep(delay)
      
@@ -106,7 +105,6 @@ def FadeInOut(red, green, blue, delay):
         g = (k/256.0)*green
         b = (k/256.0)*blue
         pixels.fill((int(r), int(g), int(b)))
-        print(k)
         pixels.show()
         time.sleep(delay)
 
@@ -122,7 +120,7 @@ def Strobe(red, green, blue, StrobeCount, FlashDelay, EndPause):
     time.sleep(EndPause)
 
 
-	
+    
 def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause):
     random.seed(num_pixels)
     pixels.fill((0,0,0))
@@ -153,7 +151,7 @@ def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, 
 
             pixels.show()
             time.sleep(FadeDelay)
-	
+    
     # Set all pixels to black
     pixels.fill((0,0,0))
 
@@ -163,36 +161,38 @@ def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, 
 
 def CylonBounce(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
   
-    for i in range(num_pixels - EyeSize - 2):
+    for i in range(num_pixels - EyeSize - 1):
         pixels.fill((0,0,0))
-        pixels[i] = (red/10, green/10, blue/10)
+        pixels[i] = (int(red/10), int(green/10), int(blue/10))
 
-        for j in range(EyeSize+1):
+        for j in range(1, EyeSize+1):
             pixels[i+j] = (red, green, blue)
 
-        pixels[i+EyeSize+1] = (red/10, green/10, blue/10)
+        pixels[i+EyeSize+1] = (int(red/10), int(green/10), int(blue/10))
         pixels.show()
         time.sleep(SpeedDelay)
   
     time.sleep(ReturnDelay)
-
-    for i in range(num_pixels - EyeSize - 2, 0, -1):
+    time.sleep(10)
+    
+    for i in range(num_pixels - EyeSize - 2, -1, -1):
         pixels.fill((0,0,0))
-        pixels[i] = (red/10, green/10, blue/10)
+        pixels[i] = (int(red/10), int(green/10), int(blue/10))
 
-        for j in range(EyeSize+1):
+        for j in range(1, EyeSize+1):
             pixels[i+j] = (red, green, blue)
 
-        pixels[i+EyeSize+1] = (red/10, green/10, blue/10)
+        pixels[i+EyeSize+1] = (int(red/10), int(green/10), int(blue/10))
         pixels.show()
         time.sleep(SpeedDelay)
 
     time.sleep(ReturnDelay)
+    time.sleep(10)
 
 
 while True:
     # make all pixels Red
-	# fill(red, green, blue)
+    # fill(red, green, blue)
     pixels.fill((255, 0, 0)) # red
     pixels.show()
     time.sleep(wait_time)
@@ -211,7 +211,7 @@ while True:
 
     # make strand of pixels show
     # CylonBounce(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
-    CylonBounce(255, 0, 0, 4, 10, 50)
+    CylonBounce(255, 0, 0, 2, 0.010, 0.050)
 
     # make strand of pixels show HalloweenEyes
     # HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause)
@@ -231,12 +231,12 @@ while True:
     FadeInOut(255, 255, 255, 0.01)
 
     # loops red green blue
-	# RGBLoop(delay)
+    # RGBLoop(delay)
     RGBLoop(0.01)
     time.sleep(wait_time)
 
     # shows 2 color every other pixel (red, green)
-	# colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
+    # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
     colorAll2Color((255, 0, 0), (0, 255, 0)) 
     time.sleep(wait_time)
 
