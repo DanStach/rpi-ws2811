@@ -189,6 +189,87 @@ def CylonBounce(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
     time.sleep(ReturnDelay)
     time.sleep(10)
 
+def NewKITT(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
+    RightToLeft(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
+    LeftToRight(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
+    OutsideToCenter(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
+    CenterToOutside(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
+    LeftToRight(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
+    RightToLeft(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
+    OutsideToCenter(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
+    CenterToOutside(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
+
+def CenterToOutside(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
+    for i in range((num_pixels - EyeSize)/2, -1, -1):
+        pixels.fill((0,0,0))
+        pixels[i] = (int(red/10), int(green/10), int(blue/10))
+
+        for j in range(1, EyeSize+1):
+            pixels[i + j] = (red, green, blue)
+        
+        pixels[i + EyeSize + 1] = (int(red/10), int(green/10), int(blue/10))
+        pixels[num_pixels - i - j] = (int(red/10), int(green/10), int(blue/10))
+
+        for j in range(1, EyeSize+1):
+            pixels[num_pixels - i - j] = (red, green, blue)
+
+        pixels[num_pixels - i - EyeSize - 1] = (int(red/10), int(green/10), int(blue/10))
+        pixels.show()
+        time.sleep(SpeedDelay)
+
+    time.sleep(ReturnDelay)
+
+def OutsideToCenter(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
+
+    for i in range(((num_pixels - EyeSize)/2)+1):
+        pixels.fill((0,0,0))
+        pixels[i] = (int(red/10), int(green/10), int(blue/10))
+
+        for j in range(1, EyeSize+1):
+            pixels[i + j] = (red, green, blue) 
+        
+        pixels[i + EyeSize +1] = (int(red/10), int(green/10), int(blue/10))
+        pixels[num_pixels - i] = (int(red/10), int(green/10), int(blue/10))
+
+        for j in range(1, EyeSize+1):
+            pixels[num_pixels - i - j] = (red, green, blue)
+        
+        pixels[num_pixels - i - EyeSize - 1] = (int(red/10), int(green/10), int(blue/10))
+        pixels.show()
+        time.sleep(SpeedDelay)
+  
+    time.sleep(ReturnDelay)
+
+
+def LeftToRight(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
+    for i in range(num_pixels - EyeSize - 2):
+        pixels.fill((0,0,0))
+        pixels[i] = (int(red/10), int(green/10), int(blue/10))
+
+        for j in range(1, EyeSize+1):
+            pixels[i + j] = (red, green, blue)
+
+        pixels[i + EyeSize + 1] = (int(red/10), int(green/10), int(blue/10))
+        pixels.show()
+        time.sleep(SpeedDelay)
+    
+    time.sleep(ReturnDelay)
+
+
+def RightToLeft(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
+    for i in range((num_pixels - EyeSize - 2, 0, -1):
+        pixels.fill((0,0,0))
+        pixels[i] = (int(red/10), int(green/10), int(blue/10))
+
+        for j in range(1, EyeSize+1):
+            pixels[i + j] = (red, green, blue)
+
+        pixels[i + EyeSize + 1] = (int(red/10), int(green/10), int(blue/10))
+        pixels.show()
+        time.sleep(SpeedDelay)
+  
+    time.sleep(ReturnDelay)
+
 
 while True:
     # make all pixels Red
@@ -209,13 +290,20 @@ while True:
     pixels.show()
     time.sleep(wait_time)
 
-    # make strand of pixels show
+    # makes the strand of pixels show NewKITT 
+    # NewKITT(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
+    NewKITT(255, 0, 0, 4, 0.010, 0.050)
+    time.sleep(wait_time)
+
+    # makes the strand of pixels show CylonBounce
     # CylonBounce(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
     CylonBounce(255, 0, 0, 2, 0.010, 0.050)
+    time.sleep(wait_time)
 
-    # make strand of pixels show HalloweenEyes
+    # make the strand of pixels show HalloweenEyes
     # HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause)
     HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
+    time.sleep(wait_time)
 
     # make all pixels stobe (white)
     # Strobe(red, green, blue, StrobeCount, FlashDelay, EndPause)
