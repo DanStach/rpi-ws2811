@@ -97,14 +97,16 @@ def FadeInOut(red, green, blue, delay):
         g = (k/256.0)*green
         b = (k/256.0)*blue
         pixels.fill((int(r), int(g), int(b)))
+        print(k)
         pixels.show()
         time.sleep(delay)
      
-    for k in range(256, 0, -1):
+    for k in range(256, -1, -1):
         r = (k/256.0)*red
         g = (k/256.0)*green
         b = (k/256.0)*blue
         pixels.fill((int(r), int(g), int(b)))
+        print(k)
         pixels.show()
         time.sleep(delay)
 
@@ -122,44 +124,49 @@ def Strobe(red, green, blue, StrobeCount, FlashDelay, EndPause):
 
 	
 def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause):
-	# setup random function
-	ser = serial.Serial('/dev/ttyACM0')
-	ser_bytes = ser.readline()
-	random.seed(ser_bytes)
+    # setup random function
+    # ser = serial.Serial('/dev/ttyACM0')
+    #ser_bytes = ser.readline()
+    random.seed(num_pixels)
+    pixels.fill((0,0,0))
+    r = 0
+    g = 0
+    b = 0
 
-	# define eye1 and eye2 location
-	# i = 0
-	StartPoint  = random.randint( 0, NUM_LEDS - (2*EyeWidth) - EyeSpace )
-	Start2ndEye = StartPoint + EyeWidth + EyeSpace
+    # define eye1 and eye2 location
+    # i = 0
+    StartPoint  = random.randint( 0, num_pixels - (2*EyeWidth) - EyeSpace )
+    Start2ndEye = StartPoint + EyeWidth + EyeSpace
 
-	#  set color of eyes for given location
-	for i in range(EyeWidth):
-		pixels[StartPoint + i] = (red, green, blue)
-		pixels[Start2ndEye + i] = (red, green, blue)
-	pixels.show()
+    #  set color of eyes for given location
+    for i in range(EyeWidth):
+        pixels[StartPoint + i] = (red, green, blue)
+        pixels[Start2ndEye + i] = (red, green, blue)
+    pixels.show()
 
-	# if user wants fading, then fadeout pixel color
-	if Fade == true:
-		# float r, g, b
-		for j in range(Steps, 0, -1):
-			r = j * (red/Steps)
-			g = j * (green/Steps)
-			b = j * (blue/Steps)
-      
-			for i in range(EyeWidth):
-				pixels[StartPoint + i].fill((int(r), int(g), int(b)))
-				pixels[Start2ndEye + i].fill((int(r), int(g), int(b)))
-			}
-      
-			pixels.show()
-			time.sleep(FadeDelay)
+    # if user wants fading, then fadeout pixel color
+    if Fade == True:
+        # float r, g, b
+        for j in range(Steps, -1, -1):
+#            r = j * (red/Steps)
+#            g = j * (green/Steps)
+#            b = j * (blue/Steps)
+            r = (j/Steps)*red
+            g = (j/Steps)*green
+            b = (j/Steps)*blue
+
+            for i in range(EyeWidth):
+                pixels[StartPoint + i] = ((int(r), int(g), int(b)))
+                pixels[Start2ndEye + i] = ((int(r), int(g), int(b)))
+
+            pixels.show()
+            time.sleep(FadeDelay)
 	
-	# Set all pixels to black
-	pixels.fill((0,0,0))
+    # Set all pixels to black
+    pixels.fill((0,0,0))
 
-	# pause before changing eye location
-	time.sleep(EndPause)
-}
+    # pause before changing eye location
+    time.sleep(EndPause)
 
 
 
@@ -171,29 +178,29 @@ while True:
     time.sleep(wait_time)
 
     # make all pixels Green
-	# fill(red, green, blue)
+    # fill(red, green, blue)
     pixels.fill((0, 255, 0))
     pixels.show()
     time.sleep(wait_time)
 
     # make all pixels Blue
-	# fill(red, green, blue)
+    # fill(red, green, blue)
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
 
-	# make strand of pixels show HalloweenEyes
-	#HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause)
-	HalloweenEyes(255, 0, 0, 1, 4, true, 0.010, 0.080, 3)
+    # make strand of pixels show HalloweenEyes
+    # HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause)
+    HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
 
     # make all pixels stobe (white)
-	# Strobe(red, green, blue, StrobeCount, FlashDelay, EndPause)
+    # Strobe(red, green, blue, StrobeCount, FlashDelay, EndPause)
     Strobe(255, 255, 255, 10, .050, 1)
     time.sleep(wait_time)
 
 
     # fade in/out a single color (red / green / blue / white)
-	# FadeInOut(red, green, blue, delay)
+    # FadeInOut(red, green, blue, delay)
     FadeInOut(255, 0, 0, 0.01)
     FadeInOut(0, 255, 0, 0.01)
     FadeInOut(0, 0, 255, 0.01)
