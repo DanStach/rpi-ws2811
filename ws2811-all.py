@@ -200,7 +200,7 @@ def NewKITT(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
     CenterToOutside(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
 
 def CenterToOutside(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
-    for i in range((num_pixels - EyeSize)/2, -1, -1):
+    for i in range(int((num_pixels - EyeSize)/2), -1, -1):
         pixels.fill((0,0,0))
         pixels[i] = (int(red/10), int(green/10), int(blue/10))
 
@@ -221,7 +221,7 @@ def CenterToOutside(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
 
 def OutsideToCenter(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
 
-    for i in range(((num_pixels - EyeSize)/2)+1):
+    for i in range(int(((num_pixels - EyeSize)/2)+1)):
         pixels.fill((0,0,0))
         pixels[i] = (int(red/10), int(green/10), int(blue/10))
 
@@ -229,7 +229,7 @@ def OutsideToCenter(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
             pixels[i + j] = (red, green, blue) 
         
         pixels[i + EyeSize +1] = (int(red/10), int(green/10), int(blue/10))
-        pixels[num_pixels - i] = (int(red/10), int(green/10), int(blue/10))
+        pixels[num_pixels - i-1] = (int(red/10), int(green/10), int(blue/10))
 
         for j in range(1, EyeSize+1):
             pixels[num_pixels - i - j] = (red, green, blue)
@@ -257,7 +257,7 @@ def LeftToRight(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
 
 
 def RightToLeft(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
-    for i in range((num_pixels - EyeSize - 2, 0, -1):
+    for i in range(num_pixels - EyeSize - 2, 0, -1):
         pixels.fill((0,0,0))
         pixels[i] = (int(red/10), int(green/10), int(blue/10))
 
