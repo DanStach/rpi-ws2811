@@ -3,6 +3,7 @@ import time
 import board
 import neopixel
 import random
+import math
 import serial
 
 
@@ -317,6 +318,27 @@ def SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay):
         pixels.show()
         time.sleep(SpeedDelay)
 
+
+def RunningLights(red, green, blue, WaveDelay):
+    Position = 0
+    
+    for j in range(num_pixels*2):
+        Position = Position + 1
+        
+        for i in range(num_pixel):
+            # sine wave, 3 offset waves make a rainbow!
+            # float level = sin(i+Position) * 127 + 128;
+            # setPixel(i,level,0,0);
+            # float level = sin(i+Position) * 127 + 128;
+            level = math.sin(i + Position) * 127 + 128
+            r = int((level/255)*red)
+            g = int((level/255)*green)
+            b = int((level/255)*blue)
+            pixels[i] = (r,g,b)
+
+        pixels.show()
+        time.sleep(WaveDelay)
+
 while True:
     random.seed(num_pixels)
 
@@ -338,6 +360,10 @@ while True:
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
+
+    # makes the strand of pixels show RunningLights (white)
+    # RunningLights(red, green, blue, WaveDelay)
+    RunningLights(255,255,255, 0.05)
 
     # makes the strand of pixels show SnowSparkle (random)
     # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
