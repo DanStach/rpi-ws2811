@@ -16,7 +16,7 @@ num_pixels = 50
 
 # The order of the pixel colors - RGB or GRB. Some NeoPixels have red and green reversed!
 # For RGBW NeoPixels, simply change the ORDER to RGBW or GRBW.
-ORDER = neopixel.GRB
+ORDER = neopixel.RGB
 
 pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=ORDER)
 
@@ -285,8 +285,8 @@ def Twinkle(red, green, blue, Count, SpeedDelay, OnlyOne):
     time.sleep(SpeedDelay)
 
 
-def TwinkleRandom( Count, SpeedDelay, OnlyOne):
-    pixels.fill(0,0,0)
+def TwinkleRandom(Count, SpeedDelay, OnlyOne):
+    pixels.fill((0,0,0))
 
     for i in range(Count):
         pixels[random.randint(0, num_pixels-1)] = (random.randint(0,255), random.randint(0,255), random.randint(0,255))
@@ -295,7 +295,7 @@ def TwinkleRandom( Count, SpeedDelay, OnlyOne):
         if OnlyOne:
             pixels.fill((0,0,0))
 
-  time.sleep(SpeedDelay)
+    time.sleep(SpeedDelay)
 
 
 while True:
