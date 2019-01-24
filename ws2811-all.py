@@ -339,6 +339,15 @@ def RunningLights(red, green, blue, WaveDelay):
         pixels.show()
         time.sleep(WaveDelay)
 
+
+def colorWipe(red, green, blue, SpeedDelay)
+    for i in range(num_pixel):
+        pixels[i] = (red, green, blue)
+        pixels.show()
+        time.sleep(SpeedDelay)
+
+
+
 while True:
     random.seed(num_pixels)
 
@@ -360,6 +369,10 @@ while True:
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
+
+    # makes the strand of pixels show colorWipe (green)
+    # colorWipe(red, green, blue, SpeedDelay)
+    colorWipe(0,255,0, 0.05)
 
     # makes the strand of pixels show RunningLights (white)
     # RunningLights(red, green, blue, WaveDelay)
