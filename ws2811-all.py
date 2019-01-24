@@ -272,18 +272,17 @@ def RightToLeft(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
 
 
 def Twinkle(red, green, blue, Count, SpeedDelay, OnlyOne):
+    random.seed(num_pixels)
     pixels.fill((0,0,0))
   
     for i in range(Count):
-        pixels[random(num_pixels)] = (red, green, blue)
+        pixels[random.randint(0, num_pixels-1)] = (red, green, blue)
         pixels.show()
         time.sleep(SpeedDelay)
         if OnlyOne:
             pixels.fill((0,0,0))
 
     time.sleep(SpeedDelay)
-}
-
 
 while True:
     # make all pixels Red
