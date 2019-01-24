@@ -122,7 +122,6 @@ def Strobe(red, green, blue, StrobeCount, FlashDelay, EndPause):
 
     
 def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause):
-    random.seed(num_pixels)
     pixels.fill((0,0,0))
     r = 0
     g = 0
@@ -272,7 +271,6 @@ def RightToLeft(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
 
 
 def Twinkle(red, green, blue, Count, SpeedDelay, OnlyOne):
-    random.seed(num_pixels)
     pixels.fill((0,0,0))
   
     for i in range(Count):
@@ -298,7 +296,31 @@ def TwinkleRandom(Count, SpeedDelay, OnlyOne):
     time.sleep(SpeedDelay)
 
 
+def Sparkle(red, green, blue, Count, SpeedDelay):
+
+    for i in range(Count):    
+        Pixel = random.randint(0,num_pixels-1)
+        pixels[Pixel] = (red,green,blue)
+        pixels.show()
+        time.sleep(SpeedDelay)
+        pixels[Pixel] = (0,0,0)
+
+def SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay):
+    pixels.fill((red,green,blue))
+
+    for i in range(Count):
+        Pixel = random.randint(0,num_pixels-1)
+        pixels[Pixel] = (255,255,255)
+        pixels.show()
+        time.sleep(SparkleDelay)
+        pixels[Pixel] = (red,green,blue)
+        pixels.show()
+        time.sleep(SpeedDelay)
+
 while True:
+    random.seed(num_pixels)
+
+
     # make all pixels Red
     # fill(red, green, blue)
     pixels.fill((255, 0, 0)) # red
@@ -316,6 +338,14 @@ while True:
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
+
+    # makes the strand of pixels show SnowSparkle (random)
+    SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay):
+    SnowSparkle(16, 16, 16, 100, 20, random.randint(100,1000))
+
+    # makes the strand of pixels show Sparkle (white)
+    # Sparkle(red, green, blue, Count, SpeedDelay)
+    Sparkle(255, 255, 255, 100, 0)
 
     # makes the strand of pixels show TwinkleRandom
     # TwinkleRandom( Count, SpeedDelay, OnlyOne) 
