@@ -319,7 +319,7 @@ while True:
 
     # makes the strand of pixels show TwinkleRandom
     # TwinkleRandom( Count, SpeedDelay, OnlyOne) 
-    TwinkleRandom(20, 0.1, False);
+    TwinkleRandom(20, 0.1, False)
 
     # makes the strand of pixels show Twinkle
     # Twinkle(red, green, blue, Count, SpeedDelay, OnlyOne)
