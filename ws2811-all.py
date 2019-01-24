@@ -124,9 +124,6 @@ def Strobe(red, green, blue, StrobeCount, FlashDelay, EndPause):
 
 	
 def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause):
-    # setup random function
-    # ser = serial.Serial('/dev/ttyACM0')
-    #ser_bytes = ser.readline()
     random.seed(num_pixels)
     pixels.fill((0,0,0))
     r = 0
@@ -134,7 +131,6 @@ def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, 
     b = 0
 
     # define eye1 and eye2 location
-    # i = 0
     StartPoint  = random.randint( 0, num_pixels - (2*EyeWidth) - EyeSpace )
     Start2ndEye = StartPoint + EyeWidth + EyeSpace
 
@@ -146,11 +142,7 @@ def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, 
 
     # if user wants fading, then fadeout pixel color
     if Fade == True:
-        # float r, g, b
         for j in range(Steps, -1, -1):
-#            r = j * (red/Steps)
-#            g = j * (green/Steps)
-#            b = j * (blue/Steps)
             r = (j/Steps)*red
             g = (j/Steps)*green
             b = (j/Steps)*blue
@@ -168,6 +160,34 @@ def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, 
     # pause before changing eye location
     time.sleep(EndPause)
 
+
+def CylonBounce(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
+  
+    for i in range(num_pixels - EyeSize - 2):
+        pixels.fill((0,0,0))
+        pixels[i] = (red/10, green/10, blue/10)
+
+        for j in range(EyeSize+1):
+            pixels[i+j] = (red, green, blue)
+
+        pixels[i+EyeSize+1] = (red/10, green/10, blue/10)
+        pixels.show()
+        time.sleep(SpeedDelay)
+  
+    time.sleep(ReturnDelay)
+
+    for i in range(num_pixels - EyeSize - 2, 0, -1):
+        pixels.fill((0,0,0))
+        pixels[i] = (red/10, green/10, blue/10)
+
+        for j in range(EyeSize+1):
+            pixels[i+j] = (red, green, blue)
+
+        pixels[i+EyeSize+1] = (red/10, green/10, blue/10)
+        pixels.show()
+        time.sleep(SpeedDelay)
+
+    time.sleep(ReturnDelay)
 
 
 while True:
@@ -188,6 +208,10 @@ while True:
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
+
+    # make strand of pixels show
+    # CylonBounce(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
+    CylonBounce(255, 0, 0, 4, 10, 50)
 
     # make strand of pixels show HalloweenEyes
     # HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause)
