@@ -340,8 +340,9 @@ while True:
     time.sleep(wait_time)
 
     # makes the strand of pixels show SnowSparkle (random)
-    SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay):
-    SnowSparkle(16, 16, 16, 100, 20, random.randint(100,1000))
+    # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
+    # SnowSparkle(16, 16, 16, 100, 0.020, random.randint(100,1000)/1000)
+    SnowSparkle(16, 16, 16, 100, 0.1, 0.3)
 
     # makes the strand of pixels show Sparkle (white)
     # Sparkle(red, green, blue, Count, SpeedDelay)
