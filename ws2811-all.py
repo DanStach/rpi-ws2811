@@ -270,7 +270,8 @@ def RightToLeft(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
   
     time.sleep(ReturnDelay)
 
-def Twinkle(red, green, blue, Count, SpeedDelay, OnlyOne)
+
+def Twinkle(red, green, blue, Count, SpeedDelay, OnlyOne):
     pixels.fill((0,0,0))
   
     for i in range(Count):
