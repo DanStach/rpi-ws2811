@@ -325,7 +325,7 @@ def RunningLights(red, green, blue, WaveDelay):
     for j in range(num_pixels*2):
         Position = Position + 1
         
-        for i in range(num_pixel):
+        for i in range(num_pixels):
             # sine wave, 3 offset waves make a rainbow!
             # float level = sin(i+Position) * 127 + 128;
             # setPixel(i,level,0,0);
@@ -340,8 +340,8 @@ def RunningLights(red, green, blue, WaveDelay):
         time.sleep(WaveDelay)
 
 
-def colorWipe(red, green, blue, SpeedDelay)
-    for i in range(num_pixel):
+def colorWipe(red, green, blue, SpeedDelay):
+    for i in range(num_pixels):
         pixels[i] = (red, green, blue)
         pixels.show()
         time.sleep(SpeedDelay)
@@ -374,9 +374,9 @@ while True:
     # colorWipe(red, green, blue, SpeedDelay)
     colorWipe(0,255,0, 0.05)
 
-    # makes the strand of pixels show RunningLights (white)
+    # makes the strand of pixels show RunningLights (red)
     # RunningLights(red, green, blue, WaveDelay)
-    RunningLights(255,255,255, 0.05)
+    RunningLights(255,0,0, 0.05)
 
     # makes the strand of pixels show SnowSparkle (random)
     # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
