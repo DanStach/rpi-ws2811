@@ -284,6 +284,20 @@ def Twinkle(red, green, blue, Count, SpeedDelay, OnlyOne):
 
     time.sleep(SpeedDelay)
 
+
+def TwinkleRandom( Count, SpeedDelay, OnlyOne):
+    pixels.fill(0,0,0)
+
+    for i in range(Count):
+        pixels[random.randint(0, num_pixels-1)] = (random.randint(0,255), random.randint(0,255), random.randint(0,255))
+        pixels.show()
+        time.sleep(SpeedDelay)
+        if OnlyOne:
+            pixels.fill((0,0,0))
+
+  time.sleep(SpeedDelay)
+
+
 while True:
     # make all pixels Red
     # fill(red, green, blue)
@@ -302,6 +316,10 @@ while True:
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
+
+    # makes the strand of pixels show TwinkleRandom
+    # TwinkleRandom( Count, SpeedDelay, OnlyOne) 
+    TwinkleRandom(20, 0.1, False);
 
     # makes the strand of pixels show Twinkle
     # Twinkle(red, green, blue, Count, SpeedDelay, OnlyOne)
