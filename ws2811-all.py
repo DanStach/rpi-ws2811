@@ -353,14 +353,14 @@ def colorWipe(red, green, blue, SpeedDelay):
 def theaterChase(red, green, blue, cycles, SpeedDelay):
     for j in range(cycles):
         for q in range(3):
-            for i in range(0, num_pixels, 3):
+            for i in range(0, num_pixels-3, 3):
                 # turn every third pixel on
                 pixels[i+q] = (red, green, blue)
             
             pixels.show()
             time.sleep(SpeedDelay)
             
-            for i in range(0, num_pixels, 3):
+            for i in range(0, num_pixels-3, 3):
                 # turn every third pixel off
                 pixels[i+q] = (0,0,0)
 
@@ -371,17 +371,22 @@ def theaterChaseRainbow(SpeedDelay):
 
         for q in range(3):
             for i in range(0, num_pixels, 3):
-                # turn every third pixel on
-                pixel_index = (i * 256 // num_pixels) + j
-                pixels[i+q] = wheel(pixel_index & 255)
+                # check that pixel index is not greater than number of pixels
+                if i+q < num_pixels:
+                    # turn every third pixel on
+                    print(i+q)
+                    pixel_index = (i * 256 // num_pixels) + j
+                    pixels[i+q] = wheel(pixel_index & 255)
 
             
             pixels.show()
             time.sleep(SpeedDelay)
             
             for i in range(0, num_pixels, 3):
-                # turn every third pixel off
-                pixels[i+q] = (0,0,0)
+                # check that pixel index is not greater than number of pixels
+                if i+q < num_pixels:
+                    # turn every third pixel off
+                    pixels[i+q] = (0,0,0)
 
 
 
@@ -408,11 +413,11 @@ while True:
     time.sleep(wait_time)
 
     # theaterChaseRainbow(SpeedDelay)
-    theaterChaseRainbow(0.05)
+    theaterChaseRainbow(.05)
     time.sleep(wait_time)
 
     # theaterChase(red, green, blue, cycles, SpeedDelay)
-    theaterChase(255,0,0, 10, 0.05)
+    theaterChase(255,0,0, 10, 0.5)
     time.sleep(wait_time)
 
     # makes the strand of pixels show colorWipe (green)
