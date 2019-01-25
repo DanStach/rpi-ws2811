@@ -364,6 +364,27 @@ def theaterChase(red, green, blue, cycles, SpeedDelay):
                 # turn every third pixel off
                 pixels[i+q] = (0,0,0)
 
+
+def theaterChaseRainbow(SpeedDelay):
+    # cycle all 256 colors in the wheel
+    for j in range(256):
+
+        for q in range(3):
+            for i in range(0, num_pixels, 3):
+                # turn every third pixel on
+                pixel_index = (i * 256 // num_pixels) + j
+                pixels[i+q] = wheel(pixel_index & 255)
+
+            
+            pixels.show()
+            time.sleep(SpeedDelay)
+            
+            for i in range(0, num_pixels, 3):
+                # turn every third pixel off
+                pixels[i+q] = (0,0,0)
+
+
+
 while True:
     random.seed(num_pixels)
 
@@ -384,6 +405,10 @@ while True:
     # fill(red, green, blue)
     pixels.fill((0, 0, 255))
     pixels.show()
+    time.sleep(wait_time)
+
+    # theaterChaseRainbow(SpeedDelay)
+    theaterChaseRainbow(0.05)
     time.sleep(wait_time)
 
     # theaterChase(red, green, blue, cycles, SpeedDelay)
