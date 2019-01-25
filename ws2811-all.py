@@ -350,6 +350,20 @@ def colorWipe(red, green, blue, SpeedDelay):
 
 
 
+def theaterChase(red, green, blue, cycles, SpeedDelay):
+    for j in range(cycles):
+        for q in range(3):
+            for i in range(0, num_pixels, 3):
+                # turn every third pixel on
+                pixels[i+q] = (red, green, blue)
+            
+            pixels.show()
+            time.sleep(SpeedDelay)
+            
+            for i in range(0, num_pixels, 3):
+                # turn every third pixel off
+                pixels[i+q] = (0,0,0)
+
 while True:
     random.seed(num_pixels)
 
@@ -370,6 +384,10 @@ while True:
     # fill(red, green, blue)
     pixels.fill((0, 0, 255))
     pixels.show()
+    time.sleep(wait_time)
+
+    # theaterChase(red, green, blue, cycles, SpeedDelay)
+    theaterChase(255,0,0, 10, 0.05)
     time.sleep(wait_time)
 
     # makes the strand of pixels show colorWipe (green)
