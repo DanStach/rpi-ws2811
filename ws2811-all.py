@@ -55,9 +55,11 @@ def wheel(pos):
     return (r, g, b) if ORDER == neopixel.RGB or ORDER == neopixel.GRB else (r, g, b, 0)
 
 
-def rainbow_cycle(delay):
-    for j in range(255):
+def rainbow_cycle(delay, cycles):
+    for j in range(255 * cycles):
         for i in range(num_pixels):
+            # " // "  this divides and returns the integer value of the quotient. 
+            # It dumps the digits after the decimal
             pixel_index = (i * 256 // num_pixels) + j
             pixels[i] = wheel(pixel_index & 255)
         pixels.show()
@@ -434,6 +436,8 @@ while True:
     time.sleep(wait_time)
 
     # rainbow cycle
-    rainbow_cycle(0.001)    # rainbow cycle with 1ms delay per step
+    # rainbow cycle with 1ms delay per step, 5 cycles
+    # rainbow_cycle(delay, cycles) 
+    rainbow_cycle(0.001, 5) 
     time.sleep(wait_time)
 
