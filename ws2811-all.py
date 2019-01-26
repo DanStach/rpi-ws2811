@@ -394,7 +394,7 @@ def theaterChaseRainbow(SpeedDelay):
 
 
 def Fire(Cooling, Sparking, SpeedDelay):
-    heat[num_pixels]
+    heat = []
     cooldown = 0
     
     # Step 1.  Cool down every cell a little
