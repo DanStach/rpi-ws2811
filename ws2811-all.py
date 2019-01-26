@@ -459,10 +459,17 @@ while True:
     pixels.show()
     time.sleep(wait_time)
 
+    # makes the strand of pixels show Fire
+    # Fire(Cooling, Sparking, SpeedDelay)
+    Fire(55, 120, 15)
+    time.sleep(wait_time)
+
+    # makes the strand of pixels show theaterChaseRainbow
     # theaterChaseRainbow(SpeedDelay)
     theaterChaseRainbow(0.05)
     time.sleep(wait_time)
 
+    # makes the strand of pixels show theaterChase
     # theaterChase(red, green, blue, cycles, SpeedDelay)
     theaterChase(255,0,0, 10, 0.05)
     time.sleep(wait_time)
