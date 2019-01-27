@@ -393,36 +393,46 @@ def theaterChaseRainbow(SpeedDelay):
 
 
 
-def Fire(Cooling, Sparking, SpeedDelay):
-    heat = []
-    cooldown = 0
-    
-    # Step 1.  Cool down every cell a little
-    for i in range(num_pixels):
-        cooldown = random.randint(0, ((Cooling * 10) / num_pixels) + 2)
+def Fire(Cooling, Sparking, SpeedDelay, LoopCount):
+    for l in range(LoopCount):
+        heat = []
+        for i in range(num_pixels):
+            heat.append(0)
+        # print(heat)
+        cooldown = 0
         
-        if cooldown > heat[i]:
-            heat[i]=0
-        else: 
-            heat[i]=heat[i]-cooldown
-    
-    
-    # Step 2.  Heat from each cell drifts 'up' and diffuses a little
-    for k in range(num_pixels - 1, 1, -1):
-        heat[k] = (heat[k - 1] + heat[k - 2] + heat[k - 2]) / 3
+        # Step 1.  Cool down every cell a little
+        for i in range(num_pixels):
+            #print()
+            #print()
+            #print("rand interal" + str(((Cooling * 10) / num_pixels) + 2))
+            cooldown = random.randint(0, ((Cooling * 10) / num_pixels) + 2)
+            #print("cooldown " + str(cooldown))
+            #print("heat " + str(heat[i]))
+            if cooldown > heat[i]:
+                heat[i]=0
+            else: 
+                heat[i]=heat[i]-cooldown
         
-    # Step 3.  Randomly ignite new 'sparks' near the bottom
-    if random.randint(255) < Sparking:
-        y = random.randint(7)
-        heat[y] = heat[y] + random.randint(160,255)
-        # heat[y] = random.randint(160,255)
+        
+        # Step 2.  Heat from each cell drifts 'up' and diffuses a little
+        for k in range(num_pixels - 1, 1, -1):
+            heat[k] = (heat[k - 1] + heat[k - 2] + heat[k - 2]) / 3
+            
+        # Step 3.  Randomly ignite new 'sparks' near the bottom
+        if random.randint(0,255) < Sparking:
+            y = random.randint(0,7)
+            heat[y] = heat[y] + random.randint(160,255)
+            # heat[y] = random.randint(160,255)
 
-    # Step 4.  Convert heat to LED colors
-    for j in range(num_pixels):
-        setPixelHeatColor(j, heat[j] )
+        # Step 4.  Convert heat to LED colors
+        print(heat)
+        for j in range(num_pixels):
+            #print(heat[j] )
+            setPixelHeatColor(j, int(heat[j]) )
 
-    pixels.show()
-    time.sleep(SpeedDelay)
+        pixels.show()
+        time.sleep(SpeedDelay)
 
 def setPixelHeatColor (Pixel, temperature):
     # Scale 'heat' down from 0-255 to 0-191
@@ -467,8 +477,8 @@ while True:
     time.sleep(wait_time)
 
     # makes the strand of pixels show Fire
-    # Fire(Cooling, Sparking, SpeedDelay)
-    Fire(55, 120, 15)
+    # Fire(Cooling, Sparking, SpeedDelay, LoopCount)
+    Fire(100, 120, 0.02, 1000)
     time.sleep(wait_time)
 
     # makes the strand of pixels show theaterChaseRainbow
