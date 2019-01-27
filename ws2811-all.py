@@ -461,7 +461,7 @@ def meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay
         for i in range(num_pixels*2):
             # fade brightness all LEDs one step
             for j in range(num_pixels):
-                if (not meteorRandomDecay) or (random.randint(10) > 5)
+                if (not meteorRandomDecay) or (random.randint(0,10) > 5):
                     fadeToBlack(j, meteorTrailDecay )      
             
             # draw meteor
@@ -473,15 +473,22 @@ def meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay
             time.sleep(SpeedDelay)
 
 def fadeToBlack(ledNo, fadeValue):
-    ctypes.c_uint32 oldColor = 0 
-    ctypes.c_uint8 r = 0
-    ctypes.c_uint8 g = 0
-    ctypes.c_uint8 b = 0
+    #ctypes.c_uint32 oldColor = 0x00000000UL
+    #ctypes.c_uint8 r = 0
+    #ctypes.c_uint8 g = 0
+    #ctypes.c_uint8 b = 0
 
-    oldColor = strip.getPixelColor(ledNo)
-    r = (oldColor & 0x00ff0000UL) >> 16
-    g = (oldColor & 0x0000ff00UL) >> 8
-    b = (oldColor & 0x000000ffUL)
+    oldColor = pixels[ledNo]
+#    r = (oldColor & 0x00ff0000) >> 16
+#    g = (oldColor & 0x0000ff00) >> 8
+#    b = (oldColor & 0x000000ff)
+    #print(oldColor)
+#    r = oldColor >> 16
+#    g = (oldColor >> 8) & 0xff
+#    b = oldColor & 0xff
+    r = oldColor[0]
+    g = oldColor[1]
+    b = oldColor[2]
 
     if (r<=10):
         r = 0
@@ -498,10 +505,7 @@ def fadeToBlack(ledNo, fadeValue):
     else:
         b = b - ( b * fadeValue / 256 )
 
-
     pixels[ledNo] = ( int(r), int(g), int(b) )
-
-}
 
 
 while True:
@@ -528,8 +532,13 @@ while True:
     
     # makes the strand of pixels show 
     # meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay, LoopCount, SpeedDelay)
+<<<<<<< HEAD
     #meteorRain(255,255,255,10, 64, true, 100, 0.030)
     #time.sleep(wait_time)
+=======
+    meteorRain(255,255,255,10, 64, True, 1, 0.030)
+    time.sleep(wait_time)
+>>>>>>> def94197315ae0dc8f3c8e946b236bf1ed5f3b5f
 
     # makes the strand of pixels show Fire
     # Fire(Cooling, Sparking, SpeedDelay, LoopCount)
