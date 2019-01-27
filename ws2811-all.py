@@ -438,16 +438,16 @@ def Fire(Cooling, Sparking, SpeedDelay, LoopCount):
 
 def setPixelHeatColor (Pixel, temperature):
     # Scale 'heat' down from 0-255 to 0-191
-    t192 = round( (temperature/255.0)*191 )
+    t192 = ctypes.c_byte( round((temperature/255.0)*191) )
  
     # calculate ramp up from
-    heatramp = t192 & 63 # 0..63
+    heatramp = t192 & 0x3F # 0..63
     heatramp <<= 2 # scale up to 0..252
     
     # figure out which third of the spectrum we're in:
-    if t192 > 128: # hottest
+    if t192 > 0x80: # hottest
         pixels[Pixel] = (255, 255, heatramp)
-    elif t192 > 64: # middle
+    elif t192 > 0x40: # middle
         pixels[Pixel] = (255, heatramp, 0)
     else: # coolest
         pixels[Pixel] = (heatramp, 0, 0)
@@ -528,14 +528,14 @@ while True:
     
     # makes the strand of pixels show 
     # meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay, LoopCount, SpeedDelay)
-    meteorRain(255,255,255,10, 64, true, 100, 0.030)
-    time.sleep(wait_time)
+    #meteorRain(255,255,255,10, 64, true, 100, 0.030)
+    #time.sleep(wait_time)
 
     # makes the strand of pixels show Fire
     # Fire(Cooling, Sparking, SpeedDelay, LoopCount)
     ###### issue with effect. fix me :)
-    #Fire(100, 120, 0.02, 1000)
-    #time.sleep(wait_time)
+    Fire(100, 120, 0.02, 1000)
+    time.sleep(wait_time)
 
     # makes the strand of pixels show theaterChaseRainbow
     # theaterChaseRainbow(SpeedDelay)
