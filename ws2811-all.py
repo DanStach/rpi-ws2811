@@ -5,6 +5,7 @@ import neopixel
 import random
 import math
 import serial
+import ctypes
 
 
 
@@ -453,6 +454,54 @@ def setPixelHeatColor (Pixel, temperature):
 
 
 
+def meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay, LoopCount, SpeedDelay): 
+    for loop in range(LoopCount):
+        pixels.fill((0,0,0))
+        
+        for i in range(num_pixels*2):
+            # fade brightness all LEDs one step
+            for j in range(num_pixels):
+                if (not meteorRandomDecay) or (random.randint(10) > 5)
+                    fadeToBlack(j, meteorTrailDecay )      
+            
+            # draw meteor
+            for j in range(meteorSize):
+                if ( i-j < num_pixels) and (i-j >= 0): 
+                    pixels[i-j] = (red, green, blue)
+
+            pixels.show()
+            time.sleep(SpeedDelay)
+
+def fadeToBlack(ledNo, fadeValue):
+    ctypes.c_uint32 oldColor = 0 
+    ctypes.c_uint8 r = 0
+    ctypes.c_uint8 g = 0
+    ctypes.c_uint8 b = 0
+
+    oldColor = strip.getPixelColor(ledNo)
+    r = (oldColor & 0x00ff0000UL) >> 16
+    g = (oldColor & 0x0000ff00UL) >> 8
+    b = (oldColor & 0x000000ffUL)
+
+    if (r<=10):
+        r = 0
+    else:
+        r = r - ( r * fadeValue / 256 )
+
+    if (g<=10):
+        g = 0
+    else:
+        g = g - ( g * fadeValue / 256 )
+
+    if (b<=10):
+        b = 0
+    else:
+        b = b - ( b * fadeValue / 256 )
+
+
+    pixels[ledNo] = ( int(r), int(g), int(b) )
+
+}
 
 
 while True:
@@ -475,6 +524,11 @@ while True:
     # fill(red, green, blue)
     pixels.fill((0, 0, 255))
     pixels.show()
+    time.sleep(wait_time)
+    
+    # makes the strand of pixels show 
+    # meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay, LoopCount, SpeedDelay)
+    meteorRain(255,255,255,10, 64, true, 100, 0.030)
     time.sleep(wait_time)
 
     # makes the strand of pixels show Fire
