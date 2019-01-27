@@ -392,7 +392,8 @@ def theaterChaseRainbow(SpeedDelay):
 
 
 
-
+### Fix Me - something is broken with the logic. the color doesn't change. and the fire effect seems small
+### orginal code; https://www.tweaking4all.com/hardware/arduino/adruino-led-strip-effects/#LEDStripEffectFire
 def Fire(Cooling, Sparking, SpeedDelay, LoopCount):
     for l in range(LoopCount):
         heat = []
@@ -478,8 +479,9 @@ while True:
 
     # makes the strand of pixels show Fire
     # Fire(Cooling, Sparking, SpeedDelay, LoopCount)
-    Fire(100, 120, 0.02, 1000)
-    time.sleep(wait_time)
+    ###### issue with effect. fix me :)
+    #Fire(100, 120, 0.02, 1000)
+    #time.sleep(wait_time)
 
     # makes the strand of pixels show theaterChaseRainbow
     # theaterChaseRainbow(SpeedDelay)
