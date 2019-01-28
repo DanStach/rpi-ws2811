@@ -396,10 +396,13 @@ def theaterChaseRainbow(SpeedDelay):
 ### Fix Me - something is broken with the logic. the color doesn't change. and the fire effect seems small
 ### orginal code; https://www.tweaking4all.com/hardware/arduino/adruino-led-strip-effects/#LEDStripEffectFire
 def Fire(Cooling, Sparking, SpeedDelay, LoopCount):
-    for l in range(LoopCount):
-        heat = []
-        for i in range(num_pixels):
-            heat.append(0)
+     heat = []
+     for i in range(num_pixels):
+        heat.append(0)
+     for l in range(LoopCount):
+#        heat = []
+#        for i in range(num_pixels):
+#            heat.append(0)
         # print(heat)
         cooldown = 0
         
@@ -418,7 +421,7 @@ def Fire(Cooling, Sparking, SpeedDelay, LoopCount):
         
         
         # Step 2.  Heat from each cell drifts 'up' and diffuses a little
-        for k in range(num_pixels - 1, 1, -1):
+        for k in range(num_pixels - 1, 2, -1):
             heat[k] = (heat[k - 1] + heat[k - 2] + heat[k - 2]) / 3
             
         # Step 3.  Randomly ignite new 'sparks' near the bottom
@@ -428,7 +431,7 @@ def Fire(Cooling, Sparking, SpeedDelay, LoopCount):
             # heat[y] = random.randint(160,255)
 
         # Step 4.  Convert heat to LED colors
-        print(heat)
+        #print(heat)
         for j in range(num_pixels):
             #print(heat[j] )
             setPixelHeatColor(j, int(heat[j]) )
@@ -438,19 +441,19 @@ def Fire(Cooling, Sparking, SpeedDelay, LoopCount):
 
 def setPixelHeatColor (Pixel, temperature):
     # Scale 'heat' down from 0-255 to 0-191
-    t192 = ctypes.c_byte( round((temperature/255.0)*191) )
- 
+    t192 = round((temperature/255.0)*191)
+
     # calculate ramp up from
-    heatramp = t192 & 0x3F # 0..63
+    heatramp = t192 & 63 # 0..63  0x3f=63
     heatramp <<= 2 # scale up to 0..252
-    
+    #print("t192=" + str(t192) + "  heatramp=" + str(heatramp))
     # figure out which third of the spectrum we're in:
-    if t192 > 0x80: # hottest
-        pixels[Pixel] = (255, 255, heatramp)
-    elif t192 > 0x40: # middle
-        pixels[Pixel] = (255, heatramp, 0)
+    if t192 > 0x80: # hottest 128 = 0x80
+        pixels[Pixel] = (255, 255, int(heatramp))
+    elif t192 > 0x40: # middle 64 = 0x40
+        pixels[Pixel] = (255, int(heatramp), 0)
     else: # coolest
-        pixels[Pixel] = (heatramp, 0, 0)
+        pixels[Pixel] = (int(heatramp), 0, 0)
 
 
 
@@ -532,18 +535,14 @@ while True:
     
     # makes the strand of pixels show 
     # meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay, LoopCount, SpeedDelay)
-<<<<<<< HEAD
-    #meteorRain(255,255,255,10, 64, true, 100, 0.030)
-    #time.sleep(wait_time)
-=======
-    meteorRain(255,255,255,10, 64, True, 1, 0.030)
+    meteorRain(255,255,255,10, 64, True, 2, 0.030)
     time.sleep(wait_time)
->>>>>>> def94197315ae0dc8f3c8e946b236bf1ed5f3b5f
+
 
     # makes the strand of pixels show Fire
     # Fire(Cooling, Sparking, SpeedDelay, LoopCount)
     ###### issue with effect. fix me :)
-    Fire(100, 120, 0.02, 1000)
+    Fire(55, 120, 0.02, 100)
     time.sleep(wait_time)
 
     # makes the strand of pixels show theaterChaseRainbow
