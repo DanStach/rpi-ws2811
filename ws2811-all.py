@@ -427,8 +427,8 @@ def Fire(Cooling, Sparking, SpeedDelay, LoopCount):
         # Step 3.  Randomly ignite new 'sparks' near the bottom
         if random.randint(0,255) < Sparking:
             y = random.randint(0,7)
-            heat[y] = heat[y] + random.randint(160,255)
-            # heat[y] = random.randint(160,255)
+            #heat[y] = heat[y] + random.randint(160,255)
+            heat[y] = random.randint(160,255)
 
         # Step 4.  Convert heat to LED colors
         #print(heat)
@@ -620,8 +620,8 @@ while True:
 
     # makes the strand of pixels show Fire
     # Fire(Cooling, Sparking, SpeedDelay, LoopCount)
-    #Fire(55, 120,0.015, 100)
-    #time.sleep(wait_time)
+    Fire(55, 120,0.015, 100)
+    time.sleep(wait_time)
     
     # makes the strand of pixels show 
     # meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay, LoopCount, SpeedDelay)
