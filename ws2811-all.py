@@ -455,7 +455,7 @@ def setPixelHeatColor (Pixel, temperature):
     else: # coolest
         pixels[Pixel] = (int(heatramp), 0, 0)
 
-def FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, LoopCount):
+def FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, LoopCount):
      heat = []
      for i in range(num_pixels):
         heat.append(0)
@@ -480,8 +480,10 @@ def FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart,
         # Step 3.  Randomly ignite new 'sparks' near the bottom
         if random.randint(0,100) < Sparking:
             y = random.randint(SparkingRangeStart,SparkingRangeEnd)
-            heat[y] = heat[y] + random.randint(heat[y],255)
-            # heat[y] = random.randint(160,255)
+            print(heat[y])
+            heat[y] = random.randint(int(heat[y]),255)
+            #heat[y] = heat[y] + random.randint(int(heat[y]),255)
+            #heat[y] = random.randint(160,255)
 
         # Step 4.  Convert heat to LED colors
         for j in range(num_pixels):
@@ -491,12 +493,21 @@ def FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart,
             heatramp = t192 & 63 # 0..63  0x3f=63
             heatramp <<= 2 # scale up to 0..252
             # figure out which third of the spectrum we're in:
-            if t192 > 0x80: # hottest 128 = 0x80
-                pixels[j] = (255, 255, int(heatramp))
-            elif t192 > 0x40: # middle 64 = 0x40
-                pixels[j] = (255, int(heatramp), 0)
-            else: # coolest
-                pixels[j] = (int(heatramp), 0, 0)
+            if FireColor == 0: #red flame
+                if t192 > 0x80: # hottest 128 = 0x80
+                    pixels[j] = (255, 255, int(heatramp))
+                elif t192 > 0x40: # middle 64 = 0x40
+                    pixels[j] = (255, int(heatramp), 0)
+                else: # coolest
+                    pixels[j] = (int(heatramp), 0, 0)
+            else:
+                if t192 > 0x80: # hottest 128 = 0x80
+                    pixels[j] = (255, int(heatramp), 255)
+                elif t192 > 0x40: # middle 64 = 0x40
+                    pixels[j] = (int(heatramp), 0, 255)
+                else: # coolest
+                    pixels[j] = (0, 0, int(heatramp))
+                
 
         pixels.show()
         time.sleep(SpeedDelay)
@@ -579,7 +590,7 @@ while True:
     
     # makes the strand of pixels show 
     # meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay, LoopCount, SpeedDelay)
-    meteorRain(255, 255, 255, 10, 64, True, 2, 0.030)
+    meteorRain(255, 255, 255, 10, 64, True, 1, 0.030)
     time.sleep(wait_time)
 
 
@@ -591,12 +602,12 @@ while True:
     #SparkingRangeStart = 0-255 
     #SparkingRangeEnd = 0-255
     ###### issue with effect. fix me :)
-    FireCustom(0, 12, 25, 0, 10, 0.02, 100)
+    FireCustom(0, 12, 25, 0, 10, 0.02, 0, 1000)
     time.sleep(wait_time)
 
     # makes the strand of pixels show Fire
     # Fire(Cooling, Sparking, SpeedDelay, LoopCount)
-    Fire(55, 120, 25,0.015, 100)
+    #Fire(55, 120,0.015, 100)
     time.sleep(wait_time)
 
     # makes the strand of pixels show theaterChaseRainbow
