@@ -590,23 +590,23 @@ def BouncingBalls(red, green, blue, BallCount, LoopCount):
 
     ImpactVelocityStart = math.sqrt( -2 * Gravity * StartHeight )
 
-    ImpactVelocity[]
+    ImpactVelocity = []
     for i in range(BallCount):
         ImpactVelocity.append(0)
 
-    TimeSinceLastBounce[]
+    TimeSinceLastBounce = []
     for i in range(BallCount):
         TimeSinceLastBounce.append(0)
 
-    Position[]
+    Position = []
     for i in range(BallCount):
         Position.append(0)
 
-    ClockTimeSinceLastBounce[]
+    ClockTimeSinceLastBounce = []
     for i in range(BallCount):
         ClockTimeSinceLastBounce.append(0)
     
-    Dampening[]
+    Dampening = []
     for i in range(BallCount):
         Dampening.append(0)
 
@@ -633,13 +633,13 @@ def BouncingBalls(red, green, blue, BallCount, LoopCount):
                 if ImpactVelocity[i] < 0.01:
                     ImpactVelocity[i] = ImpactVelocityStart
 
-            Position[i] = round( Height[i] * (NUM_LEDS - 1) / StartHeight)
+            Position[i] = round( Height[i] * (num_pixels - 1) / StartHeight)
         
         for i in range(BallCount):
             pixels[Position[i]] = (red,green,blue)
         
         pixels.show()
-        time.sleep(SpeedDelay)
+        pixels.fill((0, 0, 0))
 
 while True:
     random.seed(num_pixels)
