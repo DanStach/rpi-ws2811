@@ -640,6 +640,71 @@ def BouncingBalls(red, green, blue, BallCount, LoopCount):
         
         pixels.show()
         pixels.fill((0, 0, 0))
+        
+
+
+def BouncingColoredBalls(BallCount, colors, LoopCount):
+    
+    ## setup 
+    Gravity = -9.81
+    StartHeight = 1
+
+    Height = []
+    for i in range(BallCount):
+        Height.append(0)
+
+    ImpactVelocityStart = math.sqrt( -2 * Gravity * StartHeight )
+
+    ImpactVelocity = []
+    for i in range(BallCount):
+        ImpactVelocity.append(0)
+
+    TimeSinceLastBounce = []
+    for i in range(BallCount):
+        TimeSinceLastBounce.append(0)
+
+    Position = []
+    for i in range(BallCount):
+        Position.append(0)
+
+    ClockTimeSinceLastBounce = []
+    for i in range(BallCount):
+        ClockTimeSinceLastBounce.append(0)
+    
+    Dampening = []
+    for i in range(BallCount):
+        Dampening.append(0)
+
+    for i in range(BallCount):
+        ClockTimeSinceLastBounce[i] = int(round(time.time() * 1000))
+
+        Height[i] = StartHeight
+        Position[i] = 0
+        ImpactVelocity[i] = ImpactVelocityStart
+        TimeSinceLastBounce[i] = 0
+        Dampening[i] = 0.90 - float(i)/pow(BallCount,2)
+    
+    ## loop 
+    for loop in range(LoopCount):
+        for i in range(BallCount):
+            TimeSinceLastBounce[i] =  int(round(time.time() * 1000)) - ClockTimeSinceLastBounce[i]
+            Height[i] = 0.5 * Gravity * pow( TimeSinceLastBounce[i]/1000 , 2.0 ) + ImpactVelocity[i] * TimeSinceLastBounce[i]/1000
+    
+            if Height[i] < 0:                 
+                Height[i] = 0
+                ImpactVelocity[i] = Dampening[i] * ImpactVelocity[i]
+                ClockTimeSinceLastBounce[i] = int(round(time.time() * 1000))
+        
+                if ImpactVelocity[i] < 0.01:
+                    ImpactVelocity[i] = ImpactVelocityStart
+
+            Position[i] = round( Height[i] * (num_pixels - 1) / StartHeight)
+        
+        for i in range(BallCount):
+            pixels[Position[i]] = (colors[i][0],colors[i][1],colors[i][2])
+        
+        pixels.show()
+        pixels.fill((0, 0, 0))
 
 while True:
     random.seed(num_pixels)
@@ -664,8 +729,13 @@ while True:
     time.sleep(wait_time)
     
     # makes the strand of pixels show BouncingBalls
+    # BouncingColoredBalls(BallCount, colors[][3], LoopCount) 
+    BouncingColoredBalls(3, ((255,0,0),(0,255,0),(0,0,255)), 1000)
+    time.sleep(wait_time)
+    
+    # makes the strand of pixels show BouncingBalls
     # BouncingBalls(red, green, blue, BallCount, LoopCount) 
-    BouncingBalls(255,0,0, 3, 1000)
+    BouncingBalls(255, 0, 0, 3, 1000) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show Fire
