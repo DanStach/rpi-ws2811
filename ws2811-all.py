@@ -578,10 +578,9 @@ def fadeToBlack(ledNo, fadeValue):
     pixels[ledNo] = ( int(r), int(g), int(b) )
 
 
-def BouncingBalls(red, green, blue, BallCount):
+def BouncingBalls(red, green, blue, BallCount, LoopCount):
     
-    #### setup 
-
+    ## setup 
     Gravity = -9.81
     StartHeight = 1
 
@@ -620,8 +619,8 @@ def BouncingBalls(red, green, blue, BallCount):
         TimeSinceLastBounce[i] = 0
         Dampening[i] = 0.90 - float(i)/pow(BallCount,2)
     
-    #### loop 
-    while (true):
+    ## loop 
+    for loop in range(LoopCount):
         for i in range(BallCount):
             TimeSinceLastBounce[i] =  int(round(time.time() * 1000)) - ClockTimeSinceLastBounce[i]
             Height[i] = 0.5 * Gravity * pow( TimeSinceLastBounce[i]/1000 , 2.0 ) + ImpactVelocity[i] * TimeSinceLastBounce[i]/1000
@@ -637,7 +636,7 @@ def BouncingBalls(red, green, blue, BallCount):
             Position[i] = round( Height[i] * (NUM_LEDS - 1) / StartHeight)
         
         for i in range(BallCount):
-            setPixel(Position[i],red,green,blue)
+            pixels[Position[i]] = (red,green,blue)
         
         pixels.show()
         time.sleep(SpeedDelay)
@@ -664,6 +663,11 @@ while True:
     pixels.show()
     time.sleep(wait_time)
     
+    # makes the strand of pixels show BouncingBalls
+    # BouncingBalls(red, green, blue, BallCount, LoopCount) 
+    BouncingBalls(255,0,0, 3, 1000)
+    time.sleep(wait_time)
+
     # makes the strand of pixels show Fire
     # Fire(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, FireEffect, LoopCount)
     #CoolingRangeStart = 0-255
