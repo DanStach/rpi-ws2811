@@ -1,5 +1,6 @@
 # install process for rpi-ws2811
-code need to run the xmas lights ws2811 on a raspberry pi
+this is the simplified install process needed to run the xmas lights ws2811 on a raspberry pi
+refernce to full instuctions: https://learn.adafruit.com/neopixels-on-raspberry-pi/overview
 
 ## Install Process
 
