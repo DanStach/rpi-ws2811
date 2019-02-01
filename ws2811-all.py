@@ -555,6 +555,70 @@ def fadeToBlack(ledNo, fadeValue):
     pixels[ledNo] = ( int(r), int(g), int(b) )
 
 
+def BouncingBalls(red, green, blue, BallCount):
+    
+    #### setup 
+
+    Gravity = -9.81
+    StartHeight = 1
+
+    Height = []
+    for i in range(BallCount):
+        Height.append(0)
+
+    ImpactVelocityStart = math.sqrt( -2 * Gravity * StartHeight )
+
+    ImpactVelocity[]
+    for i in range(BallCount):
+        ImpactVelocity.append(0)
+
+    TimeSinceLastBounce[]
+    for i in range(BallCount):
+        TimeSinceLastBounce.append(0)
+
+    Position[]
+    for i in range(BallCount):
+        Position.append(0)
+
+    ClockTimeSinceLastBounce[]
+    for i in range(BallCount):
+        ClockTimeSinceLastBounce.append(0)
+    
+    Dampening[]
+    for i in range(BallCount):
+        Dampening.append(0)
+
+    for i in range(BallCount):
+        ClockTimeSinceLastBounce[i] = int(round(time.time() * 1000))
+
+        Height[i] = StartHeight
+        Position[i] = 0
+        ImpactVelocity[i] = ImpactVelocityStart
+        TimeSinceLastBounce[i] = 0
+        Dampening[i] = 0.90 - float(i)/pow(BallCount,2)
+    
+    #### loop 
+    while (true):
+        for i in range(BallCount):
+            TimeSinceLastBounce[i] =  int(round(time.time() * 1000)) - ClockTimeSinceLastBounce[i]
+            Height[i] = 0.5 * Gravity * pow( TimeSinceLastBounce[i]/1000 , 2.0 ) + ImpactVelocity[i] * TimeSinceLastBounce[i]/1000
+    
+            if Height[i] < 0:                 
+                Height[i] = 0
+                ImpactVelocity[i] = Dampening[i] * ImpactVelocity[i]
+                ClockTimeSinceLastBounce[i] = int(round(time.time() * 1000))
+        
+                if ImpactVelocity[i] < 0.01:
+                    ImpactVelocity[i] = ImpactVelocityStart
+
+            Position[i] = round( Height[i] * (NUM_LEDS - 1) / StartHeight)
+        
+        for i in range(BallCount):
+            setPixel(Position[i],red,green,blue)
+        
+        pixels.show()
+        time.sleep(SpeedDelay)
+
 while True:
     random.seed(num_pixels)
 
