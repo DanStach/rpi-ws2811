@@ -8,4 +8,6 @@ This project has the goal completing all the coding needed use ws2811 neopixel l
 simple install instuctions are located on install.md
 
 full install tutorials:
+ - https://learn.adafruit.com/neopixels-on-raspberry-pi/overview
  - https://tutorials-raspberrypi.com/connect-control-raspberry-pi-ws2812-rgb-led-strips/
+ 
