@@ -673,13 +673,13 @@ while True:
     #SparkingRangeEnd = 0-255
     #FireColor = 0-2 (0=red, 1=blue , 2=green)
     #FireEffect = 0-2
-    ###### issue with effect. fix me :)
     FireCustom(0, 12, 25, 0, 10, 0.02, 0, 2, 500) # red fire
     time.sleep(wait_time)
     FireCustom(0, 12, 25, 0, 10, 0.02, 1, 2, 500) # blue fire
     time.sleep(wait_time)
     FireCustom(0, 12, 25, 0, 10, 0.02, 2, 2, 500) # green fire
     time.sleep(wait_time)
+
 
 
     # makes the strand of pixels show Fire
