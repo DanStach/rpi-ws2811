@@ -164,17 +164,17 @@ def rainbow_fade(delay, cycles):
 #            time.sleep(delay)
 
 
-matrix(delay, cycles)
+def matrix(random_percent, delay, cycles):
     for loop in range(cycles):
         rand = random.randint(0, 100)
-        if rand > 90:
+        if rand <= random_percent:
             pixels[0] = wheelBrightLevel(random.randint(0, 255), 255)
         else:
             pixels[0] = wheelBrightLevel(0,0)
 
-        for i in range(num_pixels - 1, 1, -1):
+        for i in range(num_pixels - 1, 0, -1):
             pixels[i] = pixels[i-1]
-        
+            
         pixels.show()
         time.sleep(delay)
 
@@ -203,8 +203,8 @@ while True:
 
 
     # makes the strand of pixels show matrix
-    # matrix(delay, cycles):
-    matrix(.02, 256) 
+    # matrix(random_percent, delay, cycles)
+    matrix(10, 0.25, 500) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show rainbow_fade
@@ -214,7 +214,7 @@ while True:
 
     # makes the strand of pixels show rainbow_loop
     # rainbow_loop(delay, step, cycles):
-    pixels.fill((255, 0, 0))
+    pixels.fill((0, 0, 0))
     pixels.show()
     time.sleep(wait_time*2)
     rainbow_loop(0.01, 10, 1000) 
