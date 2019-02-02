@@ -202,7 +202,7 @@ while True:
 
     # makes the strand of pixels show random_burst
     # rgb_propeller(LoopCount)
-    ##pixels.fill((0, 0, 0))
+    pixels.fill((0, 0, 0))
     rgb_propeller(1000)
 
     time.sleep(wait_time)
