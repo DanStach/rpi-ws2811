@@ -151,7 +151,6 @@ def rainbow_fade(delay, cycles):
         thishue = thishue + 1
         if thishue > 255:
              thishue = 0
-        print(thishue)
 
         # an other option would be to
         pixels.fill(wheel(thishue))
@@ -170,11 +169,13 @@ def matrix(random_percent, delay, cycles):
         if rand <= random_percent:
             pixels[0] = wheelBrightLevel(random.randint(0, 255), 255)
         else:
-            pixels[0] = wheelBrightLevel(0,0)
+            pixels[0] = (0,0,0)
 
         for i in range(num_pixels - 1, 0, -1):
             pixels[i] = pixels[i-1]
-            
+        
+        # there is an issue with first 2 pixels are same color 
+        #pixels[0] = (0,0,0)
         pixels.show()
         time.sleep(delay)
 
