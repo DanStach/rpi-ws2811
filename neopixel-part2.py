@@ -136,7 +136,7 @@ def rainbow_loop(delay, step, cycles):
 
     for loop in range(cycles):
         index = index + 1
-        thishue = thishue + thisstep
+        thishue = thishue + step
         if index >= num_pixels:
             index = 0
         if thishue > 255:
