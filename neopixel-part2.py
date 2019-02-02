@@ -118,7 +118,7 @@ def rgb_propeller(LoopCount):
             pixels[j2] = wheel(bhue)
 
 def rainbow_cycle(delay, cycles):
-    for j in range(255 * cycles):
+    for j in range(cycles):
         for i in range(num_pixels):
             # " // "  this divides and returns the integer value of the quotient. 
             # It dumps the digits after the decimal
@@ -150,7 +150,7 @@ while True:
 
     # makes the strand of pixels show random_burst
     # rainbow_cycle(delay, cycles) 
-    rainbow_cycle(0, 1) 
+    rainbow_cycle(0, 100) 
     time.sleep(wait_time)
 
 
@@ -165,7 +165,7 @@ while True:
     random_burst(0.005, .2, 100)
     time.sleep(wait_time)
 
-    #rainbow_cycle();
+
 
     #rainbow_fade();
     #   if ((demoMode) && !(demoStateCountdown%5)) demoStateCountdown-=2;
