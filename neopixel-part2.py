@@ -83,12 +83,12 @@ def brightnessRGB(red, green, blue, bright):
 def random_burst(delayStart, delayEnd , LoopCount):
     for loop in range(LoopCount):
         randomIndex= random.randint(0, num_pixels-1)
-        rndhue = random.randint(0, 255)
-        rndbright = random.randint(10, thisbright)
+        randomhue = random.randint(0, 255)
+        randombright = random.randint(10, thisbright)
         
         # CHSV(rndhue, thissat, rndbright)
-        print(str(randomIndex) + " " + str(rndhue) + " " + str(rndbright))
-        pixels[randomIndex] = wheelBrightLevel(rndhue, rndbright)
+        #print(str(randomIndex) + " " + str(rndhue) + " " + str(rndbright))
+        pixels[randomIndex] = wheelBrightLevel(randomhue, randombright)
         
         pixels.show()
         delay = random.randint(delayStart*1000, delayEnd*1000)/1000
@@ -135,9 +135,9 @@ while True:
     # makes the strand of pixels show random_burst
     # random_burst(delayStart, delayEnd , LoopCount)
     pixels.fill((0, 0, 0))
-    random_burst(0.1, .5, 100)
+    random_burst(0.005, .2, 100)
     time.sleep(wait_time)
-    #random_burst();
+
 
     #rgb_propeller();
 
