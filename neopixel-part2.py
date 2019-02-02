@@ -80,7 +80,7 @@ def brightnessRGB(red, green, blue, bright):
     b = (bright/256.0)*blue
     return (int(r), int(g), int(b))
 
-def random_burst(delay, LoopCount):
+def random_burst(delayStart, delayEnd , LoopCount):
     for loop in range(LoopCount):
         randomIndex= random.randint(0, num_pixels-1)
         rndhue = random.randint(0, 255)
@@ -91,6 +91,7 @@ def random_burst(delay, LoopCount):
         pixels[randomIndex] = wheelBrightLevel(rndhue, rndbright)
         
         pixels.show()
+        delay = random.randint(delayStart*1000, delayEnd*1000)/1000
         time.sleep(delay)
 
 
@@ -132,9 +133,9 @@ while True:
     time.sleep(wait_time)
     
     # makes the strand of pixels show random_burst
-    # random_burst(BallCount, colors[][3], LoopCount)
+    # random_burst(delayStart, delayEnd , LoopCount)
     pixels.fill((0, 0, 0))
-    random_burst(0.2, 100)
+    random_burst(0.1, .5, 100)
     time.sleep(wait_time)
     #random_burst();
 
@@ -183,6 +184,5 @@ while True:
     #   drain();
     #   pancake();
 
-      #random_burst()
 
 
