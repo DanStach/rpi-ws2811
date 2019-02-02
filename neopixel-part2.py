@@ -116,6 +116,7 @@ def rgb_propeller(LoopCount):
             pixels[j0] = wheel(thishue)
             pixels[j1] = wheel(ghue)
             pixels[j2] = wheel(bhue)
+            pixels.show()
 
 
 def rainbow(delay, step, cycles):
@@ -184,6 +185,7 @@ while True:
     #rainbow_fade(0.01, 2) 
     time.sleep(wait_time)
 
+
     # makes the strand of pixels show rainbow_loop
     # rainbow_loop(delay, step, cycles):
     #rainbow_loop(0.01, 10, 100) 
@@ -196,7 +198,13 @@ while True:
 
     # makes the strand of pixels show rgb_propeller
     # rgb_propeller(delayStart, delayEnd , LoopCount)
-    rgb_propeller(0.005, .2, 100)
+    #rgb_propeller(0.005, .2, 100)
+
+    # makes the strand of pixels show random_burst
+    # rgb_propeller(LoopCount)
+    ##pixels.fill((0, 0, 0))
+    rgb_propeller(1000)
+
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
