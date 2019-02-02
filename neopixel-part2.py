@@ -94,19 +94,7 @@ def random_burst(delayStart, delayEnd , LoopCount):
         delay = random.randint(delayStart*1000, delayEnd*1000)/1000
         time.sleep(delay)
 
-
-def rainbow_cycle(delay, cycles):
-    for j in range(255 * cycles):
-        for i in range(num_pixels):
-            # " // "  this divides and returns the integer value of the quotient. 
-            # It dumps the digits after the decimal
-            pixel_index = (i * 256 // num_pixels) + j
-            pixels[i] = wheel(pixel_index & 255)
-        pixels.show()
-        time.sleep(delay)
-
-    
-
+  
 def rgb_propeller(LoopCount):
     thishue = 0
     thisbright = 255
@@ -129,7 +117,15 @@ def rgb_propeller(LoopCount):
             pixels[j1] = wheel(ghue)
             pixels[j2] = wheel(bhue)
 
-
+def rainbow_cycle(delay, cycles):
+    for j in range(255 * cycles):
+        for i in range(num_pixels):
+            # " // "  this divides and returns the integer value of the quotient. 
+            # It dumps the digits after the decimal
+            pixel_index = (i * 256 // num_pixels) + j
+            pixels[i] = wheel(pixel_index & 255)
+        pixels.show()
+        time.sleep(delay)
 
 while True:
     random.seed(num_pixels)
@@ -152,10 +148,14 @@ while True:
     pixels.show()
     time.sleep(wait_time)
 
+    # makes the strand of pixels show random_burst
+    # rainbow_cycle(delay, cycles) 
+    rainbow_cycle(0, 1) 
+    time.sleep(wait_time)
+
 
     # makes the strand of pixels show random_burst
     # rgb_propeller(delayStart, delayEnd , LoopCount)
-    pixels.fill((0, 0, 0))
     rgb_propeller(0.005, .2, 100)
     time.sleep(wait_time)
 
@@ -165,10 +165,7 @@ while True:
     random_burst(0.005, .2, 100)
     time.sleep(wait_time)
 
-
-    #rgb_propeller();
-
-    #rainbow();
+    #rainbow_cycle();
 
     #rainbow_fade();
     #   if ((demoMode) && !(demoStateCountdown%5)) demoStateCountdown-=2;
