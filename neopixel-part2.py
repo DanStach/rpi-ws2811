@@ -21,6 +21,7 @@ num_pixels = 50
 ORDER = neopixel.RGB
 pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=ORDER)
 wait_time = 1
+thisbright = 255
 
 
 
@@ -81,12 +82,16 @@ def brightnessRGB(red, green, blue, bright):
 
 def random_burst(delay, LoopCount):
     for loop in range(LoopCount):
-        rndidx = random.randint(0, num_pixels-1)
+        randomIndex= random.randint(0, num_pixels-1)
         rndhue = random.randint(0, 255)
         rndbright = random.randint(10, thisbright)
+        
         # CHSV(rndhue, thissat, rndbright)
-        pixels[irndidx] = wheelBrightLevel(rndhue, rndbright)
-        time.sleep(random.randint(0, delay)
+        print(str(randomIndex) + " " + str(rndhue) + " " + str(rndbright))
+        pixels[randomIndex] = wheelBrightLevel(rndhue, rndbright)
+        
+        pixels.show()
+        time.sleep(delay)
 
 
 
@@ -127,8 +132,10 @@ while True:
     time.sleep(wait_time)
     
     # makes the strand of pixels show random_burst
-    # random_burst(BallCount, colors[][3], LoopCount) 
-
+    # random_burst(BallCount, colors[][3], LoopCount)
+    pixels.fill((0, 0, 0))
+    random_burst(0.2, 100)
+    time.sleep(wait_time)
     #random_burst();
 
     #rgb_propeller();
