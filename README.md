@@ -2,7 +2,10 @@
 This project has the goal completing all the coding needed use ws2811 neopixel lights using a raspberry pi, for my xmas tree. most neopixels effects are written in C++, however i was only able to use a rpi with my ws2811 using python. I am porting all the c++ examples to python. 
 
 ### Neopixel effects example sites:
-- https://www.tweaking4all.com/hardware/arduino/adruino-led-strip-effects/
+- Part1: https://www.tweaking4all.com/hardware/arduino/adruino-led-strip-effects/ 
+  - [link to converted examples](https://github.com/DanStach/rpi-ws2811/blob/master/neopixel-part1.py)
+- Part2: https://pastebin.com/Qe0Jttme
+- Part3: https://github.com/FastLED/FastLED/tree/master/examples
 
 ### Install Instuctions
 simple install instuctions are located on install.md
