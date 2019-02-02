@@ -141,7 +141,7 @@ def rainbow_loop(delay, step, cycles):
             index = 0
         if thishue > 255:
             thishue = 0
-        pixels[i] = wheel(thishue)
+        pixels[index] = wheel(thishue)
         pixels.show()
         time.sleep(delay)
 
@@ -151,13 +151,17 @@ def rainbow_fade(delay, cycles):
         thishue = thishue + 1
         if thishue > 255:
              thishue = 0
+        print(thishue)
 
         # an other option would be to
-        #     pixels.fill(wheel(thishue))
-        for i in range(num_pixels):
-            pixels[i] = wheel(thishue)
-            pixels.show()
-            time.sleep(delay)
+        pixels.fill(wheel(thishue))
+        pixels.show()
+        time.sleep(delay)
+#        for i in range(num_pixels):
+#            print(wheel(thishue))
+#            pixels[i] = wheel(thishue)
+#            pixels.show()
+#            time.sleep(delay)
 
 while True:
     random.seed(num_pixels)
@@ -182,17 +186,23 @@ while True:
 
     # makes the strand of pixels show rainbow_fade
     # rainbow_fade(delay, cycles):
-    #rainbow_fade(0.01, 2) 
+    rainbow_fade(.02, 256) 
     time.sleep(wait_time)
 
 
     # makes the strand of pixels show rainbow_loop
     # rainbow_loop(delay, step, cycles):
-    rainbow_loop(0.01, 10, 100) 
+    pixels.fill((255, 0, 0))
+    pixels.show()
+    time.sleep(wait_time*2)
+    rainbow_loop(0.01, 10, 1000) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show rainbow
     # rainbow(delay, step, cycles):
+    pixels.fill((255, 255, 0))
+    pixels.show()
+    time.sleep(wait_time*2)
     rainbow(0.01, 10, 2) 
     time.sleep(wait_time)
 
