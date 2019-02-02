@@ -95,9 +95,6 @@ def random_burst(delayStart, delayEnd , LoopCount):
         time.sleep(delay)
 
 
-
-
-
 def rainbow_cycle(delay, cycles):
     for j in range(255 * cycles):
         for i in range(num_pixels):
@@ -109,6 +106,29 @@ def rainbow_cycle(delay, cycles):
         time.sleep(delay)
 
     
+
+def rgb_propeller(LoopCount):
+    thishue = 0
+    thisbright = 255
+    thissat = 255
+    index= 0
+
+    for loop in range(LoopCount):
+        index = index + 1
+        ghue = (thishue + 80) % 255
+        bhue = (thishue + 160) % 255
+        N3  = int(num_pixels/3)
+        N6  = int(num_pixels/6)
+        N12 = int(num_pixels/12)
+
+        for i in range(N3):
+            j0 = (index + i + num_pixels - N12) % num_pixels
+            j1 = (j0+N3) % num_pixels
+            j2 = (j1+N3) % num_pixels
+            pixels[j0] = wheel(thishue)
+            pixels[j1] = wheel(ghue)
+            pixels[j2] = wheel(bhue)
+
 
 
 while True:
@@ -131,7 +151,14 @@ while True:
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
-    
+
+
+    # makes the strand of pixels show random_burst
+    # rgb_propeller(delayStart, delayEnd , LoopCount)
+    pixels.fill((0, 0, 0))
+    rgb_propeller(0.005, .2, 100)
+    time.sleep(wait_time)
+
     # makes the strand of pixels show random_burst
     # random_burst(delayStart, delayEnd , LoopCount)
     pixels.fill((0, 0, 0))
