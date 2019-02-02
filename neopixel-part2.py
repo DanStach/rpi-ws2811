@@ -117,15 +117,46 @@ def rgb_propeller(LoopCount):
             pixels[j1] = wheel(ghue)
             pixels[j2] = wheel(bhue)
 
-def rainbow_cycle(delay, cycles):
-    for j in range(cycles):
+
+def rainbow(delay, step, cycles):
+    for j in range(255 * cycles):
         for i in range(num_pixels):
             # " // "  this divides and returns the integer value of the quotient. 
             # It dumps the digits after the decimal
-            pixel_index = (i * 256 // num_pixels) + j
+            pixel_index = (step *i * 256 // num_pixels) + j
             pixels[i] = wheel(pixel_index & 255)
         pixels.show()
         time.sleep(delay)
+
+
+def rainbow_loop(delay, step, cycles):
+    index = 0
+    thishue = 0
+
+    for loop in range(cycles):
+        index = index + 1
+        thishue = thishue + thisstep
+        if index >= num_pixels:
+            index = 0
+        if thishue > 255:
+            thishue = 0
+        pixels[i] = wheel(thishue)
+        pixels.show()
+        time.sleep(delay)
+
+def rainbow_fade(delay, cycles):
+    thishue = 0
+    for j in range(cycles):
+        thishue = thishue + 1
+        if thishue > 255:
+             thishue = 0
+
+        # an other option would be to
+        #     pixels.fill(wheel(thishue))
+        for i in range(num_pixels):
+            pixels[i] = wheel(thishue)
+            pixels.show()
+            time.sleep(delay)
 
 while True:
     random.seed(num_pixels)
@@ -148,13 +179,22 @@ while True:
     pixels.show()
     time.sleep(wait_time)
 
-    # makes the strand of pixels show random_burst
-    # rainbow_cycle(delay, cycles) 
-    rainbow_cycle(0, 100) 
+    # makes the strand of pixels show rainbow_fade
+    # rainbow_fade(delay, cycles):
+    #rainbow_fade(0.01, 2) 
     time.sleep(wait_time)
 
+    # makes the strand of pixels show rainbow_loop
+    # rainbow_loop(delay, step, cycles):
+    #rainbow_loop(0.01, 10, 100) 
+    time.sleep(wait_time)
 
-    # makes the strand of pixels show random_burst
+    # makes the strand of pixels show rainbow
+    # rainbow(delay, step, cycles):
+    rainbow(0.01, 10, 2) 
+    time.sleep(wait_time)
+
+    # makes the strand of pixels show rgb_propeller
     # rgb_propeller(delayStart, delayEnd , LoopCount)
     rgb_propeller(0.005, .2, 100)
     time.sleep(wait_time)
@@ -166,10 +206,10 @@ while True:
     time.sleep(wait_time)
 
 
-
+    # makes the strand of pixels show rainbow_fade
+    # rainbow_fade
     #rainbow_fade();
-    #   if ((demoMode) && !(demoStateCountdown%5)) demoStateCountdown-=2;
-    #   adjdelay = (adjdelay < 30) ? 30 : adjdelay;
+
 
 
     #   rainbow_loop();
