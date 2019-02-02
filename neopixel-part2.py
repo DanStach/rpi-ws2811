@@ -147,7 +147,7 @@ def rainbow_loop(delay, step, cycles):
 
 def rainbow_fade(delay, cycles):
     thishue = 0
-    for j in range(cycles):
+    for loop in range(cycles):
         thishue = thishue + 1
         if thishue > 255:
              thishue = 0
@@ -162,6 +162,21 @@ def rainbow_fade(delay, cycles):
 #            pixels[i] = wheel(thishue)
 #            pixels.show()
 #            time.sleep(delay)
+
+
+matrix(delay, cycles)
+    for loop in range(cycles):
+        rand = random.randint(0, 100)
+        if rand > 90:
+            pixels[0] = wheelBrightLevel(random.randint(0, 255), 255)
+        else:
+            pixels[0] = wheelBrightLevel(0,0)
+
+        for i in range(num_pixels - 1, 1, -1):
+            pixels[i] = pixels[i-1]
+        
+        pixels.show()
+        time.sleep(delay)
 
 while True:
     random.seed(num_pixels)
@@ -184,11 +199,18 @@ while True:
     pixels.show()
     time.sleep(wait_time)
 
+
+
+
+    # makes the strand of pixels show matrix
+    # matrix(delay, cycles):
+    matrix(.02, 256) 
+    time.sleep(wait_time)
+
     # makes the strand of pixels show rainbow_fade
     # rainbow_fade(delay, cycles):
     rainbow_fade(.02, 256) 
     time.sleep(wait_time)
-
 
     # makes the strand of pixels show rainbow_loop
     # rainbow_loop(delay, step, cycles):
@@ -206,15 +228,10 @@ while True:
     rainbow(0.01, 10, 2) 
     time.sleep(wait_time)
 
-    # makes the strand of pixels show rgb_propeller
-    # rgb_propeller(delayStart, delayEnd , LoopCount)
-    #rgb_propeller(0.005, .2, 100)
-
     # makes the strand of pixels show random_burst
     # rgb_propeller(LoopCount)
     pixels.fill((0, 0, 0))
     rgb_propeller(1000)
-
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
@@ -224,13 +241,6 @@ while True:
     time.sleep(wait_time)
 
 
-    # makes the strand of pixels show rainbow_fade
-    # rainbow_fade
-    #rainbow_fade();
-
-
-
-    #   rainbow_loop();
 
 
     #   if ((demoMode) && !(demoStateCountdown%5)) demoStateCountdown-=2;
