@@ -166,18 +166,25 @@ def rainbow_fade(delay, cycles):
 def matrix(random_percent, delay, cycles):
     for loop in range(cycles):
         rand = random.randint(0, 100)
+
+        # set first pixel
         if rand <= random_percent:
             pixels[0] = wheelBrightLevel(random.randint(0, 255), 255)
         else:
             pixels[0] = (0,0,0)
+        
+        # show pixels 
+        pixels.show()
+        time.sleep(delay)
 
+        # rotate pixel positon
         for i in range(num_pixels - 1, 0, -1):
             pixels[i] = pixels[i-1]
         
         # there is an issue with first 2 pixels are same color 
         #pixels[0] = (0,0,0)
-        pixels.show()
-        time.sleep(delay)
+        #pixels.show()
+        #time.sleep(delay)
 
 while True:
     random.seed(num_pixels)
