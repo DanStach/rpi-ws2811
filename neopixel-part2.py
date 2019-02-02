@@ -188,7 +188,7 @@ while True:
 
     # makes the strand of pixels show rainbow_loop
     # rainbow_loop(delay, step, cycles):
-    #rainbow_loop(0.01, 10, 100) 
+    rainbow_loop(0.01, 10, 100) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show rainbow
