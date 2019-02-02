@@ -104,3 +104,4 @@ venv.bak/
 .mypy_cache/
 /.vs/slnx.sqlite
 /.vs/ProjectSettings.json
+.vscode/settings.json
