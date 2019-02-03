@@ -186,6 +186,34 @@ def matrix(random_percent, delay, cycles):
         #pixels.show()
         #time.sleep(delay)
 
+
+Def int adjacent_ccw(int i) {
+  int r;
+  if (i > 0) {r = i - 1;}
+  else {r = NUM_LEDS - 1;}
+  return r;
+}
+ 
+def random_march(delay, cycles):
+    for loop in range(cycles):
+
+        for idex in range(num_pixels-1):
+            ### previous logic that was not used...
+            #if idex > 0: #if not last pixel
+            #    r = idex - 1
+            #else: # if last pixel
+            #    r = num_pixels - 1
+
+            pixels[idex] = pixels[idex+1]
+
+        # change color of the last pixel
+        pixels[num_pixels-1] = wheelBrightLevel(random.randint(0, 255), 255)
+
+        # show pixel values
+        pixels.show()
+        time.sleep(delay)
+
+
 while True:
     random.seed(num_pixels)
 
@@ -209,6 +237,10 @@ while True:
 
 
 
+    # makes the strand of pixels show matrix
+    # random_march(random_percent, delay, cycles)
+    random_march(10, 0.25, 500) 
+    time.sleep(wait_time)
 
     # makes the strand of pixels show matrix
     # matrix(random_percent, delay, cycles)
@@ -247,13 +279,6 @@ while True:
     pixels.fill((0, 0, 0))
     random_burst(0.005, .2, 100)
     time.sleep(wait_time)
-
-
-
-
-    #   if ((demoMode) && !(demoStateCountdown%5)) demoStateCountdown-=2;
-    #   adjdelay = (adjdelay < 50) ? 50 : adjdelay;
-    #   matrix();
 
 
     #   demoStateCountdown -= 2;
