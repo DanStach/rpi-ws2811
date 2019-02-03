@@ -80,6 +80,28 @@ def brightnessRGB(red, green, blue, bright):
     b = (bright/256.0)*blue
     return (int(r), int(g), int(b))
 
+def hsv_to_rgb(h, s, v):
+    if s == 0.0: 
+        v*=255
+        return (v, v, v)
+    i = int(h*6.) # XXX assume int() truncates!
+    f = (h*6.)-i
+    p,q,t = int(255*(v*(1.-s))), int(255*(v*(1.-s*f))), int(255*(v*(1.-s*(1.-f))))
+    v*=255
+    i%=6
+    if i == 0: 
+        return (v, t, p)
+    if i == 1: 
+        return (q, v, p)
+    if i == 2: 
+        return (p, v, t)
+    if i == 3: 
+        return (p, q, v)
+    if i == 4: 
+        return (t, p, v)
+    if i == 5: 
+        return (v, p, q)
+
 def random_burst(delayStart, delayEnd , LoopCount):
     for loop in range(LoopCount):
         randomIndex= random.randint(0, num_pixels-1)
@@ -187,12 +209,6 @@ def matrix(random_percent, delay, cycles):
         #time.sleep(delay)
 
 
-Def int adjacent_ccw(int i) {
-  int r;
-  if (i > 0) {r = i - 1;}
-  else {r = NUM_LEDS - 1;}
-  return r;
-}
  
 def random_march(delay, cycles):
     for loop in range(cycles):
@@ -213,6 +229,47 @@ def random_march(delay, cycles):
         # show pixel values
         pixels.show()
         time.sleep(delay)
+
+
+def loop5(delay, cycles):
+    for loop in range(cycles):
+        #GB = pixels.getBrightness()
+        # boost = 0
+        #  if( GB < 65): boost += 8
+        #  if( GB < 33) boost += 8
+        
+        N = 2
+        starttheta = 0
+        starttheta = starttheta + ( 100 / N )
+        starthue16 = 0
+        starthue16 = starthue16 + (20 / N)
+    
+    
+        hue16 = starthue16
+        theta = starttheta
+        for i in range(num_pixels):
+            frac = (math.sin( theta) + 32768) / 256
+            frac = frac + 32
+            theta = theta + 3700
+            hue16 = hue16 + 2000
+            hue = hue16 / 256
+
+            if( ramp < 128):
+                # fade toward black
+                brightness = ramp * 2
+                saturation = 255
+            else:
+                # desaturate toward white
+                brightness = 255
+                saturation = 255 - ((ramp - 128) * 2)
+                # saturation = 255 - dim8_video( 255 - saturation);
+
+            pixels[i] = hsv_to_rgb( hue, saturation, brightness)
+        
+        # show pixel values 
+        pixels.show()
+        time.sleep(delay)
+
 
 
 while True:
@@ -239,10 +296,15 @@ while True:
 
 
 
+    # makes the strand of pixels show loop5
+    # loop5( delay, cycles)
+    loop5(0.25, 500) 
+    time.sleep(wait_time)
 
-    # makes the strand of pixels show matrix
+    ### FixMe: think random_march and matrix are the same
+    # makes the strand of pixels show random_march
     # random_march( delay, cycles)
-    random_march(0.25, 500) 
+    random_march(0.25, 256) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show matrix
@@ -291,6 +353,7 @@ while True:
 
     #   loop5(leds);
     #   adjdelay = adjdelay/3;
+
 
 
     #   twinkle(leds);
