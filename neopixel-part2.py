@@ -234,7 +234,7 @@ def random_march(delay, cycles):
 def loop5(delay, cycles):
     for loop in range(cycles):
         #GB = pixels.getBrightness()
-        # boost = 0
+        boost = 0
         #  if( GB < 65): boost += 8
         #  if( GB < 33) boost += 8
         
@@ -254,6 +254,7 @@ def loop5(delay, cycles):
             hue16 = hue16 + 2000
             hue = hue16 / 256
 
+            ramp = frac + boost
             if( ramp < 128):
                 # fade toward black
                 brightness = ramp * 2
