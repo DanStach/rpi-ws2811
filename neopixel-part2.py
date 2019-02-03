@@ -204,6 +204,7 @@ def random_march(delay, cycles):
             #else: # if last pixel
             #    r = num_pixels - 1
 
+            # shift pixel value to previous pixel (pixel1 = value of pixel2,... and so on)
             pixels[idex] = pixels[idex+1]
 
         # change color of the last pixel
@@ -237,9 +238,11 @@ while True:
 
 
 
+
+
     # makes the strand of pixels show matrix
-    # random_march(random_percent, delay, cycles)
-    random_march(10, 0.25, 500) 
+    # random_march( delay, cycles)
+    random_march(0.25, 500) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show matrix
