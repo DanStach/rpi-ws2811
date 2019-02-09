@@ -281,6 +281,25 @@ def loop5(delay, cycles):
         time.sleep(delay)
 
 
+def twinkle( cycles )
+    for loop in range(cycles):
+        huebase = 0
+        
+        #slowly rotate huebase
+        if (random.randint(0, 4) == 0): #randomly, if 0  (0-3)
+            huebase = huebase -1
+        
+        for whichPixel in range(num_pixels):
+            hue = random.randint(0, 32) + huebase
+            #saturation = 255;    #richest color
+            brightness = random.randint(0, 255)
+        
+            pixels[whichPixel] = wheelBrightLevel(hue, brightness)
+            # show pixel values 
+            pixels.show()
+            time.sleep(delay)
+
+
 
 while True:
     random.seed(num_pixels)
@@ -305,6 +324,11 @@ while True:
 
 
 
+
+    # makes the strand of pixels show twinkle
+    # twinkle(cycles)
+    twinkle(cycles) 
+    time.sleep(wait_time)
 
     # makes the strand of pixels show loop5
     # loop5( delay, cycles)
@@ -354,15 +378,6 @@ while True:
     pixels.fill((0, 0, 0))
     random_burst(0.005, .2, 100)
     time.sleep(wait_time)
-
-
-    #   demoStateCountdown -= 2;
-    #   adjdelay = (adjdelay < 120) ? 120 : adjdelay;
-    #   random_march();
-
-
-    #   loop5(leds);
-    #   adjdelay = adjdelay/3;
 
 
 
