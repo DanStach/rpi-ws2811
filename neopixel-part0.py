@@ -210,7 +210,41 @@ def SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay):
         time.sleep(SpeedDelay)
 
 
+def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause):
+    pixels.fill((0,0,0))
+    r = 0
+    g = 0
+    b = 0
 
+    # define eye1 and eye2 location
+    StartPoint  = random.randint( 0, num_pixels - (2*EyeWidth) - EyeSpace )
+    Start2ndEye = StartPoint + EyeWidth + EyeSpace
+
+    #  set color of eyes for given location
+    for i in range(EyeWidth):
+        pixels[StartPoint + i] = (red, green, blue)
+        pixels[Start2ndEye + i] = (red, green, blue)
+    pixels.show()
+
+    # if user wants fading, then fadeout pixel color
+    if Fade == True:
+        for j in range(Steps, -1, -1):
+            r = (j/Steps)*red
+            g = (j/Steps)*green
+            b = (j/Steps)*blue
+
+            for i in range(EyeWidth):
+                pixels[StartPoint + i] = ((int(r), int(g), int(b)))
+                pixels[Start2ndEye + i] = ((int(r), int(g), int(b)))
+
+            pixels.show()
+            time.sleep(FadeDelay)
+    
+    # Set all pixels to black
+    pixels.fill((0,0,0))
+
+    # pause before changing eye location
+    time.sleep(EndPause)
 
 
 
@@ -286,9 +320,16 @@ while True:
     colorAll2Color((255, 0, 0), (0, 255, 0)) 
     time.sleep(wait_time)
 
-
+    ### HALLOWEEN idea
     # shows 2 color every other pixel (purple, orange)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
     colorAll2Color((128,0,128), (255,165,0) 
     time.sleep(wait_time)
+
+    ### HALLOWEEN idea
+    # make the strand of pixels show HalloweenEyes
+    # HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause)
+    HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
+    time.sleep(wait_time)
+
 
