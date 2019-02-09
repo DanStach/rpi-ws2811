@@ -1,4 +1,7 @@
-# Simple test for NeoPixels on Raspberry Pi
+### Sample python code for NeoPixels on Raspberry Pi
+### this code is ported from Arduino NeoPixels effects in C++, from tweaking4all
+### orginal code: https://www.tweaking4all.com/hardware/arduino/adruino-led-strip-effects/#LEDStripEffectFire
+
 import time
 import board
 import neopixel

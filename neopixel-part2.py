@@ -1,4 +1,9 @@
-# Simple test for NeoPixels on Raspberry Pi
+### Sample python code for NeoPixels on Raspberry Pi
+### this code is ported from Arduino NeoPixels effects in C++, from tweaking4all
+### Arduino Controlled Tree - http://youtu.be/MD3-YBaFQvw
+### orginal code: https://pastebin.com/Qe0Jttme
+
+
 import time
 import board
 import neopixel
