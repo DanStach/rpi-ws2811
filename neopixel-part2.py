@@ -235,6 +235,10 @@ def random_march(delay, cycles):
         pixels.show()
         time.sleep(delay)
 
+### FixMe: this code does not work
+### i think it also has a memory leak
+### i have reached out to the author (via youtube comment)
+#### next step would be to step though the code on an arduino 
 
 def loop5(delay, cycles):
     for loop in range(cycles):
