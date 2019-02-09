@@ -299,6 +299,33 @@ def twinkle( cycles )
             pixels.show()
             time.sleep(delay)
 
+void candycane(cycles)
+    index = 0
+    thisbright = 255
+    for loop in range(cycles):
+        index = index + 1
+        N3  = int(num_pixels/3)
+        N6  = int(num_pixels/6)
+        N12 = int(num_pixels/12)
+        for i in range(N6)
+            j0 = int((index + i + num_pixels - N12) % num_pixels)
+            j1 = int((j0+N6) % num_pixels)
+            j2 = int((j1+N6) % num_pixels)
+            j3 = int((j2+N6) % num_pixels)
+            j4 = int((j3+N6) % num_pixels)
+            j5 = int((j4+N6) % num_pixels)
+            pixels[j0] = brightnessRGB(255, 255, 255, int(thisbright*.75))
+            pixels[j1] = brightnessRGB(255, 0, 0, thisbright)
+            pixels[j2] = brightnessRGB(255, 255, 255, int(thisbright*.75))
+            pixels[j3] = brightnessRGB(255, 0, 0), thisbright)
+            pixels[j4] = brightnessRGB(255, 255, 255, int(thisbright*.75))
+            pixels[j5] = brightnessRGB(255, 0, 0, thisbright)
+
+            # show pixel values 
+            pixels.show()
+            time.sleep(delay)
+
+
 
 
 while True:
@@ -324,6 +351,11 @@ while True:
 
 
 
+
+    # makes the strand of pixels show candycane
+    # candycane(cycles)
+    #candycane(cycles) 
+    #time.sleep(wait_time)
 
     # makes the strand of pixels show twinkle
     # twinkle(cycles)
@@ -379,12 +411,6 @@ while True:
     random_burst(0.005, .2, 100)
     time.sleep(wait_time)
 
-
-
-    #   twinkle(leds);
-
-
-    #   candycane();
 
 
     #   if (!USE_LEVEL_ANIMATIONS) incrementState();
