@@ -341,7 +341,10 @@ def light_level_random( level,  clearall ):
     #this only works if you have 350 lights
     #levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348)
     
-    levels = (11, 20, 27, 34, 39, 43, 47,50)
+    #this works for 50 lights
+    levels = (11, 20, 27, 34, 39, 43, 47, 50)
+    #levels = (20, 34, 43, 50)
+
     if (clearall):
         pixels.fill((0, 0, 0)) # clear all
         pixels.show()
