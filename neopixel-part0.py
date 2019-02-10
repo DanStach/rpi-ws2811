@@ -297,7 +297,7 @@ while True:
     time.sleep(wait_time)
     
 
-    
+
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, delay, cycles)
     candycane_custom((255,255,255), (0,255,0), 0, 500)
@@ -352,7 +352,7 @@ while True:
     ### HALLOWEEN idea
     # shows 2 color every other pixel (purple, orange)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
-    colorAll2Color((128,0,128), (255,165,0) 
+    colorAll2Color((128,0,128), (255,165,0) )
     time.sleep(wait_time)
 
     ### HALLOWEEN idea
