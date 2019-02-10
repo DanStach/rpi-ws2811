@@ -281,7 +281,7 @@ def loop5(delay, cycles):
         time.sleep(delay)
 
 
-def twinkle( cycles )
+def twinkle( cycles ):
     for loop in range(cycles):
         huebase = 0
         
@@ -299,7 +299,7 @@ def twinkle( cycles )
             pixels.show()
             time.sleep(delay)
 
-void candycane(cycles)
+def candycane(cycles):
     index = 0
     thisbright = 255
     for loop in range(cycles):
@@ -326,6 +326,29 @@ void candycane(cycles)
             time.sleep(delay)
 
 
+def random_levels( NUM_LEVELS, cycle ):
+    for loop in range(cycles):
+
+    level = random.randint(NUM_LEVELS)
+    if (NUM_LEVELS == level):
+        level = 0
+    light_level_random(level, 1)
+
+
+def light_level_random( level,  clearall ):
+    levels[] = {58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348}
+    if (clearall):
+        pixels.fill((0, 0, 0)) # clear all
+        pixels.show()
+    
+    startPxl = 0
+    if (level == 0):
+        startPxl = 0
+    else:
+        startPxl = levels[level-1]
+    
+    for i in range(startPxl, levels[level]):
+        pixels[i] = wheelBrightLevel(random.randint(255), random.randint(50, 255))
 
 
 while True:
@@ -351,10 +374,14 @@ while True:
 
 
 
+    # makes the strand of pixels show random_levels
+    # random_levels( NUM_LEVELS, cycle )
+    #random_levels( 12, 500 )
+    #time.sleep(wait_time)
 
     # makes the strand of pixels show candycane
     # candycane(cycles)
-    #candycane(cycles) 
+    #candycane(500) 
     #time.sleep(wait_time)
 
     # makes the strand of pixels show twinkle
