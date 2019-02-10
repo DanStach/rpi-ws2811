@@ -281,7 +281,7 @@ def loop5(delay, cycles):
         time.sleep(delay)
 
 
-def twinkle( cycles ):
+def twinkle(delay, cycles ):
     for loop in range(cycles):
         huebase = 0
         
@@ -299,7 +299,7 @@ def twinkle( cycles ):
             pixels.show()
             time.sleep(delay)
 
-def candycane(cycles):
+def candycane(delay, cycles):
     index = 0
     thisbright = 255
     for loop in range(cycles):
@@ -307,7 +307,7 @@ def candycane(cycles):
         N3  = int(num_pixels/3)
         N6  = int(num_pixels/6)
         N12 = int(num_pixels/12)
-        for i in range(N6)
+        for i in range(N6):
             j0 = int((index + i + num_pixels - N12) % num_pixels)
             j1 = int((j0+N6) % num_pixels)
             j2 = int((j1+N6) % num_pixels)
@@ -317,7 +317,7 @@ def candycane(cycles):
             pixels[j0] = brightnessRGB(255, 255, 255, int(thisbright*.75))
             pixels[j1] = brightnessRGB(255, 0, 0, thisbright)
             pixels[j2] = brightnessRGB(255, 255, 255, int(thisbright*.75))
-            pixels[j3] = brightnessRGB(255, 0, 0), thisbright)
+            pixels[j3] = brightnessRGB(255, 0, 0, thisbright)
             pixels[j4] = brightnessRGB(255, 255, 255, int(thisbright*.75))
             pixels[j5] = brightnessRGB(255, 0, 0, thisbright)
 
@@ -326,17 +326,18 @@ def candycane(cycles):
             time.sleep(delay)
 
 
-def random_levels( NUM_LEVELS, cycle ):
+def random_levels( NUM_LEVELS, delay, cycle ):
     for loop in range(cycles):
 
-    level = random.randint(NUM_LEVELS)
-    if (NUM_LEVELS == level):
-        level = 0
-    light_level_random(level, 1)
-
+        level = random.randint(NUM_LEVELS)
+        if (NUM_LEVELS == level):
+            level = 0
+        light_level_random(level, 1)
+        pixels.show()
+        time.sleep(delay)
 
 def light_level_random( level,  clearall ):
-    levels[] = {58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348}
+    levels[12] = {58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348}
     if (clearall):
         pixels.fill((0, 0, 0)) # clear all
         pixels.show()
@@ -375,23 +376,23 @@ while True:
 
 
     # makes the strand of pixels show random_levels
-    # random_levels( NUM_LEVELS, cycle )
-    #random_levels( 12, 500 )
+    # random_levels( NUM_LEVELS, delay, cycle )
+    #random_levels( 12, 0, 500 )
     #time.sleep(wait_time)
 
     # makes the strand of pixels show candycane
-    # candycane(cycles)
-    #candycane(500) 
+    # candycane(delay, cycles)
+    #candycane(0, 500) 
     #time.sleep(wait_time)
 
     # makes the strand of pixels show twinkle
-    # twinkle(cycles)
-    twinkle(cycles) 
+    # twinkle(delay, cycles)
+    twinkle(0, 500) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show loop5
     # loop5( delay, cycles)
-    loop5(0.25, 500) 
+    #loop5(0.25, 500) 
     time.sleep(wait_time)
 
     ### FixMe: think random_march and matrix are the same
