@@ -247,7 +247,31 @@ def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, 
     time.sleep(EndPause)
 
 
+def candycane_custom(c1, c2, delay, cycles):
+    index = 0
+    thisbright = 255
+    for loop in range(cycles):
+        index = index + 1
+        N3  = int(num_pixels/3)
+        N6  = int(num_pixels/6)
+        N12 = int(num_pixels/12)
+        for i in range(N6):
+            j0 = int((index + i + num_pixels - N12) % num_pixels)
+            j1 = int((j0+N6) % num_pixels)
+            j2 = int((j1+N6) % num_pixels)
+            j3 = int((j2+N6) % num_pixels)
+            j4 = int((j3+N6) % num_pixels)
+            j5 = int((j4+N6) % num_pixels)
+            pixels[j0] = brightnessRGB(c1[0], c1[1], c1[2], int(thisbright*.75))
+            pixels[j1] = brightnessRGB(c2[0], c2[1], c2[2], thisbright)
+            pixels[j2] = brightnessRGB(c1[0], c1[1], c1[2], int(thisbright*.75))
+            pixels[j3] = brightnessRGB(c2[0], c2[1], c2[2], thisbright)
+            pixels[j4] = brightnessRGB(c1[0], c1[1], c1[2], int(thisbright*.75))
+            pixels[j5] = brightnessRGB(c2[0], c2[1], c2[2], thisbright)
 
+            # show pixel values 
+            pixels.show()
+            time.sleep(delay)
 
 
 while True:
@@ -273,6 +297,11 @@ while True:
     time.sleep(wait_time)
     
 
+    
+    # makes the strand of pixels show candycane_custom
+    # candycane_custom(c1, c2, delay, cycles)
+    candycane_custom((255,255,255), (0,255,0), 0, 500)
+    time.sleep(wait_time)
 
     # makes the strand of pixels show Fire
     # Fire(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, FireEffect, LoopCount)
