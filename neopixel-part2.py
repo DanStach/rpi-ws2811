@@ -450,8 +450,11 @@ while True:
     time.sleep(wait_time)
 
 
+
     # makes the strand of pixels show random_levels
     # pancake(level, delay)
+    pixels.fill((0, 0, 0))
+    time.sleep(wait_time)
     pancake(8, 0.5)
     time.sleep(wait_time)
 
@@ -463,7 +466,7 @@ while True:
     # makes the strand of pixels show random_levels
     # random_levels( NUM_LEVELS, delay, cycles )
     #random_levels(12, 0, 500)
-    random_levels(8, 0.05, 500)
+    random_levels(8, 0.1, 500)
     time.sleep(wait_time)
 
     # makes the strand of pixels show candycane
@@ -473,7 +476,7 @@ while True:
 
     # makes the strand of pixels show twinkle
     # twinkle(delay, cycles)
-    twinkle(0.005, 500) 
+    twinkle(0.005, 100) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show loop5
