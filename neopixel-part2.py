@@ -329,8 +329,8 @@ def candycane(delay, cycles):
 def random_levels( NUM_LEVELS, delay, cycles ):
     for loop in range(cycles):
 
-        level = random.randint(0, num_pixels)
-        if (num_pixels == level):
+        level = random.randint(0, NUM_LEVELS)
+        if (NUM_LEVELS == level):
             level = 0
         light_level_random(level, 1)
         pixels.show()
@@ -360,9 +360,9 @@ def light_level_random( level,  clearall ):
 
 
 
-def drain(delay ):
+def drain(level, delay):
     interrupt = False
-    for pancakeLevel in range(num_pixels):
+    for pancakeLevel in range(level):
 
         # only needed if you ouput to a small display 
         # updateControlVars() 
@@ -370,7 +370,7 @@ def drain(delay ):
         if (interrupt):
             return
         
-        for level in range(pancakeLevel, 0, -1):
+        for level in range(pancakeLevel, -1, -1):
             # only needed if you ouput to a small display 
             # updateControlVars()  
             
@@ -393,8 +393,9 @@ def clear_level( level):
         startPxl = 0
     else:
         startPxl = levels[level-1]
-    
+    #print(level)
     for i in range(startPxl, levels[level]):
+        #print(i)
         pixels[i] = (0,0,0)  #CRGB::Black;
 
 
@@ -424,9 +425,11 @@ while True:
 
 
 
+
+
     # makes the strand of pixels show random_levels
-    # rainbow( delay, cycles )
-    rainbow(0.05, 500)
+    # drain(level, delay)
+    drain(8, 0.5)
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_levels
