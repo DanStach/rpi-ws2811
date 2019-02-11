@@ -386,6 +386,34 @@ def drain(level, delay):
             time.sleep(delay)
 
 
+def pancake(NUM_LEVELS, delay):
+    interrupt = False
+    for pancakeLevel in range(NUM_LEVELS):
+        # only needed if you ouput to a small display 
+        # updateControlVars()  
+
+        if (interrupt):
+            return
+        
+        for level in range(NUM_LEVELS, pancakeLevel, -1):
+            # only needed if you ouput to a small display 
+            # updateControlVars()   
+
+            if (interrupt):
+                return
+
+            if (level < NUM_LEVELS-1):
+                clear_level(level+1)
+            
+            light_level_random(level, 0)
+
+            # show pixel values 
+            pixels.show()
+            time.sleep(delay)
+
+
+
+
 def clear_level( level):
     levels = (11, 20, 27, 34, 39, 43, 47, 50)
     startPxl = 0
@@ -424,10 +452,12 @@ while True:
     time.sleep(wait_time)
 
 
-
-
-
     # makes the strand of pixels show random_levels
+    # pancake(level, delay)
+    pancake(8, 0.5)
+    time.sleep(wait_time)
+
+    # makes the strand of pixels show drain
     # drain(level, delay)
     drain(8, 0.5)
     time.sleep(wait_time)
@@ -496,16 +526,5 @@ while True:
     pixels.fill((0, 0, 0))
     random_burst(0.005, .2, 100)
     time.sleep(wait_time)
-
-
-
-
-    #   if (!USE_LEVEL_ANIMATIONS) incrementState();
-    #   rainbow();
-    #   adjdelay = (adjdelay < 50) ? 50 : adjdelay;
-    #   if (demoMode) demoStateCountdown -= 600;
-    #   drain();
-    #   pancake();
-
 
 
