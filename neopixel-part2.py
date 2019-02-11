@@ -395,7 +395,7 @@ def pancake(NUM_LEVELS, delay):
         if (interrupt):
             return
         
-        for level in range(NUM_LEVELS, pancakeLevel, -1):
+        for level in range(NUM_LEVELS-1, pancakeLevel-1, -1):
             # only needed if you ouput to a small display 
             # updateControlVars()   
 
@@ -404,7 +404,7 @@ def pancake(NUM_LEVELS, delay):
 
             if (level < NUM_LEVELS-1):
                 clear_level(level+1)
-            
+                
             light_level_random(level, 0)
 
             # show pixel values 
@@ -421,9 +421,7 @@ def clear_level( level):
         startPxl = 0
     else:
         startPxl = levels[level-1]
-    #print(level)
     for i in range(startPxl, levels[level]):
-        #print(i)
         pixels[i] = (0,0,0)  #CRGB::Black;
 
 
