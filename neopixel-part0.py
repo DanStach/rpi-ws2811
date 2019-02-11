@@ -58,6 +58,12 @@ def wheel(pos):
         b = int(255 - pos*3)
     return (r, g, b) if ORDER == neopixel.RGB or ORDER == neopixel.GRB else (r, g, b, 0)
 
+def brightnessRGB(red, green, blue, bright):
+    r = (bright/256.0)*red
+    g = (bright/256.0)*green
+    b = (bright/256.0)*blue
+    return (int(r), int(g), int(b))
+
 def FadeInOut(red, green, blue, delay):
     r = 0
     g = 0
@@ -78,6 +84,43 @@ def FadeInOut(red, green, blue, delay):
         pixels.fill((int(r), int(g), int(b)))
         pixels.show()
         time.sleep(delay)
+        
+        
+def fadeToBlack(ledNo, fadeValue):
+    #ctypes.c_uint32 oldColor = 0x00000000UL
+    #ctypes.c_uint8 r = 0
+    #ctypes.c_uint8 g = 0
+    #ctypes.c_uint8 b = 0
+
+    oldColor = pixels[ledNo]
+#    r = (oldColor & 0x00ff0000) >> 16
+#    g = (oldColor & 0x0000ff00) >> 8
+#    b = (oldColor & 0x000000ff)
+    #print(oldColor)
+#    r = oldColor >> 16
+#    g = (oldColor >> 8) & 0xff
+#    b = oldColor & 0xff
+    r = oldColor[0]
+    g = oldColor[1]
+    b = oldColor[2]
+
+    if (r<=10):
+        r = 0
+    else:
+        r = r - ( r * fadeValue / 256 )
+
+    if (g<=10):
+        g = 0
+    else:
+        g = g - ( g * fadeValue / 256 )
+
+    if (b<=10):
+        b = 0
+    else:
+        b = b - ( b * fadeValue / 256 )
+
+    pixels[ledNo] = ( int(r), int(g), int(b) )
+
 
 
 
@@ -247,9 +290,8 @@ def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, 
     time.sleep(EndPause)
 
 
-def candycane_custom(c1, c2, delay, cycles):
+def candycane_custom(c1, c2, thisbright, delay, cycles):
     index = 0
-    thisbright = 255
     for loop in range(cycles):
         index = index + 1
         N3  = int(num_pixels/3)
@@ -299,8 +341,8 @@ while True:
 
 
     # makes the strand of pixels show candycane_custom
-    # candycane_custom(c1, c2, delay, cycles)
-    candycane_custom((255,255,255), (0,255,0), 0, 500)
+    # candycane_custom(c1, c2, brightness, delay, cycles)
+    candycane_custom((255,255,255), (0,255,0), 255, 0, 500)
     time.sleep(wait_time)
 
     # makes the strand of pixels show Fire
