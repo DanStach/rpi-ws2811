@@ -329,8 +329,8 @@ def candycane(delay, cycles):
 def random_levels( NUM_LEVELS, delay, cycles ):
     for loop in range(cycles):
 
-        level = random.randint(0, NUM_LEVELS)
-        if (NUM_LEVELS == level):
+        level = random.randint(0, num_pixels)
+        if (num_pixels == level):
             level = 0
         light_level_random(level, 1)
         pixels.show()
@@ -359,6 +359,48 @@ def light_level_random( level,  clearall ):
         pixels[i] = wheelBrightLevel(random.randint(0, 255), random.randint(50, 255))
 
 
+
+def drain(delay ):
+    interrupt = False
+    for pancakeLevel in range(num_pixels):
+
+        # only needed if you ouput to a small display 
+        # updateControlVars() 
+        
+        if (interrupt):
+            return
+        
+        for level in range(pancakeLevel, 0, -1):
+            # only needed if you ouput to a small display 
+            # updateControlVars()  
+            
+            if (interrupt) :
+                return
+
+            clear_level(level)
+            if (level >= 1) :
+                light_level_random(level-1, 0)
+
+            # show pixel values 
+            pixels.show()
+            time.sleep(delay)
+
+
+def clear_level( level):
+    levels = (11, 20, 27, 34, 39, 43, 47, 50)
+    startPxl = 0
+    if (level == 0):
+        startPxl = 0
+    else:
+        startPxl = levels[level-1]
+    
+    for i in range(startPxl, levels[level]):
+        pixels[i] = (0,0,0)  #CRGB::Black;
+
+
+
+
+
 while True:
     random.seed(num_pixels)
 
@@ -381,6 +423,11 @@ while True:
     time.sleep(wait_time)
 
 
+
+    # makes the strand of pixels show random_levels
+    # rainbow( delay, cycles )
+    rainbow(0.05, 500)
+    time.sleep(wait_time)
 
     # makes the strand of pixels show random_levels
     # random_levels( NUM_LEVELS, delay, cycles )
@@ -448,11 +495,6 @@ while True:
     time.sleep(wait_time)
 
 
-
-    #   if (!USE_LEVEL_ANIMATIONS) incrementState();
-    #   adjdelay = (adjdelay < 100) ? 100 : adjdelay;
-    #   demoStateCountdown -= 15;
-    #   random_levels();
 
 
     #   if (!USE_LEVEL_ANIMATIONS) incrementState();
