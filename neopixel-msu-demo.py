@@ -343,7 +343,7 @@ while True:
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)
     # white and green
-    candycane_custom((255,255,255), (11, 102, 35), 255, 0, 200)
+    candycane_custom((255,255,255), (11, 102, 35), 255, 0, 100)
     time.sleep(wait_time)
 
     # makes the strand of pixels show Fire
@@ -355,7 +355,7 @@ while True:
     #SparkingRangeEnd = 0-255
     #FireColor = 0-2 (0=red, 1=blue , 2=green)
     #FireEffect = 0-2
-    FireCustom(0, 12, 25, 0, 10, 0.02, 2, 2, 200) # red fire
+    FireCustom(0, 12, 25, 0, 10, 0.02, 2, 2, 100) # red fire
     time.sleep(wait_time)
 
     
@@ -372,7 +372,7 @@ while True:
     # makes the strand of pixels show SnowSparkle (random)
     # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
     # SnowSparkle(16, 16, 16, 100, 0.020, random.randint(100,1000)/1000)
-    SnowSparkle(11, 102, 35, 100, 0.1, 0.3)
+    SnowSparkle(11, 102, 35, 50, 0.1, 0.3)
 
     # makes the strand of pixels show Sparkle (white)
     # Sparkle(red, green, blue, Count, SpeedDelay)
