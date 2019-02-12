@@ -343,7 +343,7 @@ while True:
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)
     # white and green
-    candycane_custom((255,255,255), (11, 102, 35), 255, 0, 500)
+    candycane_custom((255,255,255), (11, 102, 35), 255, 0, 200)
     time.sleep(wait_time)
 
     # makes the strand of pixels show Fire
@@ -355,7 +355,7 @@ while True:
     #SparkingRangeEnd = 0-255
     #FireColor = 0-2 (0=red, 1=blue , 2=green)
     #FireEffect = 0-2
-    FireCustom(0, 12, 25, 0, 10, 0.02, 2, 2, 500) # red fire
+    FireCustom(0, 12, 25, 0, 10, 0.02, 2, 2, 200) # red fire
     time.sleep(wait_time)
 
     
@@ -376,11 +376,7 @@ while True:
 
     # makes the strand of pixels show Sparkle (white)
     # Sparkle(red, green, blue, Count, SpeedDelay)
-    Sparkle(11, 102, 35, 100, 0)
-
-    # makes the strand of pixels show TwinkleRandom
-    # TwinkleRandom( Count, SpeedDelay, OnlyOne) 
-    TwinkleRandom(20, 0.1, False)
+    Sparkle(11, 102, 35, 50, 0)
 
 
     # fade in/out a single color (red / green / blue / white)
@@ -394,7 +390,7 @@ while True:
     # shows 2 color every other pixel (white, green)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
     colorAll2Color((255, 255, 255), (0, 255, 0)) 
-    time.sleep(wait_time)
+    time.sleep(wait_time * 4)
 
 
     ### HALLOWEEN idea (green)
