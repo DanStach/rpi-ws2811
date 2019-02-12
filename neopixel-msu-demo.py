@@ -253,41 +253,42 @@ def SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay):
         time.sleep(SpeedDelay)
 
 
-def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause):
-    pixels.fill((0,0,0))
-    r = 0
-    g = 0
-    b = 0
+def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause, cycles):
+ for loop in range(cycles):
+        pixels.fill((0,0,0))
+        r = 0
+        g = 0
+        b = 0
 
-    # define eye1 and eye2 location
-    StartPoint  = random.randint( 0, num_pixels - (2*EyeWidth) - EyeSpace )
-    Start2ndEye = StartPoint + EyeWidth + EyeSpace
+        # define eye1 and eye2 location
+        StartPoint  = random.randint( 0, num_pixels - (2*EyeWidth) - EyeSpace )
+        Start2ndEye = StartPoint + EyeWidth + EyeSpace
 
-    #  set color of eyes for given location
-    for i in range(EyeWidth):
-        pixels[StartPoint + i] = (red, green, blue)
-        pixels[Start2ndEye + i] = (red, green, blue)
-    pixels.show()
+        #  set color of eyes for given location
+        for i in range(EyeWidth):
+            pixels[StartPoint + i] = (red, green, blue)
+            pixels[Start2ndEye + i] = (red, green, blue)
+        pixels.show()
 
-    # if user wants fading, then fadeout pixel color
-    if Fade == True:
-        for j in range(Steps, -1, -1):
-            r = (j/Steps)*red
-            g = (j/Steps)*green
-            b = (j/Steps)*blue
+        # if user wants fading, then fadeout pixel color
+        if Fade == True:
+            for j in range(Steps, -1, -1):
+                r = (j/Steps)*red
+                g = (j/Steps)*green
+                b = (j/Steps)*blue
 
-            for i in range(EyeWidth):
-                pixels[StartPoint + i] = ((int(r), int(g), int(b)))
-                pixels[Start2ndEye + i] = ((int(r), int(g), int(b)))
+                for i in range(EyeWidth):
+                    pixels[StartPoint + i] = ((int(r), int(g), int(b)))
+                    pixels[Start2ndEye + i] = ((int(r), int(g), int(b)))
 
-            pixels.show()
-            time.sleep(FadeDelay)
-    
-    # Set all pixels to black
-    pixels.fill((0,0,0))
+                pixels.show()
+                time.sleep(FadeDelay)
+        
+        # Set all pixels to black
+        pixels.fill((0,0,0))
 
-    # pause before changing eye location
-    time.sleep(EndPause)
+        # pause before changing eye location
+        time.sleep(EndPause)
 
 
 def candycane_custom(c1, c2, thisbright, delay, cycles):
@@ -338,7 +339,10 @@ while True:
     pixels.show()
     time.sleep(wait_time)
     
-
+    # shows 2 color every other pixel (white, green)
+    # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
+    colorAll2Color((255, 255, 255), (0, 255, 0)) 
+    time.sleep(wait_time * 4)
 
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)
@@ -355,9 +359,8 @@ while True:
     #SparkingRangeEnd = 0-255
     #FireColor = 0-2 (0=red, 1=blue , 2=green)
     #FireEffect = 0-2
-    FireCustom(0, 12, 25, 0, 10, 0.02, 2, 2, 100) # red fire
+    FireCustom(0, 12, 25, 0, 10, 0.02, 2, 2, 200) # red fire
     time.sleep(wait_time)
-
     
     # makes the strand of pixels show 
     # meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay, LoopCount, SpeedDelay)
@@ -378,25 +381,16 @@ while True:
     # Sparkle(red, green, blue, Count, SpeedDelay)
     Sparkle(11, 102, 35, 50, 0)
 
-
     # fade in/out a single color (red / green / blue / white)
     # FadeInOut(red, green, blue, delay)
     FadeInOut(11, 102, 35, 0.01) #Forest Green
     FadeInOut(255, 255, 255, 0.01) #white
-    FadeInOut(112, 130, 56, 0.01) #Olive Green
     FadeInOut(0, 255, 0, 0.01) #green
-    FadeInOut(57, 255, 20, 0.01) # Neon Green
-
-    # shows 2 color every other pixel (white, green)
-    # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
-    colorAll2Color((255, 255, 255), (0, 255, 0)) 
-    time.sleep(wait_time * 4)
-
 
     ### HALLOWEEN idea (green)
     # make the strand of pixels show HalloweenEyes
-    # HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause)
-    HalloweenEyes(11, 102, 35, 1, 1, True, 10, 1, 3)
+    # HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause, cycles)
+    HalloweenEyes(11, 102, 35, 1, 1, True, 5, 1, 3, 5)
     time.sleep(wait_time)
 
 
