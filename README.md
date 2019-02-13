@@ -5,7 +5,8 @@ This project has the goal completing all the coding needed use ws2811 neopixel l
 - Part1: https://www.tweaking4all.com/hardware/arduino/adruino-led-strip-effects/ 
   - [link to converted examples](https://github.com/DanStach/rpi-ws2811/blob/master/neopixel-part1.py)
 - Part2: https://pastebin.com/Qe0Jttme
-- Part3: https://github.com/FastLED/FastLED/tree/master/examples
+- Part3: https://github.com/zatamite/Neopixel-heartbeat/blob/master/neoheart/neoheart.ino
+- Part4: https://github.com/FastLED/FastLED/tree/master/examples
 
 ### Install Instuctions
 simple install instuctions are located on install.md
