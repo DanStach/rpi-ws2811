@@ -79,6 +79,56 @@ def wheelBrightLevel(pos, bright):
     return color if ORDER == neopixel.RGB or ORDER == neopixel.GRB else (r, g, b, 0)
 
 
+def brightnessRGB(red, green, blue, bright):
+    r = (bright/256.0)*red
+    g = (bright/256.0)*green
+    b = (bright/256.0)*blue
+    return (int(r), int(g), int(b))
+
+
+
+def HeartBeat(redo, greeno, blueo, delay, cycles):
+    for loop in range(cycles):
+        # all pixels show the same color:
+        #redo =random.randint(0, 255)
+        #greeno = random.randint(0, 255)
+        #blueo = random.randint(0, 255)
+
+        # older code only had 3 pixels. set all 3 pixels to same color
+        #strip.setPixelColor(0, redo, greeno, blueo)
+        #strip.setPixelColor(1, redo, greeno, blueo)
+        #strip.setPixelColor(2, redo, greeno, blueo)
+        pixels.fill((redo, greeno, blueo))
+        pixels.show()
+        time.sleep(20)
+            
+        x = 3
+        for ii in range(1,252,x): #for ( ii = 1 ; ii <252 ; ii = ii = ii + x)
+            pixels.fill( brightnessRGB(redo, greeno, blueo, ii) ) #strip.setBrightness(ii)
+            pixels.show()
+            time.sleep(5)
+
+        for ii in range(252,3,x): #for (int ii = 252 ; ii > 3 ; ii = ii - x){
+            pixels.fill( brightnessRGB(redo, greeno, blueo, ii) ) #strip.setBrightness(ii)
+            pixels.show()
+            time.sleep(3)
+
+        time.sleep(10)
+        
+        y = 6
+        for ii in range(1,252,y): #for (int ii = 1 ; ii <255 ; ii = ii = ii + y){
+            pixels.fill( brightnessRGB(redo, greeno, blueo, ii) ) #strip.setBrightness(ii)
+            pixels.show()
+            time.sleep(2)
+
+        for ii in range(252,3,y): #for (int ii = 255 ; ii > 1 ; ii = ii - y){
+            pixels.fill( brightnessRGB(redo, greeno, blueo, ii) ) #strip.setBrightness(ii)
+            pixels.show()
+            time.sleep(3)
+    
+        time.sleep(delay) 
+
+
 
 
 while True:
@@ -104,50 +154,11 @@ while True:
 
 
 
-    # makes the strand of pixels show random_levels
-    # pancake(level, delay)
+    # makes the strand of pixels show HeartBeat
+    # HeartBeat(red, green, blue, delay, cycles):
     pixels.fill((0, 0, 0))
     time.sleep(wait_time)
+    HeartBeat(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255), 50, cycles):
 
-
-  // all pixels show the same color:
-  redo =random(255);
-  greeno = random(255);
-  blueo = random (255);
-      strip.setPixelColor(0, redo, greeno, blueo);
-      strip.setPixelColor(1, redo, greeno, blueo);
-      strip.setPixelColor(2, redo, greeno, blueo);
-      
-      strip.show();
-      delay (20);
-      
-   int x = 3;
-   for (int ii = 1 ; ii <252 ; ii = ii = ii + x){
-     strip.setBrightness(ii);
-     strip.show();              
-     delay(5);
-    }
-    
-    x = 3;
-   for (int ii = 252 ; ii > 3 ; ii = ii - x){
-     strip.setBrightness(ii);
-     strip.show();              
-     delay(3);
-     }
-   delay(10);
-   
-   x = 6;
-  for (int ii = 1 ; ii <255 ; ii = ii = ii + x){
-     strip.setBrightness(ii);
-     strip.show();              
-     delay(2);  
-     }
-   x = 6;
-   for (int ii = 255 ; ii > 1 ; ii = ii - x){
-     strip.setBrightness(ii);
-     strip.show();              
-     delay(3);
-   }
-  delay (50); 
 
 
