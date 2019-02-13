@@ -342,7 +342,7 @@ while True:
 
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)
-    candycane_custom((255,255,255), (0,255,0), 255, 0, 500)
+    candycane_custom((255,255,255), (0,100,0), 255, 0, 500)
     time.sleep(wait_time)
 
     # makes the strand of pixels show Fire

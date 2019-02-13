@@ -87,46 +87,42 @@ def brightnessRGB(red, green, blue, bright):
 
 
 
-def HeartBeat(redo, greeno, blueo, delay, cycles):
+def HeartBeat(redo, greeno, blueo, cycles):
     for loop in range(cycles):
-        # all pixels show the same color:
         #redo =random.randint(0, 255)
         #greeno = random.randint(0, 255)
         #blueo = random.randint(0, 255)
-
-        # older code only had 3 pixels. set all 3 pixels to same color
-        #strip.setPixelColor(0, redo, greeno, blueo)
-        #strip.setPixelColor(1, redo, greeno, blueo)
+        
         #strip.setPixelColor(2, redo, greeno, blueo)
         pixels.fill((redo, greeno, blueo))
         pixels.show()
-        time.sleep(20)
-            
+        time.sleep(.020)
+        
         x = 3
         for ii in range(1,252,x): #for ( ii = 1 ; ii <252 ; ii = ii = ii + x)
             pixels.fill( brightnessRGB(redo, greeno, blueo, ii) ) #strip.setBrightness(ii)
             pixels.show()
-            time.sleep(5)
+            time.sleep(.005)
 
-        for ii in range(252,3,x): #for (int ii = 252 ; ii > 3 ; ii = ii - x){
+        for ii in range(252,3,-x): #for (int ii = 252 ; ii > 3 ; ii = ii - x){
             pixels.fill( brightnessRGB(redo, greeno, blueo, ii) ) #strip.setBrightness(ii)
             pixels.show()
-            time.sleep(3)
+            time.sleep(.003)
 
-        time.sleep(10)
+        time.sleep(.0010)
         
         y = 6
         for ii in range(1,252,y): #for (int ii = 1 ; ii <255 ; ii = ii = ii + y){
             pixels.fill( brightnessRGB(redo, greeno, blueo, ii) ) #strip.setBrightness(ii)
             pixels.show()
-            time.sleep(2)
+            time.sleep(.002)
 
-        for ii in range(252,3,y): #for (int ii = 255 ; ii > 1 ; ii = ii - y){
+        for ii in range(252,3,-y): #for (int ii = 255 ; ii > 1 ; ii = ii - y){
             pixels.fill( brightnessRGB(redo, greeno, blueo, ii) ) #strip.setBrightness(ii)
             pixels.show()
-            time.sleep(3)
+            time.sleep(.003)
     
-        time.sleep(delay) 
+        time.sleep(.050) 
 
 
 
@@ -155,10 +151,10 @@ while True:
 
 
     # makes the strand of pixels show HeartBeat
-    # HeartBeat(red, green, blue, delay, cycles):
+    # HeartBeat(red, green, blue, cycles):
     pixels.fill((0, 0, 0))
     time.sleep(wait_time)
-    HeartBeat(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255), 50, cycles):
+    HeartBeat(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255), 5)
 
 
 
