@@ -77,7 +77,7 @@ def wheelBrightLevel(pos, bright):
 
     return color if ORDER == neopixel.RGB or ORDER == neopixel.GRB else (r, g, b, 0)
 
-def fadeall()
+def fadeall(scale)
     for i in range(num_pixels): #for(int i = 0; i < NUM_LEDS; i++) 
         #leds[i].nscale8(250)
         
@@ -88,10 +88,10 @@ def fadeall()
         blue = c[2]
         
         # scale color
-        k = 250
-        r = (k/256.0)*redd
-        g = (k/256.0)*green
-        b = (k/256.0)*blue
+        #scale = 250
+        r = (scale/256.0)*redd
+        g = (scale/256.0)*green
+        b = (scale/256.0)*blue
 
         #change pixel
         pixels[i] = (r,g,b)
@@ -131,7 +131,7 @@ def Cylon(delay, cycles):
             pixels.show() 
             # now that we've shown the leds, reset the i'th led to black
             # leds[i] = CRGB::Black;
-            fadeall()
+            fadeall(250)
             # Wait a little bit before we loop around and do it again
             time.sleep(delay) #delay(10);
 
@@ -147,7 +147,7 @@ def Cylon(delay, cycles):
             pixels.show()
             # now that we've shown the leds, reset the i'th led to black
             # leds[i] = CRGB::Black;
-            fadeall()
+            fadeall(250)
             # Wait a little bit before we loop around and do it again
             time.sleep(delay) #delay(10);
 	
