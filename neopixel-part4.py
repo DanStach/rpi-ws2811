@@ -77,7 +77,7 @@ def wheelBrightLevel(pos, bright):
 
     return color if ORDER == neopixel.RGB or ORDER == neopixel.GRB else (r, g, b, 0)
 
-def fadeall(scale)
+def fadeall(scale):
     for i in range(num_pixels): #for(int i = 0; i < NUM_LEDS; i++) 
         #leds[i].nscale8(250)
         
@@ -150,7 +150,7 @@ def Cylon(delay, cycles):
             fadeall(250)
             # Wait a little bit before we loop around and do it again
             time.sleep(delay) #delay(10);
-	
+    
 
 
 
