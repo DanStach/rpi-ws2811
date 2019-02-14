@@ -77,6 +77,25 @@ def wheelBrightLevel(pos, bright):
 
     return color if ORDER == neopixel.RGB or ORDER == neopixel.GRB else (r, g, b, 0)
 
+def fadeall()
+    for i in range(num_pixels): #for(int i = 0; i < NUM_LEDS; i++) 
+        #leds[i].nscale8(250)
+        
+        #get current color pf pixel
+        c = pixels[i]
+        red = c[0]
+        green = c[1]
+        blue = c[2]
+        
+        # scale color
+        k = 250
+        r = (k/256.0)*redd
+        g = (k/256.0)*green
+        b = (k/256.0)*blue
+
+        #change pixel
+        pixels[i] = (r,g,b)
+
 
 def brightnessRGB(red, green, blue, bright):
     r = (bright/256.0)*red
@@ -97,6 +116,41 @@ def blink(index, delay, cycles):
         pixels.show()
         time.sleep(delay)
 
+def Cylon(delay, cycles):
+    for loop in range(cycles):
+        hue = 0
+        # First slide the led in one direction
+        for i in range(num_pixels):
+            # Set the i'th led to red 
+            hue = hue + 1
+            if hue == 256:
+                hue = 0
+
+            pixels[i] =  wheel(hue) #CHSV(hue++, 255, 255);
+            # Show the leds
+            pixels.show() 
+            # now that we've shown the leds, reset the i'th led to black
+            # leds[i] = CRGB::Black;
+            fadeall()
+            # Wait a little bit before we loop around and do it again
+            time.sleep(delay) #delay(10);
+
+        # Now go in the other direction.  
+        for i in range(num_pixels,0,-1):
+            # Set the i'th led to red 
+            hue = hue + 1
+            if hue == 256:
+                hue = 0
+
+            pixels[i] =  wheel(hue) #CHSV(hue++, 255, 255);
+            # Show the leds
+            pixels.show()
+            # now that we've shown the leds, reset the i'th led to black
+            # leds[i] = CRGB::Black;
+            fadeall()
+            # Wait a little bit before we loop around and do it again
+            time.sleep(delay) #delay(10);
+	
 
 
 
