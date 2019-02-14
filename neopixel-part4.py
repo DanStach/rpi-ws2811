@@ -89,12 +89,12 @@ def fadeall(scale):
         
         # scale color
         #scale = 250
-        r = (scale/256.0)*redd
+        r = (scale/256.0)*red
         g = (scale/256.0)*green
         b = (scale/256.0)*blue
 
         #change pixel
-        pixels[i] = (r,g,b)
+        pixels[i] = (int(r),int(g),int(b))
 
 
 def brightnessRGB(red, green, blue, bright):
@@ -136,12 +136,12 @@ def Cylon(delay, cycles):
             time.sleep(delay) #delay(10);
 
         # Now go in the other direction.  
-        for i in range(num_pixels,0,-1):
+        for i in range(num_pixels-1,0,-1):
             # Set the i'th led to red 
             hue = hue + 1
             if hue == 256:
                 hue = 0
-
+            print(str(i) +  "  " + str(hue))
             pixels[i] =  wheel(hue) #CHSV(hue++, 255, 255);
             # Show the leds
             pixels.show()
@@ -176,6 +176,11 @@ while True:
     time.sleep(wait_time)
 
 
+
+    # makes the strand of pixels show Cylon
+    # Cylon(delay, cycles)
+    time.sleep(wait_time)
+    Cylon(.05, 100)
 
     # makes the strand of pixels show blink
     # blink(index, delay, cycles)
