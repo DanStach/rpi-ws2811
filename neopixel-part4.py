@@ -163,6 +163,47 @@ def fill_rainbow(initialhue, deltahue, delay):
         pixels.show()
         time.sleep(delay)
 
+def fill_gradient_RGB( startpos, startcolor, endpos, endcolor )
+    # if the points are in the wrong order, straighten them
+    if endpos < startpos :
+        t = endpos
+        tc = endcolor
+        endcolor = startcolor
+        endpos = startpos
+        startpos = t
+        startcolor = tc
+
+    rdistance87 = (endcolor[0] - startcolor[0]) << 7
+    gdistance87 = (endcolor[1] - startcolor[1]) << 7
+    bdistance87 = (endcolor[2] - startcolor[2]) << 7
+
+    pixeldistance = endpos - startpos
+    
+    #divisor = pixeldistance ? pixeldistance : 1;
+    if pixeldistance == 0:
+        divisor = 1
+    else:
+        divisor = pixeldistance
+        
+    rdelta87 = rdistance87 / divisor
+    gdelta87 = gdistance87 / divisor
+    bdelta87 = bdistance87 / divisor
+
+    rdelta87 *= 2
+    gdelta87 *= 2
+    bdelta87 *= 2
+
+    r88 = startcolor[0] << 8
+    g88 = startcolor[1] << 8
+    b88 = startcolor[2] << 8
+
+    #for( uint16_t i = startpos; i <= endpos; i++)
+    for i in range(startpos, endpos, 1):
+        pixels[i] = ( int(r88 >> 8), int(g88 >> 8), int(b88 >> 8) )
+        r88 = r88 + rdelta87
+        g88 = r88 + gdelta87
+        b88 = r88 + bdelta87
+
 
 
 
