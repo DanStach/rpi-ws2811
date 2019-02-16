@@ -158,6 +158,8 @@ def fill_rainbow(initialhue, deltahue, delay):
     for i in range(num_pixels):
         pixels[i] =  wheel(hue) 
         hue = hue + deltahue
+        if hue > 255:
+            hue = hue - 255
         pixels.show()
         time.sleep(delay)
 
