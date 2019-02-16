@@ -152,6 +152,18 @@ def Cylon(delay, cycles):
             time.sleep(delay) #delay(10);
     
 
+def fill_rainbow(initialhue, deltahue, delay):
+    hue = initialhue
+    
+    for i in range(num_pixels):
+        pixels[i] =  wheel(hue) 
+        hue = hue + deltahue
+        pixels.show()
+        time.sleep(delay)
+
+
+
+
 
 
 while True:
@@ -175,7 +187,29 @@ while True:
     pixels.show()
     time.sleep(wait_time)
 
+    # makes the strand of pixels show Cylon
+    # _DemoReel100(delay, cycles)
 
+    # makes the strand of pixels show Cylon
+    # _DemoReel100(delay, cycles)
+
+    # makes the strand of pixels show Cylon
+    # _DemoReel100(delay, cycles)
+
+    # makes the strand of pixels show Cylon
+    # DemoReel100_(delay, cycles)
+
+    # makes the strand of pixels show Cylon
+    # _DemoReel100(delay, cycles)
+
+    # makes the strand of pixels show fill_rainbow
+    # fill_rainbow(initialhue, deltahue, delay)
+    fill_rainbow(0, 10, .1)
+
+    # makes the strand of pixels show rainbow_DemoReel100
+    # rainbow_DemoReel100(delay, cycles)
+    time.sleep(wait_time)
+    Cylon(.05, 100)
 
     # makes the strand of pixels show Cylon
     # Cylon(delay, cycles)
