@@ -164,6 +164,8 @@ def fill_rainbow(initialhue, deltahue, delay):
         time.sleep(delay)
 
 def fill_gradient_RGB( startpos, startcolor, endpos, endcolor, delay ):
+    endpos = endpos + 1
+    
     # if the points are in the wrong order, straighten them
     if endpos < startpos :
         t = endpos
@@ -173,43 +175,28 @@ def fill_gradient_RGB( startpos, startcolor, endpos, endcolor, delay ):
         startpos = t
         startcolor = tc
 
-    #rdistance87 = (endcolor[0] - startcolor[0]) << 7
-    #gdistance87 = (endcolor[1] - startcolor[1]) << 7
-    #bdistance87 = (endcolor[2] - startcolor[2]) << 7
     rdistance87 = (endcolor[0] - startcolor[0])
     gdistance87 = (endcolor[1] - startcolor[1])
     bdistance87 = (endcolor[2] - startcolor[2])
-    print("ColorDistance", rdistance87, gdistance87, bdistance87)
 
     pixeldistance = endpos - startpos
     
     divisor = pixeldistance
     # check if  divisor is 0
-    #divisor = pixeldistance ? pixeldistance : 1;
     if divisor == 0:
         divisor = 1
 
     rdelta87 = rdistance87 / divisor
     gdelta87 = gdistance87 / divisor
     bdelta87 = bdistance87 / divisor
-    print("ColorDeltaViaNumOfPixels", rdelta87, gdelta87, bdelta87)
-
-    #rdelta87 *= 2
-    #gdelta87 *= 2
-    #bdelta87 *= 2
-
-    r88 = startcolor[0]# << 8
-    g88 = startcolor[1]# << 8
-    b88 = startcolor[2]# << 8
-    print("StartColor", r88, g88, b88)
+    
+    r88 = startcolor[0]
+    g88 = startcolor[1]
+    b88 = startcolor[2]
 
     # for each pixel (from startpos to endpos)
-    #for( uint16_t i = startpos; i <= endpos; i++)
     for i in range(startpos, endpos, 1):
-        print("i=",i)
-        print("ShowColor", r88, g88, b88)
-        # assign color to pixel
-        #pixels[i] = ( int(r88 >> 8), int(g88 >> 8), int(b88 >> 8) )
+        # assing color to pixel
         pixels[i] = ( int(r88), int(g88), int(b88) )
         # show new color 
         pixels.show()
@@ -217,8 +204,9 @@ def fill_gradient_RGB( startpos, startcolor, endpos, endcolor, delay ):
 
         # change color
         r88 = r88 + rdelta87
-        g88 = r88 + gdelta87
-        b88 = r88 + bdelta87
+        g88 = g88 + gdelta87
+        b88 = b88 + bdelta87
+        
 
 
 
@@ -249,21 +237,19 @@ while True:
 
     # makes the strand of pixels show fill_gradient_RGB
     # fill_gradient_RGB( startpos, startcolor, endpos, endcolor, delay )
-    fill_gradient_RGB( 0, (255,255,255), 0, (0,0,0), 1 )
+    fill_gradient_RGB( 0, (255,255,255), 49, (0,0,0), .1 ) #white to black
+    fill_gradient_RGB( 0, (255,0,0), 49, (0,255,0), .1 ) #red to green
+    time.sleep(wait_time)
 
     # makes the strand of pixels show fill_rainbow
     # fill_rainbow(initialhue, deltahue, delay)
     fill_rainbow(0, 10, .1)
-
-    # makes the strand of pixels show rainbow_DemoReel100
-    # rainbow_DemoReel100(delay, cycles)
     time.sleep(wait_time)
-    Cylon(.05, 100)
 
     # makes the strand of pixels show Cylon
     # Cylon(delay, cycles)
-    time.sleep(wait_time)
     Cylon(.05, 100)
+    time.sleep(wait_time)
 
     # makes the strand of pixels show blink
     # blink(index, delay, cycles)
