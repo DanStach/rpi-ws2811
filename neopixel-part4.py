@@ -141,7 +141,7 @@ def Cylon(delay, cycles):
             hue = hue + 1
             if hue == 256:
                 hue = 0
-            print(str(i) +  "  " + str(hue))
+
             pixels[i] =  wheel(hue) #CHSV(hue++, 255, 255);
             # Show the leds
             pixels.show()
