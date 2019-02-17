@@ -98,13 +98,9 @@ def fadeall(scale):
 
 def fadeUsingColor(colormask, delay, cycles):
     for loop in range(cycles):
-        #uint8_t fr, fg, fb;
-        #fr = colormask.r;
-        #fg = colormask.g;
-        #fb = colormask.b;
-
+        
         #get current color from colormask
-        fr = ccolormask0]
+        fr = colormask[0]
         fg = colormask[1]
         fb = colormask[2]
         for i in range(num_pixels):
@@ -118,11 +114,8 @@ def fadeUsingColor(colormask, delay, cycles):
             scaled_r = (fr/256.0)*red
             scaled_g = (fg/256.0)*green
             scaled_b = (fb/256.0)*blue
-
-            #pixels[i].r = scale8_LEAVING_R1_DIRTY( leds[i].r, fr);
-            #pixels[i].g = scale8_LEAVING_R1_DIRTY( leds[i].g, fg);
-            #pixels[i].b = scale8                 ( leds[i].b, fb);
-            pixels[i] = (scaled_r, scaled_g, scaled_b)
+            
+            pixels[i] = (int(scaled_r), int(scaled_g), int(scaled_b))
             
             # show pixel
             pixels.show()
@@ -268,7 +261,7 @@ while True:
 
     # makes the strand of pixels show fadeUsingColor
     # fadeUsingColor(colormask, delay, cycles)
-    fadeUsingColor((255,0,0), .1, cycles)
+    fadeUsingColor((0,0,100), .02, 5)
 
 
     # makes the strand of pixels show fill_gradient_RGB
