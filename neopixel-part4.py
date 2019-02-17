@@ -96,6 +96,38 @@ def fadeall(scale):
         #change pixel
         pixels[i] = (int(r),int(g),int(b))
 
+def fadeUsingColor(colormask, delay, cycles):
+    for loop in range(cycles):
+        #uint8_t fr, fg, fb;
+        #fr = colormask.r;
+        #fg = colormask.g;
+        #fb = colormask.b;
+
+        #get current color from colormask
+        fr = ccolormask0]
+        fg = colormask[1]
+        fb = colormask[2]
+        for i in range(num_pixels):
+            #get current color
+            c = pixels[i]
+            red = c[0]
+            green = c[1]
+            blue = c[2]
+
+            # scale color
+            scaled_r = (fr/256.0)*red
+            scaled_g = (fg/256.0)*green
+            scaled_b = (fb/256.0)*blue
+
+            #pixels[i].r = scale8_LEAVING_R1_DIRTY( leds[i].r, fr);
+            #pixels[i].g = scale8_LEAVING_R1_DIRTY( leds[i].g, fg);
+            #pixels[i].b = scale8                 ( leds[i].b, fb);
+            pixels[i] = (scaled_r, scaled_g, scaled_b)
+            
+            # show pixel
+            pixels.show()
+            time.sleep(delay)
+
 
 def brightnessRGB(red, green, blue, bright):
     r = (bright/256.0)*red
@@ -233,6 +265,10 @@ while True:
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
+
+    # makes the strand of pixels show fadeUsingColor
+    # fadeUsingColor(colormask, delay, cycles)
+    fadeUsingColor((255,0,0), .1, cycles)
 
 
     # makes the strand of pixels show fill_gradient_RGB
