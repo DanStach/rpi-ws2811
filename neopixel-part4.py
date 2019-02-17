@@ -177,6 +177,7 @@ def Cylon(delay, cycles):
             time.sleep(delay) #delay(10);
     
 
+
 def fill_rainbow(initialhue, deltahue, delay):
     hue = initialhue
     
@@ -233,10 +234,58 @@ def fill_gradient_RGB( startpos, startcolor, endpos, endcolor, delay ):
         b88 = b88 + bdelta87
         
 
+def drain_gradient_RGB( startpos, startcolor, endpos, endcolor, delay ):
+    endpos = endpos - 1
+    
+    # if the points are in the wrong order, straighten them
+    if endpos > startpos :
+        t = endpos
+        tc = endcolor
+        endcolor = startcolor
+        endpos = startpos
+        startpos = t
+        startcolor = tc
+
+    rdistance87 = (endcolor[0] - startcolor[0])
+    gdistance87 = (endcolor[1] - startcolor[1])
+    bdistance87 = (endcolor[2] - startcolor[2])
+
+    pixeldistance = endpos - startpos
+    
+    divisor = - pixeldistance
+    # check if  divisor is 0
+    if divisor == 0: #safety check to prevent divide by zero
+        divisor = 1
+
+
+    rdelta87 = rdistance87 / divisor
+    gdelta87 = gdistance87 / divisor
+    bdelta87 = bdistance87 / divisor
+    
+    r88 = startcolor[0]
+    g88 = startcolor[1]
+    b88 = startcolor[2]
+
+    # for each pixel (from startpos to endpos)
+    for i in range(startpos, endpos, -1):
+        print("i", i, "color", ( int(r88), int(g88), int(b88) ))
+        # assing color to pixel
+        pixels[i] = ( int(r88), int(g88), int(b88) )
+        # show new color 
+        pixels.show()
+        time.sleep(delay)
+
+        # change color
+        r88 = r88 + rdelta87
+        g88 = g88 + gdelta87
+        b88 = b88 + bdelta87
+        
+        
+
 def addGlitter( chanceOfGlitter):
     if random.randint(0, 100) < chanceOfGlitter :
-        index = random.randint(0, num_pixels) 
-        pixels[ index ] = pixels[ index ] +  (255,255,255)
+        index = random.randint(0, num_pixels)
+        pixels[ index ] = (255,255,255)
 
 def rainbowWithGlitter(initialhue, deltahue, delay, cycles):
     hue = initialhue
@@ -273,10 +322,28 @@ while True:
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
+    
+
+    # gradientdrain and fill example
+    fill_gradient_RGB( 0, (255,255,255), 49, (0,0,255), .01 ) #white to blue
+    drain_gradient_RGB( 49, (0,255,0), 0, (255,255,255), .01 ) # white to green
+    time.sleep(wait_time)
+
+    # blue and white cyclone
+    cyclonewait = .05
+    fill_gradient_RGB( 0, (255,255,255), 49, (0,0,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (0,0,255), 49, (255,255,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (255,255,255), 49, (0,0,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (0,0,255), 49, (255,255,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (255,255,255), 49, (0,0,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (0,0,255), 49, (255,255,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (255,255,255), 49, (0,0,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (0,0,255), 49, (255,255,255), cyclonewait ) #white to blue
+    time.sleep(wait_time)
 
     # makes the strand of pixels show fadeUsingColor
     # rinbowWithGlitter(initialhue, deltahue, delay, cycles)
-    rainbowWithGlitter(0, 7, .1, 100)
+    rainbowWithGlitter(0, 7, .01, 100)
 
     # makes the strand of pixels show fadeUsingColor
     # fadeUsingColor(colormask, delay, cycles)
