@@ -240,8 +240,23 @@ def fill_gradient_RGB( startpos, startcolor, endpos, endcolor, delay ):
         b88 = b88 + bdelta87
         
 
+def addGlitter( chanceOfGlitter):
+    if random.randint(0, 100) < chanceOfGlitter :
+        index = random.randint(0, num_pixels) 
+        pixels[ index ] = pixels[ index ] +  (255,255,255)
 
+def rainbowWithGlitter(initialhue, deltahue, delay, cycles):
+    hue = initialhue
+    for loop in range(cycles):
+        # built-in FastLED rainbow, plus some random sparkly glitter
+        #rainbow() #fill_rainbow( leds, NUM_LEDS, gHue, 7);
+        fill_rainbow(hue, deltahue, 0)
+        addGlitter(80)
 
+        hue = hue + 1
+        if hue == 256:
+            hue = 0
+        time.sleep(delay)
 
 
 
@@ -267,9 +282,13 @@ while True:
     time.sleep(wait_time)
 
     # makes the strand of pixels show fadeUsingColor
+    # rinbowWithGlitter(initialhue, deltahue, delay, cycles)
+    rainbowWithGlitter(0, 7, .1, 100)
+
+    # makes the strand of pixels show fadeUsingColor
     # fadeUsingColor(colormask, delay, cycles)
     fadeUsingColor((255,0,0), .1, cycles)
-
+    time.sleep(wait_time)
 
     # makes the strand of pixels show fill_gradient_RGB
     # fill_gradient_RGB( startpos, startcolor, endpos, endcolor, delay )
