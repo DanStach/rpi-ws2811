@@ -300,14 +300,17 @@ def rainbowWithGlitter(initialhue, deltahue, delay, cycles):
             hue = 0
         time.sleep(delay)
 
-def confetti( cycles):
+def confetti(delay, cycles):
     for loop in range(cycles):
         # random colored speckles that blink in and fade smoothly
-        fadeall( 10)
-        pos = random.randint(0, num_pixels)
+        fadeall(10)
+        pos = random.randint(0, num_pixels-1)
         hue = random.randint(0, 64)
         #pixels[pos] += CHSV( gHue + random8(64), 200, 255);
+        print( pos, hue)
         pixels[pos] = wheel(hue)
+        pixels.show()
+        time.sleep(delay)
 
 
 
@@ -333,8 +336,8 @@ while True:
     time.sleep(wait_time)
     
     # makes the strand of pixels show confetti
-    # confetti( cycles) 
-    confetti(50) 
+    # confetti(delay, cycles) 
+    confetti(.1, 50) 
 
 
     # gradientdrain and fill example
