@@ -268,7 +268,6 @@ def drain_gradient_RGB( startpos, startcolor, endpos, endcolor, delay ):
 
     # for each pixel (from startpos to endpos)
     for i in range(startpos, endpos, -1):
-        print("i", i, "color", ( int(r88), int(g88), int(b88) ))
         # assing color to pixel
         pixels[i] = ( int(r88), int(g88), int(b88) )
         # show new color 
@@ -284,7 +283,7 @@ def drain_gradient_RGB( startpos, startcolor, endpos, endcolor, delay ):
 
 def addGlitter( chanceOfGlitter):
     if random.randint(0, 100) < chanceOfGlitter :
-        index = random.randint(0, num_pixels)
+        index = random.randint(0, num_pixels-1)
         pixels[ index ] = (255,255,255)
 
 def rainbowWithGlitter(initialhue, deltahue, delay, cycles):
@@ -307,7 +306,6 @@ def confetti(delay, cycles):
         pos = random.randint(0, num_pixels-1)
         hue = random.randint(0, 64)
         #pixels[pos] += CHSV( gHue + random8(64), 200, 255);
-        print( pos, hue)
         pixels[pos] = wheel(hue)
         pixels.show()
         time.sleep(delay)
