@@ -322,7 +322,6 @@ def sinelon(hue, delay, cycles):
         time.sleep(delay)
 
 
-
 #https://git.defproc.co.uk/red-violet-made/kites/blob/d9574021fb77de0ac7f83d4a195648ec5085083a/arduino/test/lib/FastLED/lib8tion.h
 def beatsin16(  beats_per_minute, lowest = 0, highest = 65535, timebase = 0, phase_offset = 0):
     beat = beat16( beats_per_minute, timebase)
@@ -331,6 +330,7 @@ def beatsin16(  beats_per_minute, lowest = 0, highest = 65535, timebase = 0, pha
     scaledbeat = scale16( beatsin, rangewidth)
     result = lowest + scaledbeat
     return result
+
 
 # beat16 generates a 16-bit 'sawtooth' wave at a given BPM
 def beat16( beats_per_minute, timebase = 0):
@@ -348,6 +348,7 @@ def beat16( beats_per_minute, timebase = 0):
 def beat88( beats_per_minute_88, timebase = 0):
     mills = int(round(time.time() * 1000))
     return ((mills - timebase) * beats_per_minute_88 * 280) >> 16
+
 
 def scale16(i , scale):
     return (i * (scale / 65536))
