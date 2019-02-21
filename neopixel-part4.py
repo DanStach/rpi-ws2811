@@ -379,7 +379,7 @@ while True:
 
     # makes the strand of pixels show sinelon
     # sinelon(hue, delay, cycles)
-    sinelon(hue, delay, cycles)
+    sinelon(0, .1, 100)
     time.sleep(wait_time)
 
     # makes the strand of pixels show confetti
