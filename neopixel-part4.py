@@ -311,6 +311,48 @@ def confetti(delay, cycles):
         time.sleep(delay)
 
 
+def sinelon(hue, delay, cycles):
+    for loop in range(cycles):
+        # a colored dot sweeping back and forth, with fading trails
+        fadeall(20)
+        pos = beatsin16( 13, 0, num_pixels-1 )
+        #pixels[pos] += CHSV( gHue, 255, 192)
+        pixels[pos] = wheel(hue)
+        pixels.show()
+        time.sleep(delay)
+
+
+
+#https://git.defproc.co.uk/red-violet-made/kites/blob/d9574021fb77de0ac7f83d4a195648ec5085083a/arduino/test/lib/FastLED/lib8tion.h
+def beatsin16(  beats_per_minute, lowest = 0, highest = 65535, timebase = 0, phase_offset = 0):
+    beat = beat16( beats_per_minute, timebase)
+    beatsin = (math.sin( beat + phase_offset) + 32768)
+    rangewidth = highest - lowest
+    scaledbeat = scale16( beatsin, rangewidth)
+    result = lowest + scaledbeat
+    return result
+
+# beat16 generates a 16-bit 'sawtooth' wave at a given BPM
+def beat16( beats_per_minute, timebase = 0):
+    # Convert simple 8-bit BPM's to full Q8.8 accum88's if needed
+    if beats_per_minute < 256:
+        beats_per_minute <<= 8
+    return beat88(beats_per_minute, timebase)
+
+
+# beat16 generates a 16-bit 'sawtooth' wave at a given BPM,
+#        with BPM specified in Q8.8 fixed-point format; e.g.
+#        for this function, 120 BPM MUST BE specified as
+#        120*256 = 30720.
+#        If you just want to specify "120", use beat16 or beat8.
+def beat88( beats_per_minute_88, timebase = 0):
+    mills = int(round(time.time() * 1000))
+    return ((mills - timebase) * beats_per_minute_88 * 280) >> 16
+
+def scale16(i , scale):
+    return (i * (scale / 65536))
+
+
 
 while True:
     random.seed(num_pixels)
@@ -333,10 +375,16 @@ while True:
     pixels.show()
     time.sleep(wait_time)
     
+
+    # makes the strand of pixels show sinelon
+    # sinelon(hue, delay, cycles)
+    sinelon(hue, delay, cycles)
+    time.sleep(wait_time)
+
     # makes the strand of pixels show confetti
     # confetti(delay, cycles) 
-    confetti(.1, 50) 
-
+    confetti(.2, 100)
+    time.sleep(wait_time)
 
     # gradientdrain and fill example
     fill_gradient_RGB( 0, (255,255,255), 49, (0,0,255), .01 ) #white to blue
