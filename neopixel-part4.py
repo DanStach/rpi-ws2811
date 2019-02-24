@@ -310,14 +310,17 @@ def confetti(delay, cycles):
         pixels.show()
         time.sleep(delay)
 
-
+#### this code does not work as expected. more codeing needed
 def sinelon(hue, delay, cycles):
     for loop in range(cycles):
         # a colored dot sweeping back and forth, with fading trails
         fadeall(20)
+        #pos = 1
         pos = beatsin16( 13, 0, num_pixels-1 )
+        print("")
+        print("pos", pos)
         #pixels[pos] += CHSV( gHue, 255, 192)
-        pixels[pos] = wheel(hue)
+        pixels[int(pos)] = wheel(hue)
         pixels.show()
         time.sleep(delay)
 
@@ -325,9 +328,12 @@ def sinelon(hue, delay, cycles):
 #https://git.defproc.co.uk/red-violet-made/kites/blob/d9574021fb77de0ac7f83d4a195648ec5085083a/arduino/test/lib/FastLED/lib8tion.h
 def beatsin16(  beats_per_minute, lowest = 0, highest = 65535, timebase = 0, phase_offset = 0):
     beat = beat16( beats_per_minute, timebase)
-    beatsin = (math.sin( beat + phase_offset) + 32768)
+    print("beat", beat)
+    beatsin = (math.sin( beat + phase_offset))# + 32768)
+    print( "beatsin", beatsin, "highest", highest, "lowest", lowest)
     rangewidth = highest - lowest
     scaledbeat = scale16( beatsin, rangewidth)
+    print(":scaledbeat", scaledbeat)
     result = lowest + scaledbeat
     return result
 
@@ -335,8 +341,9 @@ def beatsin16(  beats_per_minute, lowest = 0, highest = 65535, timebase = 0, pha
 # beat16 generates a 16-bit 'sawtooth' wave at a given BPM
 def beat16( beats_per_minute, timebase = 0):
     # Convert simple 8-bit BPM's to full Q8.8 accum88's if needed
-    if beats_per_minute < 256:
-        beats_per_minute <<= 8
+    print("beats_per_minute", beats_per_minute)
+    #if beats_per_minute < 256:
+     #   beats_per_minute <<= 8
     return beat88(beats_per_minute, timebase)
 
 
@@ -346,12 +353,15 @@ def beat16( beats_per_minute, timebase = 0):
 #        120*256 = 30720.
 #        If you just want to specify "120", use beat16 or beat8.
 def beat88( beats_per_minute_88, timebase = 0):
-    mills = int(round(time.time() * 1000))
-    return ((mills - timebase) * beats_per_minute_88 * 280) >> 16
+    mills = int(round(time.time() * 100))
+    print("mills", mills)
+    return ((mills - timebase) * beats_per_minute_88 * 280) #>> 16
 
 
 def scale16(i , scale):
-    return (i * (scale / 65536))
+    #num = 65536
+    num = 1
+    return (i * (scale / num))
 
 
 
@@ -377,10 +387,11 @@ while True:
     time.sleep(wait_time)
     
 
+    #fixme... this doesn't work
     # makes the strand of pixels show sinelon
     # sinelon(hue, delay, cycles)
-    sinelon(0, .1, 100)
-    time.sleep(wait_time)
+    #sinelon(0, 0.00, 10000)
+    #time.sleep(wait_time)
 
     # makes the strand of pixels show confetti
     # confetti(delay, cycles) 
