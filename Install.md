@@ -110,7 +110,8 @@ done!
 ```
 ### install python
 - `sudo pip3 install rpi_ws281x adafruit-circuitpython-neopixel`
+- `sudo pip3 install pyserial`
 ### install previous work in the repo
-- `sudo apt install git
+- `sudo apt install git`
 - `sudo git clone https://github.com/DanStach/rpi-ws2811.git`
 
