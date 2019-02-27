@@ -329,7 +329,7 @@ def sinelon(hue, delay, cycles):
 def beatsin16(  beats_per_minute, lowest = 0, highest = 65535, timebase = 0, phase_offset = 0):
     beat = beat16( beats_per_minute, timebase)
     print("beat", beat)
-    beatsin = (math.sin( beat + phase_offset))# + 32768)
+    beatsin = (math.sin( beat + phase_offset)) + 32768)
     print( "beatsin", beatsin, "highest", highest, "lowest", lowest)
     rangewidth = highest - lowest
     scaledbeat = scale16( beatsin, rangewidth)
@@ -337,14 +337,27 @@ def beatsin16(  beats_per_minute, lowest = 0, highest = 65535, timebase = 0, pha
     result = lowest + scaledbeat
     return result
 
+    """
+    uint16_t beat = beat16( beats_per_minute, timebase);
+    uint16_t beatsin = (sin16( beat + phase_offset) + 32768);
+    uint16_t rangewidth = highest - lowest;
+    uint16_t scaledbeat = scale16( beatsin, rangewidth);
+    uint16_t result = lowest + scaledbeat;
+    """
+
 
 # beat16 generates a 16-bit 'sawtooth' wave at a given BPM
+# http://fastled.io/docs/3.1/lib8tion_8h_source.html
 def beat16( beats_per_minute, timebase = 0):
     # Convert simple 8-bit BPM's to full Q8.8 accum88's if needed
     print("beats_per_minute", beats_per_minute)
-    #if beats_per_minute < 256:
-     #   beats_per_minute <<= 8
+    if beats_per_minute < 256:
+       beats_per_minute <<= 8
     return beat88(beats_per_minute, timebase)
+    """
+    if( beats_per_minute < 256) beats_per_minute <<= 8;
+    return beat88(beats_per_minute, timebase);
+    """
 
 
 # beat16 generates a 16-bit 'sawtooth' wave at a given BPM,
@@ -352,16 +365,32 @@ def beat16( beats_per_minute, timebase = 0):
 #        for this function, 120 BPM MUST BE specified as
 #        120*256 = 30720.
 #        If you just want to specify "120", use beat16 or beat8.
+# https://stackoverflow.com/questions/5998245/get-current-time-in-milliseconds-in-python
+# https://git.defproc.co.uk/red-violet-made/kites/blob/d9574021fb77de0ac7f83d4a195648ec5085083a/arduino/test/lib/FastLED/lib8tion.h
 def beat88( beats_per_minute_88, timebase = 0):
-    mills = int(round(time.time() * 100))
+    mills = int(round(time.time() * 1000))
     print("mills", mills)
     return ((mills - timebase) * beats_per_minute_88 * 280) #>> 16
+    """
+    return (((GET_MILLIS()) - timebase) * beats_per_minute_88 * 280) >> 16;
+    """
 
 
+# http://fastled.io/docs/3.1/scale8_8h_source.html
 def scale16(i , scale):
-    #num = 65536
-    num = 1
-    return (i * (scale / num))
+    num = 65536
+    #num = 1
+    return (i * scale) / num))
+
+    """
+    #if SCALE16_C == 1
+        uint16_t result;
+    #if FASTLED_SCALE8_FIXED == 1
+        result = ((uint32_t)(i) * (1+(uint32_t)(scale))) / 65536;
+    #else
+        result = ((uint32_t)(i) * (uint32_t)(scale)) / 65536;
+    #endif
+    """
 
 
 
