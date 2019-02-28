@@ -341,12 +341,17 @@ def bpm(pallet, delay, cycles):
 
         #beat = beatsin8( BeatsPerMinute, 64, 255)
         beatsin = (math.sin( loop/num_pixels))
-        delta = (64-255) * (beatsin+1)/2
+        #print("beatsin", beatsin, "(beatsin+1)/2", (beatsin+1)/2)
+        delta = (255-64) * (beatsin+1)/2
         beat = 64 + delta
 
-        for i in  range(0, NUM_LEDS, 1):  #for( int i = 0; i < NUM_LEDS; i++) #9948
-            palColor = pallet[gHue+(i*2)] 
-            color = brightnessRGB(palColor[0], palColor[1], palColor[2], beat-gHue+(i*10))
+        for i in  range(0, num_pixels, 1):  #for( int i = 0; i < NUM_LEDS; i++) #9948
+            #print("index", i % len(pallet), "i=", i )
+            palColor = pallet[i % len(pallet) ]
+            #print("palColor", palColor, "beat", beat, "bright", beat-gHue+(i*10))
+            
+            color = brightnessRGB(palColor[0], palColor[1], palColor[2], beat)
+            #print("color", color)
             pixels[i] = color
         pixels.show()
         time.sleep(delay)
@@ -444,7 +449,7 @@ while True:
     
     # makes the strand of pixels show bpm
     # bpm(pallet, delay, cycles)
-    bpm(PartyColors_p, .1, 500)
+    bpm(PartyColors_p, .0, 1500)
 
     # makes the strand of pixels show sinelon
     # sinelon(hue, fadescale, delay, cycles)
