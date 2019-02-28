@@ -312,12 +312,23 @@ def confetti(delay, cycles):
 
 #### this code does not work as expected. more codeing needed
 def sinelon(hue, delay, cycles):
+    start_mills = int(round(time.time() * 1000))
     for loop in range(cycles):
         # a colored dot sweeping back and forth, with fading trails
-        fadeall(20)
-        #pos = 1
-        pos = beatsin16( 13, 0, num_pixels-1 )
+        fadeall(200)
         print("")
+        mills = int(round(time.time() * 1000))
+        
+        beatsin = (math.sin( loop/100))
+        print( "beatsin", beatsin)
+        #rangewidth = highest - lowest
+        #scaledbeat = scale16( beatsin, rangewidth)
+        #print(":scaledbeat", scaledbeat)
+        #result = lowest + scaledbeat
+        pos = (num_pixels-1) * abs(beatsin)
+        
+        #pos = beatsin16( 13, 0, num_pixels-1 )
+        
         print("pos", pos)
         #pixels[pos] += CHSV( gHue, 255, 192)
         pixels[int(pos)] = wheel(hue)
@@ -329,7 +340,7 @@ def sinelon(hue, delay, cycles):
 def beatsin16(  beats_per_minute, lowest = 0, highest = 65535, timebase = 0, phase_offset = 0):
     beat = beat16( beats_per_minute, timebase)
     print("beat", beat)
-    beatsin = (math.sin( beat + phase_offset)) + 32768)
+    beatsin = (math.sin( beat + phase_offset) + 32768)
     print( "beatsin", beatsin, "highest", highest, "lowest", lowest)
     rangewidth = highest - lowest
     scaledbeat = scale16( beatsin, rangewidth)
@@ -380,7 +391,7 @@ def beat88( beats_per_minute_88, timebase = 0):
 def scale16(i , scale):
     num = 65536
     #num = 1
-    return (i * scale) / num))
+    return ((i * scale) / num)
 
     """
     #if SCALE16_C == 1
@@ -419,8 +430,8 @@ while True:
     #fixme... this doesn't work
     # makes the strand of pixels show sinelon
     # sinelon(hue, delay, cycles)
-    #sinelon(0, 0.00, 10000)
-    #time.sleep(wait_time)
+    sinelon(0, 0.2, 10000)
+    time.sleep(wait_time)
 
     # makes the strand of pixels show confetti
     # confetti(delay, cycles) 
