@@ -341,18 +341,28 @@ def bpm(pallet, delay, cycles):
 
         #beat = beatsin8( BeatsPerMinute, 64, 255)
         beatsin = (math.sin( loop/num_pixels))
-        #print("beatsin", beatsin, "(beatsin+1)/2", (beatsin+1)/2)
         delta = (255-64) * (beatsin+1)/2
         beat = 64 + delta
 
         for i in  range(0, num_pixels, 1):  #for( int i = 0; i < NUM_LEDS; i++) #9948
-            #print("index", i % len(pallet), "i=", i )
             palColor = pallet[i % len(pallet) ]
-            #print("palColor", palColor, "beat", beat, "bright", beat-gHue+(i*10))
             
             color = brightnessRGB(palColor[0], palColor[1], palColor[2], beat)
-            #print("color", color)
             pixels[i] = color
+        pixels.show()
+        time.sleep(delay)
+
+def juggle(fadescale, delay, cycles):
+    # eight colored dots, weaving in and out of sync with each other
+    for loop in range(cycles):
+        fadeall(fadescale)  #fadeToBlackBy( leds, NUM_LEDS, 20);
+        dothue = 0
+        for i in  range(0, 8, 1):  #for( int i = 0; i < 8; i++) {
+            #leds[beatsin16( i+7, 0, NUM_LEDS-1 )] |= CHSV(dothue, 200, 255);
+            beatsin = (math.sin( loop/num_pixels))
+            index = (i+7) * (beatsin+1)/2
+            pixels[index] = wheel(dothue)
+            dothue += 32
         pixels.show()
         time.sleep(delay)
 
