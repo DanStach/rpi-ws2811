@@ -312,25 +312,17 @@ def confetti(delay, cycles):
 
 #### this code does not work as expected. more codeing needed
 def sinelon(hue, delay, cycles):
-    start_mills = int(round(time.time() * 1000))
+    beats_per_minute_88 = 20
     for loop in range(cycles):
         # a colored dot sweeping back and forth, with fading trails
-        fadeall(200)
-        #print("")
-        mills = time.time() 
-        
-        beatsin = (math.sin( mills))
-        #print( "beatsin", beatsin)
-        #rangewidth = highest - lowest
-        #scaledbeat = scale16( beatsin, rangewidth)
-        #print(":scaledbeat", scaledbeat)
-        #result = lowest + scaledbeat
-        pos = (num_pixels) * abs(beatsin)
-        
-        #pos = beatsin16( 13, 0, num_pixels-1 )
-        
-        #print("pos", pos)
-        #pixels[pos] += CHSV( gHue, 255, 192)
+        fadeall(220)
+        mills = time.time() *1000
+        beatsin = ((math.sin( mills) * beats_per_minute_88 * 280) + 32768)
+        print( "beatsin", beatsin, "mills", mills)
+
+        #pos = (num_pixels) * abs(beatsin)
+        #pos = (num_pixels) * (beatsin + 1)/2
+        pos = (num_pixels) * (beatsin /65536)
         pixels[int(pos)] = wheel(hue)
         pixels.show()
         time.sleep(delay)
@@ -430,7 +422,7 @@ while True:
     #fixme... this doesn't work
     # makes the strand of pixels show sinelon
     # sinelon(hue, delay, cycles)
-    sinelon(0, 0.02, 10000)
+    sinelon(0, 0.1, 10000)
     time.sleep(wait_time)
 
     # makes the strand of pixels show confetti
