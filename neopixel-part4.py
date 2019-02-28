@@ -25,6 +25,11 @@ ORDER = neopixel.RGB
 pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=ORDER)
 wait_time = 1
 thisbright = 255
+PartyColors_p = (
+    ((0x55),(0x50),(0xAB)), ((0x84),(0x00),(0x7C)), ((0xB5),(0x00),(0x4B)), ((0xE5),(0x00),(0x1B)),
+    ((0xE8),(0x17),(0x00)), ((0xB8),(0x47),(0x00)), ((0xAB),(0x77),(0x00)), ((0xAB),(0xAB),(0x00)),
+    ((0xAB),(0x55),(0x00)), ((0xDD),(0x22),(0x00)), ((0xF2),(0x00),(0x0E)), ((0xC2),(0x00),(0x3E)),
+    ((0x8F),(0x00),(0x71)), ((0x5F),(0x00),(0xA1)), ((0x2F),(0x00),(0xD0)), ((0x00),(0x07),(0xF9))  )
 
 
 
@@ -310,7 +315,6 @@ def confetti(delay, cycles):
         pixels.show()
         time.sleep(delay)
 
-#### this code does not work as expected. more codeing needed
 def sinelon(hue, fadescale, delay, cycles):
     for loop in range(cycles):
         # a colored dot sweeping back and forth, with fading trails
@@ -320,6 +324,30 @@ def sinelon(hue, fadescale, delay, cycles):
         
         #pixels[pos] += CHSV( gHue, 255, 192)
         pixels[int(pos)] = wheel(hue)
+        pixels.show()
+        time.sleep(delay)
+
+def bpm(pallet, delay, cycles): 
+    # colored stripes pulsing at a defined Beats-Per-Minute (BPM)
+    """
+    uint8_t BeatsPerMinute = 62;
+    CRGBPalette16 palette = PartyColors_p;
+    uint8_t beat = beatsin8( BeatsPerMinute, 64, 255);
+    for( int i = 0; i < NUM_LEDS; i++) { //9948
+        leds[i] = ColorFromPalette(palette, gHue+(i*2), beat-gHue+(i*10));
+    """
+    gHue = 0
+    for loop in range(cycles):
+
+        #beat = beatsin8( BeatsPerMinute, 64, 255)
+        beatsin = (math.sin( loop/num_pixels))
+        delta = (64-255) * (beatsin+1)/2
+        beat = 64 + delta
+
+        for i in  range(0, NUM_LEDS, 1):  #for( int i = 0; i < NUM_LEDS; i++) #9948
+            palColor = pallet[gHue+(i*2)] 
+            color = brightnessRGB(palColor[0], palColor[1], palColor[2], beat-gHue+(i*10))
+            pixels[i] = color
         pixels.show()
         time.sleep(delay)
 
@@ -414,8 +442,10 @@ while True:
     pixels.show()
     time.sleep(wait_time)
     
+    # makes the strand of pixels show bpm
+    # bpm(pallet, delay, cycles)
+    bpm(PartyColors_p, .1, 500)
 
-    #fixme... this doesn't work
     # makes the strand of pixels show sinelon
     # sinelon(hue, fadescale, delay, cycles)
     sinelon(0, 230, 0.02, 500)
