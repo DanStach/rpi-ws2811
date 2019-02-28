@@ -316,20 +316,20 @@ def sinelon(hue, delay, cycles):
     for loop in range(cycles):
         # a colored dot sweeping back and forth, with fading trails
         fadeall(200)
-        print("")
-        mills = int(round(time.time() * 1000))
+        #print("")
+        mills = time.time() 
         
-        beatsin = (math.sin( loop/100))
-        print( "beatsin", beatsin)
+        beatsin = (math.sin( mills))
+        #print( "beatsin", beatsin)
         #rangewidth = highest - lowest
         #scaledbeat = scale16( beatsin, rangewidth)
         #print(":scaledbeat", scaledbeat)
         #result = lowest + scaledbeat
-        pos = (num_pixels-1) * abs(beatsin)
+        pos = (num_pixels) * abs(beatsin)
         
         #pos = beatsin16( 13, 0, num_pixels-1 )
         
-        print("pos", pos)
+        #print("pos", pos)
         #pixels[pos] += CHSV( gHue, 255, 192)
         pixels[int(pos)] = wheel(hue)
         pixels.show()
@@ -430,7 +430,7 @@ while True:
     #fixme... this doesn't work
     # makes the strand of pixels show sinelon
     # sinelon(hue, delay, cycles)
-    sinelon(0, 0.2, 10000)
+    sinelon(0, 0.02, 10000)
     time.sleep(wait_time)
 
     # makes the strand of pixels show confetti
