@@ -456,6 +456,10 @@ while True:
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
+
+    # makes the strand of pixels show juggle
+    # juggle(fadescale, delay, cycles)
+    juggle(230, .1, 1000)
     
     # makes the strand of pixels show bpm
     # bpm(pallet, delay, cycles)
