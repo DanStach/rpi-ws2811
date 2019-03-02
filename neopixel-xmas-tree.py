@@ -413,7 +413,7 @@ def Fire(Cooling, Sparking, SpeedDelay, LoopCount):
             #print()
             #print()
             #print("rand interal" + str(((Cooling * 10) / num_pixels) + 2))
-            cooldown = random.randint(0, ((Cooling * 10) / num_pixels) + 2)
+            cooldown = random.randint(0, int((Cooling * 10) / num_pixels) + 2))
             #print("cooldown " + str(cooldown))
             #print("heat " + str(heat[i]))
             if cooldown > heat[i]:
