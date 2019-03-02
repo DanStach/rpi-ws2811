@@ -749,18 +749,18 @@ while True:
     #SparkingRangeEnd = 0-255
     #FireColor = 0-2 (0=red, 1=blue , 2=green)
     #FireEffect = 0-2
-    FireCustom(0, 12, 25, 0, 10, 0.02, 0, 2, 500) # red fire
+    FireCustom(0, 12, 40, 0, 10, 0.01, 0, 2, 500) # red fire
     time.sleep(wait_time)
-    FireCustom(0, 12, 25, 0, 10, 0.02, 1, 2, 500) # blue fire
+    FireCustom(0, 12, 40, 0, 10, 0.01, 1, 2, 500) # blue fire
     time.sleep(wait_time)
-    FireCustom(0, 12, 25, 0, 10, 0.02, 2, 2, 500) # green fire
+    FireCustom(0, 12, 40, 0, 10, 0.01, 2, 2, 500) # green fire
     time.sleep(wait_time)
 
 
 
     # makes the strand of pixels show Fire
     # Fire(Cooling, Sparking, SpeedDelay, LoopCount)
-    Fire(55, 120,0.015, 100)
+    Fire(40, 120,0.01, 100)
     time.sleep(wait_time)
     
     # makes the strand of pixels show 
