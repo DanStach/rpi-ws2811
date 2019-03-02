@@ -133,11 +133,12 @@ def fadeToBlack(ledNo, fadeValue):
 #SparkingRangeEnd = 0-255
 #FireColor = 0-2 (0=red, 1=blue , 2=green)
 #FireEffect = 0-2 (these are differnet ways of adding sparks to the strip)
-def FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, FireEffect, LoopCount):
-     heat = []
-     for i in range(num_pixels):
-        heat.append(0)
-     for l in range(LoopCount):
+def FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, LoopCount):
+    heat = []
+    for i in range(num_pixels):
+    heat.append(0)
+
+    for l in range(LoopCount):
         cooldown = 0
         
         # Step 1.  Cool down every cell a little
@@ -161,12 +162,7 @@ def FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart,
             # randomly pick the position of the spark
             y = random.randint(SparkingRangeStart,SparkingRangeEnd)
             # different fire effects 
-            if FireEffect == 0:
-                heat[y] = random.randint(int(heat[y]),255)
-            elif FireEffect == 1:
-                heat[y] = heat[y] + random.randint(160,255)
-            else:
-                heat[y] = random.randint(160,255)
+            heat[y] = random.randint(160,255)
 
         # Step 4.  Convert heat to LED colors
         for j in range(num_pixels):
@@ -176,30 +172,16 @@ def FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart,
             heatramp = t192 & 63 # 0..63  0x3f=63
             heatramp <<= 2 # scale up to 0..252
             # figure out which third of the spectrum we're in:
-            if FireColor == 2: #green flame
-                if t192 > 0x80: # hottest 128 = 0x80
-                    pixels[j] = (int(heatramp),255, 255)
-                elif t192 > 0x40: # middle 64 = 0x40
-                    pixels[j] = (0, 255, int(heatramp))
-                else: # coolest
-                    pixels[j] = (0, int(heatramp), 0)
-            elif FireColor == 1: #blue flame
-                if t192 > 0x80: # hottest 128 = 0x80
-                    pixels[j] = (255, int(heatramp), 255)
-                elif t192 > 0x40: # middle 64 = 0x40
-                    pixels[j] = (int(heatramp), 0, 255)
-                else: # coolest
-                    pixels[j] = (0, 0, int(heatramp))
-            else: #FireColor == 0: #red flame
-                if t192 > 0x80: # hottest 128 = 0x80
-                    pixels[j] = (255, 255, int(heatramp))
-                elif t192 > 0x40: # middle 64 = 0x40
-                    pixels[j] = (255, int(heatramp), 0)
-                else: # coolest
-                    pixels[j] = (int(heatramp), 0, 0)
 
-        pixels.show()
-        time.sleep(SpeedDelay)
+            if t192 > 0x80: # hottest 128 = 0x80
+                pixels[j] = (255, 255, int(heatramp))
+            elif t192 > 0x40: # middle 64 = 0x40
+                pixels[j] = (255, int(heatramp), 0)
+            else: # coolest
+                pixels[j] = (int(heatramp), 0, 0)
+
+    pixels.show()
+    time.sleep(SpeedDelay)
 
 def meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay, LoopCount, SpeedDelay): 
     for loop in range(LoopCount):
@@ -354,7 +336,7 @@ while True:
     #SparkingRangeEnd = 0-255
     #FireColor = 0-2 (0=red, 1=blue , 2=green)
     #FireEffect = 0-2
-    FireCustom(0, 12, 25, 0, 10, 0.02, 0, 2, 500) # red fire
+    FireCustom(0, 12, 25, 0, 10, 0.02, 500) # red fire
     time.sleep(wait_time)
 
     
