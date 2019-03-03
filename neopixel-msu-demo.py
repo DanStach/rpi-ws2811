@@ -203,8 +203,44 @@ def candycane_custom(c1, c2, thisbright, delay, cycles):
             time.sleep(delay)
 
 
+def randomLevelsCustom( levelobj, clearall, delay, cycles ):
+    NUM_LEVELS = len(levelobj)
+    for loop in range(cycles):
+
+        level = random.randint(0, NUM_LEVELS)
+        if (NUM_LEVELS == level):
+            level = 0
+        light_level_random(levelobj, 1)
+        pixels.show()
+        time.sleep(delay)
+
+#fixme: array is hardcoded for 350 lights. needs to be more dynamic.
+def light_level_random( levels,  clearall ):
+    #this only works if you have 350 lights
+    #levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348)
+    
+    #this works for 50 lights
+    #levels = (110, 200, 270, 340, 390, 400)
+    #levels = (20, 34, 43, 50)
+
+    if (clearall):
+        pixels.fill((0, 0, 0)) # clear all
+        pixels.show()
+    
+    startPxl = 0
+    if (level == 0):
+        startPxl = 0
+    else:
+        startPxl = levels[level-1]
+    
+    for i in range(startPxl, levels[level]):
+        pixels[i] = wheelBrightLevel(random.randint(0, 255), random.randint(50, 255))
+
+
+
 while True:
     random.seed(num_pixels)
+
     # make all pixels white
     # fill(red, green, blue)
     pixels.fill((255, 255, 255)) 
@@ -222,6 +258,12 @@ while True:
     # SnowSparkle(16, 16, 16, 100, 0.020, random.randint(100,1000)/1000)
     SnowSparkle(11, 102, 35, 80, 0, 0)
 
+    # makes the strand of pixels show  randomLevelsCustom
+    # levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348)
+    #random_levels(8, 0.1, 500)
+    # randomLevelsCustom( levelobj, clearall, delay, cycles ):
+    levels = (110, 200, 270, 340, 390, 400)
+    randomLevelsCustom(levels, 1, 0, 50)
 
     # make all pixels white
     # fill(red, green, blue)
