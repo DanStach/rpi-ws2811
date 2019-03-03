@@ -308,16 +308,6 @@ while True:
     colorAll2Color((255, 0, 0), (0, 255, 0)) 
     time.sleep(1)
 
-    # makes the strand of pixels show  randomLevelsCustom
-    # levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348)
-    levels = (110, 200, 270, 340, 390, 400)
-    #random_levels(8, 0.1, 500)
-    # randomLevelsCustom( levelobj, clearall, delay, cycles ):
-    #randomLevelsCustom(levels, 1, 0, 50)
-    #def randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles ):
-    randomLevelsCustom2Colors((255,255,255),(0,255,0), levels, 1, 0, 50)
-    
-
     # makes the strand of pixels show SnowSparkle (random)
     # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
     # SnowSparkle(16, 16, 16, 100, 0.020, random.randint(100,1000)/1000)
@@ -361,10 +351,21 @@ while True:
     pixels.fill((0, 255, 0)) 
     pixels.show()
 
+
     # shows 2 color every other pixel (white, green)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
     colorAll2Color((255, 255, 255), (0, 255, 0)) 
     time.sleep(wait_time * 4)
+
+    # makes the strand of pixels show  randomLevelsCustom
+    # levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348)
+    levels = (110, 200, 270, 340, 390, 400)
+    #random_levels(8, 0.1, 500)
+    # randomLevelsCustom( levelobj, clearall, delay, cycles ):
+    #randomLevelsCustom(levels, 1, 0, 50)
+    #def randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles ):
+    randomLevelsCustom2Colors((255,255,255),(0,255,0), levels, 1, 0, 50)
+    
 
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)
