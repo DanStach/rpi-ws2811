@@ -214,6 +214,18 @@ while True:
     pixels.fill((0, 255, 0))
     pixels.show()
     time.sleep(.5)
+
+    # make all pixels white
+    # fill(red, green, blue)
+    pixels.fill((255, 255, 255)) # red
+    pixels.show()
+    time.sleep(.5)
+
+    # make all pixels Green
+    # fill(red, green, blue)
+    pixels.fill((0, 255, 0))
+    pixels.show()
+    time.sleep(.5)
     
     # shows 2 color every other pixel (white, green)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
