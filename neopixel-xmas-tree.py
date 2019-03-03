@@ -114,168 +114,6 @@ def FadeInOut(red, green, blue, delay):
         pixels.show()
         time.sleep(delay)
 
-def Strobe(red, green, blue, StrobeCount, FlashDelay, EndPause):
-    for j in range(StrobeCount):
-        pixels.fill((red,green,blue))
-        pixels.show()
-        time.sleep(FlashDelay)
-        pixels.fill((0,0,0))
-        pixels.show()
-        time.sleep(FlashDelay)
- 
-    time.sleep(EndPause)
-
-
-    
-def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause):
-    pixels.fill((0,0,0))
-    r = 0
-    g = 0
-    b = 0
-
-    # define eye1 and eye2 location
-    StartPoint  = random.randint( 0, num_pixels - (2*EyeWidth) - EyeSpace )
-    Start2ndEye = StartPoint + EyeWidth + EyeSpace
-
-    #  set color of eyes for given location
-    for i in range(EyeWidth):
-        pixels[StartPoint + i] = (red, green, blue)
-        pixels[Start2ndEye + i] = (red, green, blue)
-    pixels.show()
-
-    # if user wants fading, then fadeout pixel color
-    if Fade == True:
-        for j in range(Steps, -1, -1):
-            r = (j/Steps)*red
-            g = (j/Steps)*green
-            b = (j/Steps)*blue
-
-            for i in range(EyeWidth):
-                pixels[StartPoint + i] = ((int(r), int(g), int(b)))
-                pixels[Start2ndEye + i] = ((int(r), int(g), int(b)))
-
-            pixels.show()
-            time.sleep(FadeDelay)
-    
-    # Set all pixels to black
-    pixels.fill((0,0,0))
-
-    # pause before changing eye location
-    time.sleep(EndPause)
-
-
-def CylonBounce(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
-  
-    for i in range(num_pixels - EyeSize - 1):
-        pixels.fill((0,0,0))
-        pixels[i] = (int(red/10), int(green/10), int(blue/10))
-
-        for j in range(1, EyeSize+1):
-            pixels[i+j] = (red, green, blue)
-
-        pixels[i+EyeSize+1] = (int(red/10), int(green/10), int(blue/10))
-        pixels.show()
-        time.sleep(SpeedDelay)
-  
-    time.sleep(ReturnDelay)
-    time.sleep(10)
-    
-    for i in range(num_pixels - EyeSize - 2, -1, -1):
-        pixels.fill((0,0,0))
-        pixels[i] = (int(red/10), int(green/10), int(blue/10))
-
-        for j in range(1, EyeSize+1):
-            pixels[i+j] = (red, green, blue)
-
-        pixels[i+EyeSize+1] = (int(red/10), int(green/10), int(blue/10))
-        pixels.show()
-        time.sleep(SpeedDelay)
-
-    time.sleep(ReturnDelay)
-    time.sleep(10)
-
-def NewKITT(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
-    RightToLeft(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
-    LeftToRight(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
-    OutsideToCenter(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
-    CenterToOutside(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
-    LeftToRight(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
-    RightToLeft(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
-    OutsideToCenter(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
-    CenterToOutside(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
-
-def CenterToOutside(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
-    for i in range(int((num_pixels - EyeSize)/2), -1, -1):
-        pixels.fill((0,0,0))
-        pixels[i] = (int(red/10), int(green/10), int(blue/10))
-
-        for j in range(1, EyeSize+1):
-            pixels[i + j] = (red, green, blue)
-        
-        pixels[i + EyeSize + 1] = (int(red/10), int(green/10), int(blue/10))
-        pixels[num_pixels - i - j] = (int(red/10), int(green/10), int(blue/10))
-
-        for j in range(1, EyeSize+1):
-            pixels[num_pixels - i - j] = (red, green, blue)
-
-        pixels[num_pixels - i - EyeSize - 1] = (int(red/10), int(green/10), int(blue/10))
-        pixels.show()
-        time.sleep(SpeedDelay)
-
-    time.sleep(ReturnDelay)
-
-def OutsideToCenter(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
-
-    for i in range(int(((num_pixels - EyeSize)/2)+1)):
-        pixels.fill((0,0,0))
-        pixels[i] = (int(red/10), int(green/10), int(blue/10))
-
-        for j in range(1, EyeSize+1):
-            pixels[i + j] = (red, green, blue) 
-        
-        pixels[i + EyeSize +1] = (int(red/10), int(green/10), int(blue/10))
-        pixels[num_pixels - i-1] = (int(red/10), int(green/10), int(blue/10))
-
-        for j in range(1, EyeSize+1):
-            pixels[num_pixels - i - j] = (red, green, blue)
-        
-        pixels[num_pixels - i - EyeSize - 1] = (int(red/10), int(green/10), int(blue/10))
-        pixels.show()
-        time.sleep(SpeedDelay)
-  
-    time.sleep(ReturnDelay)
-
-
-def LeftToRight(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
-    for i in range(num_pixels - EyeSize - 2):
-        pixels.fill((0,0,0))
-        pixels[i] = (int(red/10), int(green/10), int(blue/10))
-
-        for j in range(1, EyeSize+1):
-            pixels[i + j] = (red, green, blue)
-
-        pixels[i + EyeSize + 1] = (int(red/10), int(green/10), int(blue/10))
-        pixels.show()
-        time.sleep(SpeedDelay)
-    
-    time.sleep(ReturnDelay)
-
-
-def RightToLeft(red, green, blue, EyeSize, SpeedDelay, ReturnDelay):
-    for i in range(num_pixels - EyeSize - 2, 0, -1):
-        pixels.fill((0,0,0))
-        pixels[i] = (int(red/10), int(green/10), int(blue/10))
-
-        for j in range(1, EyeSize+1):
-            pixels[i + j] = (red, green, blue)
-
-        pixels[i + EyeSize + 1] = (int(red/10), int(green/10), int(blue/10))
-        pixels.show()
-        time.sleep(SpeedDelay)
-  
-    time.sleep(ReturnDelay)
-
-
 def Twinkle(red, green, blue, Count, SpeedDelay, OnlyOne):
     pixels.fill((0,0,0))
   
@@ -417,7 +255,6 @@ def Fire(Cooling, Sparking, SpeedDelay, LoopCount):
                 heat[i]=0
             else: 
                 heat[i]=heat[i]-cooldown
-        
         
         # Step 2.  Heat from each cell drifts 'up' and diffuses a little
         for k in range(num_pixels - 1, 2, -1):
@@ -796,27 +633,6 @@ while True:
     # makes the strand of pixels show Twinkle
     # Twinkle(red, green, blue, Count, SpeedDelay, OnlyOne)
     Twinkle(255, 0, 0, 10, 0, False)
-
-    # makes the strand of pixels show NewKITT 
-    # NewKITT(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
-    NewKITT(255, 0, 0, 4, 0, 0.050)
-    time.sleep(wait_time)
-
-    # makes the strand of pixels show CylonBounce
-    # CylonBounce(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
-    CylonBounce(255, 0, 0, 2, 0, 0.05)
-    time.sleep(wait_time)
-
-    # make the strand of pixels show HalloweenEyes
-    # HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause)
-    HalloweenEyes(255, 0, 0, 1, 1, True, 10, 0, 3)
-    time.sleep(wait_time)
-
-    # make all pixels stobe (white)
-    # Strobe(red, green, blue, StrobeCount, FlashDelay, EndPause)
-    # Strobe(255, 255, 255, 10, ., 1)
-    # time.sleep(wait_time)
-
 
     # fade in/out a single color (red / green / blue / white)
     # FadeInOut(red, green, blue, delay)
