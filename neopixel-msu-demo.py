@@ -206,6 +206,11 @@ def candycane_custom(c1, c2, thisbright, delay, cycles):
 while True:
     random.seed(num_pixels)
 
+    # makes the strand of pixels show SnowSparkle (random)
+    # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
+    # SnowSparkle(16, 16, 16, 100, 0.020, random.randint(100,1000)/1000)
+    SnowSparkle(11, 102, 35, 300, 0, 0)
+
 
     # make all pixels white
     # fill(red, green, blue)
@@ -253,7 +258,9 @@ while True:
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)
     # white and green
-    candycane_custom((255,255,255), (0, 255, 0), 255, 0, 10)
+    pixels.fill((0, 0, 0)) 
+    pixels.show()
+    candycane_custom((255,255,255), (0, 255, 0), 255, 0, 5)
     time.sleep(wait_time)
 
     
@@ -270,7 +277,7 @@ while True:
 
     # makes the strand of pixels show Sparkle (white)
     # Sparkle(red, green, blue, Count, SpeedDelay)
-    SparkleNonDestructive(11, 102, 35, 50, 0)
+    #SparkleNonDestructive(11, 102, 35, 50, 0)
 
 
 
