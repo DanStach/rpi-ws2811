@@ -206,7 +206,7 @@ while True:
 
     # make all pixels white
     # fill(red, green, blue)
-    pixels.fill((255, 255, 255)) # red
+    pixels.fill((255, 255, 255)) 
     pixels.show()
     time.sleep(.1)
 
@@ -218,7 +218,7 @@ while True:
 
     # make all pixels white
     # fill(red, green, blue)
-    pixels.fill((255, 255, 255)) # red
+    pixels.fill((255, 255, 255)) 
     pixels.show()
     time.sleep(.1)
 
@@ -227,6 +227,20 @@ while True:
     pixels.fill((0, 255, 0))
     pixels.show()
     time.sleep(.1)
+
+    # fast effect
+    pixels.fill((255, 255, 255)) 
+    pixels.show()
+    pixels.fill((0, 255, 0)) 
+    pixels.show()
+    pixels.fill((255, 255, 255)) 
+    pixels.show()
+    pixels.fill((0, 255, 0)) 
+    pixels.show()
+    pixels.fill((255, 255, 255)) 
+    pixels.show()
+    pixels.fill((0, 255, 0)) 
+    pixels.show()
 
     # shows 2 color every other pixel (white, green)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
