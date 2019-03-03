@@ -242,7 +242,6 @@ def randomLevelsCustom( levelobj, clearall, delay, cycles ):
         pixels.show()
         time.sleep(delay)
 
-#fixme: array is hardcoded for 350 lights. needs to be more dynamic.
 def light_level_random( levels, level, clearall ):
 
     if (clearall):
@@ -258,7 +257,36 @@ def light_level_random( levels, level, clearall ):
     for i in range(startPxl, levels[level]):
         pixels[i] = wheelBrightLevel(random.randint(0, 255), random.randint(50, 255))
 
+def randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles ):
+    NUM_LEVELS = len(levelobj)
+    for loop in range(cycles):
+        if loop % 2 == 0:
+            color = c1
+        else:
+            color = c2
 
+        level = random.randint(0, NUM_LEVELS)
+        if (NUM_LEVELS == level):
+            level = 0
+        light_level_random_color(color levelobj, level, 1)
+        pixels.show()
+        time.sleep(delay)
+
+def light_level_random_color(color, levels, level, clearall ):
+
+    if (clearall):
+        pixels.fill((0, 0, 0)) # clear all
+        pixels.show()
+    
+    startPxl = 0
+    if (level == 0):
+        startPxl = 0
+    else:
+        startPxl = levels[level-1]
+    
+    for i in range(startPxl, levels[level]):
+        pixels[i] = color
+      
 
 while True:
     random.seed(num_pixels)
@@ -275,17 +303,24 @@ while True:
     pixels.show()
     time.sleep(1)
 
-    # makes the strand of pixels show SnowSparkle (random)
-    # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
-    # SnowSparkle(16, 16, 16, 100, 0.020, random.randint(100,1000)/1000)
-    SnowSparkle(11, 102, 35, 80, 0, 0)
+    # shows 2 color every other pixel (red, green)
+    # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
+    colorAll2Color((255, 0, 0), (0, 255, 0)) 
+    time.sleep(1)
 
     # makes the strand of pixels show  randomLevelsCustom
     # levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348)
     #random_levels(8, 0.1, 500)
     # randomLevelsCustom( levelobj, clearall, delay, cycles ):
     levels = (110, 200, 270, 340, 390, 400)
-    randomLevelsCustom(levels, 1, 0, 50)
+    #randomLevelsCustom(levels, 1, 0, 50)
+    randomLevelsCustom2Colors((255,255,255),(0,255,0), 1, 0, 50)
+    
+
+    # makes the strand of pixels show SnowSparkle (random)
+    # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
+    # SnowSparkle(16, 16, 16, 100, 0.020, random.randint(100,1000)/1000)
+    SnowSparkle(11, 102, 35, 80, 0, 0)
 
     # make all pixels white
     # fill(red, green, blue)
