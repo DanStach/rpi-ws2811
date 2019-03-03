@@ -210,19 +210,12 @@ def randomLevelsCustom( levelobj, clearall, delay, cycles ):
         level = random.randint(0, NUM_LEVELS)
         if (NUM_LEVELS == level):
             level = 0
-        light_level_random(levelobj, 1)
+        light_level_random(levelobj, level, 1)
         pixels.show()
         time.sleep(delay)
 
 #fixme: array is hardcoded for 350 lights. needs to be more dynamic.
-def light_level_random( levels,  clearall ):
-    level = len(levels)
-    #this only works if you have 350 lights
-    #levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348)
-    
-    #this works for 50 lights
-    #levels = (110, 200, 270, 340, 390, 400)
-    #levels = (20, 34, 43, 50)
+def light_level_random( levels, level, clearall ):
 
     if (clearall):
         pixels.fill((0, 0, 0)) # clear all
