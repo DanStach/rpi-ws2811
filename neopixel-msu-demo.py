@@ -208,25 +208,25 @@ while True:
     # fill(red, green, blue)
     pixels.fill((255, 255, 255)) # red
     pixels.show()
-    time.sleep(.2)
+    time.sleep(.1)
 
     # make all pixels Green
     # fill(red, green, blue)
     pixels.fill((0, 255, 0))
     pixels.show()
-    time.sleep(.2)
+    time.sleep(.1)
 
     # make all pixels white
     # fill(red, green, blue)
     pixels.fill((255, 255, 255)) # red
     pixels.show()
-    time.sleep(.2)
+    time.sleep(.1)
 
     # make all pixels Green
     # fill(red, green, blue)
     pixels.fill((0, 255, 0))
     pixels.show()
-    time.sleep(.2)
+    time.sleep(.1)
 
     # shows 2 color every other pixel (white, green)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
@@ -242,8 +242,8 @@ while True:
     
     # makes the strand of pixels show 
     # meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay, LoopCount, SpeedDelay)
-    meteorRain(0, 255, 0, 10, 64, True, 1, 0)
-    time.sleep(wait_time)
+    #meteorRain(0, 255, 0, 10, 64, True, 1, 0)
+    #time.sleep(wait_time)
 
 
     # makes the strand of pixels show SnowSparkle (random)
@@ -255,11 +255,6 @@ while True:
     # Sparkle(red, green, blue, Count, SpeedDelay)
     SparkleNonDestructive(11, 102, 35, 50, 0)
 
-    # fade in/out a single color (red / green / blue / white)
-    # FadeInOut(red, green, blue, delay)
-    FadeInOut(11, 102, 35, 0.01) #Forest Green
-    FadeInOut(255, 255, 255, 0.01) #white
-    FadeInOut(0, 255, 0, 0.01) #green
 
 
 
