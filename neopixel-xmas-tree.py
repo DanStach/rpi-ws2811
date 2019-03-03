@@ -730,6 +730,11 @@ while True:
     pixels.show()
     time.sleep(wait_time)
 
+    # shows 2 color every other pixel (red, green)
+    # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
+    colorAll2Color((255, 0, 0), (0, 255, 0)) 
+    time.sleep(wait_time)
+
     # makes the strand of pixels show Fire
     # Fire(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, FireEffect, LoopCount)
     #CoolingRangeStart = 0-255
@@ -744,40 +749,38 @@ while True:
     time.sleep(wait_time)
 
 
-
-
     # makes the strand of pixels show Fire
     # Fire(Cooling, Sparking, SpeedDelay, LoopCount)
-    Fire(40, 120,0.01, 100)
+    Fire(40, 120,0, 100)
     time.sleep(wait_time)
     
     # makes the strand of pixels show 
     # meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay, LoopCount, SpeedDelay)
-    meteorRain(255, 255, 255, 10, 64, True, 1, 0.030)
+    meteorRain(255, 255, 255, 10, 64, True, 1, 0)
     time.sleep(wait_time)
 
     # makes the strand of pixels show theaterChaseRainbow
     # theaterChaseRainbow(SpeedDelay)
-    theaterChaseRainbow(.4)
+    theaterChaseRainbow(0)
     time.sleep(wait_time)
 
     # makes the strand of pixels show theaterChase
     # theaterChase(red, green, blue, cycles, SpeedDelay)
-    theaterChase(255,0,0, 20, 0.4)
+    theaterChase(255,0,0, 20, 0)
     time.sleep(wait_time)
 
     # makes the strand of pixels show colorWipe (green)
     # colorWipe(red, green, blue, SpeedDelay)
-    colorWipe(0,255,0, 0.05)
+    colorWipe(0,255,0, 0)
 
     # makes the strand of pixels show RunningLights (red)
     # RunningLights(red, green, blue, WaveDelay)
-    RunningLights(255,0,0, 0.05)
+    RunningLights(255,0,0, 0)
 
     # makes the strand of pixels show SnowSparkle (random)
     # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
     # SnowSparkle(16, 16, 16, 100, 0.020, random.randint(100,1000)/1000)
-    SnowSparkle(16, 16, 16, 100, 0.1, 0.3)
+    SnowSparkle(16, 16, 16, 100, 0, 0)
 
     # makes the strand of pixels show Sparkle (white)
     # Sparkle(red, green, blue, Count, SpeedDelay)
@@ -785,48 +788,43 @@ while True:
 
     # makes the strand of pixels show TwinkleRandom
     # TwinkleRandom( Count, SpeedDelay, OnlyOne) 
-    TwinkleRandom(20, 0.1, False)
+    TwinkleRandom(20, 0, False)
 
     # makes the strand of pixels show Twinkle
     # Twinkle(red, green, blue, Count, SpeedDelay, OnlyOne)
-    Twinkle(255, 0, 0, 10, 0.1, False)
+    Twinkle(255, 0, 0, 10, 0, False)
 
     # makes the strand of pixels show NewKITT 
     # NewKITT(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
-    NewKITT(255, 0, 0, 4, 0.010, 0.050)
+    NewKITT(255, 0, 0, 4, 0, 0.050)
     time.sleep(wait_time)
 
     # makes the strand of pixels show CylonBounce
     # CylonBounce(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
-    CylonBounce(255, 0, 0, 2, 0.010, 0.050)
+    CylonBounce(255, 0, 0, 2, 0, 0.05)
     time.sleep(wait_time)
 
     # make the strand of pixels show HalloweenEyes
     # HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause)
-    HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
+    HalloweenEyes(255, 0, 0, 1, 1, True, 10, 0, 3)
     time.sleep(wait_time)
 
     # make all pixels stobe (white)
     # Strobe(red, green, blue, StrobeCount, FlashDelay, EndPause)
-    Strobe(255, 255, 255, 10, .050, 1)
-    time.sleep(wait_time)
+    # Strobe(255, 255, 255, 10, ., 1)
+    # time.sleep(wait_time)
 
 
     # fade in/out a single color (red / green / blue / white)
     # FadeInOut(red, green, blue, delay)
-    FadeInOut(255, 0, 0, 0.01)
-    FadeInOut(0, 255, 0, 0.01)
-    FadeInOut(0, 0, 255, 0.01)
-    FadeInOut(255, 255, 255, 0.01)
+    FadeInOut(255, 0, 0, 0)
+    FadeInOut(0, 255, 0, 0)
+    FadeInOut(0, 0, 255, 0)
+    FadeInOut(255, 255, 255, 0)
 
     # loops red green blue
     # RGBLoop(delay)
     RGBLoop(0.01)
-    time.sleep(wait_time)
-
-    # shows 2 color every other pixel (red, green)
-    # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
-    colorAll2Color((255, 0, 0), (0, 255, 0)) 
     time.sleep(wait_time)
 
     # rainbow cycle
