@@ -20,7 +20,7 @@ num_pixels = 400
 
 # The order of the pixel colors - RGB or GRB. Some NeoPixels have red and green reversed!
 # For RGBW NeoPixels, simply change the ORDER to RGBW or GRBW.
-ORDER = neopixel.GRB
+ORDER = neopixel.RGB
 
 pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=ORDER)
 
@@ -729,16 +729,6 @@ while True:
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
-    
-    # makes the strand of pixels show BouncingBalls
-    # BouncingColoredBalls(BallCount, colors[][3], LoopCount) 
-    #BouncingColoredBalls(3, ((255,0,0),(0,255,0),(0,0,255)), 1000)
-    #time.sleep(wait_time)
-    
-    # makes the strand of pixels show BouncingBalls
-    # BouncingBalls(red, green, blue, BallCount, LoopCount) 
-    #BouncingBalls(255, 0, 0, 3, 1000) 
-    #time.sleep(wait_time)
 
     # makes the strand of pixels show Fire
     # Fire(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, FireEffect, LoopCount)
