@@ -176,11 +176,14 @@ def SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay):
 
 def candycane_custom(c1, c2, thisbright, delay, cycles):
     index = 0
+    N3  = int(num_pixels/3)
+    N6  = int(num_pixels/6)
+    N12 = int(num_pixels/12)
     for loop in range(cycles):
         index = index + 1
-        N3  = int(num_pixels/3)
-        N6  = int(num_pixels/6)
-        N12 = int(num_pixels/12)
+        cSwap = c1
+        c1 = c2
+        c2 = cSwap
         for i in range(N6):
             j0 = int((index + i + num_pixels - N12) % num_pixels)
             j1 = int((j0+N6) % num_pixels)
@@ -195,9 +198,9 @@ def candycane_custom(c1, c2, thisbright, delay, cycles):
             pixels[j4] = brightnessRGB(c1[0], c1[1], c1[2], int(thisbright*.75))
             pixels[j5] = brightnessRGB(c2[0], c2[1], c2[2], thisbright)
 
-        # show pixel values 
-        pixels.show()
-        time.sleep(delay)
+            # show pixel values 
+            pixels.show()
+            time.sleep(delay)
 
 
 while True:
