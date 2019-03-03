@@ -16,7 +16,7 @@ import ctypes
 pixel_pin = board.D18
 
 # The number of NeoPixels
-num_pixels = 350
+num_pixels = 400
 
 # The order of the pixel colors - RGB or GRB. Some NeoPixels have red and green reversed!
 # For RGBW NeoPixels, simply change the ORDER to RGBW or GRBW.
@@ -732,13 +732,13 @@ while True:
     
     # makes the strand of pixels show BouncingBalls
     # BouncingColoredBalls(BallCount, colors[][3], LoopCount) 
-    BouncingColoredBalls(3, ((255,0,0),(0,255,0),(0,0,255)), 1000)
-    time.sleep(wait_time)
+    #BouncingColoredBalls(3, ((255,0,0),(0,255,0),(0,0,255)), 1000)
+    #time.sleep(wait_time)
     
     # makes the strand of pixels show BouncingBalls
     # BouncingBalls(red, green, blue, BallCount, LoopCount) 
-    BouncingBalls(255, 0, 0, 3, 1000) 
-    time.sleep(wait_time)
+    #BouncingBalls(255, 0, 0, 3, 1000) 
+    #time.sleep(wait_time)
 
     # makes the strand of pixels show Fire
     # Fire(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, FireEffect, LoopCount)
@@ -749,12 +749,10 @@ while True:
     #SparkingRangeEnd = 0-255
     #FireColor = 0-2 (0=red, 1=blue , 2=green)
     #FireEffect = 0-2
-    FireCustom(0, 12, 40, 0, 10, 0.01, 0, 2, 500) # red fire
+    # Fire(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, FireEffect, LoopCount)
+    FireCustom(0, 8, 40, 0, 20, 0.00, 0, 2, 500) # red fire
     time.sleep(wait_time)
-    FireCustom(0, 12, 40, 0, 10, 0.01, 1, 2, 500) # blue fire
-    time.sleep(wait_time)
-    FireCustom(0, 12, 40, 0, 10, 0.01, 2, 2, 500) # green fire
-    time.sleep(wait_time)
+
 
 
 
