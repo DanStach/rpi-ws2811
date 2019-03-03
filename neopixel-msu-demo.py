@@ -216,6 +216,7 @@ def randomLevelsCustom( levelobj, clearall, delay, cycles ):
 
 #fixme: array is hardcoded for 350 lights. needs to be more dynamic.
 def light_level_random( levels,  clearall ):
+    level = len(levels)
     #this only works if you have 350 lights
     #levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348)
     
