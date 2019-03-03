@@ -306,7 +306,7 @@ while True:
     # shows 2 color every other pixel (red, green)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
     colorAll2Color((255, 0, 0), (0, 255, 0)) 
-    time.sleep(1)
+    time.sleep(3)
 
     # makes the strand of pixels show SnowSparkle (random)
     # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
