@@ -732,6 +732,12 @@ while True:
     colorAll2Color((255, 0, 0), (0, 255, 0)) 
     time.sleep(wait_time * 5)
 
+    # shows 2 color every other pixel (red, green)
+    # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
+    colorAll2Color((128,0,128), (255,165,0) )
+    time.sleep(wait_time * 5)
+
+
     # makes the strand of pixels show Fire
     # Fire(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, FireEffect, LoopCount)
     #CoolingRangeStart = 0-255
