@@ -137,8 +137,8 @@ def meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay
                 if ( i-j < num_pixels) and (i-j >= 0): 
                     pixels[i-j] = (red, green, blue)
 
-            pixels.show()
-            time.sleep(SpeedDelay)
+        pixels.show()
+        time.sleep(SpeedDelay)
 
 def TwinkleRandom(Count, SpeedDelay, OnlyOne):
     pixels.fill((0,0,0))
@@ -150,16 +150,17 @@ def TwinkleRandom(Count, SpeedDelay, OnlyOne):
         if OnlyOne:
             pixels.fill((0,0,0))
 
-    time.sleep(SpeedDelay)
+    #time.sleep(SpeedDelay)
 
-def Sparkle(red, green, blue, Count, SpeedDelay):
+def SparkleNonDestructive(red, green, blue, Count, SpeedDelay):
 
     for i in range(Count):    
         Pixel = random.randint(0,num_pixels-1)
+        preColor = pixels[Pixel] 
         pixels[Pixel] = (red,green,blue)
         pixels.show()
         time.sleep(SpeedDelay)
-        pixels[Pixel] = (0,0,0)
+        pixels[Pixel] = preColor
 
 def SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay):
     pixels.fill((red,green,blue))
@@ -207,26 +208,26 @@ while True:
     # fill(red, green, blue)
     pixels.fill((255, 255, 255)) # red
     pixels.show()
-    time.sleep(.5)
+    time.sleep(.2)
 
     # make all pixels Green
     # fill(red, green, blue)
     pixels.fill((0, 255, 0))
     pixels.show()
-    time.sleep(.5)
+    time.sleep(.2)
 
     # make all pixels white
     # fill(red, green, blue)
     pixels.fill((255, 255, 255)) # red
     pixels.show()
-    time.sleep(.5)
+    time.sleep(.2)
 
     # make all pixels Green
     # fill(red, green, blue)
     pixels.fill((0, 255, 0))
     pixels.show()
-    time.sleep(.5)
-    
+    time.sleep(.2)
+
     # shows 2 color every other pixel (white, green)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
     colorAll2Color((255, 255, 255), (0, 255, 0)) 
@@ -235,7 +236,7 @@ while True:
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)
     # white and green
-    candycane_custom((255,255,255), (0, 255, 0), 255, 0, 100)
+    candycane_custom((255,255,255), (0, 255, 0), 255, 0, 10)
     time.sleep(wait_time)
 
     
@@ -244,19 +245,15 @@ while True:
     meteorRain(0, 255, 0, 10, 64, True, 1, 0)
     time.sleep(wait_time)
 
-    # makes the strand of pixels show 
-    # meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay, LoopCount, SpeedDelay)
-    meteorRain(11, 102, 35, 10, 64, True, 1, 0.030)
-    time.sleep(wait_time)   
 
     # makes the strand of pixels show SnowSparkle (random)
     # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
     # SnowSparkle(16, 16, 16, 100, 0.020, random.randint(100,1000)/1000)
-    SnowSparkle(11, 102, 35, 50, 0.1, 0.3)
+    SnowSparkle(11, 102, 35, 300, 0, 0)
 
     # makes the strand of pixels show Sparkle (white)
     # Sparkle(red, green, blue, Count, SpeedDelay)
-    Sparkle(11, 102, 35, 50, 0)
+    SparkleNonDestructive(11, 102, 35, 50, 0)
 
     # fade in/out a single color (red / green / blue / white)
     # FadeInOut(red, green, blue, delay)
