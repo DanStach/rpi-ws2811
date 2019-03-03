@@ -310,11 +310,12 @@ while True:
 
     # makes the strand of pixels show  randomLevelsCustom
     # levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348)
+    levels = (110, 200, 270, 340, 390, 400)
     #random_levels(8, 0.1, 500)
     # randomLevelsCustom( levelobj, clearall, delay, cycles ):
-    levels = (110, 200, 270, 340, 390, 400)
     #randomLevelsCustom(levels, 1, 0, 50)
-    randomLevelsCustom2Colors((255,255,255),(0,255,0), 1, 0, 50)
+    #def randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles ):
+    randomLevelsCustom2Colors((255,255,255),(0,255,0), levels, 1, 0, 50)
     
 
     # makes the strand of pixels show SnowSparkle (random)
