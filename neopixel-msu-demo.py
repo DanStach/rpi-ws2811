@@ -122,85 +122,6 @@ def fadeToBlack(ledNo, fadeValue):
     pixels[ledNo] = ( int(r), int(g), int(b) )
 
 
-
-
-### makes the strand of pixels show Fire
-# Fire(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, FireEffect, LoopCount)
-#CoolingRangeStart = 0-255
-#CoolingRangeEnd = 0-255
-#Sparking = 0-100  (0= 0% sparkes randomly added, 100= 100% sparks randomly added)
-#SparkingRangeStart = 0-255 
-#SparkingRangeEnd = 0-255
-#FireColor = 0-2 (0=red, 1=blue , 2=green)
-#FireEffect = 0-2 (these are differnet ways of adding sparks to the strip)
-def FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, FireEffect, LoopCount):
-     heat = []
-     for i in range(num_pixels):
-        heat.append(0)
-     for l in range(LoopCount):
-        cooldown = 0
-        
-        # Step 1.  Cool down every cell a little
-        for i in range(num_pixels):
-            # for 50 leds and cooling 50
-            # cooldown = random.randint(0, 12)
-            # cooldown = random.randint(0, ((Cooling * 10) / num_pixels) + 2)
-            cooldown = random.randint(CoolingRangeStart, CoolingRangeEnd)
-            if cooldown > heat[i]:
-                heat[i]=0
-            else: 
-                heat[i]=heat[i]-cooldown
-        
-        # Step 2.  Heat from each cell drifts 'up' and diffuses a little
-        for k in range(num_pixels - 1, 2, -1):
-            heat[k] = (heat[k - 1] + heat[k - 2] + heat[k - 2]) / 3
-            
-        # Step 3.  Randomly ignite new 'sparks' near the bottom
-        if random.randint(0,100) < Sparking:
-            
-            # randomly pick the position of the spark
-            y = random.randint(SparkingRangeStart,SparkingRangeEnd)
-            # different fire effects 
-            if FireEffect == 0:
-                heat[y] = random.randint(int(heat[y]),255)
-            elif FireEffect == 1:
-                heat[y] = heat[y] + random.randint(160,255)
-            else:
-                heat[y] = random.randint(160,255)
-
-        # Step 4.  Convert heat to LED colors
-        for j in range(num_pixels):
-            t192 = round((int(heat[j])/255.0)*191)
-
-            # calculate ramp up from
-            heatramp = t192 & 63 # 0..63  0x3f=63
-            heatramp <<= 2 # scale up to 0..252
-            # figure out which third of the spectrum we're in:
-            if FireColor == 2: #green flame
-                if t192 > 0x80: # hottest 128 = 0x80
-                    pixels[j] = (int(heatramp),255, 255)
-                elif t192 > 0x40: # middle 64 = 0x40
-                    pixels[j] = (0, 255, int(heatramp))
-                else: # coolest
-                    pixels[j] = (0, int(heatramp), 0)
-            elif FireColor == 1: #blue flame
-                if t192 > 0x80: # hottest 128 = 0x80
-                    pixels[j] = (255, int(heatramp), 255)
-                elif t192 > 0x40: # middle 64 = 0x40
-                    pixels[j] = (int(heatramp), 0, 255)
-                else: # coolest
-                    pixels[j] = (0, 0, int(heatramp))
-            else: #FireColor == 0: #red flame
-                if t192 > 0x80: # hottest 128 = 0x80
-                    pixels[j] = (255, 255, int(heatramp))
-                elif t192 > 0x40: # middle 64 = 0x40
-                    pixels[j] = (255, int(heatramp), 0)
-                else: # coolest
-                    pixels[j] = (int(heatramp), 0, 0)
-
-        pixels.show()
-        time.sleep(SpeedDelay)
-
 def meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay, LoopCount, SpeedDelay): 
     for loop in range(LoopCount):
         pixels.fill((0,0,0))
@@ -252,45 +173,6 @@ def SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay):
         pixels.show()
         time.sleep(SpeedDelay)
 
-
-def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause, cycles):
- for loop in range(cycles):
-        pixels.fill((0,0,0))
-        r = 0
-        g = 0
-        b = 0
-
-        # define eye1 and eye2 location
-        StartPoint  = random.randint( 0, num_pixels - (2*EyeWidth) - EyeSpace )
-        Start2ndEye = StartPoint + EyeWidth + EyeSpace
-
-        #  set color of eyes for given location
-        for i in range(EyeWidth):
-            pixels[StartPoint + i] = (red, green, blue)
-            pixels[Start2ndEye + i] = (red, green, blue)
-        pixels.show()
-
-        # if user wants fading, then fadeout pixel color
-        if Fade == True:
-            for j in range(Steps, -1, -1):
-                r = (j/Steps)*red
-                g = (j/Steps)*green
-                b = (j/Steps)*blue
-
-                for i in range(EyeWidth):
-                    pixels[StartPoint + i] = ((int(r), int(g), int(b)))
-                    pixels[Start2ndEye + i] = ((int(r), int(g), int(b)))
-
-                pixels.show()
-                time.sleep(FadeDelay)
-        
-        # Set all pixels to black
-        pixels.fill((0,0,0))
-
-        # pause before changing eye location
-        time.sleep(EndPause)
-
-
 def candycane_custom(c1, c2, thisbright, delay, cycles):
     index = 0
     for loop in range(cycles):
@@ -321,17 +203,17 @@ while True:
     random.seed(num_pixels)
 
 
-    # make all pixels Red
+    # make all pixels white
     # fill(red, green, blue)
-    pixels.fill((255, 0, 0)) # red
+    pixels.fill((255, 255, 255)) # red
     pixels.show()
-    time.sleep(wait_time)
+    time.sleep(.5)
 
     # make all pixels Green
     # fill(red, green, blue)
     pixels.fill((0, 255, 0))
     pixels.show()
-    time.sleep(wait_time)
+    time.sleep(.5)
 
     # make all pixels Blue
     # fill(red, green, blue)
@@ -347,24 +229,13 @@ while True:
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)
     # white and green
-    candycane_custom((255,255,255), (11, 102, 35), 255, 0, 100)
+    candycane_custom((255,255,255), (,0 255, 0), 255, 0, 100)
     time.sleep(wait_time)
 
-    # makes the strand of pixels show Fire
-    # Fire(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, FireEffect, LoopCount)
-    #CoolingRangeStart = 0-255
-    #CoolingRangeEnd = 0-255
-    #Sparking = 0-100  (0= 0% sparkes randomly added, 100= 100% sparks randomly added)
-    #SparkingRangeStart = 0-255 
-    #SparkingRangeEnd = 0-255
-    #FireColor = 0-2 (0=red, 1=blue , 2=green)
-    #FireEffect = 0-2
-    FireCustom(0, 12, 25, 0, 10, 0.02, 2, 2, 200) # red fire
-    time.sleep(wait_time)
     
     # makes the strand of pixels show 
     # meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay, LoopCount, SpeedDelay)
-    meteorRain(255, 255, 255, 10, 64, True, 1, 0.030)
+    meteorRain(0, 255, 0, 10, 64, True, 1, 0)
     time.sleep(wait_time)
 
     # makes the strand of pixels show 
@@ -387,10 +258,5 @@ while True:
     FadeInOut(255, 255, 255, 0.01) #white
     FadeInOut(0, 255, 0, 0.01) #green
 
-    ### HALLOWEEN idea (green)
-    # make the strand of pixels show HalloweenEyes
-    # HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause, cycles)
-    HalloweenEyes(11, 102, 35, 1, 1, True, 5, 1, 3, 5)
-    time.sleep(wait_time)
 
 
