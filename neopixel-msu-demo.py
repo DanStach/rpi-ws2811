@@ -205,11 +205,22 @@ def candycane_custom(c1, c2, thisbright, delay, cycles):
 
 while True:
     random.seed(num_pixels)
+    # make all pixels white
+    # fill(red, green, blue)
+    pixels.fill((255, 255, 255)) 
+    pixels.show()
+    time.sleep(1)
+
+    # make all pixels Green
+    # fill(red, green, blue)
+    pixels.fill((0, 255, 0))
+    pixels.show()
+    time.sleep(1)
 
     # makes the strand of pixels show SnowSparkle (random)
     # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
     # SnowSparkle(16, 16, 16, 100, 0.020, random.randint(100,1000)/1000)
-    SnowSparkle(11, 102, 35, 300, 0, 0)
+    SnowSparkle(11, 102, 35, 100, 0, 0)
 
 
     # make all pixels white
