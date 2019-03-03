@@ -962,25 +962,25 @@ while True:
 
 # makes the strand of pixels show random_levels
     # pancake(level, delay)
-    pixels.fill((0, 0, 0))
-    time.sleep(wait_time)
-    pancake(8, 0.5)
-    time.sleep(wait_time)
+    #pixels.fill((0, 0, 0))
+    #time.sleep(wait_time)
+    #pancake(8, 0.5)
+    #time.sleep(wait_time)
 
     # makes the strand of pixels show drain
     # drain(level, delay)
-    drain(8, 0.5)
-    time.sleep(wait_time)
+    #drain(8, 0.5)
+    #time.sleep(wait_time)
 
     # makes the strand of pixels show random_levels
     # random_levels( NUM_LEVELS, delay, cycles )
     #random_levels(12, 0, 500)
-    random_levels(8, 0.1, 500)
-    time.sleep(wait_time)
+    #random_levels(8, 0.1, 500)
+    #time.sleep(wait_time)
 
     # makes the strand of pixels show candycane
     # candycane(delay, cycles)
-    candycane(0, 500) 
+    candycane(0, 10) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show twinkle
@@ -991,7 +991,7 @@ while True:
     # makes the strand of pixels show loop5
     # loop5( delay, cycles)
     #loop5(0.25, 500) 
-    time.sleep(wait_time)
+    #time.sleep(wait_time)
 
     ### FixMe: think random_march and matrix are the same
     # makes the strand of pixels show random_march
