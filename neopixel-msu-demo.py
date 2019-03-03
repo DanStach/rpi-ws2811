@@ -268,7 +268,7 @@ def randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles ):
         level = random.randint(0, NUM_LEVELS)
         if (NUM_LEVELS == level):
             level = 0
-        light_level_random_color(color levelobj, level, 1)
+        light_level_random_color(color, levelobj, level, 1)
         pixels.show()
         time.sleep(delay)
 
