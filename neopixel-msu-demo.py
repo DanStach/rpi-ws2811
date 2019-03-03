@@ -311,7 +311,7 @@ while True:
     # makes the strand of pixels show SnowSparkle (random)
     # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
     # SnowSparkle(16, 16, 16, 100, 0.020, random.randint(100,1000)/1000)
-    SnowSparkle(11, 102, 35, 80, 0, 0)
+    SnowSparkle(11, 102, 35, 90, 0, 0)
 
     # make all pixels white
     # fill(red, green, blue)
