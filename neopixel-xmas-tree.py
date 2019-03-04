@@ -792,8 +792,8 @@ def twinkle2(delay, cycles ):
         
             pixels[whichPixel] = wheelBrightLevel(hue, brightness)
             # show pixel values 
-            pixels.show()
-            time.sleep(delay)
+        pixels.show()
+        time.sleep(delay)
 
 def candycane_custom(c1, c2, thisbright, delay, cycles):
     index = 0
@@ -985,7 +985,7 @@ while True:
     # twinkle(delay, cycles)
     pixels.fill((255, 0, 0)) 
     pixels.show()
-    twinkle2(0.005, 100) 
+    twinkle2(0, 10) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show loop5
