@@ -834,7 +834,7 @@ def random_levels( NUM_LEVELS, delay, cycles ):
         pixels.show()
         time.sleep(delay)
 
-d
+
 #fixme: array is hardcoded for 350 lights. needs to be more dynamic.
 def light_level_random( level,  clearall ):
     #this only works if you have 350 lights
