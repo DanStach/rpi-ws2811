@@ -623,13 +623,14 @@ def rgb_propeller(LoopCount):
     thissat = 255
     index= 0
 
+    ghue = (thishue + 80) % 255
+    bhue = (thishue + 160) % 255
+    N3  = int(num_pixels/3)
+    N6  = int(num_pixels/6)
+    N12 = int(num_pixels/12)
+
     for loop in range(LoopCount):
         index = index + 1
-        ghue = (thishue + 80) % 255
-        bhue = (thishue + 160) % 255
-        N3  = int(num_pixels/3)
-        N6  = int(num_pixels/6)
-        N12 = int(num_pixels/12)
 
         for i in range(N3):
             j0 = (index + i + num_pixels - N12) % num_pixels
@@ -1028,7 +1029,7 @@ while True:
     # makes the strand of pixels show random_burst
     # rgb_propeller(LoopCount)
     pixels.fill((0, 0, 0))
-    rgb_propeller(1000)
+    rgb_propeller(100)
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
@@ -1108,7 +1109,7 @@ while True:
 
     # loops red green blue
     # RGBLoop(delay)
-    RGBLoop(0.01)
+    RGBLoop(0)
     time.sleep(wait_time)
 
     # rainbow cycle
