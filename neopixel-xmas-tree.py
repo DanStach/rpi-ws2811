@@ -603,6 +603,7 @@ def hsv_to_rgb(h, s, v):
         return (v, p, q)
 
 def random_burst(delayStart, delayEnd , LoopCount):
+    thisbright = 255
     for loop in range(LoopCount):
         randomIndex= random.randint(0, num_pixels-1)
         randomhue = random.randint(0, 255)
