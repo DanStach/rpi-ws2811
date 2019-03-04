@@ -1032,7 +1032,7 @@ while True:
     # makes the strand of pixels show random_burst
     # rgbPropellerCustom(hue, LoopCount)
     pixels.fill((0, 0, 0))
-    rgbPropellerCustom(0, 10)
+    rgbPropellerCustom(0, 2)
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
