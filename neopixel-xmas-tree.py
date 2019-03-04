@@ -378,6 +378,7 @@ def meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay
             pixels.show()
             time.sleep(SpeedDelay)
 
+
 def fadeToBlack(ledNo, fadeValue):
     #ctypes.c_uint32 oldColor = 0x00000000UL
     #ctypes.c_uint8 r = 0
@@ -541,9 +542,6 @@ def BouncingColoredBalls(BallCount, colors, LoopCount):
         
         pixels.show()
         pixels.fill((0, 0, 0))
-
-
-
 
 
 def wheelBrightLevel(pos, bright):
