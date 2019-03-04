@@ -617,28 +617,30 @@ def random_burst(delayStart, delayEnd , LoopCount):
         time.sleep(delay)
 
   
-def rgb_propeller(LoopCount):
-    thishue = 0
-    thisbright = 255
-    thissat = 255
+def rgbPropellerCustom(hue1, LoopCount):
+    hue1 = 0
     index= 0
 
-    ghue = (thishue + 80) % 255
-    bhue = (thishue + 160) % 255
+    hue2 = (hue1 + 80) % 255
+    hue3 = (hue1 + 160) % 255
     N3  = int(num_pixels/3)
     N6  = int(num_pixels/6)
     N12 = int(num_pixels/12)
 
     for loop in range(LoopCount):
         index = index + 1
-
+        cSwap = hue1
+        hue1 = hue2
+        hue2 = hue3
+        hue3 = cSwap
+        
         for i in range(N3):
             j0 = (index + i + num_pixels - N12) % num_pixels
             j1 = (j0+N3) % num_pixels
             j2 = (j1+N3) % num_pixels
-            pixels[j0] = wheel(thishue)
-            pixels[j1] = wheel(ghue)
-            pixels[j2] = wheel(bhue)
+            pixels[j0] = wheel(hue1)
+            pixels[j1] = wheel(hue2)
+            pixels[j2] = wheel(hue3)
             pixels.show()
 
 
@@ -1030,9 +1032,9 @@ while True:
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
-    # rgb_propeller(LoopCount)
+    # rgbPropellerCustom(hue, LoopCount)
     pixels.fill((0, 0, 0))
-    rgb_propeller(100)
+    rgbPropellerCustom(0, 100)
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
