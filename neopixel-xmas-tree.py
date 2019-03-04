@@ -777,7 +777,7 @@ def loop5(delay, cycles):
         time.sleep(delay)
 
 
-def twinkle(delay, cycles ):
+def twinkle2(delay, cycles ):
     for loop in range(cycles):
         huebase = 0
         
@@ -948,12 +948,12 @@ while True:
     # shows 2 color every other pixel (red, green)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
     colorAll2Color((255, 0, 0), (0, 255, 0)) 
-    time.sleep(wait_time * 5)
+    time.sleep(wait_time )
 
     # shows 2 color every other pixel (purple, orange)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
     colorAll2Color((128,0,128), (235,97,35) )
-    time.sleep(wait_time * 5)
+    time.sleep(wait_time )
 
 # makes the strand of pixels show random_levels
     # pancake(level, delay)
@@ -978,12 +978,12 @@ while True:
     # white and green
     pixels.fill((0, 0, 0)) 
     pixels.show()
-    candycane_custom((255,255,255), (0, 255, 0), 255, 0, 5)
+    candycane_custom((255,255,255), (0, 255, 0), 255, 0, 1)
     time.sleep(wait_time)
 
     # makes the strand of pixels show twinkle
     # twinkle(delay, cycles)
-    twinkle(0.005, 100) 
+    twinkle2(0.005, 100) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show loop5
