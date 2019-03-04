@@ -983,6 +983,8 @@ while True:
 
     # makes the strand of pixels show twinkle
     # twinkle(delay, cycles)
+    pixels.fill((255, 0, 0)) 
+    pixels.show()
     twinkle2(0.005, 100) 
     time.sleep(wait_time)
 
