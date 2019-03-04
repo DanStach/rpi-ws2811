@@ -996,17 +996,21 @@ while True:
     ### FixMe: think random_march and matrix are the same
     # makes the strand of pixels show random_march
     # random_march( delay, cycles)
-    random_march(0.25, 256) 
+    pixels.fill((0, 0, 0)) 
+    pixels.show()
+    random_march(0, 400) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show matrix
     # matrix(random_percent, delay, cycles)
-    matrix(10, 0.25, 500) 
+    pixels.fill((0, 0, 0)) 
+    pixels.show()
+    matrix(10, 0, 500) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show rainbow_fade
     # rainbow_fade(delay, cycles):
-    rainbow_fade(.02, 256) 
+    rainbow_fade(0, 256) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show rainbow_loop
@@ -1014,7 +1018,7 @@ while True:
     pixels.fill((0, 0, 0))
     pixels.show()
     time.sleep(wait_time*2)
-    rainbow_loop(0.01, 10, 1000) 
+    rainbow_loop(0, 10, 500) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show rainbow
@@ -1022,7 +1026,7 @@ while True:
     pixels.fill((255, 255, 0))
     pixels.show()
     time.sleep(wait_time*2)
-    rainbow(0.01, 10, 2) 
+    rainbow(0, 10, 2) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
@@ -1034,7 +1038,7 @@ while True:
     # makes the strand of pixels show random_burst
     # random_burst(delayStart, delayEnd , LoopCount)
     pixels.fill((0, 0, 0))
-    random_burst(0.005, .2, 100)
+    random_burst(0, 0, 100)
     time.sleep(wait_time)
 
 
