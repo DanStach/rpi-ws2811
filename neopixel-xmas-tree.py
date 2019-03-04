@@ -633,7 +633,7 @@ def rgbPropellerCustom(hue1, LoopCount):
         hue1 = hue2
         hue2 = hue3
         hue3 = cSwap
-        
+
         for i in range(N3):
             j0 = (index + i + num_pixels - N12) % num_pixels
             j1 = (j0+N3) % num_pixels
@@ -1019,7 +1019,6 @@ while True:
     # rainbow_loop(delay, step, cycles):
     pixels.fill((0, 0, 0))
     pixels.show()
-    time.sleep(wait_time*2)
     rainbow_loop(0, 10, 500) 
     time.sleep(wait_time)
 
@@ -1027,14 +1026,13 @@ while True:
     # rainbow(delay, step, cycles):
     pixels.fill((255, 255, 0))
     pixels.show()
-    time.sleep(wait_time*2)
     rainbow(0, 10, 2) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
     # rgbPropellerCustom(hue, LoopCount)
     pixels.fill((0, 0, 0))
-    rgbPropellerCustom(0, 100)
+    rgbPropellerCustom(0, 10)
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
