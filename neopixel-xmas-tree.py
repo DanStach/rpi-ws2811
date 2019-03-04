@@ -795,14 +795,16 @@ def twinkle(delay, cycles ):
             pixels.show()
             time.sleep(delay)
 
-def candycane(delay, cycles):
+def candycane_custom(c1, c2, thisbright, delay, cycles):
     index = 0
-    thisbright = 255
+    N3  = int(num_pixels/3)
+    N6  = int(num_pixels/6)
+    N12 = int(num_pixels/12)
     for loop in range(cycles):
         index = index + 1
-        N3  = int(num_pixels/3)
-        N6  = int(num_pixels/6)
-        N12 = int(num_pixels/12)
+        cSwap = c1
+        c1 = c2
+        c2 = cSwap
         for i in range(N6):
             j0 = int((index + i + num_pixels - N12) % num_pixels)
             j1 = int((j0+N6) % num_pixels)
@@ -810,12 +812,12 @@ def candycane(delay, cycles):
             j3 = int((j2+N6) % num_pixels)
             j4 = int((j3+N6) % num_pixels)
             j5 = int((j4+N6) % num_pixels)
-            pixels[j0] = brightnessRGB(255, 255, 255, int(thisbright*.75))
-            pixels[j1] = brightnessRGB(255, 0, 0, thisbright)
-            pixels[j2] = brightnessRGB(255, 255, 255, int(thisbright*.75))
-            pixels[j3] = brightnessRGB(255, 0, 0, thisbright)
-            pixels[j4] = brightnessRGB(255, 255, 255, int(thisbright*.75))
-            pixels[j5] = brightnessRGB(255, 0, 0, thisbright)
+            pixels[j0] = brightnessRGB(c1[0], c1[1], c1[2], int(thisbright*.75))
+            pixels[j1] = brightnessRGB(c2[0], c2[1], c2[2], thisbright)
+            pixels[j2] = brightnessRGB(c1[0], c1[1], c1[2], int(thisbright*.75))
+            pixels[j3] = brightnessRGB(c2[0], c2[1], c2[2], thisbright)
+            pixels[j4] = brightnessRGB(c1[0], c1[1], c1[2], int(thisbright*.75))
+            pixels[j5] = brightnessRGB(c2[0], c2[1], c2[2], thisbright)
 
             # show pixel values 
             pixels.show()
@@ -832,6 +834,7 @@ def random_levels( NUM_LEVELS, delay, cycles ):
         pixels.show()
         time.sleep(delay)
 
+d
 #fixme: array is hardcoded for 350 lights. needs to be more dynamic.
 def light_level_random( level,  clearall ):
     #this only works if you have 350 lights
@@ -853,7 +856,6 @@ def light_level_random( level,  clearall ):
     
     for i in range(startPxl, levels[level]):
         pixels[i] = wheelBrightLevel(random.randint(0, 255), random.randint(50, 255))
-
 
 
 def drain(level, delay):
@@ -908,8 +910,6 @@ def pancake(NUM_LEVELS, delay):
             time.sleep(delay)
 
 
-
-
 def clear_level( level):
     levels = (11, 20, 27, 34, 39, 43, 47, 50)
     startPxl = 0
@@ -919,12 +919,6 @@ def clear_level( level):
         startPxl = levels[level-1]
     for i in range(startPxl, levels[level]):
         pixels[i] = (0,0,0)  #CRGB::Black;
-
-
-
-
-
-
 
 
 
@@ -979,9 +973,12 @@ while True:
     #random_levels(8, 0.1, 500)
     #time.sleep(wait_time)
 
-    # makes the strand of pixels show candycane
-    # candycane(delay, cycles)
-    candycane(0, 10) 
+    # makes the strand of pixels show candycane_custom
+    # candycane_custom(c1, c2, brightness, delay, cycles)
+    # white and green
+    pixels.fill((0, 0, 0)) 
+    pixels.show()
+    candycane_custom((255,255,255), (0, 255, 0), 255, 0, 5)
     time.sleep(wait_time)
 
     # makes the strand of pixels show twinkle
