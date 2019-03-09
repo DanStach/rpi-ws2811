@@ -16,7 +16,7 @@ import ctypes
 pixel_pin = board.D18
 
 # The number of NeoPixels
-num_pixels = 50
+num_pixels = 400
 
 # The order of the pixel colors - RGB or GRB. Some NeoPixels have red and green reversed!
 # For RGBW NeoPixels, simply change the ORDER to RGBW or GRBW.
@@ -316,6 +316,26 @@ def candycane_custom(c1, c2, thisbright, delay, cycles):
             time.sleep(delay)
 
 
+def RunningLights(red, green, blue, WaveDelay):
+    Position = 0
+    
+    for j in range(num_pixels*2):
+        Position = Position + 1
+        
+        for i in range(num_pixels):
+            # sine wave, 3 offset waves make a rainbow!
+            # float level = sin(i+Position) * 127 + 128;
+            # setPixel(i,level,0,0);
+            # float level = sin(i+Position) * 127 + 128;
+            level = math.sin(i + Position) * 127 + 128
+            r = int((level/255)*red)
+            g = int((level/255)*green)
+            b = int((level/255)*blue)
+            pixels[i] = (r,g,b)
+
+        pixels.show()
+        time.sleep(WaveDelay)
+
 while True:
     random.seed(num_pixels)
 
@@ -336,8 +356,6 @@ while True:
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
-    
-
 
 
     ### HALLOWEEN idea
@@ -345,6 +363,17 @@ while True:
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
     colorAll2Color((128,0,128), (255,165,0) )
     time.sleep(wait_time)
+    colorAll2Color((128,0,128), (235,97,35) )
+    time.sleep(wait_time)
+
+    ### HALLOWEEN idea
+    # shows RunningLights in purple
+    # RunningLights(red, green, blue, WaveDelay)
+    RunningLights(235,97,35, 0)
+    time.sleep(wait_time)
+
+    ### HALLOWEEN idea
+    # shows RunningLights in 2 or more color
 
     ### HALLOWEEN idea
     # make the strand of pixels show HalloweenEyes

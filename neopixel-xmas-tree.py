@@ -218,9 +218,13 @@ def theaterChaseRainbow(SpeedDelay):
                 # check that pixel index is not greater than number of pixels
                 if i+q < num_pixels:
                     # turn every third pixel on
-                    print("i", i , "j", j "num_pixels", num_pixels, "pixel_index", (i * 256 // num_pixels) + j)
-                    pixel_index = (i * 256 // num_pixels) + j
-                    pixels[i+q] = wheel(pixel_index & 255)
+                    # c = Wheel( (i+j) % 255);
+                    # setPixel(i+q, *c, *(c+1), *(c+2));  
+
+                    pixels[i+q] = wheel((i+j) % 255)
+                    #print("i", i , "j", j "num_pixels", num_pixels, "pixel_index", (i * 256 // num_pixels) + j)
+                    #pixel_index = (i * 256 // num_pixels) + j
+                    #pixels[i+q] = wheel(pixel_index & 255)
 
             pixels.show()
             time.sleep(SpeedDelay)
