@@ -247,6 +247,23 @@ def RunningLightsPreExisting(WaveDelay, cycles):
         time.sleep(WaveDelay)
 
 
+def SnowSparkleExisting(Count, SparkleDelay, SpeedDelay):
+    # gather existing colors in strip of pixel
+    stripExisting = []
+    for i in range(num_pixels):
+        stripExisting.append(pixels[i])
+
+    for i in range(Count):
+        index = random.randint(0,num_pixels-1)
+        pixels[index] = (255,255,255)
+        pixels.show()
+        time.sleep(SparkleDelay)
+        pixels[index] = stripExisting[index]
+        pixels.show()
+        time.sleep(SpeedDelay)
+
+
+
 while True:
     random.seed(num_pixels)
 
@@ -269,19 +286,28 @@ while True:
     pixels.show()
     time.sleep(wait_time)
     
-    # shows 2 color every other pixel (red, green)
+    # shows pattern of colors on the given pixels 
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2), ...) 
-    colorAllColorGroup((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
+    xmasColorGroup = ((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
+    colorAllColorGroup(xmasColorGroup) 
+    time.sleep(wait_time)
+
+
+    # shows 2 color every other pixel (red, green)
+    # SnowSparkleExisting(Count, SparkleDelay, SpeedDelay)
+    colorAll2Color((128,0,128), (255,165,0) )
+    SnowSparkleExisting(0, .1, .1)
     time.sleep(wait_time)
 
     # shows 2 color every other pixel (red, green)
     # RunningLightsPreExisting(WaveDelay, cycles):
+    colorAll2Color((255, 0, 0), (0, 255, 0)) 
     RunningLightsPreExisting(0, 1000)
     time.sleep(wait_time)
 
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)
-    candycane_custom((255,255,255), (0,100,0), 255, 0, 500)
+    candycane_custom((255,255,255), (0,200,0), 255, 0, 500)
     time.sleep(wait_time)
 
     # makes the strand of pixels show Fire
