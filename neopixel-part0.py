@@ -36,6 +36,17 @@ def colorAll2Color(c1, c2):
             pixels[i] = c2
     pixels.show()
 
+# colorAllColorGroup(colorObject) allows colors to be 
+# - colorObject: list of color objects. example ((255, 0, 0), (0, 255, 0))  
+def colorAllColorGroup(colorObject):
+    colorCount = len(colorObject)
+
+    for i in range(num_pixels):
+            colorIndex = i % colorCount]
+            pixels[i] = colorObject[colorIndex]
+
+    pixels.show()
+
 ### wheel(pos) will convert value 0 to 255 to get a color value.
 def wheel(pos):
     # Input a value 0 to 255 to get a color value.
@@ -183,94 +194,6 @@ def FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart,
     pixels.show()
     time.sleep(SpeedDelay)
 
-def meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay, LoopCount, SpeedDelay): 
-    for loop in range(LoopCount):
-        pixels.fill((0,0,0))
-        
-        for i in range(num_pixels*2):
-            # fade brightness all LEDs one step
-            for j in range(num_pixels):
-                if (not meteorRandomDecay) or (random.randint(0,10) > 5):
-                    fadeToBlack(j, meteorTrailDecay )      
-            
-            # draw meteor
-            for j in range(meteorSize):
-                if ( i-j < num_pixels) and (i-j >= 0): 
-                    pixels[i-j] = (red, green, blue)
-
-            pixels.show()
-            time.sleep(SpeedDelay)
-
-def TwinkleRandom(Count, SpeedDelay, OnlyOne):
-    pixels.fill((0,0,0))
-
-    for i in range(Count):
-        pixels[random.randint(0, num_pixels-1)] = (random.randint(0,255), random.randint(0,255), random.randint(0,255))
-        pixels.show()
-        time.sleep(SpeedDelay)
-        if OnlyOne:
-            pixels.fill((0,0,0))
-
-    time.sleep(SpeedDelay)
-
-def Sparkle(red, green, blue, Count, SpeedDelay):
-
-    for i in range(Count):    
-        Pixel = random.randint(0,num_pixels-1)
-        pixels[Pixel] = (red,green,blue)
-        pixels.show()
-        time.sleep(SpeedDelay)
-        pixels[Pixel] = (0,0,0)
-
-def SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay):
-    pixels.fill((red,green,blue))
-
-    for i in range(Count):
-        Pixel = random.randint(0,num_pixels-1)
-        pixels[Pixel] = (255,255,255)
-        pixels.show()
-        time.sleep(SparkleDelay)
-        pixels[Pixel] = (red,green,blue)
-        pixels.show()
-        time.sleep(SpeedDelay)
-
-
-def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause):
-    pixels.fill((0,0,0))
-    r = 0
-    g = 0
-    b = 0
-
-    # define eye1 and eye2 location
-    StartPoint  = random.randint( 0, num_pixels - (2*EyeWidth) - EyeSpace )
-    Start2ndEye = StartPoint + EyeWidth + EyeSpace
-
-    #  set color of eyes for given location
-    for i in range(EyeWidth):
-        pixels[StartPoint + i] = (red, green, blue)
-        pixels[Start2ndEye + i] = (red, green, blue)
-    pixels.show()
-
-    # if user wants fading, then fadeout pixel color
-    if Fade == True:
-        for j in range(Steps, -1, -1):
-            r = (j/Steps)*red
-            g = (j/Steps)*green
-            b = (j/Steps)*blue
-
-            for i in range(EyeWidth):
-                pixels[StartPoint + i] = ((int(r), int(g), int(b)))
-                pixels[Start2ndEye + i] = ((int(r), int(g), int(b)))
-
-            pixels.show()
-            time.sleep(FadeDelay)
-    
-    # Set all pixels to black
-    pixels.fill((0,0,0))
-
-    # pause before changing eye location
-    time.sleep(EndPause)
-
 
 def candycane_custom(c1, c2, thisbright, delay, cycles):
     index = 0
@@ -300,6 +223,29 @@ def candycane_custom(c1, c2, thisbright, delay, cycles):
             pixels.show()
             time.sleep(delay)
 
+def RunningLightsPreExisting(WaveDelay, cycles):
+    
+    # gather existing colors in strip of pixel
+    stripExisting = []
+    for i in range(num_pixels):
+        stripExisting.append(pixels[i])
+
+    for loop in range(cycles):
+        
+        # change the color level on the existing colors
+        for i in range(num_pixels):
+            # calculate level
+            level = math.sin(i + loop) * 127 + 128
+
+            # change color level on for red, green, and blue
+            r = int((level/255)*stripExisting[i])
+            g = int((level/255)*stripExisting[i])
+            b = int((level/255)*stripExisting[i])
+            pixels[i] = (r,g,b)
+
+        pixels.show()
+        time.sleep(WaveDelay)
+
 
 while True:
     random.seed(num_pixels)
@@ -323,7 +269,15 @@ while True:
     pixels.show()
     time.sleep(wait_time)
     
+    # shows 2 color every other pixel (red, green)
+    # colorAll2Color((red1, green1, blue1), (red2, green2, blue2), ...) 
+    colorAllColorGroup((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
+    time.sleep(wait_time)
 
+    # shows 2 color every other pixel (red, green)
+    # RunningLightsPreExisting(WaveDelay, cycles):
+    RunningLightsPreExisting(0, 1000)
+    time.sleep(wait_time)
 
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)
@@ -342,26 +296,6 @@ while True:
     FireCustom(0, 12, 25, 0, 10, 0.02, 500) # red fire
     time.sleep(wait_time)
 
-    
-    # makes the strand of pixels show 
-    # meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay, LoopCount, SpeedDelay)
-    meteorRain(255, 255, 255, 10, 64, True, 1, 0.030)
-    time.sleep(wait_time)
-
-    
-
-    # makes the strand of pixels show SnowSparkle (random)
-    # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
-    # SnowSparkle(16, 16, 16, 100, 0.020, random.randint(100,1000)/1000)
-    SnowSparkle(16, 16, 16, 100, 0.1, 0.3)
-
-    # makes the strand of pixels show Sparkle (white)
-    # Sparkle(red, green, blue, Count, SpeedDelay)
-    Sparkle(255, 255, 255, 100, 0)
-
-    # makes the strand of pixels show TwinkleRandom
-    # TwinkleRandom( Count, SpeedDelay, OnlyOne) 
-    TwinkleRandom(20, 0.1, False)
 
 
     # fade in/out a single color (red / green / blue / white)
@@ -380,12 +314,6 @@ while True:
     # shows 2 color every other pixel (purple, orange)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
     colorAll2Color((128,0,128), (255,165,0) )
-    time.sleep(wait_time)
 
-    ### HALLOWEEN idea
-    # make the strand of pixels show HalloweenEyes
-    # HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause)
-    HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
-    time.sleep(wait_time)
 
 
