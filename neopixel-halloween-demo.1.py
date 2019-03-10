@@ -336,6 +336,8 @@ def RunningLights(red, green, blue, WaveDelay):
         pixels.show()
         time.sleep(WaveDelay)
 
+
+
 while True:
     random.seed(num_pixels)
 
@@ -373,7 +375,7 @@ while True:
     time.sleep(wait_time)
 
     ### HALLOWEEN idea
-    # shows RunningLights in 2 or more color
+    # shows RunningLights in 2 or more colorcolor
 
     ### HALLOWEEN idea
     # make the strand of pixels show HalloweenEyes
@@ -381,4 +383,8 @@ while True:
     HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
     time.sleep(wait_time)
 
+
+    # makes the strand of pixels show SnowSparkle (random)
+    # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
+    SnowSparkle(235,97,35, 100, 0, 0)
 
