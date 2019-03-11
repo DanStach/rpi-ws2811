@@ -303,10 +303,14 @@ def HalloweenEyesExisting(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, Fad
     # pause before changing eye location
     time.sleep(EndPause)
 
+
 # HeartBeatExisiting - mimics a heart beat pulse, with 2 beats at different speeds. The existing colors 
 # on the pixel strip are preserved, rather than a single color.
-#HeartBeatExisiting(beat1Step, beat1FadeInDelay, beat1FadeOutDelay, beat1Delay beat2Step, beat2FadeInDelay, beat2FadeOutDelay, cycles):
-#HeartBeatExisiting(3, .005, .003, 0.001, 6, .002, .003, 0.05, 10):
+#
+# HeartBeatExisiting(beat1Step, beat1FadeInDelay, beat1FadeOutDelay, beat1Delay,
+#                     beat2Step, beat2FadeInDelay, beat2FadeOutDelay, beat1Delay, cycles):
+# HeartBeatExisiting(3, .005, .003, 0.001, 6, .002, .003, 0.05, 10)
+#
 #   beat1Step: (1-255) first beat color transition step
 #   beat1FadeInDelay: (0-2147483647) first beat fade in trasition speed, in seconds
 #   beat1FadeOutDelay: (0-2147483647) first beat fade out trasition speed, in seconds
@@ -410,6 +414,12 @@ while True:
     colorAll2Color((255, 0, 0), (0, 255, 0)) 
     RunningLightsPreExisting(0, 1000)
     time.sleep(wait_time)
+
+    # shows 2 color every other pixel (red, green)
+    #HeartBeatExisiting(beat1Step, beat1FadeInDelay, beat1FadeOutDelay, beat1Delay, 
+    #                   beat2Step, beat2FadeInDelay, beat2FadeOutDelay, beat2Delay, cycles):
+    HeartBeatExisiting(3, .005, .003, 0.001, 6, .002, .003, 0.05, 10):
+
 
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)
