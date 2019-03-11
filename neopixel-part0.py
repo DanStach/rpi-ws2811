@@ -300,9 +300,73 @@ def HalloweenEyesExisting(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, Fad
         pixels[Start2ndEye + i] = stripExisting[Start2ndEye + i]
     pixels.show()
 
-
     # pause before changing eye location
     time.sleep(EndPause)
+
+# HeartBeatExisiting - mimics a heart beat pulse, with 2 beats at different speeds. The existing colors 
+# on the pixel strip are preserved, rather than a single color.
+#HeartBeatExisiting(beat1Step, beat1FadeInDelay, beat1FadeOutDelay, beat1Delay beat2Step, beat2FadeInDelay, beat2FadeOutDelay, cycles):
+#HeartBeatExisiting(3, .005, .003, 0.001, 6, .002, .003, 0.05, 10):
+#   beat1Step: (1-255) first beat color transition step
+#   beat1FadeInDelay: (0-2147483647) first beat fade in trasition speed, in seconds
+#   beat1FadeOutDelay: (0-2147483647) first beat fade out trasition speed, in seconds
+#   beat1Delay: (0-2147483647)  beat time delay bewteen frist and sencond beat, in seconds
+#   beat2Step: (1-255) second beat color transition step
+#   beat2FadeInDelay: (0-2147483647) second beat fade in trasition speed, in seconds
+#   beat2FadeOutDelay: (0-2147483647) second beat fade out trasition speed, in seconds
+#   beat1Delay: (0-2147483647)  beat time delay bewteen sencond and first beat, in seconds
+#   cycles: (1-2147483647) number of times this effect will run
+def HeartBeatExisiting(beat1Step, beat1FadeInDelay, beat1FadeOutDelay, beat2Step, beat2FadeInDelay, beat2FadeOutDelay, cycles):
+    # gather existing colors in strip of pixel
+    stripExisting = []
+    for i in range(num_pixels):
+        stripExisting.append(pixels[i])
+
+    for loop in range(cycles):               
+
+        for ii in range(1, 252, beat1Step): #for ( ii = 1 ; ii <252 ; ii = ii = ii + x)
+            for index in range(num_pixels):
+                r = stripExisting[index][0]
+                g = stripExisting[index][1]
+                b = stripExisting[index][2]
+                pixels[index] = brightnessRGB(r,g,b, ii) 
+                #pixels.fill( brightnessRGB(redo, greeno, blueo, ii) ) #strip.setBrightness(ii)
+            pixels.show()
+            time.sleep(beat1FadeInDelay)
+
+        for ii in range(252, 3, -beat1Step): #for (int ii = 252 ; ii > 3 ; ii = ii - x){
+            for index in range(num_pixels):
+                r = stripExisting[index][0]
+                g = stripExisting[index][1]
+                b = stripExisting[index][2]
+                pixels[index] = brightnessRGB(r,g,b, ii) 
+                #pixels.fill( brightnessRGB(redo, greeno, blueo, ii) ) #strip.setBrightness(ii)
+            pixels.show()
+            time.sleep(beat1FadeOutDelay)
+            
+        time.sleep(beat1Delay)
+        
+        for ii in range(1, 252, beat1Step): #for (int ii = 1 ; ii <255 ; ii = ii = ii + y){
+            for index in range(num_pixels):
+                r = stripExisting[index][0]
+                g = stripExisting[index][1]
+                b = stripExisting[index][2]
+                pixels[index] = brightnessRGB(r,g,b, ii) 
+                #pixels.fill( brightnessRGB(redo, greeno, blueo, ii) ) #strip.setBrightness(ii)
+            pixels.show()
+            time.sleep(beat2FadeInDelay)
+
+        for ii in range(252, 3, -beat1Step): #for (int ii = 255 ; ii > 1 ; ii = ii - y){
+            for index in range(num_pixels):
+                r = stripExisting[index][0]
+                g = stripExisting[index][1]
+                b = stripExisting[index][2]
+                pixels[index] = brightnessRGB(r,g,b, ii) 
+                #pixels.fill( brightnessRGB(redo, greeno, blueo, ii) ) #strip.setBrightness(ii)
+            pixels.show()
+            time.sleep(beat2FadeOutDelay)
+    
+        time.sleep(.050) 
 
 
 
