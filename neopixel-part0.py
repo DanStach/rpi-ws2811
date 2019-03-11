@@ -263,6 +263,48 @@ def SnowSparkleExisting(Count, SparkleDelay, SpeedDelay):
         time.sleep(SpeedDelay)
 
 
+def HalloweenEyesExisting(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause):
+    # gather existing colors in strip of pixel
+    stripExisting = []
+    for i in range(num_pixels):
+        stripExisting.append(pixels[i])
+
+    # define eye1 and eye2 location
+    StartPoint  = random.randint( 0, num_pixels - (2*EyeWidth) - EyeSpace )
+    Start2ndEye = StartPoint + EyeWidth + EyeSpace
+
+    #  set color of eyes for given location
+    for i in range(EyeWidth):
+        pixels[StartPoint + i] = (red, green, blue)
+        pixels[Start2ndEye + i] = (red, green, blue)
+    pixels.show()
+
+    # if user wants fading, then fadeout pixel color
+    if Fade == True:
+        for j in range(Steps, -1, -1):
+            r = (j/Steps)*red
+            g = (j/Steps)*green
+            b = (j/Steps)*blue
+
+            for i in range(EyeWidth):
+                pixels[StartPoint + i] = ((int(r), int(g), int(b)))
+                pixels[Start2ndEye + i] = ((int(r), int(g), int(b)))
+
+            pixels.show()
+            time.sleep(FadeDelay)
+    
+    # Set all pixels to back
+    # set color of eyes for given location
+    for i in range(EyeWidth):
+        pixels[StartPoint + i] = stripExisting[StartPoint + i]
+        pixels[Start2ndEye + i] = stripExisting[Start2ndEye + i]
+    pixels.show()
+
+
+    # pause before changing eye location
+    time.sleep(EndPause)
+
+
 
 while True:
     random.seed(num_pixels)
