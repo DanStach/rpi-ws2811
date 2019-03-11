@@ -336,6 +336,43 @@ def RunningLights(red, green, blue, WaveDelay):
         pixels.show()
         time.sleep(WaveDelay)
 
+def HeartBeat(redo, greeno, blueo, cycles):
+    for loop in range(cycles):
+        #redo =random.randint(0, 255)
+        #greeno = random.randint(0, 255)
+        #blueo = random.randint(0, 255)
+        
+        #strip.setPixelColor(2, redo, greeno, blueo)
+        pixels.fill((redo, greeno, blueo))
+        pixels.show()
+        time.sleep(.020)
+        
+        x = 3
+        for ii in range(1,252,x): #for ( ii = 1 ; ii <252 ; ii = ii = ii + x)
+            pixels.fill( brightnessRGB(redo, greeno, blueo, ii) ) #strip.setBrightness(ii)
+            pixels.show()
+            time.sleep(.005)
+
+        for ii in range(252,3,-x): #for (int ii = 252 ; ii > 3 ; ii = ii - x){
+            pixels.fill( brightnessRGB(redo, greeno, blueo, ii) ) #strip.setBrightness(ii)
+            pixels.show()
+            time.sleep(.003)
+
+        time.sleep(.0010)
+        
+        y = 6
+        for ii in range(1,252,y): #for (int ii = 1 ; ii <255 ; ii = ii = ii + y){
+            pixels.fill( brightnessRGB(redo, greeno, blueo, ii) ) #strip.setBrightness(ii)
+            pixels.show()
+            time.sleep(.002)
+
+        for ii in range(252,3,-y): #for (int ii = 255 ; ii > 1 ; ii = ii - y){
+            pixels.fill( brightnessRGB(redo, greeno, blueo, ii) ) #strip.setBrightness(ii)
+            pixels.show()
+            time.sleep(.003)
+    
+        time.sleep(.050) 
+
 
 
 while True:
@@ -383,6 +420,11 @@ while True:
     HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
     time.sleep(wait_time)
 
+    # makes the strand of pixels show HeartBeat
+    # HeartBeat(red, green, blue, cycles):
+    pixels.fill((0, 0, 0))
+    time.sleep(wait_time)
+    HeartBeat(235,97,35, 5)
 
     # makes the strand of pixels show SnowSparkle (random)
     # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)

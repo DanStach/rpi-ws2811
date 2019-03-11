@@ -353,7 +353,6 @@ def colorWipe(red, green, blue, SpeedDelay):
         time.sleep(SpeedDelay)
 
 
-
 def theaterChase(red, green, blue, cycles, SpeedDelay):
     for j in range(cycles):
         for q in range(3):
@@ -369,7 +368,6 @@ def theaterChase(red, green, blue, cycles, SpeedDelay):
                 if i+q < num_pixels:
                     # turn every third pixel off
                     pixels[i+q] = (0,0,0)
-
 
 
 def theaterChaseRainbow(SpeedDelay):
