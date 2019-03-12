@@ -736,51 +736,6 @@ def random_march(delay, cycles):
         pixels.show()
         time.sleep(delay)
 
-### FixMe: this code does not work
-### i think it also has a memory leak
-### i have reached out to the author (via youtube comment)
-#### next step would be to step though the code on an arduino 
-
-def loop5(delay, cycles):
-    for loop in range(cycles):
-        #GB = pixels.getBrightness()
-        boost = 0
-        #  if( GB < 65): boost += 8
-        #  if( GB < 33) boost += 8
-        
-        N = 2
-        starttheta = 0
-        starttheta = starttheta + ( 100 / N )
-        starthue16 = 0
-        starthue16 = starthue16 + (20 / N)
-    
-    
-        hue16 = starthue16
-        theta = starttheta
-        for i in range(num_pixels):
-            frac = (math.sin( theta) + 32768) / 256
-            frac = frac + 32
-            theta = theta + 3700
-            hue16 = hue16 + 2000
-            hue = hue16 / 256
-
-            ramp = frac + boost
-            if( ramp < 128):
-                # fade toward black
-                brightness = ramp * 2
-                saturation = 255
-            else:
-                # desaturate toward white
-                brightness = 255
-                saturation = 255 - ((ramp - 128) * 2)
-                # saturation = 255 - dim8_video( 255 - saturation);
-
-            pixels[i] = hsv_to_rgb( hue, saturation, brightness)
-        
-        # show pixel values 
-        pixels.show()
-        time.sleep(delay)
-
 
 def twinkle2(delay, cycles ):
     for loop in range(cycles):
