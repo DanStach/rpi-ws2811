@@ -201,9 +201,8 @@ while True:
     # makes the strand of pixels show loop5
     # loop5( delay, cycles)
     #loop5(0.25, 500) 
-    time.sleep(wait_time)
+    #time.sleep(wait_time)
 
-    ### FixMe: think random_march and matrix are the same
     # makes the strand of pixels show random_march
     # random_march( delay, cycles)
     random_march(0.25, 256) 
