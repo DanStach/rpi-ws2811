@@ -372,7 +372,21 @@ def HeartBeatExisiting(beat1Step, beat1FadeInDelay, beat1FadeOutDelay, beat2Step
     
         time.sleep(.050) 
 
+def randomLevelsCustomColors( colorobj, levelobj, clearall, delay, cycles ):
+    colorCount = len(colorobj)
+    NUM_LEVELS = len(levelobj)
 
+    for loop in range(cycles):
+        colorIndex = loop % colorCount]
+        pcolor = colorobj[colorIndex]
+
+
+        level = random.randint(0, NUM_LEVELS)
+        if (NUM_LEVELS == level):
+            level = 0
+        light_level_random_color(color, levelobj, level, 1)
+        pixels.show()
+        time.sleep(delay)
 
 def randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles ):
     NUM_LEVELS = len(levelobj)
@@ -467,6 +481,15 @@ while True:
     #randomLevelsCustom(levels, 1, 0, 50)
     #def randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles ):
     randomLevelsCustom2Colors((255,255,255),(0,255,0), levels, 1, 0, 50)
+    time.sleep(wait_time)
+    
+    # makes the strand of pixels show  randomLevelsCustom
+    # levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348)
+    levels = (110, 200, 270, 340, 390, 400)
+    colorobj = ( (255,255,255), (0,255,0), (255,0,0) )
+    #def randomLevelsCustomColors( colorobj levelobj, clearall, delay, cycles ):
+    randomLevelsCustomColors(colorobj, levels, 1, 0, 50)
+    time.sleep(wait_time)
 
     # makes the strand of pixels show Fire
     # Fire(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, FireEffect, LoopCount)
