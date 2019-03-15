@@ -384,7 +384,7 @@ def randomLevelsCustomColors( colorobj, levelobj, clearall, delay, cycles ):
         level = random.randint(0, NUM_LEVELS)
         if (NUM_LEVELS == level):
             level = 0
-        light_level_random_color(color, levelobj, level, 1)
+        light_level_random_color(pcolor, levelobj, level, 1)
         pixels.show()
         time.sleep(delay)
 
@@ -403,7 +403,7 @@ def randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles ):
         pixels.show()
         time.sleep(delay)
 
-def light_level_random_color(color, levels, level, clearall ):
+def LevelsCustomColors(color, levels, level, clearall ):
 
     if (clearall):
         pixels.fill((0, 0, 0)) # clear all
@@ -418,6 +418,23 @@ def light_level_random_color(color, levels, level, clearall ):
     for i in range(startPxl, levels[level]):
         pixels[i] = color
 
+
+
+def LevelsColorsCustom( colorobj, levelobj, delay ):
+    colorCount = len(colorobj)
+    NUM_LEVELS = len(levelobj)
+
+    # for each level
+    for levelnum in range(NUM_LEVELS):
+        # gather color info
+        colorIndex = levelnum % colorCount]
+        pcolor = colorobj[colorIndex]
+
+        #if (NUM_LEVELS == level):
+        #    level = 0
+        light_level_random_color(pcolor, levelobj, level, False)
+        pixels.show()
+        time.sleep(delay)
 
 
 while True:
@@ -472,24 +489,34 @@ while True:
     candycane_custom((255,255,255), (0,200,0), 255, 0, 500)
     time.sleep(wait_time)
 
-
-    # makes the strand of pixels show  randomLevelsCustom
     # levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348)
     levels = (110, 200, 270, 340, 390, 400)
-    #random_levels(8, 0.1, 500)
-    # randomLevelsCustom( levelobj, clearall, delay, cycles ):
-    #randomLevelsCustom(levels, 1, 0, 50)
-    #def randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles ):
-    randomLevelsCustom2Colors((255,255,255),(0,255,0), levels, 1, 0, 50)
-    time.sleep(wait_time)
     
     # makes the strand of pixels show  randomLevelsCustom
-    # levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348)
-    levels = (110, 200, 270, 340, 390, 400)
+    # randomLevelsCustom( levelobj, clearall, delay, cycles )
+    #levels = (110, 200, 270, 340, 390, 400)
+    randomLevelsCustom(levels, True, 0, 50)
+
+    # makes the strand of pixels show randomLevelsCustom2Colors
+    # randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles )
+    #levels = (110, 200, 270, 340, 390, 400)
+    randomLevelsCustom2Colors((255,255,255),(0,255,0), levels, True, 0, 50)
+    time.sleep(wait_time)
+    
+    # makes the strand of pixels show randomLevelsCustomColors
+    # randomLevelsCustomColors( colorobj levelobj, clearall, delay, cycles ):
+    #levels = (110, 200, 270, 340, 390, 400)
     colorobj = ( (255,255,255), (0,255,0), (255,0,0) )
-    #def randomLevelsCustomColors( colorobj levelobj, clearall, delay, cycles ):
     randomLevelsCustomColors(colorobj, levels, 1, 0, 50)
     time.sleep(wait_time)
+
+    # makes the strand of pixels show LevelsColorsCustom
+    #LevelsColorsCustom( colorobj, levelobj, delay )
+    #levels = (110, 200, 270, 340, 390, 400)
+    colorobj = ( (255,255,255), (255,0,0) (0,255,0), (0,0,255),  (0,255,255) )
+    LevelsColorsCustom(colorobj, levels, 0)
+    time.sleep(wait_time*5)
+
 
     # makes the strand of pixels show Fire
     # Fire(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, FireEffect, LoopCount)
