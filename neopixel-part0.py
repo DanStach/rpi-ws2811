@@ -384,6 +384,19 @@ def HeartBeatExisiting(beat1Step, beat1FadeInDelay, beat1FadeOutDelay, beat1Dela
     
         time.sleep(.050) 
 
+
+def randomLevelsCustom( levelobj, clearall, delay, cycles ):
+    NUM_LEVELS = len(levelobj)
+    for loop in range(cycles):
+
+        level = random.randint(0, NUM_LEVELS)
+        if (NUM_LEVELS == level):
+            level = 0
+        light_level_random(levelobj, level, 1)
+        pixels.show()
+        time.sleep(delay)
+
+
 def randomLevelsCustomColors( colorobj, levelobj, clearall, delay, cycles ):
     colorCount = len(colorobj)
     NUM_LEVELS = len(levelobj)
@@ -511,11 +524,6 @@ while True:
 
     # levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348)
     levels = (110, 200, 270, 340, 390, 400)
-    
-    # makes the strand of pixels show  randomLevelsCustom
-    # randomLevelsCustom( levelobj, clearall, delay, cycles )
-    #levels = (110, 200, 270, 340, 390, 400)
-    randomLevelsCustom(levels, True, 0, 50)
 
     # makes the strand of pixels show randomLevelsCustom2Colors
     # randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles )
