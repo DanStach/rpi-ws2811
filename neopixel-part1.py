@@ -406,10 +406,8 @@ def Fire(Cooling, Sparking, SpeedDelay, LoopCount):
         # Step 1.  Cool down every cell a little
         for i in range(num_pixels):
             randomCooldown = ((Cooling * 10) / num_pixels) + 2
-            print("i=",i,"randomCooldown=",randomCooldown)
             cooldown = random.randint(0, int(randomCooldown))
-            print("cooldown " + str(cooldown))
-            #print("heat " + str(heat[i]))
+
             if cooldown > heat[i]:
                 heat[i]=0
             else: 
@@ -427,9 +425,7 @@ def Fire(Cooling, Sparking, SpeedDelay, LoopCount):
             heat[y] = random.randint(160,255)
 
         # Step 4.  Convert heat to LED colors
-        #print(heat)
         for j in range(num_pixels):
-            #print(heat[j] )
             setPixelHeatColor(j, int(heat[j]) )
 
         pixels.show()
@@ -442,7 +438,6 @@ def setPixelHeatColor (Pixel, temperature):
     # calculate ramp up from
     heatramp = t192 & 63 # 0..63  0x3f=63
     heatramp <<= 2 # scale up to 0..252
-    #print("t192=" + str(t192) + "  heatramp=" + str(heatramp))
     # figure out which third of the spectrum we're in:
     if t192 > 0x80: # hottest 128 = 0x80
         pixels[Pixel] = (255, 255, int(heatramp))
@@ -539,19 +534,7 @@ def meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay
             time.sleep(SpeedDelay)
 
 def fadeToBlack(ledNo, fadeValue):
-    #ctypes.c_uint32 oldColor = 0x00000000UL
-    #ctypes.c_uint8 r = 0
-    #ctypes.c_uint8 g = 0
-    #ctypes.c_uint8 b = 0
-
     oldColor = pixels[ledNo]
-#    r = (oldColor & 0x00ff0000) >> 16
-#    g = (oldColor & 0x0000ff00) >> 8
-#    b = (oldColor & 0x000000ff)
-    #print(oldColor)
-#    r = oldColor >> 16
-#    g = (oldColor >> 8) & 0xff
-#    b = oldColor & 0xff
     r = oldColor[0]
     g = oldColor[1]
     b = oldColor[2]
