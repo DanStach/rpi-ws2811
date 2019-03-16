@@ -16,7 +16,7 @@ import ctypes
 pixel_pin = board.D18
 
 # The number of NeoPixels
-num_pixels = 400
+num_pixels = 300
 
 # The order of the pixel colors - RGB or GRB. Some NeoPixels have red and green reversed!
 # For RGBW NeoPixels, simply change the ORDER to RGBW or GRBW.
@@ -889,29 +889,34 @@ while True:
 
     # make all pixels Red
     # fill(red, green, blue)
+    print("fill red")
     pixels.fill((255, 0, 0)) # red
     pixels.show()
     time.sleep(wait_time)
 
     # make all pixels Green
     # fill(red, green, blue)
+    print("fill green")
     pixels.fill((0, 255, 0))
     pixels.show()
     time.sleep(wait_time)
 
     # make all pixels Blue
     # fill(red, green, blue)
+    print("fill blue")
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
 
     # shows 2 color every other pixel (red, green)
-    # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
+    # colorAll2Color((red1, green1, blue1), (red2, green2, blue2))
+    print("colorAll2Color red green")
     colorAll2Color((255, 0, 0), (0, 255, 0)) 
     time.sleep(wait_time )
 
     # shows 2 color every other pixel (purple, orange)
-    # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
+    # colorAll2Color((red1, green1, blue1), (red2, green2, blue2))
+    print("colorAll2Color purple orange")
     colorAll2Color((128,0,128), (235,97,35) )
     time.sleep(wait_time )
 
@@ -938,13 +943,15 @@ while True:
     # white and green
     pixels.fill((0, 0, 0)) 
     pixels.show()
+    print("candycane_custom white green")
     candycane_custom((255,255,255), (0, 255, 0), 255, 0, 1)
     time.sleep(wait_time)
 
     # makes the strand of pixels show twinkle
     # twinkle(delay, cycles)
-    pixels.fill((255, 0, 0)) 
+    pixels.fill((0, 0, 0)) 
     pixels.show()
+    print("twinkle2")
     twinkle2(0, 10) 
     time.sleep(wait_time)
 
@@ -958,6 +965,7 @@ while True:
     # random_march( delay, cycles)
     pixels.fill((0, 0, 0)) 
     pixels.show()
+    print("random_march")
     random_march(0, 400) 
     time.sleep(wait_time)
 
@@ -965,11 +973,13 @@ while True:
     # matrix(random_percent, delay, cycles)
     pixels.fill((0, 0, 0)) 
     pixels.show()
+    print("matrix")
     matrix(10, 0, 500) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show rainbow_fade
     # rainbow_fade(delay, cycles):
+    print("rainbow_fade")
     rainbow_fade(0, 256) 
     time.sleep(wait_time)
 
@@ -977,6 +987,7 @@ while True:
     # rainbow_loop(delay, step, cycles):
     pixels.fill((0, 0, 0))
     pixels.show()
+    print("rainbow_loop")
     rainbow_loop(0, 10, 500) 
     time.sleep(wait_time)
 
@@ -984,18 +995,23 @@ while True:
     # rainbow(delay, step, cycles):
     pixels.fill((255, 255, 0))
     pixels.show()
+    print("rainbow")
     rainbow(0, 10, 2) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
     # rgbPropellerCustom(hue, LoopCount)
     pixels.fill((0, 0, 0))
+    pixels.show()
+    print("rgbPropellerCustom")
     rgbPropellerCustom(0, 2)
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
     # random_burst(delayStart, delayEnd , LoopCount)
     pixels.fill((0, 0, 0))
+    pixels.show()
+    print("random_burst")
     random_burst(0, 0, 100)
     time.sleep(wait_time)
 
@@ -1018,51 +1034,62 @@ while True:
 
     # makes the strand of pixels show Fire
     # Fire(Cooling, Sparking, SpeedDelay, LoopCount)
+    print("Fire")
     Fire(5, 250,0, 200)
     time.sleep(wait_time)
     
     # makes the strand of pixels show 
     # meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay, LoopCount, SpeedDelay)
+    print("meteorRain")
     meteorRain(255, 255, 255, 10, 64, True, 1, 0)
     time.sleep(wait_time)
 
     # makes the strand of pixels show theaterChaseRainbow
     # theaterChaseRainbow(SpeedDelay)
+    print("theaterChaseRainbow")
     theaterChaseRainbow(0)
     time.sleep(wait_time)
 
     # makes the strand of pixels show theaterChase
     # theaterChase(red, green, blue, cycles, SpeedDelay)
+    print("theaterChase")
     theaterChase(255,0,0, 20, 0)
     time.sleep(wait_time)
 
     # makes the strand of pixels show colorWipe (green)
     # colorWipe(red, green, blue, SpeedDelay)
+    print("colorWipe")
     colorWipe(0,255,0, 0)
 
     # makes the strand of pixels show RunningLights (red)
     # RunningLights(red, green, blue, WaveDelay)
+    print("RunningLights")
     RunningLights(255,0,0, 0)
 
     # makes the strand of pixels show SnowSparkle (random)
     # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
     # SnowSparkle(16, 16, 16, 100, 0.020, random.randint(100,1000)/1000)
+    print("SnowSparkle")
     SnowSparkle(16, 16, 16, 100, 0, 0)
 
     # makes the strand of pixels show Sparkle (white)
     # Sparkle(red, green, blue, Count, SpeedDelay)
+    print("Sparkle")
     Sparkle(255, 255, 255, 100, 0)
 
     # makes the strand of pixels show TwinkleRandom
-    # TwinkleRandom( Count, SpeedDelay, OnlyOne) 
+    # TwinkleRandom( Count, SpeedDelay, OnlyOne)
+    print("TwinkleRandom")
     TwinkleRandom(20, 0, False)
 
     # makes the strand of pixels show Twinkle
     # Twinkle(red, green, blue, Count, SpeedDelay, OnlyOne)
+    print("Twinkle")
     Twinkle(255, 0, 0, 10, 0, False)
 
     # fade in/out a single color (red / green / blue / white)
     # FadeInOut(red, green, blue, delay)
+    print("FadeInOut")
     FadeInOut(255, 0, 0, 0)
     FadeInOut(0, 255, 0, 0)
     FadeInOut(0, 0, 255, 0)
@@ -1070,12 +1097,14 @@ while True:
 
     # loops red green blue
     # RGBLoop(delay)
+    print("RGBLoop")
     RGBLoop(0)
     time.sleep(wait_time)
 
     # rainbow cycle
     # rainbow cycle with 1ms delay per step, 5 cycles
-    # rainbow_cycle(delay, cycles) 
+    # rainbow_cycle(delay, cycles)
+    print("rainbow_cycle")
     rainbow_cycle(0.001, 5) 
     time.sleep(wait_time)
 
