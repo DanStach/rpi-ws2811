@@ -323,9 +323,9 @@ def candycane(delay, cycles):
             pixels[j4] = brightnessRGB(255, 255, 255, int(thisbright*.75))
             pixels[j5] = brightnessRGB(255, 0, 0, thisbright)
 
-            # show pixel values 
-            pixels.show()
-            time.sleep(delay)
+        # show pixel values 
+        pixels.show()
+        time.sleep(delay)
 
 
 def random_levels( NUM_LEVELS, delay, cycles ):
@@ -502,6 +502,8 @@ while True:
     # spiral end to start, continuous random color
     # random_march( delay, cycles)
     print("random_march")
+    pixels.fill((0, 0, 0))
+    pixels.show()
     random_march(0, 300) 
     time.sleep(wait_time)
 
@@ -509,6 +511,8 @@ while True:
     # matrix(random_percent, delay, cycles)
     # spiral start to end, random color with random spacing
     print("matrix")
+    pixels.fill((0, 0, 0))
+    pixels.show()
     matrix(10, 0, 300) 
     time.sleep(wait_time)
 
