@@ -513,7 +513,7 @@ while True:
     #HeartBeatExisiting(beat1Step, beat1FadeInDelay, beat1FadeOutDelay, beat1Delay, 
     #                   beat2Step, beat2FadeInDelay, beat2FadeOutDelay, beat2Delay, cycles):
     print("HeartBeatExisiting")
-    HeartBeatExisiting(3, .005, .003, 0.001, 6, .002, .003, 0.05, 2)
+    HeartBeatExisiting(3, .005, .003, 0.001, 6, .002, .003, 0.05, 1)
 
 
     # makes the strand of pixels show candycane_custom
