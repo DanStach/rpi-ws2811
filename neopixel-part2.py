@@ -298,8 +298,8 @@ def twinkle(delay, cycles ):
         
             pixels[whichPixel] = wheelBrightLevel(hue, brightness)
             # show pixel values 
-            pixels.show()
-            time.sleep(delay)
+        pixels.show()
+        time.sleep(delay)
 
 def candycane(delay, cycles):
     index = 0
@@ -489,7 +489,7 @@ while True:
     # makes the strand of pixels show twinkle
     # twinkle(delay, cycles)
     print("twinkle")
-    twinkle(0, 10) 
+    twinkle(0, 5) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show loop5
@@ -502,20 +502,20 @@ while True:
     # spiral end to start, continuous random color
     # random_march( delay, cycles)
     print("random_march")
-    random_march(0.25, 256) 
+    random_march(0, 300) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show matrix
     # matrix(random_percent, delay, cycles)
     # spiral start to end, random color with random spacing
     print("matrix")
-    matrix(10, 0.25, 500) 
+    matrix(10, 0, 300) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show rainbow_fade
     # rainbow_fade(delay, cycles)
     print("rainbow_fade")
-    rainbow_fade(.02, 256) 
+    rainbow_fade(0, 256) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show rainbow_loop
@@ -523,7 +523,7 @@ while True:
     print("rainbow_loop")
     pixels.fill((0, 0, 0))
     pixels.show()
-    rainbow_loop(0.01, 10, 1000) 
+    rainbow_loop(0.01, 10, 300) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show rainbow
@@ -538,7 +538,7 @@ while True:
     # rgb_propeller(LoopCount)
     print("rgb_propeller")
     pixels.fill((0, 0, 0))
-    rgb_propeller(1000)
+    rgb_propeller(300)
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
