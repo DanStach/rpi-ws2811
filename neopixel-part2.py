@@ -498,8 +498,8 @@ while True:
     #print("")
     #time.sleep(wait_time)
 
-    ### FixMe: think random_march and matrix are the same
-    # makes the strand of pixels show random_march
+    # makes the strand of pixels show random_march 
+    # spiral end to start, continuous random color
     # random_march( delay, cycles)
     print("random_march")
     random_march(0.25, 256) 
@@ -507,6 +507,7 @@ while True:
 
     # makes the strand of pixels show matrix
     # matrix(random_percent, delay, cycles)
+    # spiral start to end, random color with random spacing
     print("matrix")
     matrix(10, 0.25, 500) 
     time.sleep(wait_time)
