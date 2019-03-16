@@ -428,7 +428,7 @@ while True:
     # shows 2 color every other pixel (red, green)
     #HeartBeatExisiting(beat1Step, beat1FadeInDelay, beat1FadeOutDelay, beat1Delay, 
     #                   beat2Step, beat2FadeInDelay, beat2FadeOutDelay, beat2Delay, cycles):
-    HeartBeatExisiting(3, .005, .003, 0.001, 6, .002, .003, 0.05, 10):
+    HeartBeatExisiting(3, .005, .003, 0.001, 6, .002, .003, 0.05, 10)
 
 
     # makes the strand of pixels show candycane_custom
