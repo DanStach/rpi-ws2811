@@ -423,6 +423,9 @@ while True:
     ### HALLOWEEN idea
     # make the strand of pixels show HalloweenEyes
     # HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause)
+    print("fill indigo")
+    pixels.fill((75,0,130) # indigo
+    pixels.show()
     print("HalloweenEyes")
     HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
     time.sleep(wait_time)
