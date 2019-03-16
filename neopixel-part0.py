@@ -539,7 +539,7 @@ while True:
     time.sleep(wait_time)
 
     # levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348)
-    levels = (110, 200, 270, 340, 390, 400)
+    levels = (110, 200, 270, 300)
 
     # makes the strand of pixels show randomLevelsCustom2Colors
     # randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles )
