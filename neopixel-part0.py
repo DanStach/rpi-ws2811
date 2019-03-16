@@ -248,9 +248,9 @@ def RunningLightsPreExisting(WaveDelay, cycles):
             level = math.sin(i + loop) * 127 + 128
 
             # change color level on for red, green, and blue
-            r = (level/255)*stripExisting[i]
-            g = (level/255)*stripExisting[i]
-            b = (level/255)*stripExisting[i]
+            r = (level/255)*stripExisting[i][0]
+            g = (level/255)*stripExisting[i][1]
+            b = (level/255)*stripExisting[i][2]
             pixels[i] = (int(r), int(g),int(b))
 
         pixels.show()
