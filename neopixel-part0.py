@@ -541,6 +541,35 @@ while True:
     time.sleep(wait_time*5)
 
 
+    # levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348)
+    levels = (110, 200, 270, 340, 390, 400)
+    
+    # makes the strand of pixels show  randomLevelsCustom
+    # randomLevelsCustom( levelobj, clearall, delay, cycles )
+    #levels = (110, 200, 270, 340, 390, 400)
+    randomLevelsCustom(levels, True, 0, 50)
+
+    # makes the strand of pixels show randomLevelsCustom2Colors
+    # randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles )
+    #levels = (110, 200, 270, 340, 390, 400)
+    randomLevelsCustom2Colors((255,255,255),(0,255,0), levels, True, 0, 50)
+    time.sleep(wait_time)
+    
+    # makes the strand of pixels show randomLevelsCustomColors
+    # randomLevelsCustomColors( colorobj levelobj, clearall, delay, cycles ):
+    #levels = (110, 200, 270, 340, 390, 400)
+    colorobj = ( (255,255,255), (0,255,0), (255,0,0) )
+    randomLevelsCustomColors(colorobj, levels, 1, 0, 50)
+    time.sleep(wait_time)
+
+    # makes the strand of pixels show LevelsColorsCustom
+    #LevelsColorsCustom( colorobj, levelobj, delay )
+    #levels = (110, 200, 270, 340, 390, 400)
+    colorobj = ( (255,255,255), (255,0,0) (0,255,0), (0,0,255),  (0,255,255) )
+    LevelsColorsCustom(colorobj, levels, 0)
+    time.sleep(wait_time*5)
+
+
     # makes the strand of pixels show Fire
     # Fire(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, FireEffect, LoopCount)
     #CoolingRangeStart = 0-255
