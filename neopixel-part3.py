@@ -132,18 +132,21 @@ while True:
 
     # make all pixels Red
     # fill(red, green, blue)
+    print("fill - red")
     pixels.fill((255, 0, 0)) # red
     pixels.show()
     time.sleep(wait_time)
 
     # make all pixels Green
     # fill(red, green, blue)
+    print("fill - green")
     pixels.fill((0, 255, 0))
     pixels.show()
     time.sleep(wait_time)
 
     # make all pixels Blue
     # fill(red, green, blue)
+    print("fill - blue")
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
@@ -152,9 +155,10 @@ while True:
 
     # makes the strand of pixels show HeartBeat
     # HeartBeat(red, green, blue, cycles):
+    print("HeartBeat")
     pixels.fill((0, 0, 0))
     time.sleep(wait_time)
-    HeartBeat(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255), 5)
+    HeartBeat(random.randint(0, 255), random.randint(0, 255), random.randint(0, 255), 2)
 
 
 
