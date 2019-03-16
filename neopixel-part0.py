@@ -397,6 +397,22 @@ def randomLevelsCustom( levelobj, clearall, delay, cycles ):
         time.sleep(delay)
 
 
+def light_level_random( levels, level, clearall ):
+
+    if (clearall):
+        pixels.fill((0, 0, 0)) # clear all
+        pixels.show()
+    
+    startPxl = 0
+    if (level == 0):
+        startPxl = 0
+    else:
+        startPxl = levels[level-1]
+    
+    for i in range(startPxl, levels[level]):
+        pixels[i] = wheelBrightLevel(random.randint(0, 255), random.randint(50, 255))
+        
+
 def randomLevelsCustomColors( colorobj, levelobj, clearall, delay, cycles ):
     colorCount = len(colorobj)
     NUM_LEVELS = len(levelobj)
@@ -478,6 +494,7 @@ def light_level_random_color(color, levels, level, clearall ):
     for i in range(startPxl, levels[level]):
         print("i=",i,"color=",color,"startPxl=",startPxl,"level=",level)
         pixels[i] = color
+        
         
 
 while True:
@@ -572,19 +589,19 @@ while True:
     # makes the strand of pixels show  randomLevelsCustom
     # randomLevelsCustom( levelobj, clearall, delay, cycles )
     #levels = (110, 200, 270, 340, 390, 400)
-    randomLevelsCustom(levels, True, 0.2, 50)
+    randomLevelsCustom(levels, True, 0.5, 10)
 
     # makes the strand of pixels show randomLevelsCustom2Colors
     # randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles )
     #levels = (110, 200, 270, 340, 390, 400)
-    randomLevelsCustom2Colors((255,255,255),(0,255,0), levels, True, 0.2, 50)
+    randomLevelsCustom2Colors((255,255,255),(0,255,0), levels, True, 0.5, 10)
     time.sleep(wait_time)
     
     # makes the strand of pixels show randomLevelsCustomColors
     # randomLevelsCustomColors( colorobj levelobj, clearall, delay, cycles ):
     #levels = (110, 200, 270, 340, 390, 400)
     colorobj = ( (255,255,255), (0,255,0), (255,0,0) )
-    randomLevelsCustomColors(colorobj, levels, 1, 0.2, 50)
+    randomLevelsCustomColors(colorobj, levels, 1, 0.5, 10)
     time.sleep(wait_time)
 
     # makes the strand of pixels show LevelsColorsCustom
