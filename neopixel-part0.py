@@ -70,6 +70,34 @@ def wheel(pos):
         b = int(255 - pos*3)
     return (r, g, b) if ORDER == neopixel.RGB or ORDER == neopixel.GRB else (r, g, b, 0)
 
+def wheelBrightLevel(pos, bright):
+    # Input a value 0 to 255 to get a color value.
+    # The colours are a transition r - g - b - back to r.
+    if pos < 0 or pos > 255:
+        r = g = b = 0
+    elif pos < 85:
+        r = int(pos * 3)
+        g = int(255 - pos*3)
+        b = 0
+    elif pos < 170:
+        pos -= 85
+        r = int(255 - pos*3)
+        g = 0
+        b = int(pos*3)
+    else:
+        pos -= 170
+        r = 0
+        g = int(pos*3)
+        b = int(255 - pos*3)
+
+    # bight level logic
+    color = brightnessRGB(r, g, b, bright)
+    r = color[0]
+    g = color[1]
+    b = color[2]
+
+    return color if ORDER == neopixel.RGB or ORDER == neopixel.GRB else (r, g, b, 0)
+
 def brightnessRGB(red, green, blue, bright):
     r = (bright/256.0)*red
     g = (bright/256.0)*green
@@ -411,7 +439,7 @@ def light_level_random( levels, level, clearall ):
     
     for i in range(startPxl, levels[level]):
         pixels[i] = wheelBrightLevel(random.randint(0, 255), random.randint(50, 255))
-        
+
 
 def randomLevelsCustomColors( colorobj, levelobj, clearall, delay, cycles ):
     colorCount = len(colorobj)
