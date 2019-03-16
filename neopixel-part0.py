@@ -461,6 +461,21 @@ def LevelsColorsCustom( colorobj, levelobj, delay ):
         pixels.show()
         time.sleep(delay)
 
+def light_level_random_color(color, levels, level, clearall ):
+
+    if (clearall):
+        pixels.fill((0, 0, 0)) # clear all
+        pixels.show()
+    
+    startPxl = 0
+    if (level == 0):
+        startPxl = 0
+    else:
+        startPxl = levels[level-1]
+    
+    for i in range(startPxl, levels[level]):
+        pixels[i] = color
+        
 
 while True:
     random.seed(num_pixels)
