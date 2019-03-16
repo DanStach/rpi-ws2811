@@ -483,7 +483,7 @@ while True:
     # makes the strand of pixels show candycane
     # candycane(delay, cycles)
     print("candycane")
-    candycane(0, 50) 
+    candycane(0, 5) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show twinkle
