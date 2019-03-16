@@ -455,8 +455,8 @@ def LevelsColorsCustom( colorobj, levelobj, delay ):
         colorIndex = levelnum % colorCount
         pcolor = colorobj[colorIndex]
 
-        #if (NUM_LEVELS == level):
-        #    level = 0
+        if (NUM_LEVELS == level):
+            level = 0
         light_level_random_color(pcolor, levelobj, level, False)
         pixels.show()
         time.sleep(delay)
