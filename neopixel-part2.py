@@ -433,18 +433,21 @@ while True:
 
     # make all pixels Red
     # fill(red, green, blue)
+    print("fill - red")
     pixels.fill((255, 0, 0)) # red
     pixels.show()
     time.sleep(wait_time)
 
     # make all pixels Green
     # fill(red, green, blue)
+    print("fill - green")
     pixels.fill((0, 255, 0))
     pixels.show()
     time.sleep(wait_time)
 
     # make all pixels Blue
     # fill(red, green, blue)
+    print("fill - blue")
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
@@ -453,6 +456,7 @@ while True:
 
     # makes the strand of pixels show random_levels
     # pancake(level, delay)
+    print("pancake")
     pixels.fill((0, 0, 0))
     time.sleep(wait_time)
     pancake(8, 0.5)
@@ -460,70 +464,80 @@ while True:
 
     # makes the strand of pixels show drain
     # drain(level, delay)
+    print("drain")
     drain(8, 0.5)
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_levels
     # random_levels( NUM_LEVELS, delay, cycles )
     #random_levels(12, 0, 500)
+    print("random_levels")
     random_levels(8, 0.1, 500)
     time.sleep(wait_time)
 
     # makes the strand of pixels show candycane
     # candycane(delay, cycles)
-    candycane(0, 500) 
+    print("candycane")
+    candycane(0, 50) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show twinkle
     # twinkle(delay, cycles)
-    twinkle(0.005, 100) 
+    print("twinkle")
+    twinkle(0, 100) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show loop5
     # loop5( delay, cycles)
     #loop5(0.25, 500) 
-    time.sleep(wait_time)
+    #print("")
+    #time.sleep(wait_time)
 
     ### FixMe: think random_march and matrix are the same
     # makes the strand of pixels show random_march
     # random_march( delay, cycles)
+    print("random_march")
     random_march(0.25, 256) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show matrix
     # matrix(random_percent, delay, cycles)
+    print("matrix")
     matrix(10, 0.25, 500) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show rainbow_fade
-    # rainbow_fade(delay, cycles):
+    # rainbow_fade(delay, cycles)
+    print("rainbow_fade")
     rainbow_fade(.02, 256) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show rainbow_loop
-    # rainbow_loop(delay, step, cycles):
+    # rainbow_loop(delay, step, cycles)
+    print("rainbow_loop")
     pixels.fill((0, 0, 0))
     pixels.show()
-    time.sleep(wait_time*2)
     rainbow_loop(0.01, 10, 1000) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show rainbow
-    # rainbow(delay, step, cycles):
-    pixels.fill((255, 255, 0))
+    # rainbow(delay, step, cycles)
+    print("rainbow")
+    pixels.fill((0, 0, 0))
     pixels.show()
-    time.sleep(wait_time*2)
     rainbow(0.01, 10, 2) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
     # rgb_propeller(LoopCount)
+    print("rgb_propeller")
     pixels.fill((0, 0, 0))
     rgb_propeller(1000)
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
     # random_burst(delayStart, delayEnd , LoopCount)
+    print("random_burst")
     pixels.fill((0, 0, 0))
     random_burst(0.005, .2, 100)
     time.sleep(wait_time)
