@@ -409,11 +409,10 @@ def Fire(Cooling, Sparking, SpeedDelay, LoopCount):
         
         # Step 1.  Cool down every cell a little
         for i in range(num_pixels):
-            #print()
-            #print()
-            #print("rand interal" + str(((Cooling * 10) / num_pixels) + 2))
-            cooldown = random.randint(0, ((Cooling * 10) / num_pixels) + 2)
-            #print("cooldown " + str(cooldown))
+            randomCooldown = ((Cooling * 10) / num_pixels) + 2
+            print("i=",i,"randomCooldown=",randomCooldown)
+            cooldown = random.randint(0, randomCooldown)
+            print("cooldown " + str(cooldown))
             #print("heat " + str(heat[i]))
             if cooldown > heat[i]:
                 heat[i]=0
