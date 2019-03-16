@@ -414,7 +414,7 @@ while True:
     # shows RunningLights in purple
     # RunningLights(red, green, blue, WaveDelay)
     print("RunningLights")
-    RunningLights(235,97,35, 0)
+    RunningLights(75,0,130, 0)
     time.sleep(wait_time)
 
     ### HALLOWEEN idea
@@ -423,10 +423,14 @@ while True:
     ### HALLOWEEN idea
     # make the strand of pixels show HalloweenEyes
     # HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause)
-    print("fill indigo")
-    pixels.fill((75,0,130)) # indigo
-    pixels.show()
+    #print("fill indigo")
+    #pixels.fill((75,0,130)) # indigo
+    #pixels.show()
     print("HalloweenEyes")
+    HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
+    HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
+    HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
+    HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
     HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
     time.sleep(wait_time)
 
@@ -435,10 +439,10 @@ while True:
     print("HeartBeat")
     pixels.fill((0, 0, 0))
     time.sleep(wait_time)
-    HeartBeat(235,97,35, 5)
+    HeartBeat(75,0,130, 2)
 
     # makes the strand of pixels show SnowSparkle (random)
     # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
     print("SnowSparkle")
-    SnowSparkle(235,97,35, 100, 0, 0)
+    SnowSparkle(75,0,130, 100, 0, 0)
 
