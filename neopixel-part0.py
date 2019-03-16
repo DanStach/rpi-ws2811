@@ -1,5 +1,5 @@
 ### Sample python code for NeoPixels on Raspberry Pi
-### this code is random suggestion from my family, friends, and other examples on the web
+### this code is random suggestion from my family, friends, and other examples on the web. 
 ### orginal code: https://github.com/DanStach/rpi-ws2811
 import time
 import board
@@ -384,6 +384,69 @@ def HeartBeatExisiting(beat1Step, beat1FadeInDelay, beat1FadeOutDelay, beat1Dela
     
         time.sleep(.050) 
 
+def randomLevelsCustomColors( colorobj, levelobj, clearall, delay, cycles ):
+    colorCount = len(colorobj)
+    NUM_LEVELS = len(levelobj)
+
+    for loop in range(cycles):
+        colorIndex = loop % colorCount]
+        pcolor = colorobj[colorIndex]
+
+
+        level = random.randint(0, NUM_LEVELS)
+        if (NUM_LEVELS == level):
+            level = 0
+        light_level_random_color(pcolor, levelobj, level, 1)
+        pixels.show()
+        time.sleep(delay)
+
+def randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles ):
+    NUM_LEVELS = len(levelobj)
+    for loop in range(cycles):
+        if loop % 2 == 0:
+            color = c1
+        else:
+            color = c2
+
+        level = random.randint(0, NUM_LEVELS)
+        if (NUM_LEVELS == level):
+            level = 0
+        light_level_random_color(color, levelobj, level, 1)
+        pixels.show()
+        time.sleep(delay)
+
+def LevelsCustomColors(color, levels, level, clearall ):
+
+    if (clearall):
+        pixels.fill((0, 0, 0)) # clear all
+        pixels.show()
+    
+    startPxl = 0
+    if (level == 0):
+        startPxl = 0
+    else:
+        startPxl = levels[level-1]
+    
+    for i in range(startPxl, levels[level]):
+        pixels[i] = color
+
+
+
+def LevelsColorsCustom( colorobj, levelobj, delay ):
+    colorCount = len(colorobj)
+    NUM_LEVELS = len(levelobj)
+
+    # for each level
+    for levelnum in range(NUM_LEVELS):
+        # gather color info
+        colorIndex = levelnum % colorCount]
+        pcolor = colorobj[colorIndex]
+
+        #if (NUM_LEVELS == level):
+        #    level = 0
+        light_level_random_color(pcolor, levelobj, level, False)
+        pixels.show()
+        time.sleep(delay)
 
 
 while True:
@@ -445,6 +508,35 @@ while True:
     print("candycane_custom white green")
     candycane_custom((255,255,255), (0,200,0), 255, 0, 500)
     time.sleep(wait_time)
+
+    # levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348)
+    levels = (110, 200, 270, 340, 390, 400)
+    
+    # makes the strand of pixels show  randomLevelsCustom
+    # randomLevelsCustom( levelobj, clearall, delay, cycles )
+    #levels = (110, 200, 270, 340, 390, 400)
+    randomLevelsCustom(levels, True, 0, 50)
+
+    # makes the strand of pixels show randomLevelsCustom2Colors
+    # randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles )
+    #levels = (110, 200, 270, 340, 390, 400)
+    randomLevelsCustom2Colors((255,255,255),(0,255,0), levels, True, 0, 50)
+    time.sleep(wait_time)
+    
+    # makes the strand of pixels show randomLevelsCustomColors
+    # randomLevelsCustomColors( colorobj levelobj, clearall, delay, cycles ):
+    #levels = (110, 200, 270, 340, 390, 400)
+    colorobj = ( (255,255,255), (0,255,0), (255,0,0) )
+    randomLevelsCustomColors(colorobj, levels, 1, 0, 50)
+    time.sleep(wait_time)
+
+    # makes the strand of pixels show LevelsColorsCustom
+    #LevelsColorsCustom( colorobj, levelobj, delay )
+    #levels = (110, 200, 270, 340, 390, 400)
+    colorobj = ( (255,255,255), (255,0,0) (0,255,0), (0,0,255),  (0,255,255) )
+    LevelsColorsCustom(colorobj, levels, 0)
+    time.sleep(wait_time*5)
+
 
     # makes the strand of pixels show Fire
     # Fire(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, FireEffect, LoopCount)
