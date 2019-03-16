@@ -560,13 +560,13 @@ while True:
     #LevelsColorsCustom( colorobj, levelobj, delay )
     #levels = (110, 200, 270, 340, 390, 400)
     print("LevelsColorsCustom")
-    colorobj = ( (255,255,255), (255,0,0) (0,255,0), (0,0,255),  (0,255,255) )
+    colorobj = ( (255,255,255), (255,0,0), (0,255,0), (0,0,255),  (0,255,255) )
     LevelsColorsCustom(colorobj, levels, 0)
     time.sleep(wait_time*5)
 
 
-    # levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348)
-    levels = (110, 200, 270, 300)
+    levels = (58, 108, 149, 187, 224, 264, 292, 300)
+    #levels = (110, 200, 270, 300)
     # makes the strand of pixels show  randomLevelsCustom
     # randomLevelsCustom( levelobj, clearall, delay, cycles )
     #levels = (110, 200, 270, 340, 390, 400)
