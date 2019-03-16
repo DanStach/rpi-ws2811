@@ -392,24 +392,28 @@ while True:
 
     # make all pixels Red
     # fill(red, green, blue)
+    print("fill red")
     pixels.fill((255, 0, 0)) # red
     pixels.show()
     time.sleep(wait_time)
 
     # make all pixels Green
     # fill(red, green, blue)
+    print("fill green")
     pixels.fill((0, 255, 0))
     pixels.show()
     time.sleep(wait_time)
 
     # make all pixels Blue
     # fill(red, green, blue)
+    print("fill blue")
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
     
     # shows pattern of colors on the given pixels 
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2), ...) 
+    print("colorAllColorGroup multi")
     xmasColorGroup = ((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
     colorAllColorGroup(xmasColorGroup) 
     time.sleep(wait_time)
@@ -417,12 +421,14 @@ while True:
 
     # shows 2 color every other pixel (red, green)
     # SnowSparkleExisting(Count, SparkleDelay, SpeedDelay)
+    print("colorAll2Color purple orange")
     colorAll2Color((128,0,128), (255,165,0) )
     SnowSparkleExisting(0, .1, .1)
     time.sleep(wait_time)
 
     # shows 2 color every other pixel (red, green)
     # RunningLightsPreExisting(WaveDelay, cycles):
+    print("colorAll2Color red green")
     colorAll2Color((255, 0, 0), (0, 255, 0)) 
     RunningLightsPreExisting(0, 1000)
     time.sleep(wait_time)
@@ -430,11 +436,13 @@ while True:
     # shows 2 color every other pixel (red, green)
     #HeartBeatExisiting(beat1Step, beat1FadeInDelay, beat1FadeOutDelay, beat1Delay, 
     #                   beat2Step, beat2FadeInDelay, beat2FadeOutDelay, beat2Delay, cycles):
-    HeartBeatExisiting(3, .005, .003, 0.001, 6, .002, .003, 0.05, 10)
+    print("HeartBeatExisiting")
+    HeartBeatExisiting(3, .005, .003, 0.001, 6, .002, .003, 0.05, 2)
 
 
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)
+    print("candycane_custom white green")
     candycane_custom((255,255,255), (0,200,0), 255, 0, 500)
     time.sleep(wait_time)
 
@@ -447,6 +455,7 @@ while True:
     #SparkingRangeEnd = 0-255
     #FireColor = 0-2 (0=red, 1=blue , 2=green)
     #FireEffect = 0-2
+    print("FireCustom")
     FireCustom(0, 12, 25, 0, 10, 0.02, 500) # red fire
     time.sleep(wait_time)
 
@@ -454,6 +463,7 @@ while True:
 
     # fade in/out a single color (red / green / blue / white)
     # FadeInOut(red, green, blue, delay)
+    print("FadeInOut")
     FadeInOut(255, 0, 0, 0.01)
     FadeInOut(0, 255, 0, 0.01)
     FadeInOut(0, 0, 255, 0.01)
@@ -461,12 +471,14 @@ while True:
 
     # shows 2 color every other pixel (red, green)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
+    print("colorAll2Color red green")
     colorAll2Color((255, 0, 0), (0, 255, 0)) 
     time.sleep(wait_time)
 
     ### HALLOWEEN idea
     # shows 2 color every other pixel (purple, orange)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
+    print("colorAll2Color purple orange")
     colorAll2Color((128,0,128), (255,165,0) )
 
 
