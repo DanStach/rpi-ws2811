@@ -380,18 +380,21 @@ while True:
 
     # make all pixels Red
     # fill(red, green, blue)
+    print("fill red")
     pixels.fill((255, 0, 0)) # red
     pixels.show()
     time.sleep(wait_time)
 
     # make all pixels Green
     # fill(red, green, blue)
+    print("fill green")
     pixels.fill((0, 255, 0))
     pixels.show()
     time.sleep(wait_time)
 
     # make all pixels Blue
     # fill(red, green, blue)
+    print("fill blue")
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
@@ -400,14 +403,17 @@ while True:
     ### HALLOWEEN idea
     # shows 2 color every other pixel (purple, orange)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
+    print("colorAll2Color purple orange1")
     colorAll2Color((128,0,128), (255,165,0) )
     time.sleep(wait_time)
+    print("colorAll2Color purple orange2")
     colorAll2Color((128,0,128), (235,97,35) )
     time.sleep(wait_time)
 
     ### HALLOWEEN idea
     # shows RunningLights in purple
     # RunningLights(red, green, blue, WaveDelay)
+    print("RunningLights")
     RunningLights(235,97,35, 0)
     time.sleep(wait_time)
 
@@ -417,16 +423,19 @@ while True:
     ### HALLOWEEN idea
     # make the strand of pixels show HalloweenEyes
     # HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause)
+    print("HalloweenEyes")
     HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
     time.sleep(wait_time)
 
     # makes the strand of pixels show HeartBeat
     # HeartBeat(red, green, blue, cycles):
+    print("HeartBeat")
     pixels.fill((0, 0, 0))
     time.sleep(wait_time)
     HeartBeat(235,97,35, 5)
 
     # makes the strand of pixels show SnowSparkle (random)
     # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
+    print("SnowSparkle")
     SnowSparkle(235,97,35, 100, 0, 0)
 
