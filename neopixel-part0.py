@@ -428,7 +428,7 @@ while True:
 
     # shows 2 color every other pixel (red, green)
     # RunningLightsPreExisting(WaveDelay, cycles):
-    print("colorAll2Color red green")
+    print("RunningLightsPreExisting red green")
     colorAll2Color((255, 0, 0), (0, 255, 0)) 
     RunningLightsPreExisting(0, 1000)
     time.sleep(wait_time)
