@@ -181,15 +181,9 @@ def rainbow_fade(delay, cycles):
         if thishue > 255:
              thishue = 0
 
-        # an other option would be to
         pixels.fill(wheel(thishue))
         pixels.show()
         time.sleep(delay)
-#        for i in range(num_pixels):
-#            print(wheel(thishue))
-#            pixels[i] = wheel(thishue)
-#            pixels.show()
-#            time.sleep(delay)
 
 
 def matrix(random_percent, delay, cycles):
@@ -210,23 +204,12 @@ def matrix(random_percent, delay, cycles):
         for i in range(num_pixels - 1, 0, -1):
             pixels[i] = pixels[i-1]
         
-        # there is an issue with first 2 pixels are same color 
-        #pixels[0] = (0,0,0)
-        #pixels.show()
-        #time.sleep(delay)
-
 
  
 def random_march(delay, cycles):
     for loop in range(cycles):
 
         for idex in range(num_pixels-1):
-            ### previous logic that was not used...
-            #if idex > 0: #if not last pixel
-            #    r = idex - 1
-            #else: # if last pixel
-            #    r = num_pixels - 1
-
             # shift pixel value to previous pixel (pixel1 = value of pixel2,... and so on)
             pixels[idex] = pixels[idex+1]
 
@@ -237,11 +220,11 @@ def random_march(delay, cycles):
         pixels.show()
         time.sleep(delay)
 
+
 ### FixMe: this code does not work
 ### i think it also has a memory leak
 ### i have reached out to the author (via youtube comment)
 #### next step would be to step though the code on an arduino 
-
 def loop5(delay, cycles):
     for loop in range(cycles):
         #GB = pixels.getBrightness()
@@ -291,15 +274,14 @@ def twinkle(delay, cycles ):
         if (random.randint(0, 4) == 0): #randomly, if 0  (0-3)
             huebase = huebase -1
         
-        for whichPixel in range(num_pixels):
+        for pixel_index in range(num_pixels):
             hue = random.randint(0, 32) + huebase
-            #saturation = 255;    #richest color
             brightness = random.randint(0, 255)
-        
-            pixels[whichPixel] = wheelBrightLevel(hue, brightness)
+            pixels[pixel_index] = wheelBrightLevel(hue, brightness)
             # show pixel values 
         pixels.show()
         time.sleep(delay)
+
 
 def candycane(delay, cycles):
     index = 0
@@ -542,7 +524,7 @@ while True:
     # rgb_propeller(LoopCount)
     print("rgb_propeller")
     pixels.fill((0, 0, 0))
-    rgb_propeller(300)
+    rgb_propeller(100)
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
