@@ -27,7 +27,7 @@ ORDER = neopixel.RGB
 pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=ORDER)
 wait_time = 1
 thisbright = 255
-levelobj = (58, 108, 149, 187, 224, 264, 292, 300)
+levelobj = (50, 100, 150, 200, 220, 240, 260, 280, 295, 300)
 levelobjcount = len(levelobj)
 
 
@@ -489,7 +489,7 @@ while True:
     # makes the strand of pixels show twinkle
     # twinkle(delay, cycles)
     print("twinkle")
-    twinkle(0, 100) 
+    twinkle(0, 10) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show loop5
