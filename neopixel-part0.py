@@ -389,7 +389,7 @@ def randomLevelsCustomColors( colorobj, levelobj, clearall, delay, cycles ):
     NUM_LEVELS = len(levelobj)
 
     for loop in range(cycles):
-        colorIndex = loop % colorCount]
+        colorIndex = loop % colorCount
         pcolor = colorobj[colorIndex]
 
 
@@ -439,7 +439,7 @@ def LevelsColorsCustom( colorobj, levelobj, delay ):
     # for each level
     for levelnum in range(NUM_LEVELS):
         # gather color info
-        colorIndex = levelnum % colorCount]
+        colorIndex = levelnum % colorCount
         pcolor = colorobj[colorIndex]
 
         #if (NUM_LEVELS == level):
