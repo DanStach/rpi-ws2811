@@ -330,7 +330,9 @@ def HalloweenEyesExisting(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, Fad
 #   beat2FadeOutDelay: (0-2147483647) second beat fade out trasition speed, in seconds
 #   beat1Delay: (0-2147483647)  beat time delay bewteen sencond and first beat, in seconds
 #   cycles: (1-2147483647) number of times this effect will run
-def HeartBeatExisiting(beat1Step, beat1FadeInDelay, beat1FadeOutDelay, beat2Step, beat2FadeInDelay, beat2FadeOutDelay, cycles):
+def HeartBeatExisiting(beat1Step, beat1FadeInDelay, beat1FadeOutDelay, beat1Delay, beat2Step, beat2FadeInDelay, beat2FadeOutDelay, beat2Delay, cycles):
+#HeartBeatExisiting(beat1Step, beat1FadeInDelay, beat1FadeOutDelay, beat1Delay, 
+#                   beat2Step, beat2FadeInDelay, beat2FadeOutDelay, beat2Delay, cycles):
     # gather existing colors in strip of pixel
     stripExisting = []
     for i in range(num_pixels):
