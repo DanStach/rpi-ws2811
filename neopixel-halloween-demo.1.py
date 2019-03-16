@@ -430,8 +430,6 @@ while True:
     HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
     HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
     HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
-    HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
-    HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
     time.sleep(wait_time)
 
     # makes the strand of pixels show HeartBeat
