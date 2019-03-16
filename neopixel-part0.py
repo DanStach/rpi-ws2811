@@ -506,7 +506,7 @@ while True:
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)
     print("candycane_custom white green")
-    candycane_custom((255,255,255), (0,200,0), 255, 0, 50)
+    candycane_custom((255,255,255), (0,200,0), 255, 0, 5)
     time.sleep(wait_time)
 
     # levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348)
