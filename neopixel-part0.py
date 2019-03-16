@@ -27,7 +27,8 @@ pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=Fal
 wait_time = 1
 
 
-### colorAll2Color(c1, c2) allows two alternating colors to be shown
+### colorAll2Color allows two alternating colors to be shown
+#
 def colorAll2Color(c1, c2):
     for i in range(num_pixels):
         if(i % 2 == 0): # even
@@ -42,7 +43,7 @@ def colorAllColorGroup(colorObject):
     colorCount = len(colorObject)
 
     for i in range(num_pixels):
-            colorIndex = i % colorCount]
+            colorIndex = i % colorCount
             pixels[i] = colorObject[colorIndex]
 
     pixels.show()
@@ -135,28 +136,36 @@ def fadeToBlack(ledNo, fadeValue):
 
 
 
-### makes the strand of pixels show Fire
-# Fire(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, FireEffect, LoopCount)
-#CoolingRangeStart = 0-255
-#CoolingRangeEnd = 0-255
-#Sparking = 0-100  (0= 0% sparkes randomly added, 100= 100% sparks randomly added)
-#SparkingRangeStart = 0-255 
-#SparkingRangeEnd = 0-255
-#FireColor = 0-2 (0=red, 1=blue , 2=green)
-#FireEffect = 0-2 (these are differnet ways of adding sparks to the strip)
-def FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, LoopCount):
+
+def FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, cycles):
+#   CoolingRangeStart: (0-255) cooling random value, start range
+#   CoolingRangeEnd: (0-255) cooling random value, end range
+#   Sparking: (0-100)  chance of sparkes are added randomly controld througn a % value, 100= 100% and 0 = 0%
+#   SparkingRangeStart: (0- number of pixels) spark position random value, start range
+#   SparkingRangeEnd: (0- number of pixels) spark position random value, end range
+#   SpeedDelay: (0-...) slow down the effect by injecting a delay in Sec. 0=no delay, .05=50msec, 2=2sec
+#
+# FireCustom: makes the strand of pixels show an effect that looks flame. This effect also
+# adds more detail control of "sparks" that inject "heat" to the effect, thus changing color 
+# and flame length. The spark position can also be controled via start and end range. 
+# Color options include red, green, and blue.
+#
+# Improvements: 
+#  - add choice for 3 diffrent fire effect logic.
+#  - add choice to control heat values "random.randint(160,255)"
+#  - add choice for flame color options include red, green, and blue.
+
+    # intialize heat array, same size of as the strip of pixels
     heat = []
     for i in range(num_pixels):
-    heat.append(0)
+        heat.append(0)
 
-    for l in range(LoopCount):
+    # 
+    for loop in range(cycles):
         cooldown = 0
         
         # Step 1.  Cool down every cell a little
         for i in range(num_pixels):
-            # for 50 leds and cooling 50
-            # cooldown = random.randint(0, 12)
-            # cooldown = random.randint(0, ((Cooling * 10) / num_pixels) + 2)
             cooldown = random.randint(CoolingRangeStart, CoolingRangeEnd)
             if cooldown > heat[i]:
                 heat[i]=0
@@ -182,8 +191,8 @@ def FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart,
             # calculate ramp up from
             heatramp = t192 & 63 # 0..63  0x3f=63
             heatramp <<= 2 # scale up to 0..252
-            # figure out which third of the spectrum we're in:
 
+            # figure out which third of the spectrum we're in:
             if t192 > 0x80: # hottest 128 = 0x80
                 pixels[j] = (255, 255, int(heatramp))
             elif t192 > 0x40: # middle 64 = 0x40
@@ -200,6 +209,7 @@ def candycane_custom(c1, c2, thisbright, delay, cycles):
     N3  = int(num_pixels/3)
     N6  = int(num_pixels/6)
     N12 = int(num_pixels/12)
+
     for loop in range(cycles):
         index = index + 1
         cSwap = c1
