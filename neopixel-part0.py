@@ -617,19 +617,19 @@ while True:
     # makes the strand of pixels show  randomLevelsCustom
     # randomLevelsCustom( levelobj, clearall, delay, cycles )
     #levels = (110, 200, 270, 340, 390, 400)
-    randomLevelsCustom(levels, True, 0.5, 10)
+    randomLevelsCustom(levels, True, 1, 5)
 
     # makes the strand of pixels show randomLevelsCustom2Colors
     # randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles )
     #levels = (110, 200, 270, 340, 390, 400)
-    randomLevelsCustom2Colors((255,255,255),(0,255,0), levels, True, 0.5, 10)
+    randomLevelsCustom2Colors((255,255,255),(0,255,0), levels, True, 1, 5)
     time.sleep(wait_time)
     
     # makes the strand of pixels show randomLevelsCustomColors
     # randomLevelsCustomColors( colorobj levelobj, clearall, delay, cycles ):
     #levels = (110, 200, 270, 340, 390, 400)
     colorobj = ( (255,255,255), (0,255,0), (255,0,0) )
-    randomLevelsCustomColors(colorobj, levels, 1, 0.5, 10)
+    randomLevelsCustomColors(colorobj, levels, 1, 1, 5 )
     time.sleep(wait_time)
 
     # makes the strand of pixels show LevelsColorsCustom
@@ -637,7 +637,7 @@ while True:
     #levels = (110, 200, 270, 340, 390, 400)
     colorobj = ( (255,255,255), (255,0,0) (0,255,0), (0,0,255),  (0,255,255) )
     LevelsColorsCustom(colorobj, levels, .5)
-    time.sleep(wait_time*5)
+    time.sleep(wait_time*2)
 
 
     # makes the strand of pixels show Fire
