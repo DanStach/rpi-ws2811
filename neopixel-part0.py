@@ -474,6 +474,7 @@ def light_level_random_color(color, levels, level, clearall ):
         startPxl = levels[level-1]
     
     for i in range(startPxl, levels[level]):
+        print("i=",i,"color=",color,"startPxl=",startPxl,"level=",level)
         pixels[i] = color
         
 
