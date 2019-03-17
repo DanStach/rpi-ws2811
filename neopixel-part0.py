@@ -591,7 +591,7 @@ while True:
     time.sleep(wait_time*5)
     
     # shows pattern of colors on the given pixels 
-    # colorAll2Color((red1, green1, blue1), (red2, green2, blue2), ...) 
+    # colorAllColorGroup((red1, green1, blue1), (red2, green2, blue2), ...) 
     print("colorAllColorGroup multi")
     xmasColorGroup = ((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
     colorAllColorGroup(xmasColorGroup) 
