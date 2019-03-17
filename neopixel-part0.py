@@ -103,27 +103,6 @@ def brightnessRGB(red, green, blue, bright):
     g = (bright/256.0)*green
     b = (bright/256.0)*blue
     return (int(r), int(g), int(b))
-
-def FadeInOut(red, green, blue, delay):
-    r = 0
-    g = 0
-    b = 0
-      
-    for k in range(256):
-        r = (k/256.0)*red
-        g = (k/256.0)*green
-        b = (k/256.0)*blue
-        pixels.fill((int(r), int(g), int(b)))
-        pixels.show()
-        time.sleep(delay)
-     
-    for k in range(256, -1, -1):
-        r = (k/256.0)*red
-        g = (k/256.0)*green
-        b = (k/256.0)*blue
-        pixels.fill((int(r), int(g), int(b)))
-        pixels.show()
-        time.sleep(delay)
         
         
 def fadeToBlack(ledNo, fadeValue):
@@ -646,25 +625,10 @@ while True:
     candycane_custom((255,255,255), (0,200,0), 255, 0, 2)
     time.sleep(wait_time)
 
-    # fade in/out a single color (red / green / blue / white)
-    # FadeInOut(red, green, blue, delay)
-    print("FadeInOut")
-    FadeInOut(255, 0, 0, 0.01)
-    FadeInOut(0, 255, 0, 0.01)
-    FadeInOut(0, 0, 255, 0.01)
-    FadeInOut(255, 255, 255, 0.01)
-
     # shows 2 color every other pixel (red, green)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
     print("colorAll2Color red green")
     colorAll2Color((255, 0, 0), (0, 255, 0)) 
     time.sleep(wait_time)
-
-    ### HALLOWEEN idea
-    # shows 2 color every other pixel (purple, orange)
-    # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
-    print("colorAll2Color purple orange")
-    colorAll2Color((128,0,128), (255,165,0) )
-
 
 
