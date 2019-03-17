@@ -631,4 +631,13 @@ while True:
     colorAll2Color((255, 0, 0), (0, 255, 0)) 
     time.sleep(wait_time)
 
+    # sean suggests we have lightning and thunder
+    #maybe strobe lightning and a fast heart beat for thunder?
 
+    # sean suggests rain falling...
+
+    # need to work on the rotating cloud palet
+
+    #burnt out blub effect
+
+    # effect for lanyard id (144 pixel strip)
