@@ -622,7 +622,7 @@ while True:
     # shows 2 color every other pixel (red, green)
     # SnowSparkleExisting(Count, SparkleDelay, SpeedDelay)
     print("colorAll2Color purple orange")
-    colorAll2Color((128,0,128), (255,165,0) )
+    colorAll2Color((75,0,130), (255,165,0) )
     SnowSparkleExisting(100, .1, .1)
     time.sleep(wait_time)
 
