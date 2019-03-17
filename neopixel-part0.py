@@ -641,3 +641,5 @@ while True:
     #burnt out blub effect
 
     # effect for lanyard id (144 pixel strip)
+
+    # vertical stripe effect, using groups of Pixel# to define a top to bottom stripe 
