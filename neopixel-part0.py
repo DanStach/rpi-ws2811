@@ -211,6 +211,77 @@ def FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart,
         time.sleep(SpeedDelay)
 
 
+def FireCustomMirror(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, cycles):
+#   CoolingRangeStart: (0-255) cooling random value, start range
+#   CoolingRangeEnd: (0-255) cooling random value, end range
+#   Sparking: (0-100)  chance of sparkes are added randomly controld througn a % value, 100= 100% and 0 = 0%
+#   SparkingRangeStart: (0- number of pixels) spark position random value, start range
+#   SparkingRangeEnd: (0- number of pixels) spark position random value, end range
+#   SpeedDelay: (0-...) slow down the effect by injecting a delay in Sec. 0=no delay, .05=50msec, 2=2sec
+#
+# FireCustom: makes the strand of pixels show an effect that looks flame. This is simular to FireCustom, 
+# however it mirrors the effect on top and bottom  (rather than using just from bottom). The intent is to
+# have a fire effect that could be used 144 pixel strip for a lanyard id. 
+#
+# Improvements: 
+#  - add choice for 3 diffrent fire effect logic.
+#  - add choice to control heat values "random.randint(160,255)"
+#  - add choice for flame color options include red, green, and blue.
+
+    # intialize heat array, same size of as the strip of pixels
+    heat = []
+    halfNumPixel = int( num_pixels/2) # note that this will round down
+    for i in range(halfNumPixel):
+        heat.append(0)
+
+    # 
+    for loop in range(cycles):
+        cooldown = 0
+        
+        # Step 1.  Cool down every cell a little
+        for i in range(halfNumPixel):
+            cooldown = random.randint(CoolingRangeStart, CoolingRangeEnd)
+            if cooldown > heat[i]:
+                heat[i]=0
+            else: 
+                heat[i]=heat[i]-cooldown
+        
+        # Step 2.  Heat from each cell drifts 'up' and diffuses a little
+        for k in range(halfNumPixel - 1, 2, -1):
+            heat[k] = (heat[k - 1] + heat[k - 2] + heat[k - 2]) / 3
+            
+        # Step 3.  Randomly ignite new 'sparks' near the bottom
+        if random.randint(0,100) < Sparking:
+            
+            # randomly pick the position of the spark
+            y = random.randint(SparkingRangeStart,SparkingRangeEnd)
+            # different fire effects 
+            heat[y] = random.randint(160,255)
+
+        # Step 4.  Convert heat to LED colors
+        for j in range(halfNumPixel):
+            t192 = round((int(heat[j])/255.0)*191)
+
+            # calculate ramp up from
+            heatramp = t192 & 63 # 0..63  0x3f=63
+            heatramp <<= 2 # scale up to 0..252
+
+            # figure out which third of the spectrum we're in for color:
+            if t192 > 0x80: # hottest 128 = 0x80
+                colortemp = (255, 255, int(heatramp))
+            elif t192 > 0x40: # middle 64 = 0x40
+                colortemp = (255, int(heatramp), 0)
+            else: # coolest
+                colortemp = (int(heatramp), 0, 0)
+            
+            pixels[j] = colortemp
+            pixels[halfNumPixel-j] = colortemp
+
+
+        pixels.show()
+        time.sleep(SpeedDelay)
+
+
 def candycane_custom(c1, c2, thisbright, delay, cycles):
     index = 0
     N3  = int(num_pixels/3)
@@ -239,6 +310,9 @@ def candycane_custom(c1, c2, thisbright, delay, cycles):
             # show pixel values 
             pixels.show()
             time.sleep(delay)
+
+
+
 
 def RunningLightsPreExisting(WaveDelay, cycles):
     
@@ -538,11 +612,23 @@ while True:
     #   SparkingRangeStart: (0- number of pixels) spark position random value, start range
     #   SparkingRangeEnd: (0- number of pixels) spark position random value, end range
     #   SpeedDelay: (0-...) slow down the effect by injecting a delay in Sec. 0=no delay, .05=50msec, 2=2sec
-    print("FireCustom")
-    FireCustom(0, 2, 90, 0, int(num_pixels/3), 0, 900) # red fire
+    print("FireCustomMirror")
+    FireCustomMirror(0, 2, 30, 0, int(num_pixels/6), 0, 900) # red fire
     time.sleep(wait_time)
 
 
+    # makes the strand of pixels show Fire
+    # FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, 
+    #             SpeedDelay, cycles):
+    #   CoolingRangeStart: (0-255) cooling random value, start range
+    #   CoolingRangeEnd: (0-255) cooling random value, end range
+    #   Sparking: (0-100)  chance of sparkes are added randomly controld througn a % value, 100= 100% and 0 = 0%
+    #   SparkingRangeStart: (0- number of pixels) spark position random value, start range
+    #   SparkingRangeEnd: (0- number of pixels) spark position random value, end range
+    #   SpeedDelay: (0-...) slow down the effect by injecting a delay in Sec. 0=no delay, .05=50msec, 2=2sec
+    print("FireCustom")
+    FireCustom(0, 2, 90, 0, int(num_pixels/3), 0, 900) # red fire
+    time.sleep(wait_time)
 
     ### this code tests that the levels are correct ##### 
     cw = (255,255,255)
