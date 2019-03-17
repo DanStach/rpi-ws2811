@@ -550,6 +550,12 @@ while True:
     pixels.show()
     time.sleep(wait_time)
 
+    levels = (43, 83, 103, 135, 160, 188, 213, 236, 255, 273, 286, 295, 300)
+    print("LevelsColorsCustom  - level  test ")
+    colorobj = ( cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy ) 
+    LevelsColorsCustom(colorobj, levels, .5)
+    time.sleep(10)
+
      # makes the strand of pixels show LevelsColorsCustom
     #LevelsColorsCustom( colorobj, levelobj, delay )
     #levels = (110, 200, 270, 340, 390, 400)
@@ -567,11 +573,7 @@ while True:
     colorAllColorGroup(colorobj)
     time.sleep(99999)
 
-    levels = (58, 108, 149, 187, 224, 264, 292, 300)
-    print("LevelsColorsCustom  - level  test ")
-    colorobj = ( cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy ) 
-    LevelsColorsCustom(colorobj, levels, .5)
-    time.sleep(wait_time*5)
+
     
     # shows pattern of colors on the given pixels 
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2), ...) 
