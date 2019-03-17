@@ -553,7 +553,7 @@ while True:
      # makes the strand of pixels show LevelsColorsCustom
     #LevelsColorsCustom( colorobj, levelobj, delay )
     #levels = (110, 200, 270, 340, 390, 400)
-    print("LevelsColorsCustom")
+    print("colorAllColorGroup - level test")
     cw = (255,255,255)
     cr = (255,0,0)
     cg = (0,255,0)
@@ -564,6 +564,12 @@ while True:
                  cg,cg,cg,cg,cg,cg,cg,cg,cg,cg,
                  cb,cb,cb,cb,cb,cb,cb,cb,cb,cb,
                  cy,cy,cy,cy,cy,cy,cy,cy,cy,cy )
+    colorAllColorGroup(colorobj)
+    time.sleep(99999)
+
+    levels = (58, 108, 149, 187, 224, 264, 292, 300)
+    print("LevelsColorsCustom  - level  test ")
+    colorobj = ( cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy ) )
     LevelsColorsCustom(colorobj, levels, .5)
     time.sleep(wait_time*5)
     
@@ -572,7 +578,7 @@ while True:
     print("colorAllColorGroup multi")
     xmasColorGroup = ((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
     colorAllColorGroup(xmasColorGroup) 
-    time.sleep(9999)
+    time.sleep(wait_time)
 
 
     # shows 2 color every other pixel (red, green)
