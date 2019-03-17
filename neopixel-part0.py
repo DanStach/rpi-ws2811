@@ -549,13 +549,30 @@ while True:
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
+
+     # makes the strand of pixels show LevelsColorsCustom
+    #LevelsColorsCustom( colorobj, levelobj, delay )
+    #levels = (110, 200, 270, 340, 390, 400)
+    print("LevelsColorsCustom")
+    cw = (255,255,255)
+    cr = (255,0,0)
+    cg = (0,255,0)
+    cb = (0,0,255)
+    cy = (255,255,0)
+    colorobj = ( cw,cw,cw,cw,cw,cw,cw,cw,cw,cw,
+                 cr,cr,cr,cr,cr,cr,cr,cr,cr,cr,
+                 cg,cg,cg,cg,cg,cg,cg,cg,cg,cg,
+                 cb,cb,cb,cb,cb,cb,cb,cb,cb,cb,
+                 cy,cy,cy,cy,cy,cy,cy,cy,cy,cy )
+    LevelsColorsCustom(colorobj, levels, .5)
+    time.sleep(wait_time*5)
     
     # shows pattern of colors on the given pixels 
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2), ...) 
     print("colorAllColorGroup multi")
     xmasColorGroup = ((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
     colorAllColorGroup(xmasColorGroup) 
-    time.sleep(wait_time)
+    time.sleep(9999)
 
 
     # shows 2 color every other pixel (red, green)
