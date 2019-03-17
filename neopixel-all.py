@@ -7,7 +7,7 @@ import math
 import serial
 import ctypes
 
-from neopixel-part1 import *
+from neopixelpart1 import *
 
 
 

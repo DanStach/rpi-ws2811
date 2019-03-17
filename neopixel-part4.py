@@ -363,7 +363,7 @@ def juggle(fadescale, delay, cycles):
             #leds[beatsin16( i+7, 0, NUM_LEDS-1 )] |= CHSV(dothue, 200, 255);
             beatsin = (math.sin( loop/num_pixels))
             index = (i+7) * (beatsin+1)/2
-            pixels[index] = wheel(dothue)
+            pixels[int(index)] = wheel(dothue)
             dothue += 32
         pixels.show()
         time.sleep(delay)
