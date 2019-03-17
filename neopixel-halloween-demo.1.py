@@ -289,6 +289,17 @@ def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, 
     # pause before changing eye location
     time.sleep(EndPause)
 
+# colorAllColorGroup(colorObject) allows colors to be 
+# - colorObject: list of color objects. example ((255, 0, 0), (0, 255, 0))  
+def colorAllColorGroup(colorObject):
+    colorCount = len(colorObject)
+
+    for i in range(num_pixels):
+            colorIndex = i % colorCount
+            pixels[i] = colorObject[colorIndex]
+
+    pixels.show()
+
 
 def candycane_custom(c1, c2, thisbright, delay, cycles):
     index = 0
@@ -403,17 +414,29 @@ while True:
     ### HALLOWEEN idea
     # shows 2 color every other pixel (purple, orange)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
+    cIndigo = (75,0,130)
+    cWhite = (255,255,255)
+    cWhiteGray  = (150,150,150)
+    cOrange = (235,97,35)
+    cGreen = (0,255,0)
     print("colorAll2Color purple orange1")
     colorAll2Color((128,0,128), (255,165,0) )
     time.sleep(wait_time*10)
     print("colorAll2Color purple orange2")
     colorAll2Color((128,0,128), (235,97,35) )
     time.sleep(wait_time*10)
-
-        print("colorAllColorGroup - level test")
-    colorobj = ( )
+    print("colorAllColorGroup - indigo, green")
+    colorobj = ( cIndigo, cGreen)
     colorAllColorGroup(colorobj)
-    time.sleep(wait_time)
+    time.sleep(wait_time*10)
+    print("colorAllColorGroup - indigo, whitegray")
+    colorobj = ( cIndigo,  cWhiteGray)
+    colorAllColorGroup(colorobj)
+    time.sleep(wait_time*10)
+    print("colorAllColorGroup - redorg, org, purple, green")
+    colorobj = ( (247,95,28), (255,154,0), (136,30,228), (133, 226, 31))
+    colorAllColorGroup(colorobj)
+    time.sleep(wait_time*10)
 
     ### HALLOWEEN idea
     # shows RunningLights in purple
@@ -448,4 +471,5 @@ while True:
     # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
     print("SnowSparkle")
     SnowSparkle(75,0,130, 100, 0, 0)
+
 
