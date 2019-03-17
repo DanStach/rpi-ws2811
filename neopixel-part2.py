@@ -321,7 +321,6 @@ def random_levels( NUM_LEVELS, delay, cycles ):
         pixels.show()
         time.sleep(delay)
 
-#fixme: array is hardcoded for 350 lights. needs to be more dynamic.
 def light_level_random( level,  clearall ):
     #levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348) #this only works if you have 350 lights
     #levels = (11, 20, 27, 34, 39, 43, 47, 50) #this works for 50 lights
@@ -445,14 +444,14 @@ while True:
     pixels.fill((0, 0, 0))
     time.sleep(wait_time)
     #pancake(8, 0.5)
-    pancake(levelobjcount, 0.5)
+    pancake(levelobjcount, 0)
     time.sleep(wait_time)
 
     # makes the strand of pixels show drain
     # drain(level, delay)
     print("drain")
     #drain(8, 0.5)
-    drain(levelobjcount, 0.5)
+    drain(levelobjcount, 0)
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_levels
@@ -460,7 +459,7 @@ while True:
     #random_levels(12, 0, 500)
     print("random_levels")
     #random_levels(8, 0.1, 500)
-    random_levels(levelobjcount, 0.5, 50)
+    random_levels(levelobjcount, 0, 50)
     time.sleep(wait_time)
 
     # makes the strand of pixels show candycane
@@ -510,6 +509,7 @@ while True:
     print("rainbow_loop")
     pixels.fill((0, 0, 0))
     pixels.show()
+    time.sleep(wait_time)
     rainbow_loop(0.01, 10, 300) 
     time.sleep(wait_time)
 

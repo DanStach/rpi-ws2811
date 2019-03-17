@@ -25,7 +25,8 @@ ORDER = neopixel.RGB
 pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=ORDER)
 
 wait_time = 1
-
+levelobj = (43, 73, 103, 135, 160, 188, 213, 236, 255, 272, 286, 295, 300)
+levelobjcount = len(levelobj)
 
 def colorAll2Color(c1, c2):
     for i in range(num_pixels):
@@ -795,15 +796,8 @@ def random_levels( NUM_LEVELS, delay, cycles ):
         time.sleep(delay)
 
 
-#fixme: array is hardcoded for 350 lights. needs to be more dynamic.
 def light_level_random( level,  clearall ):
-    #this only works if you have 350 lights
-    #levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348)
-    
-    #this works for 50 lights
-    levels = (11, 20, 27, 34, 39, 43, 47, 50)
-    #levels = (20, 34, 43, 50)
-
+    levels = levelobj
     if (clearall):
         pixels.fill((0, 0, 0)) # clear all
         pixels.show()
@@ -871,7 +865,10 @@ def pancake(NUM_LEVELS, delay):
 
 
 def clear_level( level):
-    levels = (11, 20, 27, 34, 39, 43, 47, 50)
+    #levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348) #this only works if you have 350 lights
+    #levels = (11, 20, 27, 34, 39, 43, 47, 50) #this works for 50 lights
+    #levels = (20, 34, 43, 50) #this works for 50 lights
+    levels = levelobj
     startPxl = 0
     if (level == 0):
         startPxl = 0
@@ -879,7 +876,6 @@ def clear_level( level):
         startPxl = levels[level-1]
     for i in range(startPxl, levels[level]):
         pixels[i] = (0,0,0)  #CRGB::Black;
-
 
 
 
@@ -920,23 +916,29 @@ while True:
     colorAll2Color((128,0,128), (235,97,35) )
     time.sleep(wait_time )
 
-# makes the strand of pixels show random_levels
+    # makes the strand of pixels show random_levels
     # pancake(level, delay)
-    #pixels.fill((0, 0, 0))
-    #time.sleep(wait_time)
+    print("pancake")
+    pixels.fill((0, 0, 0))
+    time.sleep(wait_time)
     #pancake(8, 0.5)
-    #time.sleep(wait_time)
+    pancake(levelobjcount, 0)
+    time.sleep(wait_time)
 
     # makes the strand of pixels show drain
     # drain(level, delay)
+    print("drain")
     #drain(8, 0.5)
-    #time.sleep(wait_time)
+    drain(levelobjcount, 0)
+    time.sleep(wait_time)
 
     # makes the strand of pixels show random_levels
     # random_levels( NUM_LEVELS, delay, cycles )
     #random_levels(12, 0, 500)
+    print("random_levels")
     #random_levels(8, 0.1, 500)
-    #time.sleep(wait_time)
+    random_levels(levelobjcount, 0, 50)
+    time.sleep(wait_time)
 
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)
