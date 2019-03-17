@@ -560,7 +560,7 @@ while True:
     #   SparkingRangeEnd: (0- number of pixels) spark position random value, end range
     #   SpeedDelay: (0-...) slow down the effect by injecting a delay in Sec. 0=no delay, .05=50msec, 2=2sec
     print("FireCustom")
-    FireCustom(0, num_pixels, 50, 0, int(num_pixels/4), 0, 500) # red fire
+    FireCustom(0, 20, 50, 0, int(num_pixels/4), 0, 500) # red fire
     time.sleep(wait_time)
 
 
