@@ -509,12 +509,12 @@ while True:
     # makes the strand of pixels show fadeUsingColor
     # rinbowWithGlitter(initialhue, deltahue, delay, cycles)
     print("rainbowWithGlitter")
-    rainbowWithGlitter(0, 7, .01, 100)
+    rainbowWithGlitter(0, 7, 0, 100)
 
     # makes the strand of pixels show fadeUsingColor
     # fadeUsingColor(colormask, delay, cycles)
     print("fadeUsingColor")
-    fadeUsingColor((0,0,100), .02, 5)
+    fadeUsingColor((0,0,100), 0, 5)
     time.sleep(wait_time)
 
 
