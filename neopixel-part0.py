@@ -228,8 +228,8 @@ def FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart,
             else: # coolest
                 pixels[j] = (int(heatramp), 0, 0)
 
-    pixels.show()
-    time.sleep(SpeedDelay)
+        pixels.show()
+        time.sleep(SpeedDelay)
 
 
 def candycane_custom(c1, c2, thisbright, delay, cycles):
@@ -550,6 +550,20 @@ while True:
     pixels.show()
     time.sleep(wait_time)
 
+    # makes the strand of pixels show Fire
+    # Fire(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, FireEffect, LoopCount)
+    #CoolingRangeStart = 0-255
+    #CoolingRangeEnd = 0-255
+    #Sparking = 0-100  (0= 0% sparkes randomly added, 100= 100% sparks randomly added)
+    #SparkingRangeStart = 0-255 
+    #SparkingRangeEnd = 0-255
+    #FireColor = 0-2 (0=red, 1=blue , 2=green)
+    #FireEffect = 0-2
+    print("FireCustom")
+    FireCustom(0, 12, 25, 0, 10, 0.02, 500) # red fire
+    time.sleep(wait_time)
+
+
 
     ### this code tests that the levels are correct ##### 
     cw = (255,255,255)
@@ -631,22 +645,6 @@ while True:
     print("candycane_custom white green")
     candycane_custom((255,255,255), (0,200,0), 255, 0, 2)
     time.sleep(wait_time)
-
-
-    # makes the strand of pixels show Fire
-    # Fire(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, FireEffect, LoopCount)
-    #CoolingRangeStart = 0-255
-    #CoolingRangeEnd = 0-255
-    #Sparking = 0-100  (0= 0% sparkes randomly added, 100= 100% sparks randomly added)
-    #SparkingRangeStart = 0-255 
-    #SparkingRangeEnd = 0-255
-    #FireColor = 0-2 (0=red, 1=blue , 2=green)
-    #FireEffect = 0-2
-    print("FireCustom")
-    FireCustom(0, 12, 25, 0, 10, 0.02, 500) # red fire
-    time.sleep(wait_time)
-
-
 
     # fade in/out a single color (red / green / blue / white)
     # FadeInOut(red, green, blue, delay)
