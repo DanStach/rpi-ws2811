@@ -488,22 +488,22 @@ while True:
     # gradientdrain and fill example
     # fill_gradient_RGB( startpos, startcolor, endpos, endcolor, delay )
     print("fill_gradient_RGB - white to blue")
-    fill_gradient_RGB( 0, (255,255,255), 49, (0,0,255), .01 ) #white to blue
-    drain_gradient_RGB( 49, (0,255,0), 0, (255,255,255), .01 ) # white to green
+    fill_gradient_RGB( 0, (255,255,255), num_pixels-1, (0,0,255), .01 ) #white to blue
+    drain_gradient_RGB( num_pixels-1, (0,255,0), 0, (255,255,255), .01 ) # white to green
     time.sleep(wait_time)
 
     # blue and white cyclone
     # fill_gradient_RGB( startpos, startcolor, endpos, endcolor, delay )
     print("fill_gradient_RGB blue white cyclone cloud")
     cyclonewait = .05
-    fill_gradient_RGB( 0, (255,255,255), num_pixels, (0,0,255), cyclonewait ) #white to blue
-    fill_gradient_RGB( 0, (0,0,255), num_pixels, (255,255,255), cyclonewait ) #white to blue
-    fill_gradient_RGB( 0, (255,255,255), num_pixels, (0,0,255), cyclonewait ) #white to blue
-    fill_gradient_RGB( 0, (0,0,255), num_pixels, (255,255,255), cyclonewait ) #white to blue
-    fill_gradient_RGB( 0, (255,255,255), num_pixels, (0,0,255), cyclonewait ) #white to blue
-    fill_gradient_RGB( 0, (0,0,255), num_pixels, (255,255,255), cyclonewait ) #white to blue
-    fill_gradient_RGB( 0, (255,255,255), num_pixels, (0,0,255), cyclonewait ) #white to blue
-    fill_gradient_RGB( 0, (0,0,255), num_pixels, (255,255,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (255,255,255), num_pixels-1, (0,0,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (0,0,255), num_pixels-1, (255,255,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (255,255,255), num_pixels-1, (0,0,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (0,0,255), num_pixels-1, (255,255,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (255,255,255), num_pixels-1, (0,0,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (0,0,255), num_pixels-1, (255,255,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (255,255,255), num_pixels-1, (0,0,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (0,0,255), num_pixels-1, (255,255,255), cyclonewait ) #white to blue
     time.sleep(wait_time)
 
     # makes the strand of pixels show fadeUsingColor
