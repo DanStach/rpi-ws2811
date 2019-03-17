@@ -27,7 +27,8 @@ ORDER = neopixel.RGB
 pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=ORDER)
 wait_time = 1
 thisbright = 255
-levelobj = (50, 100, 150, 200, 220, 240, 260, 280, 295, 300)
+levelobj = (43, 73, 103, 135, 160, 188, 213, 236, 255, 272, 286, 295, 300)
+#levelobj = (50, 100, 150, 200, 220, 240, 260, 280, 295, 300)
 levelobjcount = len(levelobj)
 
 
