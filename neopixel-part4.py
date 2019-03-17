@@ -17,7 +17,7 @@ import ctypes
 pixel_pin = board.D18
 
 # The number of NeoPixels
-num_pixels = 50
+num_pixels = 300
 
 # The order of the pixel colors - RGB or GRB. Some NeoPixels have red and green reversed!
 # For RGBW NeoPixels, simply change the ORDER to RGBW or GRBW.
@@ -372,12 +372,12 @@ def juggle(fadescale, delay, cycles):
 #https://git.defproc.co.uk/red-violet-made/kites/blob/d9574021fb77de0ac7f83d4a195648ec5085083a/arduino/test/lib/FastLED/lib8tion.h
 def beatsin16(  beats_per_minute, lowest = 0, highest = 65535, timebase = 0, phase_offset = 0):
     beat = beat16( beats_per_minute, timebase)
-    print("beat", beat)
+    #print("beat", beat)
     beatsin = (math.sin( beat + phase_offset) + 32768)
-    print( "beatsin", beatsin, "highest", highest, "lowest", lowest)
+    #print( "beatsin", beatsin, "highest", highest, "lowest", lowest)
     rangewidth = highest - lowest
     scaledbeat = scale16( beatsin, rangewidth)
-    print(":scaledbeat", scaledbeat)
+    #print(":scaledbeat", scaledbeat)
     result = lowest + scaledbeat
     return result
 
@@ -394,7 +394,7 @@ def beatsin16(  beats_per_minute, lowest = 0, highest = 65535, timebase = 0, pha
 # http://fastled.io/docs/3.1/lib8tion_8h_source.html
 def beat16( beats_per_minute, timebase = 0):
     # Convert simple 8-bit BPM's to full Q8.8 accum88's if needed
-    print("beats_per_minute", beats_per_minute)
+    #print("beats_per_minute", beats_per_minute)
     if beats_per_minute < 256:
        beats_per_minute <<= 8
     return beat88(beats_per_minute, timebase)
@@ -413,7 +413,7 @@ def beat16( beats_per_minute, timebase = 0):
 # https://git.defproc.co.uk/red-violet-made/kites/blob/d9574021fb77de0ac7f83d4a195648ec5085083a/arduino/test/lib/FastLED/lib8tion.h
 def beat88( beats_per_minute_88, timebase = 0):
     mills = int(round(time.time() * 1000))
-    print("mills", mills)
+    #print("mills", mills)
     return ((mills - timebase) * beats_per_minute_88 * 280) #>> 16
     """
     return (((GET_MILLIS()) - timebase) * beats_per_minute_88 * 280) >> 16;
@@ -443,46 +443,58 @@ while True:
 
     # make all pixels Red
     # fill(red, green, blue)
+    print("fill - red")
     pixels.fill((255, 0, 0)) # red
     pixels.show()
     time.sleep(wait_time)
 
     # make all pixels Green
     # fill(red, green, blue)
+    print("fill - green")
     pixels.fill((0, 255, 0))
     pixels.show()
     time.sleep(wait_time)
 
     # make all pixels Blue
     # fill(red, green, blue)
+    print("fill -blue")
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
 
+    #fix me: not working correctly
     # makes the strand of pixels show juggle
     # juggle(fadescale, delay, cycles)
-    juggle(230, .1, 1000)
+    print("juggle")
+    juggle(230, 0, 100)
     
     # makes the strand of pixels show bpm
     # bpm(pallet, delay, cycles)
-    bpm(PartyColors_p, .0, 1500)
+    print("bpm")
+    bpm(PartyColors_p, 0, 50)
 
     # makes the strand of pixels show sinelon
     # sinelon(hue, fadescale, delay, cycles)
-    sinelon(0, 230, 0.02, 500)
+    print("sinelon")
+    sinelon(0, 230, 0, 500)
     time.sleep(wait_time)
 
     # makes the strand of pixels show confetti
     # confetti(delay, cycles) 
-    confetti(.2, 100)
+    print("confetti")
+    confetti(0, 100)
     time.sleep(wait_time)
 
     # gradientdrain and fill example
+    # fill_gradient_RGB( startpos, startcolor, endpos, endcolor, delay )
+    print("fill_gradient_RGB - white to blue")
     fill_gradient_RGB( 0, (255,255,255), 49, (0,0,255), .01 ) #white to blue
     drain_gradient_RGB( 49, (0,255,0), 0, (255,255,255), .01 ) # white to green
     time.sleep(wait_time)
 
     # blue and white cyclone
+    # fill_gradient_RGB( startpos, startcolor, endpos, endcolor, delay )
+    print("fill_gradient_RGB blue white cyclone cloud")
     cyclonewait = .05
     fill_gradient_RGB( 0, (255,255,255), 49, (0,0,255), cyclonewait ) #white to blue
     fill_gradient_RGB( 0, (0,0,255), 49, (255,255,255), cyclonewait ) #white to blue
@@ -496,32 +508,38 @@ while True:
 
     # makes the strand of pixels show fadeUsingColor
     # rinbowWithGlitter(initialhue, deltahue, delay, cycles)
+    print("rainbowWithGlitter")
     rainbowWithGlitter(0, 7, .01, 100)
 
     # makes the strand of pixels show fadeUsingColor
     # fadeUsingColor(colormask, delay, cycles)
+    print("fadeUsingColor")
     fadeUsingColor((0,0,100), .02, 5)
     time.sleep(wait_time)
 
 
     # makes the strand of pixels show fill_gradient_RGB
     # fill_gradient_RGB( startpos, startcolor, endpos, endcolor, delay )
+    print("fill_gradient_RGB  white-black red-green")
     fill_gradient_RGB( 0, (255,255,255), 49, (0,0,0), .1 ) #white to black
     fill_gradient_RGB( 0, (255,0,0), 49, (0,255,0), .1 ) #red to green
     time.sleep(wait_time)
 
     # makes the strand of pixels show fill_rainbow
     # fill_rainbow(initialhue, deltahue, delay)
+    print("fill_rainbow")
     fill_rainbow(0, 10, .1)
     time.sleep(wait_time)
 
     # makes the strand of pixels show Cylon
     # Cylon(delay, cycles)
+    print("Cylon")
     Cylon(.05, 100)
     time.sleep(wait_time)
 
     # makes the strand of pixels show blink
     # blink(index, delay, cycles)
+    print("blink - pixel 0")
     time.sleep(wait_time)
     blink(0, .5, 8)
 
