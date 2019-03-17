@@ -550,6 +550,12 @@ while True:
     pixels.show()
     time.sleep(wait_time)
 
+
+    cw = (255,255,255)
+    cr = (255,0,0)
+    cg = (0,255,0)
+    cb = (0,0,255)
+    cy = (255,255,0)
     levels = (43, 83, 103, 135, 160, 188, 213, 236, 255, 273, 286, 295, 300)
     print("LevelsColorsCustom  - level  test ")
     colorobj = ( cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy ) 
@@ -560,11 +566,7 @@ while True:
     #LevelsColorsCustom( colorobj, levelobj, delay )
     #levels = (110, 200, 270, 340, 390, 400)
     print("colorAllColorGroup - level test")
-    cw = (255,255,255)
-    cr = (255,0,0)
-    cg = (0,255,0)
-    cb = (0,0,255)
-    cy = (255,255,0)
+
     colorobj = ( cw,cw,cw,cw,cw,cw,cw,cw,cw,cw,
                  cr,cr,cr,cr,cr,cr,cr,cr,cr,cr,
                  cg,cg,cg,cg,cg,cg,cg,cg,cg,cg,
