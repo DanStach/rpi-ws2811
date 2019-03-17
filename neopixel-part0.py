@@ -219,7 +219,7 @@ def FireCustomMirror(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRange
 #   SparkingRangeEnd: (0- number of pixels) spark position random value, end range
 #   SpeedDelay: (0-...) slow down the effect by injecting a delay in Sec. 0=no delay, .05=50msec, 2=2sec
 #
-# FireCustom: makes the strand of pixels show an effect that looks flame. This is simular to FireCustom, 
+# FireCustomMirror: makes the strand of pixels show an effect that looks flame. This is simular to FireCustom, 
 # however it mirrors the effect on top and bottom  (rather than using just from bottom). The intent is to
 # have a fire effect that could be used 144 pixel strip for a lanyard id. 
 #
@@ -275,7 +275,7 @@ def FireCustomMirror(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRange
                 colortemp = (int(heatramp), 0, 0)
             
             pixels[j] = colortemp
-            pixels[halfNumPixel-j] = colortemp
+            pixels[num_pixels-1-j] = colortemp
 
 
         pixels.show()

@@ -487,7 +487,7 @@ while True:
 
     # gradientdrain and fill example
     # fill_gradient_RGB( startpos, startcolor, endpos, endcolor, delay )
-    print("fill_gradient_RGB - white to blue")
+    print("fill_gradient_RGB - white-blue white-green")
     fill_gradient_RGB( 0, (255,255,255), num_pixels-1, (0,0,255), .01 ) #white to blue
     drain_gradient_RGB( num_pixels-1, (0,255,0), 0, (255,255,255), .01 ) # white to green
     time.sleep(wait_time)
