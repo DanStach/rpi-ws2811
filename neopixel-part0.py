@@ -556,7 +556,7 @@ while True:
     cg = (0,255,0)
     cb = (0,0,255)
     cy = (255,255,0)
-    levels = (43, 83, 103, 135, 160, 188, 213, 236, 255, 273, 286, 295, 300)
+    levels = (43, 73, 103, 135, 160, 188, 213, 236, 255, 273, 286, 295, 300)
     print("LevelsColorsCustom  - level  test ")
     colorobj = ( cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy ) 
     LevelsColorsCustom(colorobj, levels, .5)
