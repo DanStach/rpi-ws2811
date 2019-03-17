@@ -908,13 +908,13 @@ while True:
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2))
     print("colorAll2Color red green")
     colorAll2Color((255, 0, 0), (0, 255, 0)) 
-    time.sleep(wait_time )
+    time.sleep(wait_time * 10 )
 
     # shows 2 color every other pixel (purple, orange)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2))
     print("colorAll2Color purple orange")
     colorAll2Color((128,0,128), (235,97,35) )
-    time.sleep(wait_time )
+    time.sleep(wait_time * 10 )
 
     # makes the strand of pixels show random_levels
     # pancake(level, delay)
@@ -922,14 +922,14 @@ while True:
     pixels.fill((0, 0, 0))
     time.sleep(wait_time)
     #pancake(8, 0.5)
-    pancake(levelobjcount, 0)
+    pancake(levelobjcount, .1)
     time.sleep(wait_time)
 
     # makes the strand of pixels show drain
     # drain(level, delay)
     print("drain")
     #drain(8, 0.5)
-    drain(levelobjcount, 0)
+    drain(levelobjcount, .1)
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_levels
@@ -968,7 +968,7 @@ while True:
     pixels.fill((0, 0, 0)) 
     pixels.show()
     print("random_march")
-    random_march(0, 400) 
+    random_march(0, 1000) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show matrix
@@ -976,7 +976,7 @@ while True:
     pixels.fill((0, 0, 0)) 
     pixels.show()
     print("matrix")
-    matrix(10, 0, 500) 
+    matrix(10, 0, 1000) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show rainbow_fade
