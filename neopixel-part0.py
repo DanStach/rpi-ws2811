@@ -569,7 +569,7 @@ while True:
 
     levels = (58, 108, 149, 187, 224, 264, 292, 300)
     print("LevelsColorsCustom  - level  test ")
-    colorobj = ( cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy ) )
+    colorobj = ( cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy ) 
     LevelsColorsCustom(colorobj, levels, .5)
     time.sleep(wait_time*5)
     
