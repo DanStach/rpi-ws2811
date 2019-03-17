@@ -387,7 +387,8 @@ def HeartBeat(redo, greeno, blueo, cycles):
 
 
 while True:
-    random.seed(num_pixels)
+    #random.seed(num_pixels)
+    randon.seed()
 
     # make all pixels Red
     # fill(red, green, blue)
@@ -472,4 +473,9 @@ while True:
     print("SnowSparkle")
     SnowSparkle(75,0,130, 100, 0, 0)
 
+    # makes the strand of pixels show candycane_custom
+    # candycane_custom(c1, c2, brightness, delay, cycles)
+    print("candycane_custom  indigo green")
+    candycane_custom((75,0,130), (0,200,0), 255, 0, 10)
+    time.sleep(wait_time)
 
