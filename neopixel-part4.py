@@ -496,14 +496,14 @@ while True:
     # fill_gradient_RGB( startpos, startcolor, endpos, endcolor, delay )
     print("fill_gradient_RGB blue white cyclone cloud")
     cyclonewait = .05
-    fill_gradient_RGB( 0, (255,255,255), 49, (0,0,255), cyclonewait ) #white to blue
-    fill_gradient_RGB( 0, (0,0,255), 49, (255,255,255), cyclonewait ) #white to blue
-    fill_gradient_RGB( 0, (255,255,255), 49, (0,0,255), cyclonewait ) #white to blue
-    fill_gradient_RGB( 0, (0,0,255), 49, (255,255,255), cyclonewait ) #white to blue
-    fill_gradient_RGB( 0, (255,255,255), 49, (0,0,255), cyclonewait ) #white to blue
-    fill_gradient_RGB( 0, (0,0,255), 49, (255,255,255), cyclonewait ) #white to blue
-    fill_gradient_RGB( 0, (255,255,255), 49, (0,0,255), cyclonewait ) #white to blue
-    fill_gradient_RGB( 0, (0,0,255), 49, (255,255,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (255,255,255), num_pixels, (0,0,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (0,0,255), num_pixels, (255,255,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (255,255,255), num_pixels, (0,0,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (0,0,255), num_pixels, (255,255,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (255,255,255), num_pixels, (0,0,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (0,0,255), num_pixels, (255,255,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (255,255,255), num_pixels, (0,0,255), cyclonewait ) #white to blue
+    fill_gradient_RGB( 0, (0,0,255), num_pixels, (255,255,255), cyclonewait ) #white to blue
     time.sleep(wait_time)
 
     # makes the strand of pixels show fadeUsingColor
@@ -521,8 +521,8 @@ while True:
     # makes the strand of pixels show fill_gradient_RGB
     # fill_gradient_RGB( startpos, startcolor, endpos, endcolor, delay )
     print("fill_gradient_RGB  white-black red-green")
-    fill_gradient_RGB( 0, (255,255,255), 49, (0,0,0), .1 ) #white to black
-    fill_gradient_RGB( 0, (255,0,0), 49, (0,255,0), .1 ) #red to green
+    fill_gradient_RGB( 0, (255,255,255), num_pixels, (0,0,0), .1 ) #white to black
+    fill_gradient_RGB( 0, (255,0,0), num_pixels, (0,255,0), .1 ) #red to green
     time.sleep(wait_time)
 
     # makes the strand of pixels show fill_rainbow
