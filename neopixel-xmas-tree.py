@@ -1257,7 +1257,7 @@ while True:
     pixels.fill((0, 0, 0)) 
     pixels.show()
     print("random_march")
-    random_march(0, 1000) 
+    random_march(0, 800) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show matrix
@@ -1322,13 +1322,13 @@ while True:
     # makes the strand of pixels show theaterChaseRainbow
     # theaterChaseRainbow(SpeedDelay)
     print("theaterChaseRainbow")
-    theaterChaseRainbow(0)
+    theaterChaseRainbow(0.2)
     time.sleep(wait_time)
 
     # makes the strand of pixels show theaterChase
     # theaterChase(red, green, blue, cycles, SpeedDelay)
     print("theaterChase")
-    theaterChase(255,0,0, 20, 0)
+    theaterChase(255,0,0, 20, 0.2)
     time.sleep(wait_time)
 
     # makes the strand of pixels show colorWipe (green)
