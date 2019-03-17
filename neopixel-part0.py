@@ -551,16 +551,16 @@ while True:
     time.sleep(wait_time)
 
     # makes the strand of pixels show Fire
-    # Fire(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, FireColor, FireEffect, LoopCount)
-    #CoolingRangeStart = 0-255
-    #CoolingRangeEnd = 0-255
-    #Sparking = 0-100  (0= 0% sparkes randomly added, 100= 100% sparks randomly added)
-    #SparkingRangeStart = 0-255 
-    #SparkingRangeEnd = 0-255
-    #FireColor = 0-2 (0=red, 1=blue , 2=green)
-    #FireEffect = 0-2
+    # FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, 
+    #             SpeedDelay, cycles):
+    #   CoolingRangeStart: (0-255) cooling random value, start range
+    #   CoolingRangeEnd: (0-255) cooling random value, end range
+    #   Sparking: (0-100)  chance of sparkes are added randomly controld througn a % value, 100= 100% and 0 = 0%
+    #   SparkingRangeStart: (0- number of pixels) spark position random value, start range
+    #   SparkingRangeEnd: (0- number of pixels) spark position random value, end range
+    #   SpeedDelay: (0-...) slow down the effect by injecting a delay in Sec. 0=no delay, .05=50msec, 2=2sec
     print("FireCustom")
-    FireCustom(0, 12, 25, 0, 10, 0.02, 500) # red fire
+    FireCustom(0, num_pixels, 50, 0, int(num_pixels/4), 0, 500) # red fire
     time.sleep(wait_time)
 
 
