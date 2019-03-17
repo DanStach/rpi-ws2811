@@ -1211,14 +1211,14 @@ while True:
     pixels.fill((0, 0, 0))
     time.sleep(wait_time)
     #pancake(8, 0.5)
-    pancake(levelobjcount, .1)
+    pancake(levelobjcount, .2)
     time.sleep(wait_time)
 
     # makes the strand of pixels show drain
     # drain(level, delay)
     print("drain")
     #drain(8, 0.5)
-    drain(levelobjcount, .1)
+    drain(levelobjcount, .2)
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_levels
@@ -1226,7 +1226,7 @@ while True:
     #random_levels(12, 0, 500)
     print("random_levels")
     #random_levels(8, 0.1, 500)
-    random_levels(levelobjcount, 0, 50)
+    random_levels(levelobjcount, .1, 100)
     time.sleep(wait_time)
 
     # makes the strand of pixels show candycane_custom
@@ -1286,6 +1286,7 @@ while True:
     # rainbow(delay, step, cycles):
     pixels.fill((255, 255, 0))
     pixels.show()
+    time.sleep(wait_time)
     print("rainbow")
     rainbow(0, 10, 2) 
     time.sleep(wait_time)
@@ -1294,6 +1295,7 @@ while True:
     # rgbPropellerCustom(hue, LoopCount)
     pixels.fill((0, 0, 0))
     pixels.show()
+    time.sleep(wait_time)
     print("rgbPropellerCustom")
     rgbPropellerCustom(0, 2)
     time.sleep(wait_time)
@@ -1310,7 +1312,7 @@ while True:
     # makes the strand of pixels show Fire
     # Fire(Cooling, Sparking, SpeedDelay, LoopCount)
     print("Fire")
-    Fire(5, 250,0, 800)
+    Fire(8, 250,0, 800)
     time.sleep(wait_time)
     
     # makes the strand of pixels show 
@@ -1335,7 +1337,11 @@ while True:
     # colorWipe(red, green, blue, SpeedDelay)
     print("colorWipe")
     colorWipe(0,255,0, 0)
-
+    time.sleep(wait_time)
+    colorWipe(255,0, 0)
+    time.sleep(wait_time)
+    colorWipe(200,200,200)
+    time.sleep(wait_time)
     # makes the strand of pixels show RunningLights (red)
     # RunningLights(red, green, blue, WaveDelay)
     print("RunningLights")
@@ -1355,12 +1361,12 @@ while True:
     # makes the strand of pixels show TwinkleRandom
     # TwinkleRandom( Count, SpeedDelay, OnlyOne)
     print("TwinkleRandom")
-    TwinkleRandom(20, 0, False)
+    TwinkleRandom(100, 0, False)
 
     # makes the strand of pixels show Twinkle
     # Twinkle(red, green, blue, Count, SpeedDelay, OnlyOne)
     print("Twinkle")
-    Twinkle(255, 0, 0, 10, 0, False)
+    Twinkle(255, 0, 0, 100, 0, False)
 
     # fade in/out a single color (red / green / blue / white)
     # FadeInOut(red, green, blue, delay)
@@ -1380,7 +1386,7 @@ while True:
     # rainbow cycle with 1ms delay per step, 5 cycles
     # rainbow_cycle(delay, cycles)
     print("rainbow_cycle")
-    rainbow_cycle(0.001, 5) 
+    rainbow_cycle(0, 5) 
     time.sleep(wait_time)
 
 
@@ -1455,7 +1461,7 @@ while True:
 
     # shows 2 color every other pixel (red, green)
     # SnowSparkleExisting(Count, SparkleDelay, SpeedDelay)
-    print("colorAll2Color purple orange")
+    print("SnowSparkleExisting purple orange")
     colorAll2Color((75,0,130), (255,165,0) )
     SnowSparkleExisting(100, .1, .1)
     time.sleep(wait_time)

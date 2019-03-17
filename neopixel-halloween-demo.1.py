@@ -405,9 +405,14 @@ while True:
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
     print("colorAll2Color purple orange1")
     colorAll2Color((128,0,128), (255,165,0) )
-    time.sleep(wait_time)
+    time.sleep(wait_time*10)
     print("colorAll2Color purple orange2")
     colorAll2Color((128,0,128), (235,97,35) )
+    time.sleep(wait_time*10)
+
+        print("colorAllColorGroup - level test")
+    colorobj = ( )
+    colorAllColorGroup(colorobj)
     time.sleep(wait_time)
 
     ### HALLOWEEN idea
