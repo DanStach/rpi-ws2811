@@ -1167,9 +1167,20 @@ def light_level_random_color(color, levels, level, clearall ):
         pixels[i] = color
 
 
+def blink(index, delay, cycles):
+    for loop in range(cycles):
+        # Turn the LED on, then pause
+        pixels[index] = (255,0,0) #CRGB::Red
+        pixels.show()
+        time.sleep(delay)
+        # Now turn the LED off, then pause
+        pixels[index] = (0,0,0) #CRGB::Black
+        pixels.show()
+        time.sleep(delay)
+
 
 while True:
-    random.seed(num_pixels)
+    random.seed()
 
 
     # make all pixels Red
@@ -1427,6 +1438,15 @@ while True:
                  cy,cy,cy,cy,cy,cy,cy,cy,cy,cy )
     colorAllColorGroup(colorobj)
     time.sleep(wait_time)
+
+    # makes the strand of pixels show blink
+    # blink(index, delay, cycles)
+    print("blink - pixel 0")
+    pixels.fill((0, 0, 0))
+    pixels.show()
+    blink(num_pixels-1, .5, 5)
+    time.sleep(wait_time)
+
 
     # makes the strand of pixels show randomLevelsCustom2Colors
     # randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles )
