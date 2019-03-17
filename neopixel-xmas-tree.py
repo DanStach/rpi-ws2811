@@ -1473,6 +1473,16 @@ while True:
     RunningLightsPreExisting(0, 100)
     time.sleep(wait_time)
 
+
+    # shows 2 color every other pixel (red, green)
+    # RunningLightsPreExisting(WaveDelay, cycles):
+    print("RunningLightsPreExisting multi")
+    xmasColorGroup = ((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
+    colorAllColorGroup(xmasColorGroup) 
+    RunningLightsPreExisting(0, 100)
+    time.sleep(wait_time)
+
+
     # shows 2 color every other pixel (red, green)
     #HeartBeatExisiting(beat1Step, beat1FadeInDelay, beat1FadeOutDelay, beat1Delay, 
     #                   beat2Step, beat2FadeInDelay, beat2FadeOutDelay, beat2Delay, cycles):
@@ -1483,7 +1493,13 @@ while True:
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)
     print("candycane_custom white green")
-    candycane_custom((255,255,255), (0,200,0), 255, 0, 2)
+    candycane_custom((255,255,255), (0,200,0), 255, 0, 10)
+    time.sleep(wait_time)
+
+    # makes the strand of pixels show candycane_custom
+    # candycane_custom(c1, c2, brightness, delay, cycles)
+    print("candycane_custom red green")
+    candycane_custom((200,0,0), (0,200,0), 255, 0, 10)
     time.sleep(wait_time)
 
     # shows 2 color every other pixel (red, green)
