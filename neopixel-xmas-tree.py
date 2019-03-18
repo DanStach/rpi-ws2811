@@ -1213,6 +1213,14 @@ while True:
     # candycane_custom(c1, c2, brightness, delay, cycles)
     pixels.fill((0, 0, 0)) 
     pixels.show()
+    print("candycane_custom white red")
+    candycane_custom((255,255,255), (255, 0, 0), 255, .1, 30)
+    time.sleep(wait_time)
+
+    # makes the strand of pixels show candycane_custom
+    # candycane_custom(c1, c2, brightness, delay, cycles)
+    pixels.fill((0, 0, 0)) 
+    pixels.show()
     print("candycane_custom white green")
     candycane_custom((255,255,255), (0, 255, 0), 255, .1, 30)
     time.sleep(wait_time)
@@ -1233,12 +1241,6 @@ while True:
     twinkle2(0, 1000) 
     time.sleep(wait_time)
 
-    # makes the strand of pixels show loop5
-    # loop5( delay, cycles)
-    #loop5(0.25, 500) 
-    #time.sleep(wait_time)
-
-    ### FixMe: think random_march and matrix are the same
     # makes the strand of pixels show random_march
     # random_march( delay, cycles)
     pixels.fill((0, 0, 0)) 
