@@ -1182,7 +1182,7 @@ while True:
     # shows 2 color every other pixel (purple, orange)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2))
     print("colorAll2Color purple orange")
-    colorAll2Color((128,0,128), (235,97,35) )
+    colorAll2Color((128,0,128), (250,97,35) )
     time.sleep(wait_time * 10 )
 
     # makes the strand of pixels show random_levels
@@ -1211,11 +1211,18 @@ while True:
 
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)
-    # white and green
     pixels.fill((0, 0, 0)) 
     pixels.show()
     print("candycane_custom white green")
-    candycane_custom((255,255,255), (0, 255, 0), 255, 0, 1)
+    candycane_custom((255,255,255), (0, 255, 0), 255, .1, 30)
+    time.sleep(wait_time)
+
+    # makes the strand of pixels show candycane_custom
+    # candycane_custom(c1, c2, brightness, delay, cycles)
+    pixels.fill((0, 0, 0)) 
+    pixels.show()
+    print("candycane_custom red green")
+    candycane_custom((255,0,0), (0, 255, 0), 255, .1, 30)
     time.sleep(wait_time)
 
     # makes the strand of pixels show twinkle
@@ -1223,7 +1230,7 @@ while True:
     pixels.fill((0, 0, 0)) 
     pixels.show()
     print("twinkle2")
-    twinkle2(0, 10) 
+    twinkle2(0, 1000) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show loop5
