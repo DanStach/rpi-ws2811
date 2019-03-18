@@ -283,18 +283,16 @@ def FireCustomMirror(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRange
 
 
 def candycane_custom(c1, c2, thisbright, delay, cycles):
-    index = 0
     N3  = int(num_pixels/3)
     N6  = int(num_pixels/6)
     N12 = int(num_pixels/12)
 
     for loop in range(cycles):
-        index = index + 1
         cSwap = c1
         c1 = c2
         c2 = cSwap
         for i in range(N6):
-            j0 = int((index + i + num_pixels - N12) % num_pixels)
+            j0 = int((i + num_pixels - N12) % num_pixels)
             j1 = int((j0+N6) % num_pixels)
             j2 = int((j1+N6) % num_pixels)
             j3 = int((j2+N6) % num_pixels)
