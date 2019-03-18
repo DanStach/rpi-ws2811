@@ -1292,7 +1292,7 @@ while True:
     # makes the strand of pixels show Fire
     # Fire(Cooling, Sparking, SpeedDelay, LoopCount)
     print("Fire")
-    Fire(8, 250,0, 800)
+    Fire(15, 200,0, 800)
     time.sleep(wait_time)
     
     # makes the strand of pixels show 
