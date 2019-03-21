@@ -482,7 +482,7 @@ while True:
     # makes the strand of pixels show confetti
     # confetti(delay, cycles) 
     print("confetti")
-    confetti(0, 100)
+    confetti(0.1, 1000)
     time.sleep(wait_time)
 
     # gradientdrain and fill example

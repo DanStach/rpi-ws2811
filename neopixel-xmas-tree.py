@@ -1185,6 +1185,13 @@ while True:
     colorAll2Color((128,0,128), (250,97,35) )
     time.sleep(wait_time * 10 )
 
+    # shows pattern of colors on the given pixels 
+    # colorAllColorGroup((red1, green1, blue1), (red2, green2, blue2), ...) 
+    print("colorAllColorGroup multi")
+    xmasColorGroup = ((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
+    colorAllColorGroup(xmasColorGroup) 
+    time.sleep(wait_time)
+
     # makes the strand of pixels show random_levels
     # pancake(level, delay)
     print("pancake")
@@ -1214,7 +1221,7 @@ while True:
     pixels.fill((0, 0, 0)) 
     pixels.show()
     print("candycane_custom white red")
-    candycane_custom((255,255,255), (255, 0, 0), 255, .1, 30)
+    candycane_custom((255,255,255), (255, 0, 0), 255, .05, 30)
     time.sleep(wait_time)
 
     # makes the strand of pixels show candycane_custom
@@ -1222,7 +1229,7 @@ while True:
     pixels.fill((0, 0, 0)) 
     pixels.show()
     print("candycane_custom white green")
-    candycane_custom((255,255,255), (0, 255, 0), 255, .1, 30)
+    candycane_custom((255,255,255), (0, 255, 0), 255, .05, 30)
     time.sleep(wait_time)
 
     # makes the strand of pixels show candycane_custom
@@ -1230,7 +1237,7 @@ while True:
     pixels.fill((0, 0, 0)) 
     pixels.show()
     print("candycane_custom red green")
-    candycane_custom((255,0,0), (0, 255, 0), 255, .1, 30)
+    candycane_custom((255,0,0), (0, 255, 0), 255, .05, 30)
     time.sleep(wait_time)
 
     # makes the strand of pixels show twinkle
@@ -1422,7 +1429,7 @@ while True:
     print("blink - pixel 0")
     pixels.fill((0, 0, 0))
     pixels.show()
-    blink(num_pixels-1, .5, 5)
+    blink(num_pixels-1, .5, 10)
     time.sleep(wait_time)
 
 
