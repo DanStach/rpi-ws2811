@@ -388,7 +388,7 @@ def HeartBeat(redo, greeno, blueo, cycles):
 
 while True:
     #random.seed(num_pixels)
-    randon.seed()
+    random.seed()
 
     # make all pixels Red
     # fill(red, green, blue)

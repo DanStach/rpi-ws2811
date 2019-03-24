@@ -1192,6 +1192,12 @@ while True:
     colorAllColorGroup(xmasColorGroup) 
     time.sleep(wait_time)
 
+    print("colorAllColorGroup multi")
+    xmasColorGroup = ((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
+    colorAllColorGroup(xmasColorGroup) 
+    time.sleep(wait_time)
+
+
     # makes the strand of pixels show random_levels
     # pancake(level, delay)
     print("pancake")
