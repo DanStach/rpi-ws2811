@@ -287,9 +287,9 @@ def candycane_custom(c1, c2, thisbright, delay, cycles):
     N3  = int(num_pixels/3)
     N6  = int(num_pixels/6)
     N12 = int(num_pixels/12)
-
+    #print(N6)
     for loop in range(cycles):
-        index = index + 1
+        #index = index + 1
         cSwap = c1
         c1 = c2
         c2 = cSwap
@@ -300,6 +300,7 @@ def candycane_custom(c1, c2, thisbright, delay, cycles):
             j3 = int((j2+N6) % num_pixels)
             j4 = int((j3+N6) % num_pixels)
             j5 = int((j4+N6) % num_pixels)
+            #print(j0)
             pixels[j0] = brightnessRGB(c1[0], c1[1], c1[2], int(thisbright*.75))
             pixels[j1] = brightnessRGB(c2[0], c2[1], c2[2], thisbright)
             pixels[j2] = brightnessRGB(c1[0], c1[1], c1[2], int(thisbright*.75))
@@ -579,7 +580,7 @@ def light_level_random_color(color, levels, level, clearall ):
         
 
 while True:
-    random.seed(num_pixels)
+    random.seed()
 
 
     # make all pixels Red
@@ -602,6 +603,19 @@ while True:
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
+    
+    # make all pixels black
+    # fill(red, green, blue)
+    print("fill black")
+    pixels.fill((0, 0, 0))
+    pixels.show()
+    time.sleep(5)
+    
+    # makes the strand of pixels show candycane_custom
+    # candycane_custom(c1, c2, brightness, delay, cycles)
+    print("candycane_custom white green")
+    candycane_custom((255,255,255), (0,200,0), 255, 0.1, 10)
+    time.sleep(wait_time)
 
     # makes the strand of pixels show Fire
     # FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, 
@@ -613,7 +627,7 @@ while True:
     #   SparkingRangeEnd: (0- number of pixels) spark position random value, end range
     #   SpeedDelay: (0-...) slow down the effect by injecting a delay in Sec. 0=no delay, .05=50msec, 2=2sec
     print("FireCustomMirror")
-    FireCustomMirror(0, 2, 30, 0, int(num_pixels/6), 0, 900) # red fire
+    FireCustomMirror(0, 10, 20, 0, int(num_pixels/15), 0.01, 900) # red fire
     time.sleep(wait_time)
 
 
@@ -627,7 +641,7 @@ while True:
     #   SparkingRangeEnd: (0- number of pixels) spark position random value, end range
     #   SpeedDelay: (0-...) slow down the effect by injecting a delay in Sec. 0=no delay, .05=50msec, 2=2sec
     print("FireCustom")
-    FireCustom(0, 2, 90, 0, int(num_pixels/3), 0, 900) # red fire
+    FireCustom(0, 5, 70, 0, int(num_pixels/10), 0.005, 900) # red fire
     time.sleep(wait_time)
 
     ### this code tests that the levels are correct ##### 
@@ -636,9 +650,10 @@ while True:
     cg = (0,255,0)
     cb = (0,0,255)
     cy = (255,255,0)
-    levels = (43, 73, 103, 135, 160, 188, 213, 236, 255, 272, 286, 295, 300)
+    #levels = (43, 73, 103, 135, 160, 188, 213, 236, 255, 272, 286, 295, 300)
     #levels = (58, 108, 149, 187, 224, 264, 292, 300)
     #levels = (110, 200, 270, 300)
+    levels = (10,20,30,40,50,60,70,80,90,100,110,120,130,140,144)
     print("LevelsColorsCustom  - level  test ")
     colorobj = ( cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy ) 
     LevelsColorsCustom(colorobj, levels, .5)
@@ -687,7 +702,7 @@ while True:
     # shows 2 color every other pixel (red, green)
     # SnowSparkleExisting(Count, SparkleDelay, SpeedDelay)
     print("colorAll2Color purple orange")
-    colorAll2Color((75,0,130), (255,165,0) )
+    colorAll2Color((60,0,100), (200,100,0) )
     SnowSparkleExisting(100, .1, .1)
     time.sleep(wait_time)
 
@@ -695,7 +710,7 @@ while True:
     # RunningLightsPreExisting(WaveDelay, cycles):
     print("RunningLightsPreExisting red green")
     colorAll2Color((255, 0, 0), (0, 255, 0)) 
-    RunningLightsPreExisting(0, 100)
+    RunningLightsPreExisting(.2, 100)
     time.sleep(wait_time)
 
     # shows 2 color every other pixel (red, green)
@@ -705,27 +720,9 @@ while True:
     HeartBeatExisiting(3, .005, .003, 0.001, 6, .002, .003, 0.05, 1)
 
 
-    # makes the strand of pixels show candycane_custom
-    # candycane_custom(c1, c2, brightness, delay, cycles)
-    print("candycane_custom white green")
-    candycane_custom((255,255,255), (0,200,0), 255, 0, 2)
-    time.sleep(wait_time)
-
     # shows 2 color every other pixel (red, green)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
     print("colorAll2Color red green")
     colorAll2Color((255, 0, 0), (0, 255, 0)) 
     time.sleep(wait_time)
-
-    # sean suggests we have lightning and thunder
-    #maybe strobe lightning and a fast heart beat for thunder?
-
-    # sean suggests rain falling...
-
-    # need to work on the rotating cloud palet
-
-    #burnt out blub effect
-
-    # effect for lanyard id (144 pixel strip)
-
-    # vertical stripe effect, using groups of Pixel# to define a top to bottom stripe 
+ 
