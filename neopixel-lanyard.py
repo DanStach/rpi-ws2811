@@ -634,6 +634,12 @@ while True:
     pixels.fill((0, 0, 0))
     pixels.show()
     time.sleep(5)
+
+    # makes the strand of pixels show 
+    # theaterChaseCustom(colorobj, darkspace, cycles, SpeedDelay)
+    cobj = ((255,255,0))
+    theaterChaseCustom(cobj, 2, 100, 0.2)
+    time.sleep(wait_time)
     
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)

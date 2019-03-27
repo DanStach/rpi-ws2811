@@ -686,7 +686,7 @@ def BouncingColoredBalls(BallCount, colors, LoopCount):
         pixels.fill((0, 0, 0))
 
 while True:
-    random.seed(num_pixels)
+    random.seed()
 
 
     # make all pixels Red
@@ -747,7 +747,7 @@ while True:
     # makes the strand of pixels show CylonBounce
     # CylonBounce(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
     print("CylonBounce")
-    CylonBounce(255, 0, 0, 2, 0.010, 0.050)
+    CylonBounce(255, 0, 0, 2, 0, 0)
     time.sleep(wait_time)
 
         # makes the strand of pixels show NewKITT 
@@ -803,7 +803,7 @@ while True:
     # makes the strand of pixels show theaterChaseRainbow
     # theaterChaseRainbow(SpeedDelay, cycles)
     print("theaterChaseRainbow")
-    theaterChaseRainbow(0, 30)
+    theaterChaseRainbow(0.1, 30)
     time.sleep(wait_time)
 
     # makes the strand of pixels show Fire
@@ -815,7 +815,7 @@ while True:
     # makes the strand of pixels show BouncingBalls
     # BouncingBalls(red, green, blue, BallCount, LoopCount)
     print("BouncingBalls") 
-    BouncingBalls(255, 0, 0, 3, 1000) 
+    BouncingBalls(255, 0, 0, 3, 100) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show BouncingBalls
