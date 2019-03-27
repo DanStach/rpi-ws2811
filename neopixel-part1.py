@@ -370,9 +370,9 @@ def theaterChase(red, green, blue, cycles, SpeedDelay):
                     pixels[i+q] = (0,0,0)
 
 
-def theaterChaseRainbow(SpeedDelay):
+def theaterChaseRainbow(SpeedDelay, cycles):
     # cycle all 256 colors in the wheel
-    for j in range(256):
+    for j in range(cycles):
 
         for q in range(3):
             for i in range(0, num_pixels, 3):
@@ -713,23 +713,34 @@ while True:
     # loops red green blue
     # RGBLoop(delay)
     print("RGBLoop")
-    RGBLoop(0.01)
+    RGBLoop(0)
     time.sleep(wait_time)
 
     # fade in/out a single color (red / green / blue / white)
     # FadeInOut(red, green, blue, delay)
     print("FadeInOut")
+    FadeInOut(255, 0, 0, 0)
+    FadeInOut(0, 255, 0, 0)
+    FadeInOut(0, 0, 255, 0)
     FadeInOut(255, 255, 255, 0)
 
     # make all pixels stobe (white)
     # Strobe(red, green, blue, StrobeCount, FlashDelay, EndPause)
     print("Strobe")
-    Strobe(255, 255, 255, 10, .050, 1)
+    Strobe(255, 255, 255, 10, 0, 1)
+    time.sleep(wait_time)
+    Strobe(255, 255, 255, 10, 0, 1)
     time.sleep(wait_time)
 
     # make the strand of pixels show HalloweenEyes
     # HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause)
     print("HalloweenEyes")
+    HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
+    time.sleep(wait_time)
+    HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
+    time.sleep(wait_time)
+    HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
+    time.sleep(wait_time)
     HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
     time.sleep(wait_time)
 
@@ -742,7 +753,7 @@ while True:
         # makes the strand of pixels show NewKITT 
     # NewKITT(red, green, blue, EyeSize, SpeedDelay, ReturnDelay)
     print("NewKITT")
-    NewKITT(255, 0, 0, 4, 0.010, 0.050)
+    NewKITT(255, 0, 0, 4, 0, 0)
     time.sleep(wait_time)
 
     # makes the strand of pixels show Twinkle
@@ -769,42 +780,38 @@ while True:
     # makes the strand of pixels show RunningLights (red)
     # RunningLights(red, green, blue, WaveDelay)
     print("RunningLights")
-    RunningLights(255,0,0, 0.05)
+    RunningLights(255,0,0, 0)
 
     # makes the strand of pixels show colorWipe (green)
     # colorWipe(red, green, blue, SpeedDelay)
     print("colorWipe")
-    colorWipe(0,255,0, 0.05)
+    colorWipe(0,255,0, 0)
 
     # rainbow cycle
     # rainbow cycle with 1ms delay per step, 5 cycles
     # rainbow_cycle(delay, cycles) 
     print("rainbow_cycle")
-    rainbow_cycle(0.001, 5) 
+    rainbow_cycle(0, 5) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show theaterChase
     # theaterChase(red, green, blue, cycles, SpeedDelay)
     print("theaterChase")
-    theaterChase(255,0,0, 20, 0.4)
+    theaterChase(255,0,0, 20, 0)
     time.sleep(wait_time)
 
     # makes the strand of pixels show theaterChaseRainbow
-    # theaterChaseRainbow(SpeedDelay)
+    # theaterChaseRainbow(SpeedDelay, cycles)
     print("theaterChaseRainbow")
-    theaterChaseRainbow(.4)
+    theaterChaseRainbow(0, 30)
     time.sleep(wait_time)
-
-
-
 
     # makes the strand of pixels show Fire
     # Fire(Cooling, Sparking, SpeedDelay, LoopCount)
     print("Fire")
-    Fire(55, 120,0.015, 100)
+    Fire(55, 120,0, 100)
     time.sleep(wait_time)
 
-      
     # makes the strand of pixels show BouncingBalls
     # BouncingBalls(red, green, blue, BallCount, LoopCount)
     print("BouncingBalls") 
@@ -820,7 +827,7 @@ while True:
     # makes the strand of pixels show 
     # meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay, LoopCount, SpeedDelay)
     print("meteorRain")
-    meteorRain(255, 255, 255, 10, 64, True, 1, 0.030)
+    meteorRain(255, 255, 255, 10, 64, True, 1, 0)
     time.sleep(wait_time)
 
 
