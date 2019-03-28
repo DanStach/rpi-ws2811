@@ -574,6 +574,26 @@ def light_level_random_color(color, levels, level, clearall ):
         #print("i=",i,"color=",color,"startPxl=",startPxl,"level=",level)
         pixels[i] = color
         
+
+def theaterChaseCustom(colorobj, darkspace, cycles, SpeedDelay):
+    colorCount = len(colorobj)
+    n = colorCount + darkspace
+    for j in range(cycles):
+        for q in range(n):
+            for i in range(0, num_pixels, n):
+                for index in range(0, colorCount, 1):
+                    if i+q+index < num_pixels:
+                        #print("pixel=",i+q+index, "index", index,"i",i,"q",q,"colorobj[index]",colorobj[index]) 
+                        pixels[i+q+index] = colorobj[index]
+            
+            pixels.show()
+            time.sleep(SpeedDelay)
+            pixels.fill((0, 0, 0))
+            
+            for i in range(0, num_pixels, n):
+                for index in range(0, colorCount, 1):
+                    if i+q+index < num_pixels:
+                        pixels[i+q+index] = (0,0,0)
         
 
 while True:
@@ -599,6 +619,13 @@ while True:
     print("fill blue")
     pixels.fill((0, 0, 255))
     pixels.show()
+    time.sleep(wait_time)
+    
+    # makes the strand of pixels show 
+    # theaterChaseCustom(colorobj, darkspace, cycles, SpeedDelay)
+    print("theaterChaseCustom")
+    cobj = [(255,255,0),(0,0,255),(255,0,0)]
+    theaterChaseCustom(cobj, 2, 100, 0.2)
     time.sleep(wait_time)
 
     # makes the strand of pixels show Fire

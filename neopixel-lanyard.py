@@ -584,10 +584,6 @@ def theaterChaseCustom(colorobj, darkspace, cycles, SpeedDelay):
     for j in range(cycles):
         for q in range(n):
             for i in range(0, num_pixels, n):
-                #if i+q < num_pixels:
-                    # turn every third pixel on
-                    #pixels[i+q] = (red, green, blue)
-                    # gather color info
                 for index in range(0, colorCount, 1):
                     if i+q+index < num_pixels:
                         #print("pixel=",i+q+index, "index", index,"i",i,"q",q,"colorobj[index]",colorobj[index]) 
@@ -598,10 +594,6 @@ def theaterChaseCustom(colorobj, darkspace, cycles, SpeedDelay):
             pixels.fill((0, 0, 0))
             
             for i in range(0, num_pixels, n):
-                #if i+q < num_pixels:
-                    # turn every third pixel off
-                    # pixels[i+q] = (0,0,0)
-                    # gather color info
                 for index in range(0, colorCount, 1):
                     if i+q+index < num_pixels:
                         pixels[i+q+index] = (0,0,0)
