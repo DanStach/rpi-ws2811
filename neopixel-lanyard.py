@@ -606,7 +606,7 @@ def RotateExisting( delay, cycles):
         stripExisting.append(pixels[i])
 
     for loop in range(cycles):
-        pixel[0] = pixels[num_pixels - 1]
+        pixels[0] = pixels[num_pixels - 1]
 
         # rotate pixel positon
         for i in range(num_pixels - 1, 0, -1):
@@ -653,15 +653,23 @@ while True:
 
     # makes the strand of pixels RotateExisting
     #RotateExisting( delay, cycles)
-    xmasColorGroup = ((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
-    colorAllColorGroup(coxmasColorGrouplorobj)
-    RotateExisting( .1, 100)
+    cbreObj = ((0,5,0), (0,10,0), (0,20,0), (0,30,0), (0,40,0), (0,50,0), (0,60,0), (0,70,0)) 
+    colorAllColorGroup(cbreObj)
+    RotateExisting( .1, 50)
 
+
+
+    # makes the strand of pixels RotateExisting
+    #RotateExisting( delay, cycles)
+    #xmasColorGroup = ((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
+    #colorAllColorGroup(xmasColorGroup)
+    #RotateExisting( .1, 50)
+    
     # makes the strand of pixels show 
     # theaterChaseCustom(colorobj, darkspace, cycles, SpeedDelay)
     print("theaterChaseCustom")
-    cobj = [(255,255,0),(0,0,255),(255,0,0)]
-    theaterChaseCustom(cobj, 2, 100, 0.2)
+    #cobj = [(255,255,0),(0,0,255),(255,0,0)]
+    theaterChaseCustom(cbreObj, 5, 100, 0.2)
     time.sleep(wait_time)
     
     # makes the strand of pixels show candycane_custom
@@ -670,12 +678,6 @@ while True:
     candycane_custom((255,255,255), (0,200,0), 255, 0.1, 10)
     time.sleep(wait_time)
 
-    # makes the strand of pixels show theaterChaseCustom
-    # theaterChaseCustom(colorobj, darkspace, cycles, SpeedDelay):
-    print("theaterChaseCustom")
-    cobj =((255,0,0),(0,255,0))
-    theaterChaseCustom(cobj, 3, 20, 0.4)
-    time.sleep(wait_time)
 
     # makes the strand of pixels show Fire
     # FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, 
@@ -701,7 +703,7 @@ while True:
     #   SparkingRangeEnd: (0- number of pixels) spark position random value, end range
     #   SpeedDelay: (0-...) slow down the effect by injecting a delay in Sec. 0=no delay, .05=50msec, 2=2sec
     print("FireCustom")
-    FireCustom(0, 5, 70, 0, int(num_pixels/10), 0.005, 900) # red fire
+    FireCustomireCustom(0, 5, 70, 0, int(num_pixels/10), 0.005, 900) # red fire
     time.sleep(wait_time)
 
     ### this code tests that the levels are correct ##### 
