@@ -599,6 +599,25 @@ def theaterChaseCustom(colorobj, darkspace, cycles, SpeedDelay):
                         pixels[i+q+index] = (0,0,0)
             
         
+def RotateExisting( delay, cycles):
+    # gather existing colors in strip of pixel
+    stripExisting = []
+    for i in range(num_pixels):
+        stripExisting.append(pixels[i])
+
+    for loop in range(cycles):
+        pixel[0] = pixels[num_pixels - 1]
+
+        # rotate pixel positon
+        for i in range(num_pixels - 1, 0, -1):
+            pixels[i] = pixels[i-1]
+        
+        # there is an issue with first 2 pixels are same color 
+        #pixels[0] = (0,0,0)
+        pixels.show()
+        time.sleep(delay)
+
+
 
 while True:
     random.seed()
@@ -631,6 +650,12 @@ while True:
     pixels.fill((0, 0, 0))
     pixels.show()
     time.sleep(5)
+
+    # makes the strand of pixels RotateExisting
+    #RotateExisting( delay, cycles)
+    xmasColorGroup = ((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
+    colorAllColorGroup(coxmasColorGrouplorobj)
+    RotateExisting( .1, 100)
 
     # makes the strand of pixels show 
     # theaterChaseCustom(colorobj, darkspace, cycles, SpeedDelay)
