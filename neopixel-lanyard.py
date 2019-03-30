@@ -617,6 +617,26 @@ def RotateExisting( delay, cycles):
         pixels.show()
         time.sleep(delay)
 
+def FadeInOut(red, green, blue, delay):
+    r = 0
+    g = 0
+    b = 0
+      
+    for k in range(256):
+        r = (k/256.0)*red
+        g = (k/256.0)*green
+        b = (k/256.0)*blue
+        pixels.fill((int(r), int(g), int(b)))
+        pixels.show()
+        time.sleep(delay)
+     
+    for k in range(256, -1, -1):
+        r = (k/256.0)*red
+        g = (k/256.0)*green
+        b = (k/256.0)*blue
+        pixels.fill((int(r), int(g), int(b)))
+        pixels.show()
+        time.sleep(delay)
 
 
 while True:
@@ -651,19 +671,16 @@ while True:
     pixels.show()
     time.sleep(5)
 
+    # fade in/out a single color (red / green / blue / white)
+    # FadeInOut(red, green, blue, delay)
+    print("FadeInOut")
+    FadeInOut(0, 255, 0, 0)
+
     # makes the strand of pixels RotateExisting
     #RotateExisting( delay, cycles)
     cbreObj = ((0,5,0), (0,10,0), (0,20,0), (0,30,0), (0,40,0), (0,50,0), (0,60,0), (0,70,0)) 
     colorAllColorGroup(cbreObj)
     RotateExisting( .1, 50)
-
-
-
-    # makes the strand of pixels RotateExisting
-    #RotateExisting( delay, cycles)
-    #xmasColorGroup = ((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
-    #colorAllColorGroup(xmasColorGroup)
-    #RotateExisting( .1, 50)
     
     # makes the strand of pixels show 
     # theaterChaseCustom(colorobj, darkspace, cycles, SpeedDelay)
@@ -675,7 +692,7 @@ while True:
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)
     print("candycane_custom white green")
-    candycane_custom((255,255,255), (0,200,0), 255, 0.1, 10)
+    candycane_custom((200,200,200), (0,200,0), 255, 0.1, 10)
     time.sleep(wait_time)
 
 
@@ -717,18 +734,11 @@ while True:
     #levels = (110, 200, 270, 300)
     levels = (10,20,30,40,50,60,70,80,90,100,110,120,130,140,144)
     print("LevelsColorsCustom  - level  test ")
-    colorobj = ( cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy ) 
+    colorobj = ( cw, cg, cg, cw, cg, cg, cw, cw, cw) 
     LevelsColorsCustom(colorobj, levels, .5)
     time.sleep(wait_time)
 
-    print("colorAllColorGroup - level test")
-    colorobj = ( cw,cw,cw,cw,cw,cw,cw,cw,cw,cw,
-                 cr,cr,cr,cr,cr,cr,cr,cr,cr,cr,
-                 cg,cg,cg,cg,cg,cg,cg,cg,cg,cg,
-                 cb,cb,cb,cb,cb,cb,cb,cb,cb,cb,
-                 cy,cy,cy,cy,cy,cy,cy,cy,cy,cy )
-    colorAllColorGroup(colorobj)
-    time.sleep(wait_time)
+
 
     # makes the strand of pixels show randomLevelsCustom2Colors
     # randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles )
@@ -749,29 +759,29 @@ while True:
     #LevelsColorsCustom( colorobj, levelobj, delay )
     #levels = (110, 200, 270, 340, 390, 400)
     print("LevelsColorsCustom")
-    colorobj = ( (100,100,100), (100,0,0), (0,100,0), (0,0,100),  (0,100,100) )
+    colorobj = ( (100,100,100), (0,100,0), (200,200,200), (0,200,0))
     LevelsColorsCustom(colorobj, levels, .5)
     time.sleep(wait_time*5)
     
     # shows pattern of colors on the given pixels 
     # colorAllColorGroup((red1, green1, blue1), (red2, green2, blue2), ...) 
     print("colorAllColorGroup multi")
-    xmasColorGroup = ((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
-    colorAllColorGroup(xmasColorGroup) 
+    cbreColorGroup = ((0, 106, 77), (105, 190, 40), (0, 75, 53), (0, 166, 87), (191, 216, 87)) 
+    colorAllColorGroup(cbreColorGroup) 
     time.sleep(wait_time)
 
 
     # shows 2 color every other pixel (red, green)
     # SnowSparkleExisting(Count, SparkleDelay, SpeedDelay)
-    print("colorAll2Color purple orange")
-    colorAll2Color((60,0,100), (200,100,0) )
+    cbreObj = ((0,5,0), (0,5,0), (0,10,0), (0,10,0), (0,20,0), (0,20,0), (0,10,0), (0,10,0)) 
+    colorAllColorGroup(cbreObj)
     SnowSparkleExisting(100, .1, .1)
     time.sleep(wait_time)
 
-    # shows 2 color every other pixel (red, green)
+    # shows 2 color every other pixel (white, green)
     # RunningLightsPreExisting(WaveDelay, cycles):
-    print("RunningLightsPreExisting red green")
-    colorAll2Color((255, 0, 0), (0, 255, 0)) 
+    print("RunningLightsPreExisting white green")
+    colorAll2Color((200,200,200), (0, 200, 0)) 
     RunningLightsPreExisting(.2, 100)
     time.sleep(wait_time)
 
