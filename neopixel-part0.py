@@ -753,4 +753,9 @@ while True:
 
     # effect for lanyard id (144 pixel strip)
 
-    # vertical stripe effect, using groups of Pixel# to define a top to bottom stripe 
+    # vertical stripe effect, using groups of Pixel# to define a top to bottom stripe
+    
+    # fire effect using palette colors. if heat range is 0-255, then give fucntion 3 colors
+    # and it can find the grandiant between the colors and give fire effect 256 color options?  
+
+    # on tree ring levels, have every other ring rotate
