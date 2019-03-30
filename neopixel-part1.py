@@ -712,12 +712,12 @@ while True:
 
 
     print("FireCustom")
-    FireCustom(0, 2, 90, 0, int(num_pixels/3), 0.02, 0, 2, 500) # red fire
-    FireCustom(0, 2, 90, 0, int(num_pixels/3), 0.02, 0, 2, 500) # red fire
+    FireCustom(0, 2, 90, 0, int(num_pixels/3), 0.02, 0, 2, 300) # red fire
+    FireCustom(0, 2, 90, 0, int(num_pixels/3), 0.02, 0, 2, 300) # red fire
     time.sleep(wait_time)
-    FireCustom(0, 2, 90, 0, int(num_pixels/3), 0.02, 1, 2, 500) # blue fire
+    FireCustom(0, 2, 90, 0, int(num_pixels/3), 0.02, 1, 2, 300) # blue fire
     time.sleep(wait_time)
-    FireCustom(0, 2, 90, 0, int(num_pixels/3), 0.02, 2, 2, 500) # green fire
+    FireCustom(0, 2, 90, 0, int(num_pixels/3), 0.02, 2, 2, 300) # green fire
     time.sleep(wait_time)
 
 

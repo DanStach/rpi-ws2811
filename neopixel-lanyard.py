@@ -144,12 +144,13 @@ def fadeToBlack(ledNo, fadeValue):
 
 
 
-def FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, cycles):
+def FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, ColorSetting, SpeedDelay, cycles):
 #   CoolingRangeStart: (0-255) cooling random value, start range
 #   CoolingRangeEnd: (0-255) cooling random value, end range
 #   Sparking: (0-100)  chance of sparkes are added randomly controld througn a % value, 100= 100% and 0 = 0%
 #   SparkingRangeStart: (0- number of pixels) spark position random value, start range
 #   SparkingRangeEnd: (0- number of pixels) spark position random value, end range
+#   ColorSetting: (1-2) 1= red, 2= green
 #   SpeedDelay: (0-...) slow down the effect by injecting a delay in Sec. 0=no delay, .05=50msec, 2=2sec
 #
 # FireCustom: makes the strand of pixels show an effect that looks flame. This effect also
@@ -199,24 +200,34 @@ def FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart,
             heatramp = t192 & 63 # 0..63  0x3f=63
             heatramp <<= 2 # scale up to 0..252
 
-            # figure out which third of the spectrum we're in:
-            if t192 > 0x80: # hottest 128 = 0x80
-                pixels[j] = (255, 255, int(heatramp))
-            elif t192 > 0x40: # middle 64 = 0x40
-                pixels[j] = (255, int(heatramp), 0)
-            else: # coolest
-                pixels[j] = (int(heatramp), 0, 0)
+            if ColorSetting == 1 : # red flame
+                # figure out which third of the spectrum we're in for color:
+                if t192 > 0x80: # hottest 128 = 0x80
+                    colortemp = (255, 255, int(heatramp))
+                elif t192 > 0x40: # middle 64 = 0x40
+                    colortemp = (255, int(heatramp), 0)
+                else: # coolest
+                    colortemp = (int(heatramp), 0, 0)
+            else: # green flame
+                # figure out which third of the spectrum we're in for color:
+                if t192 > 0x80: # hottest 128 = 0x80
+                    colortemp = (255, 255, int(heatramp))
+                elif t192 > 0x40: # middle 64 = 0x40
+                    colortemp = (int(heatramp), int(heatramp), 0)
+                else: # coolest
+                    colortemp = (0, int(heatramp), 0)
 
         pixels.show()
         time.sleep(SpeedDelay)
 
 
-def FireCustomMirror(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, cycles):
+def FireCustomMirror(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, ColorSetting, SpeedDelay, cycles):
 #   CoolingRangeStart: (0-255) cooling random value, start range
 #   CoolingRangeEnd: (0-255) cooling random value, end range
 #   Sparking: (0-100)  chance of sparkes are added randomly controld througn a % value, 100= 100% and 0 = 0%
 #   SparkingRangeStart: (0- number of pixels) spark position random value, start range
 #   SparkingRangeEnd: (0- number of pixels) spark position random value, end range
+#   ColorSetting: (1-2) 1= red, 2= green
 #   SpeedDelay: (0-...) slow down the effect by injecting a delay in Sec. 0=no delay, .05=50msec, 2=2sec
 #
 # FireCustomMirror: makes the strand of pixels show an effect that looks flame. This is simular to FireCustom, 
@@ -265,15 +276,35 @@ def FireCustomMirror(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRange
             # calculate ramp up from
             heatramp = t192 & 63 # 0..63  0x3f=63
             heatramp <<= 2 # scale up to 0..252
-
+            
+            if ColorSetting == 1 : # red flame
+                # figure out which third of the spectrum we're in for color:
+                if t192 > 0x80: # hottest 128 = 0x80
+                    colortemp = (255, 255, int(heatramp))
+                elif t192 > 0x40: # middle 64 = 0x40
+                    colortemp = (255, int(heatramp), 0)
+                else: # coolest
+                    colortemp = (int(heatramp), 0, 0)
+            else: # green flame
+                # figure out which third of the spectrum we're in for color:
+                if t192 > 0x80: # hottest 128 = 0x80
+                    colortemp = (255, 255, int(heatramp))
+                elif t192 > 0x40: # middle 64 = 0x40
+                    colortemp = (int(heatramp), int(heatramp), 0)
+                else: # coolest
+                    colortemp = (0, int(heatramp), 0)
+            
+            """
             # figure out which third of the spectrum we're in for color:
             if t192 > 0x80: # hottest 128 = 0x80
                 colortemp = (255, 255, int(heatramp))
             elif t192 > 0x40: # middle 64 = 0x40
-                colortemp = (255, int(heatramp), 0)
+                colortemp = (0, int(heatramp), 0)
             else: # coolest
-                colortemp = (int(heatramp), 0, 0)
-            
+                colortemp = (0, int(heatramp/1.2), 0)
+            """
+
+                
             pixels[j] = colortemp
             pixels[num_pixels-1-j] = colortemp
 
@@ -670,6 +701,13 @@ while True:
     pixels.fill((0, 0, 0))
     pixels.show()
     time.sleep(5)
+    
+    # shows pattern of colors on the given pixels 
+    # colorAllColorGroup((red1, green1, blue1), (red2, green2, blue2), ...) 
+    print("colorAllColorGroup multi")
+    cbreColorGroup = ((0, 106, 77), (105, 190, 40), (0, 75, 53), (0, 166, 87), (191, 216, 87)) 
+    colorAllColorGroup(cbreColorGroup) 
+    time.sleep(wait_time)
 
     # fade in/out a single color (red / green / blue / white)
     # FadeInOut(red, green, blue, delay)
@@ -680,13 +718,13 @@ while True:
     #RotateExisting( delay, cycles)
     cbreObj = ((0,5,0), (0,10,0), (0,20,0), (0,30,0), (0,40,0), (0,50,0), (0,60,0), (0,70,0)) 
     colorAllColorGroup(cbreObj)
-    RotateExisting( .1, 50)
+    RotateExisting( .1, 100)
     
     # makes the strand of pixels show 
     # theaterChaseCustom(colorobj, darkspace, cycles, SpeedDelay)
     print("theaterChaseCustom")
     #cobj = [(255,255,0),(0,0,255),(255,0,0)]
-    theaterChaseCustom(cbreObj, 5, 10, 0.2)
+    theaterChaseCustom(cbreObj, 5, 4, 0.2)
     time.sleep(wait_time)
     
     # makes the strand of pixels show candycane_custom
@@ -706,7 +744,8 @@ while True:
     #   SparkingRangeEnd: (0- number of pixels) spark position random value, end range
     #   SpeedDelay: (0-...) slow down the effect by injecting a delay in Sec. 0=no delay, .05=50msec, 2=2sec
     print("FireCustomMirror")
-    FireCustomMirror(0, 10, 20, 0, int(num_pixels/15), 0.01, 900) # red fire
+    FireCustomMirror(0, 10, 20, 0, int(num_pixels/15), 1, 0.01, 900) # red fire
+    FireCustomMirror(0, 10, 20, 0, int(num_pixels/15), 2, 0.01, 900) # green fire
     time.sleep(wait_time)
 
 
@@ -720,7 +759,8 @@ while True:
     #   SparkingRangeEnd: (0- number of pixels) spark position random value, end range
     #   SpeedDelay: (0-...) slow down the effect by injecting a delay in Sec. 0=no delay, .05=50msec, 2=2sec
     print("FireCustom")
-    FireCustom(0, 5, 70, 0, int(num_pixels/10), 0.005, 900) # red fire
+    FireCustom(0, 5, 70, 0, int(num_pixels/10), 1, 0.005, 900) # red fire
+    FireCustom(0, 5, 70, 0, int(num_pixels/10), 2, 0.005, 900) # green fire
     time.sleep(wait_time)
 
     ### this code tests that the levels are correct ##### 
@@ -751,7 +791,7 @@ while True:
     # randomLevelsCustomColors( colorobj levelobj, clearall, delay, cycles ):
     #levels = (110, 200, 270, 340, 390, 400)
     print("randomLevelsCustomColors")
-    colorobj = ( (100,100,100), (0,100,0), (100,0,0) )
+    colorobj = ((0, 106, 77), (105, 190, 40), (0, 75, 53), (0, 166, 87), (191, 216, 87))
     randomLevelsCustomColors(colorobj, levels, 1, .2, 10)
     time.sleep(wait_time)
 
@@ -762,13 +802,7 @@ while True:
     colorobj = ( (100,100,100), (0,100,0), (200,200,200), (0,200,0))
     LevelsColorsCustom(colorobj, levels, .5)
     time.sleep(wait_time*5)
-    
-    # shows pattern of colors on the given pixels 
-    # colorAllColorGroup((red1, green1, blue1), (red2, green2, blue2), ...) 
-    print("colorAllColorGroup multi")
-    cbreColorGroup = ((0, 106, 77), (105, 190, 40), (0, 75, 53), (0, 166, 87), (191, 216, 87)) 
-    colorAllColorGroup(cbreColorGroup) 
-    time.sleep(wait_time)
+
 
 
     # shows 2 color every other pixel (red, green)
