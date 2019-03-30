@@ -686,7 +686,7 @@ while True:
     # theaterChaseCustom(colorobj, darkspace, cycles, SpeedDelay)
     print("theaterChaseCustom")
     #cobj = [(255,255,0),(0,0,255),(255,0,0)]
-    theaterChaseCustom(cbreObj, 5, 100, 0.2)
+    theaterChaseCustom(cbreObj, 5, 10, 0.2)
     time.sleep(wait_time)
     
     # makes the strand of pixels show candycane_custom
@@ -720,7 +720,7 @@ while True:
     #   SparkingRangeEnd: (0- number of pixels) spark position random value, end range
     #   SpeedDelay: (0-...) slow down the effect by injecting a delay in Sec. 0=no delay, .05=50msec, 2=2sec
     print("FireCustom")
-    FireCustomireCustom(0, 5, 70, 0, int(num_pixels/10), 0.005, 900) # red fire
+    FireCustom(0, 5, 70, 0, int(num_pixels/10), 0.005, 900) # red fire
     time.sleep(wait_time)
 
     ### this code tests that the levels are correct ##### 
