@@ -14,6 +14,7 @@ simple install instuctions are located on install.md
 full install tutorials:
  - https://learn.adafruit.com/neopixels-on-raspberry-pi/overview
  - https://tutorials-raspberrypi.com/connect-control-raspberry-pi-ws2812-rgb-led-strips/
+ - https://www.dexterindustries.com/howto/run-a-program-on-your-raspberry-pi-at-startup/
  
 ### Hardware Considerations
 - RPI 3b 
