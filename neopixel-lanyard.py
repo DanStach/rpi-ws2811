@@ -826,9 +826,4 @@ while True:
     HeartBeatExisiting(3, .005, .003, 0.001, 6, .002, .003, 0.05, 1)
 
 
-    # shows 2 color every other pixel (red, green)
-    # colorAll2Color((red1, green1, blue1), (red2, green2, blue2)) 
-    print("colorAll2Color red green")
-    colorAll2Color((255, 0, 0), (0, 255, 0)) 
-    time.sleep(wait_time)
  

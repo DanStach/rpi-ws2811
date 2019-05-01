@@ -16,7 +16,7 @@ import ctypes
 pixel_pin = board.D18
 
 # The number of NeoPixels
-num_pixels = 300
+num_pixels = 144
 
 # The order of the pixel colors - RGB or GRB. Some NeoPixels have red and green reversed!
 # For RGBW NeoPixels, simply change the ORDER to RGBW or GRBW.
@@ -596,6 +596,24 @@ def theaterChaseCustom(colorobj, darkspace, cycles, SpeedDelay):
                         pixels[i+q+index] = (0,0,0)
         
 
+def RotateExisting( delay, cycles):
+    # gather existing colors in strip of pixel
+    stripExisting = []
+    for i in range(num_pixels):
+        stripExisting.append(pixels[i])
+
+    for loop in range(cycles):
+        pixels[0] = pixels[num_pixels - 1]
+
+        # rotate pixel positon
+        for i in range(num_pixels - 1, 0, -1):
+            pixels[i] = pixels[i-1]
+        
+        # there is an issue with first 2 pixels are same color 
+        #pixels[0] = (0,0,0)
+        pixels.show()
+        time.sleep(delay)
+
 while True:
     random.seed(num_pixels)
 
@@ -620,6 +638,12 @@ while True:
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
+    
+    # makes the strand of pixels RotateExisting
+    #RotateExisting( delay, cycles)
+    cloudObj = ((16,125,171),(18,142,195),(20,159,218),(29,173,234),(53,182,236)) 
+    colorAllColorGroup(cloudObj)
+    RotateExisting( .1, 100)
     
     # makes the strand of pixels show 
     # theaterChaseCustom(colorobj, darkspace, cycles, SpeedDelay)
@@ -662,6 +686,8 @@ while True:
     cb = (0,0,255)
     cy = (255,255,0)
     levels = (43, 73, 103, 135, 160, 188, 213, 236, 255, 272, 286, 295, 300)
+    levels = (10, 20, 30, 40, 50, 60, 70, 236, 255, 272, 286, 295, 300)
+
     #levels = (58, 108, 149, 187, 224, 264, 292, 300)
     #levels = (110, 200, 270, 300)
     print("LevelsColorsCustom  - level  test ")
