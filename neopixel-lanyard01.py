@@ -151,6 +151,37 @@ def rainbow_cycle(delay, cycles):
         pixels.show()
         time.sleep(delay)
 
+def rainbow_cycle(delay, cycles):
+    for j in range(255 * cycles):
+        for i in range(num_pixels):
+            # " // "  this divides and returns the integer value of the quotient. 
+            # It dumps the digits after the decimal
+            pixel_index = (i * 256 // num_pixels) + j
+            pixels[i] = wheel(pixel_index & 255)
+        pixels.show()
+        time.sleep(delay)
+
+def fill_group(groupCount, delay, cycles):
+    pixels.fill((255, 0, 0)) # inital fill red
+    wheelStartPos = 0
+    wheelShiftNum = 90
+
+    for j in range(cycles):
+    
+        fillColor = wheel(wheelStartPos & 255)
+        for i in range(groupCount)
+            for q in range(i, num_pixels, groupCount):
+                if i+q < num_pixels:
+                    # turn every third pixel on
+                    pixels[i+q] = (red, green, blue)
+
+        pixels.show()
+        time.sleep(delay)
+        wheelStartPos += 90
+
+
+
+
 
 while True:
     random.seed()
@@ -188,4 +219,9 @@ while True:
     # rainbow_cycle(delay, cycles) 
     print("rainbow_cycle")
     rainbow_cycle(0, 5) 
+    time.sleep(wait_time)
+
+    # fill_group(groupCount, delay, cycles)
+    print("fill_group")
+    fill_group(16, 0, 40)
     time.sleep(wait_time)
