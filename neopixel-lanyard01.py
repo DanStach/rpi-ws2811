@@ -165,19 +165,15 @@ def fill_group(groupCount, delay, cycles):
     pixels.fill((255, 0, 0)) # inital fill red
     wheelStartPos = 0
     wheelShiftNum = 90
-
-    for j in range(cycles):
     
-        fillColor = wheel(wheelStartPos & 255)
-        for i in range(groupCount)
-            for q in range(i, num_pixels, groupCount):
-                if i+q < num_pixels:
-                    # turn every third pixel on
-                    pixels[i+q] = (red, green, blue)
-
+    fillColor = wheel(wheelStartPos & 255)
+    for i in range(groupCount): 
+        for q in range(i, num_pixels, groupCount):
+            if i+q < num_pixels:
+                pixels[i+q] = fillColor
         pixels.show()
         time.sleep(delay)
-        wheelStartPos += 90
+    wheelStartPos += 90
 
 
 
