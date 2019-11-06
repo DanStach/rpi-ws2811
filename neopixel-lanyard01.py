@@ -24,7 +24,7 @@ ORDER = neopixel.GRB
 
 pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=ORDER)
 
-wait_time = 1
+wait_time = .5
 cred = (255, 0, 0)
 cblue = (0, 0, 255)
 cgreen = (0, 255, 0)
@@ -193,18 +193,22 @@ def fill_group_expand_random(groupCount, delay, cycles):
     for c in range(cycles):
         
         fillColor = wheel(wheelPos)
-        for i in range(groupCount): 
-            for q in range(0, num_pixels, groupCount):
+        for i in range(int(groupCount/2+1)): 
+            for q in range(0, int(num_pixels), int(groupCount)):
+                #time.sleep(.2)
+                #print(" i=",i, " q=",q , " groupCount=",groupCount)
+                #print("i+q=", i+q, " groupCount-i+q=", groupCount-i+q)
                 if i+q < num_pixels:
-                    time.sleep(0)
-
                     pixels[i+q] = fillColor
-                    pixels[q-i] = fillColor
+                if groupCount-i+q < num_pixels:    
+                    pixels[groupCount-i+q] = fillColor
+
                     
             pixels.show()
             time.sleep(delay)
             
         wheelPos = random.randint(0, 255)
+        print("wheelPos:",wheelPos)
 
 
 while True:
