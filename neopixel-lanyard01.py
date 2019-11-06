@@ -163,14 +163,17 @@ def rainbow_cycle(delay, cycles):
 
 def fill_group(groupCount, delay, cycles):
     pixels.fill((255, 0, 0)) # inital fill red
+    pixels.show()
+    
     wheelStartPos = 0
     wheelShiftNum = 90
     
     fillColor = wheel(wheelStartPos & 255)
     for i in range(groupCount): 
-        for q in range(i, num_pixels, groupCount):
+        for q in range(0, num_pixels, groupCount):
             if i+q < num_pixels:
                 pixels[i+q] = fillColor
+                print("i=",i," q=",q)
         pixels.show()
         time.sleep(delay)
     wheelStartPos += 90
@@ -214,10 +217,10 @@ while True:
     # rainbow cycle
     # rainbow_cycle(delay, cycles) 
     print("rainbow_cycle")
-    rainbow_cycle(0, 5) 
-    time.sleep(wait_time)
+    #rainbow_cycle(0, 5) 
+    #time.sleep(wait_time)
 
     # fill_group(groupCount, delay, cycles)
     print("fill_group")
-    fill_group(16, 0, 40)
+    fill_group(50, .1, 40)
     time.sleep(wait_time)
