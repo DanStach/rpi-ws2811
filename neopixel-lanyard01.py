@@ -25,7 +25,13 @@ ORDER = neopixel.GRB
 pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=ORDER)
 
 wait_time = 1
-
+cred = (255, 0, 0)
+cblue = (0, 0, 255)
+cgreen = (0, 255, 0)
+cyellow = (255, 255, 0)
+cpurple = (160, 32, 240)
+corange = (255, 165, 0)
+cwhite = (255, 255, 255)
 
 ### colorAll2Color allows two alternating colors to be shown
 #
@@ -161,22 +167,22 @@ def rainbow_cycle(delay, cycles):
         pixels.show()
         time.sleep(delay)
 
-def fill_group(groupCount, delay, cycles):
+def fill_group_random(groupCount, delay, cycles):
     pixels.fill((255, 0, 0)) # inital fill red
     pixels.show()
-    
-    wheelStartPos = 0
-    wheelShiftNum = 90
-    
-    fillColor = wheel(wheelStartPos & 255)
-    for i in range(groupCount): 
-        for q in range(0, num_pixels, groupCount):
-            if i+q < num_pixels:
-                pixels[i+q] = fillColor
-                print("i=",i," q=",q)
-        pixels.show()
-        time.sleep(delay)
-    wheelStartPos += 90
+    wheelPos = 0 
+    for c in range(cycles):
+        
+        fillColor = wheel(wheelPos)
+        for i in range(groupCount): 
+            for q in range(0, num_pixels, groupCount):
+                if i+q < num_pixels:
+                    pixels[i+q] = fillColor
+                    
+            pixels.show()
+            time.sleep(delay)
+            
+        wheelPos = random.randint(0, 255)
 
 
 
@@ -221,6 +227,6 @@ while True:
     #time.sleep(wait_time)
 
     # fill_group(groupCount, delay, cycles)
-    print("fill_group")
-    fill_group(50, .1, 40)
+    print("fill_group_random")
+    fill_group_random(50, .1, 40)
     time.sleep(wait_time)
