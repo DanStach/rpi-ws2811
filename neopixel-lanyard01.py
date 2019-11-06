@@ -186,12 +186,37 @@ def fill_group_random(groupCount, delay, cycles):
 
 
 
+def fill_group_expand_random(groupCount, delay, cycles):
+    pixels.fill((255, 0, 0)) # inital fill red
+    pixels.show()
+    wheelPos = 0 
+    for c in range(cycles):
+        
+        fillColor = wheel(wheelPos)
+        for i in range(groupCount): 
+            for q in range(0, num_pixels, groupCount):
+                if i+q < num_pixels:
+                    time.sleep(0)
+
+                    pixels[i+q] = fillColor
+                    pixels[q-i] = fillColor
+                    
+            pixels.show()
+            time.sleep(delay)
+            
+        wheelPos = random.randint(0, 255)
 
 
 while True:
     random.seed()
 
-
+    # make all pixels black
+    # fill(red, green, blue)
+    print("fill black")
+    pixels.fill((0, 0, 0))
+    pixels.show()
+    time.sleep(2)
+    
     # make all pixels Red
     # fill(red, green, blue)
     print("fill red")
@@ -213,20 +238,19 @@ while True:
     pixels.show()
     time.sleep(wait_time)
     
-    # make all pixels black
-    # fill(red, green, blue)
-    print("fill black")
-    pixels.fill((0, 0, 0))
-    pixels.show()
-    time.sleep(5)
 
-    # rainbow cycle
-    # rainbow_cycle(delay, cycles) 
-    print("rainbow_cycle")
-    #rainbow_cycle(0, 5) 
-    #time.sleep(wait_time)
+    # fill_group_expand_random(groupCount, delay, cycles)
+    print("fill_group_expand_random")
+    fill_group_expand_random(50, .1, 40)
+    time.sleep(wait_time)
 
     # fill_group(groupCount, delay, cycles)
     print("fill_group_random")
     fill_group_random(50, .1, 40)
+    time.sleep(wait_time)
+    
+    # rainbow cycle
+    # rainbow_cycle(delay, cycles) 
+    print("rainbow_cycle")
+    rainbow_cycle(0, 5) 
     time.sleep(wait_time)
