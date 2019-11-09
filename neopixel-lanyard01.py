@@ -183,9 +183,8 @@ def fill_group_random(groupCount, delay, cycles):
             time.sleep(delay)
             
         wheelPos = random.randint(0, 255)
-
-
-
+        
+            
 def fill_group_expand_random(groupCount, delay, cycles):
     pixels.fill((255, 0, 0)) # inital fill red
     pixels.show()
@@ -195,20 +194,60 @@ def fill_group_expand_random(groupCount, delay, cycles):
         fillColor = wheel(wheelPos)
         for i in range(int(groupCount/2+1)): 
             for q in range(0, int(num_pixels), int(groupCount)):
-                #time.sleep(.2)
-                #print(" i=",i, " q=",q , " groupCount=",groupCount)
-                #print("i+q=", i+q, " groupCount-i+q=", groupCount-i+q)
                 if i+q < num_pixels:
                     pixels[i+q] = fillColor
                 if groupCount-i+q < num_pixels:    
                     pixels[groupCount-i+q] = fillColor
 
-                    
             pixels.show()
             time.sleep(delay)
-            
+        random.seed()
         wheelPos = random.randint(0, 255)
-        print("wheelPos:",wheelPos)
+        
+def theaterChaseDot(sectionCount, dotColor, delay, cycles):
+    pixels.fill((0, 0, 0)) # inital fill black
+    pixels.show()
+    startPos = 0
+    for c in range(cycles):
+
+        for i in range(int(sectionCount)): 
+            for q in range(0, int(num_pixels), int(sectionCount)):
+                if i+q < num_pixels:
+                    pixels[i+q] = dotColor
+                if i+q-1 < num_pixels and i+q-1 >= 0:
+                    pixels[i+q-1] = (0,0,0)
+
+            pixels.show()
+            time.sleep(delay)
+
+
+def theaterChaseDotCollection(sectionCount, dotColor, delay, cycles):
+    pixels.fill((0, 0, 0)) # inital fill black
+    pixels.show()
+    sectionEnd = sectionCount
+    for c in range(cycles):
+
+        for i in range(int(sectionCount)):
+            if sectionEnd == 0:
+                pixels.fill((0, 0, 0)) # inital fill black
+                sectionEnd = sectionCount
+                
+            for q in range(0, int(num_pixels), int(sectionCount)):
+                if i+q < num_pixels:
+                    pixels[i+q] = dotColor 
+                if i+q-1 < num_pixels and i+q-1 >= 0:
+                    if i > 1:
+                        pixels[i+q-1] = (0,0,0)
+        
+            pixels.show()
+            if i >=  sectionEnd-1:
+                sectionEnd -=1
+                break
+            else:
+                time.sleep(delay)
+        
+        
+    
 
 
 while True:
@@ -242,6 +281,15 @@ while True:
     pixels.show()
     time.sleep(wait_time)
     
+    # theaterChaseDotCollection(sectionCount, dotColor, delay, cycles)
+    print("theaterChaseDotCollection")
+    theaterChaseDotCollection(20, cwhite, .1, 20)
+    time.sleep(wait_time)
+    
+    # theaterChaseDotCollection(sectionCount, dotColor, delay, cycles)
+    print("theaterChaseDot")
+    theaterChaseDot(20, cred, .1, 5)
+    time.sleep(wait_time)
 
     # fill_group_expand_random(groupCount, delay, cycles)
     print("fill_group_expand_random")
