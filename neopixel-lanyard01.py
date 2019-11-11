@@ -245,9 +245,50 @@ def theaterChaseDotCollection(sectionCount, dotColor, delay, cycles):
                 break
             else:
                 time.sleep(delay)
+                
+                
+def theaterChaseDotCollectionMiddle(sectionCount, dotColor, delay, cycles):
+    pixels.fill((0, 0, 0)) # inital fill black
+    pixels.show()
+    sectionCountHalf= int(sectionCount/2+1)
+    sectionEnd = sectionCountHalf-1
+    for c in range(cycles):
+
+        for i in range(int(sectionCountHalf)): 
+            for q in range(0, int(num_pixels), int(sectionCount)):
+                if i+q < num_pixels:
+                    pixels[i+q] = dotColor 
+                if i+q-1 < num_pixels and i+q-1 >= 0:
+                    if i > 1:
+                        pixels[i+q-1] = (0,0,0)
+                        
+                if sectionCount-i+q < num_pixels:    
+                    pixels[sectionCount-i+q] = dotColor
+                if sectionCount-i+q+1 < num_pixels and sectionCount-i+q+1 >= 0:
+                    if i < num_pixels:
+                        pixels[sectionCount-i+q+1] = (0,0,0)
+        
+            pixels.show()
+
+            if sectionEnd < 0: # fill last dots, and reset
+                pixels.fill(dotColor) # fill dots
+                pixels.show()
+                time.sleep(delay)
+                
+                pixels.fill((0, 0, 0)) # inital fill black
+                pixels.show()
+                time.sleep(delay)
+                sectionCountHalf= int(sectionCount/2+1)
+                sectionEnd = sectionCountHalf-1
+                
+            if i >=  sectionEnd:
+                sectionEnd -=1
+                time.sleep(delay)
+                break
+            else:
+                time.sleep(delay)
         
         
-    
 
 
 while True:
@@ -281,9 +322,15 @@ while True:
     pixels.show()
     time.sleep(wait_time)
     
+
+    # theaterChaseDotCollection(sectionCount, dotColor, delay, cycles)
+    print("theaterChaseDotCollectionMiddle")
+    theaterChaseDotCollectionMiddle(40, cwhite, .1, 100)
+    time.sleep(wait_time)
+    
     # theaterChaseDotCollection(sectionCount, dotColor, delay, cycles)
     print("theaterChaseDotCollection")
-    theaterChaseDotCollection(20, cwhite, .1, 20)
+    theaterChaseDotCollection(20, cwhite, .1, 100)
     time.sleep(wait_time)
     
     # theaterChaseDotCollection(sectionCount, dotColor, delay, cycles)
