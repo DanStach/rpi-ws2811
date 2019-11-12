@@ -288,25 +288,27 @@ def theaterChaseDotCollectionMiddle(sectionCount, dotColor, delay, cycles):
             else:
                 time.sleep(delay)
         
-def theaterChaseGroupCustom(colorobj, darkspace, SpeedDelay, cycles):
-    colorCount = len(colorobj)
-    n = colorCount + darkspace
+def theaterChaseGroupCustom(colorobj, colorspace, darkspace, SpeedDelay, cycles):
+    colorObjCount = len(colorobj)
+    n = colorspace + darkspace
     for j in range(cycles):
-        for q in range(n):
-            for i in range(0, num_pixels, n):
-                for index in range(0, colorCount, 1):
-                    if i+q+index < num_pixels:
-                        #print("pixel=",i+q+index, "index", index,"i",i,"q",q,"colorobj[index]",colorobj[index]) 
-                        pixels[i+q+index] = colorobj[index]
-            
-            pixels.show()
-            time.sleep(SpeedDelay)
-            pixels.fill((0, 0, 0))
-            
-            for i in range(0, num_pixels, n):
-                for index in range(0, colorCount, 1):
-                    if i+q+index < num_pixels:
-                        pixels[i+q+index] = (0,0,0)        
+        for k in range(colorObjCount):
+
+            for q in range(n):
+                for i in range(0, num_pixels, n):
+                    for index in range(0, colorspace, 1):
+                        if i+q+index < num_pixels:
+                            #print("pixel=",i+q+index, "index", index,"i",i,"q",q,"colorobj[index]",colorobj[index]) 
+                            pixels[i+q+index] = colorobj[k]
+                
+                pixels.show()
+                time.sleep(SpeedDelay)
+                pixels.fill((0, 0, 0))
+                
+                for i in range(0, num_pixels, n):
+                    for index in range(0, colorObjCount, 1):
+                        if i+q+index < num_pixels:
+                            pixels[i+q+index] = (0,0,0)        
 
 
 while True:
@@ -343,7 +345,7 @@ while True:
     # theaterChaseGroupCustom(colorobj, darkspace, SpeedDelay, cycles):
     print("theaterChaseGroupCustom")
     colorobj = (cwhite,cred,cgreen,cblue,cyellow,cpurple)
-    theaterChaseGroupCustom(colorobj, 2, 100, .1)
+    theaterChaseGroupCustom(colorobj, 5, 2, 100, .1)
     time.sleep(wait_time)
 
     # theaterChaseDotCollection(sectionCount, dotColor, delay, cycles)
