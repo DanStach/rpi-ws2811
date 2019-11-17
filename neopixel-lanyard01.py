@@ -146,6 +146,42 @@ def fadeToBlack(ledNo, fadeValue):
 
     pixels[ledNo] = ( int(r), int(g), int(b) )
 
+def RotateExisting( delay, cycles):
+    # gather existing colors in strip of pixel
+    stripExisting = []
+    for i in range(num_pixels):
+        stripExisting.append(pixels[i])
+
+    for loop in range(cycles):
+        pixels[0] = pixels[num_pixels - 1]
+
+        # rotate pixel positon
+        for i in range(num_pixels - 1, 0, -1):
+            pixels[i] = pixels[i-1]
+        
+        # there is an issue with first 2 pixels are same color 
+        #pixels[0] = (0,0,0)
+        pixels.show()
+        time.sleep(delay)
+
+def RotateObject(coloreObj, delay, cycles):
+    totalColorObj = len(coloreObj)
+    for c in range(cycles) #for each cycle change index number
+        index = c % num_pixels
+
+        for loop in range(num_pixels): # re-write pixels on strand
+            pos = index + loop
+            if pos > totalColorObj: # if we are at the end of the 
+                pos = pos - totalColorObj
+
+            pixels[loop] = coloreObj[index + loop]
+
+
+            
+            # there is an issue with first 2 pixels are same color 
+            #pixels[0] = (0,0,0)
+            pixels.show()
+            time.sleep(delay)
 
 def rainbow_cycle(delay, cycles):
     for j in range(255 * cycles):
