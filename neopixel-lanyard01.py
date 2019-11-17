@@ -29,6 +29,7 @@ cred = (255, 0, 0)
 cblue = (0, 0, 255)
 cgreen = (0, 255, 0)
 cyellow = (255, 255, 0)
+ccyan = (0, 255, 255)
 cpurple = (160, 32, 240)
 corange = (255, 165, 0)
 cwhite = (255, 255, 255)
@@ -168,7 +169,7 @@ def RotateObject(coloreObj, delay, cycles, isDirrectionForward):
     totalColorObj = len(coloreObj)
     for c in range(cycles): #for each cycle change index number
         index = c % num_pixels
-        if(not(isDirrectionForward)):
+        if(isDirrectionForward):
             for loop in range(num_pixels): # re-write pixels on strand
                 pos = (index - loop) % totalColorObj
                 pixels[loop] = coloreObj[pos]
@@ -379,16 +380,23 @@ while True:
     
     # RotateObject(coloreObj, delay, cycles, dirrection)
     print("RotateObject")
-    colorobj = (cwhite,cred,cgreen,cblue,cyellow,cpurple)
+    colorobj = (cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,
+                cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,
+                ccyan,ccyan,ccyan,ccyan,ccyan,ccyan,ccyan,ccyan,ccyan,ccyan,
+                cpurple,cpurple,cpurple,cpurple,cpurple,cpurple,cpurple,cpurple,cpurple,cpurple,
+                cyellow,cyellow,cyellow,cyellow,cyellow,cyellow,cyellow,cyellow,cyellow,cyellow,
+                cblue,cblue,cblue,cblue,cblue,cblue,cblue,cblue,cblue,cblue,
+                cred,cred,cred,cred,cred,cred,cred,cred
+                )
     #RotateObject(colorobj, .1, 100, "forward")
-    RotateObject(colorobj, .1, 100, True)
+    RotateObject(colorobj, .05, 100, True)
     time.sleep(wait_time)
     
     # theaterChaseGroupCustom(colorobj, darkspace, SpeedDelay, cycles):
-    print("theaterChaseGroupCustom")
-    colorobj = (cwhite,cred,cgreen,cblue,cyellow,cpurple)
-    theaterChaseGroupCustom(colorobj, 5, 2, .1, 100)
-    time.sleep(wait_time)
+    #print("theaterChaseGroupCustom")
+    #colorobj = (cwhite,cred,cgreen,cblue,cyellow,cpurple)
+    #theaterChaseGroupCustom(colorobj, 5, 2, .1, 100)
+    #time.sleep(wait_time)
 
     # theaterChaseDotCollection(sectionCount, dotColor, delay, cycles)
     print("theaterChaseDotCollectionMiddle")
