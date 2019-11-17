@@ -164,24 +164,23 @@ def RotateExisting( delay, cycles):
         pixels.show()
         time.sleep(delay)
 
-def RotateObject(coloreObj, delay, cycles):
+def RotateObject(coloreObj, delay, cycles, isDirrectionForward):
     totalColorObj = len(coloreObj)
-    for c in range(cycles) #for each cycle change index number
+    for c in range(cycles): #for each cycle change index number
         index = c % num_pixels
+        if(not(isDirrectionForward)):
+            for loop in range(num_pixels): # re-write pixels on strand
+                pos = (index - loop) % totalColorObj
+                pixels[loop] = coloreObj[pos]
+        else:
+            for loop in range(num_pixels): # re-write pixels on strand
+                pos = (index + loop) % totalColorObj
+                pixels[loop] = coloreObj[pos]
 
-        for loop in range(num_pixels): # re-write pixels on strand
-            pos = index + loop
-            if pos > totalColorObj: # if we are at the end of the 
-                pos = pos - totalColorObj
-
-            pixels[loop] = coloreObj[index + loop]
 
 
-            
-            # there is an issue with first 2 pixels are same color 
-            #pixels[0] = (0,0,0)
-            pixels.show()
-            time.sleep(delay)
+        pixels.show()
+        time.sleep(delay)
 
 def rainbow_cycle(delay, cycles):
     for j in range(255 * cycles):
@@ -376,6 +375,13 @@ while True:
     print("fill blue")
     pixels.fill((0, 0, 255))
     pixels.show()
+    time.sleep(wait_time)
+    
+    # RotateObject(coloreObj, delay, cycles, dirrection)
+    print("RotateObject")
+    colorobj = (cwhite,cred,cgreen,cblue,cyellow,cpurple)
+    #RotateObject(colorobj, .1, 100, "forward")
+    RotateObject(colorobj, .1, 100, True)
     time.sleep(wait_time)
     
     # theaterChaseGroupCustom(colorobj, darkspace, SpeedDelay, cycles):
