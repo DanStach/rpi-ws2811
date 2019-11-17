@@ -381,7 +381,7 @@ while True:
     # theaterChaseGroupCustom(colorobj, darkspace, SpeedDelay, cycles):
     print("theaterChaseGroupCustom")
     colorobj = (cwhite,cred,cgreen,cblue,cyellow,cpurple)
-    theaterChaseGroupCustom(colorobj, 5, 2, 100, .1)
+    theaterChaseGroupCustom(colorobj, 5, 2, .1, 100)
     time.sleep(wait_time)
 
     # theaterChaseDotCollection(sectionCount, dotColor, delay, cycles)
