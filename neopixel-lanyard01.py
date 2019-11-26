@@ -347,12 +347,21 @@ def theaterChaseGroupCustom(colorobj, colorspace, darkspace, SpeedDelay, cycles)
                             pixels[i+q+index] = (0,0,0)        
 
 
-def PatternRunningLightsWave(mainColor, mainLength, spaceColor, spaceLength, patternCycles):
+def PatternRunningLightsWave(mainColor, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles):
 
     stripPattern = []
     position = 0
     # make pixels for main effect
-    for m in range (mainLength)
+    if isDirrectionForward == True:
+        start = mainLength
+        end = 0
+        increment  = -1
+    else:
+        start = 0
+        end = mainLength
+        increment  = 1
+        
+    for m in range (start, end, increment):
         level = int(m/mainLength*128)
         stripColor = brightnessRGB(mainColor[0], mainColor[1], mainColor[2], level)
         stripPattern.append(stripColor)
@@ -399,7 +408,7 @@ while True:
 
     print("PatternRunningLightsWave")
     # PatternRunningLightsWave(mainColor, mainLength, spaceColor, spaceLength, patternCycles)
-    tempStrip = PatternRunningLightsWave((255,255,0), 8, (0,0,0), 2, 0)
+    tempStrip = PatternRunningLightsWave((255,255,0), 15, (0,0,0), 5, True, 0)
     RotateObject(tempStrip, .05, 100, True)
     time.sleep(wait_time)
 
