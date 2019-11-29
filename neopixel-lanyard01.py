@@ -373,6 +373,32 @@ def PatternRunningLightsWave(mainColor, mainLength, spaceColor, spaceLength, isD
     
     return stripPattern
  
+def PatternRunningLightsWaveColorOjb(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles):
+
+    stripPattern = []
+    colorObjCount = len(colorObj)
+    for k in range(colorObjCount):
+        mainColor = colorobj[k]
+        # make pixels for main effect
+        if isDirrectionForward == True:
+            start = mainLength
+            end = 0
+            increment  = -1
+        else:
+            start = 0
+            end = mainLength
+            increment  = 1
+            
+        for m in range (start, end, increment):
+            level = int(m/mainLength*128)
+            stripColor = brightnessRGB(mainColor[0], mainColor[1], mainColor[2], level)
+            stripPattern.append(stripColor)
+
+        # make pixels for space
+        for i in range(spaceLength):
+            stripPattern.append(spaceColor)
+    
+    return stripPattern
 
 
 while True:
@@ -404,6 +430,13 @@ while True:
     print("fill blue")
     pixels.fill((0, 0, 255))
     pixels.show()
+    time.sleep(wait_time)
+    
+    print("PatternRunningLightsWaveColorOjb")
+    # PatternRunningLightsWaveColorOjb(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
+    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
+    tempStrip = PatternRunningLightsWave(colorobj, 15, (0,0,0), 5, True, 0)
+    RotateObject(tempStrip, .05, 100, True)
     time.sleep(wait_time)
 
     print("PatternRunningLightsWave")
