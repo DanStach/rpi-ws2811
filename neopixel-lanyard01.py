@@ -401,6 +401,31 @@ def PatternRunningLightsFadeColorObj(colorObj, mainLength, spaceColor, spaceLeng
     
     return stripPattern
 
+def PatternRunningLightsWaveColorObj(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles):
+
+    stripPattern = []
+    colorObjCount = len(colorObj)
+    halfLength = math.floor(mainLength/2)
+    for k in range(colorObjCount):
+        mainColor = colorobj[k]
+
+        # make pixel for frist part of wave
+        for m in range (0, halfLength, 1):
+            level = int(m/mainLength*128)
+            stripColor = brightnessRGB(mainColor[0], mainColor[1], mainColor[2], level)
+            stripPattern.append(stripColor)
+
+        # make pixel for second part of wave
+        for m in range (halfLength, 0, 1):
+            level = int(m/mainLength*128)
+            stripColor = brightnessRGB(mainColor[0], mainColor[1], mainColor[2], level)
+            stripPattern.append(stripColor)
+
+        # make pixels for space
+        for i in range(spaceLength):
+            stripPattern.append(spaceColor)
+    
+    return stripPattern
 
 while True:
     random.seed()
@@ -432,7 +457,14 @@ while True:
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
-    
+        
+    print("PatternRunningLightsWaveColorObj")
+    # PatternRunningLightsWaveColorObj(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
+    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
+    tempStrip = PatternRunningLightsWaveColorObj(colorobj, 15, (0,0,0), 5, True, 0)
+    RotateObject(tempStrip, .05, 100, True)
+    time.sleep(wait_time)
+
     print("PatternRunningLightsFadeColorObj")
     # PatternRunningLightsFadeColorObj(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
     colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
