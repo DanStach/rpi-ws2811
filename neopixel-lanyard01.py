@@ -347,7 +347,7 @@ def theaterChaseGroupCustom(colorobj, colorspace, darkspace, SpeedDelay, cycles)
                             pixels[i+q+index] = (0,0,0)        
 
 
-def PatternRunningLightsWave(mainColor, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles):
+def PatternRunningLightsFade(mainColor, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles):
 
     stripPattern = []
     position = 0
@@ -374,7 +374,7 @@ def PatternRunningLightsWave(mainColor, mainLength, spaceColor, spaceLength, isD
     
     return stripPattern
  
-def PatternRunningLightsWaveColorOjb(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles):
+def PatternRunningLightsFadeColorObj(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles):
 
     stripPattern = []
     colorObjCount = len(colorObj)
@@ -433,16 +433,16 @@ while True:
     pixels.show()
     time.sleep(wait_time)
     
-    print("PatternRunningLightsWaveColorOjb")
-    # PatternRunningLightsWaveColorOjb(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
+    print("PatternRunningLightsFadeColorObj")
+    # PatternRunningLightsFadeColorObj(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
     colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
-    tempStrip = PatternRunningLightsWaveColorOjb(colorobj, 15, (0,0,0), 5, True, 0)
+    tempStrip = PatternRunningLightsFadeColorObj(colorobj, 15, (0,0,0), 5, True, 0)
     RotateObject(tempStrip, .05, 100, True)
     time.sleep(wait_time)
 
-    print("PatternRunningLightsWave")
-    # PatternRunningLightsWave(mainColor, mainLength, spaceColor, spaceLength, patternCycles)
-    tempStrip = PatternRunningLightsWave((255,255,0), 15, (0,0,0), 5, True, 0)
+    print("PatternRunningLightsFade")
+    # PatternRunningLightsFade(mainColor, mainLength, spaceColor, spaceLength, patternCycles)
+    tempStrip = PatternRunningLightsFade((255,255,0), 15, (0,0,0), 5, True, 0)
     RotateObject(tempStrip, .05, 100, True)
     time.sleep(wait_time)
 
