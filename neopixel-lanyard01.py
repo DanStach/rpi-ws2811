@@ -411,13 +411,16 @@ def PatternRunningLightsWaveColorObj(colorObj, mainLength, spaceColor, spaceLeng
 
         # make pixel for frist part of wave
         for m in range (0, halfLength, 1):
-            level = int(m/mainLength*128)
+            level = int(m/halfLength*128)
             stripColor = brightnessRGB(mainColor[0], mainColor[1], mainColor[2], level)
             stripPattern.append(stripColor)
+        
+        if mainLength % 2 == 1: #if odd number replace the missing pixel
+            stripPattern.append(mainColor)
 
         # make pixel for second part of wave
-        for m in range (halfLength, 0, 1):
-            level = int(m/mainLength*128)
+        for m in range (halfLength, 0, -1):
+            level = int(m/halfLength*128)
             stripColor = brightnessRGB(mainColor[0], mainColor[1], mainColor[2], level)
             stripPattern.append(stripColor)
 
@@ -461,7 +464,7 @@ while True:
     print("PatternRunningLightsWaveColorObj")
     # PatternRunningLightsWaveColorObj(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
     colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
-    tempStrip = PatternRunningLightsWaveColorObj(colorobj, 15, (0,0,0), 5, True, 0)
+    tempStrip = PatternRunningLightsWaveColorObj(colorobj, 24, (0,0,0), 8, True, 5)
     RotateObject(tempStrip, .05, 100, True)
     time.sleep(wait_time)
 
