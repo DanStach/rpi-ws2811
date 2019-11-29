@@ -454,7 +454,7 @@ while True:
                 cpurple,cpurple,cpurple,cpurple,cpurple,cpurple,cpurple,cpurple,cpurple,cpurple,
                 cyellow,cyellow,cyellow,cyellow,cyellow,cyellow,cyellow,cyellow,cyellow,cyellow,
                 cblue,cblue,cblue,cblue,cblue,cblue,cblue,cblue,cblue,cblue,
-                cred,cred,cred,cred,cred,cred,cred,cred
+                cred,cred,cred,cred,cred,cred,cred,cred,cred,cred
                 )
     #RotateObject(colorobj, .1, 100, "forward")
     RotateObject(colorobj, .05, 100, True)
