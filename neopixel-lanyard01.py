@@ -25,6 +25,7 @@ ORDER = neopixel.GRB
 pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=ORDER)
 
 wait_time = .5
+
 cred = (255, 0, 0)
 cblue = (0, 0, 255)
 cgreen = (0, 255, 0)
@@ -33,6 +34,16 @@ ccyan = (0, 255, 255)
 cpurple = (160, 32, 240)
 corange = (255, 165, 0)
 cwhite = (255, 255, 255)
+cblk = (0, 0, 0)
+
+cltred = (127, 0, 0)
+cltblue = (0, 0, 127)
+cltgreen = (0, 30, 0)
+cltyellow = (127, 127, 0)
+cltcyan = (0, 127, 127)
+cltpurple = (127, 0, 127)
+cltorange = (127, 82, 0)
+cltwhite = (127, 127, 127)
 
 ### colorAll2Color allows two alternating colors to be shown
 #
@@ -521,6 +532,48 @@ while True:
     print("fill blue")
     pixels.fill((0, 0, 255))
     pixels.show()
+    time.sleep(wait_time)
+
+    # RotateObject(coloreObj, delay, cycles, dirrection)
+    print("RotateObject")
+    colorobj = (cgreen,cltgreen,cgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,
+                cwhite,cltgreen,cwhite,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,
+                ccyan,cltgreen,ccyan,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,
+                cpurple,cltgreen,cpurple,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,
+                cyellow,cltgreen,cyellow,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,
+                cblue,cltgreen,cblue,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,
+                cred,cltgreen,cred,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen
+                )
+    #RotateObject(colorobj, .1, 100, "forward")
+    RotateObject(colorobj, .1, 100, True)
+    time.sleep(wait_time)
+    
+    # RotateObject(coloreObj, delay, cycles, dirrection)
+    print("RotateObject")
+    colorobj = (cgreen,cblk,cgreen,cblk,cblk,cblk,cblk,cblk,cblk,cblk,
+                cwhite,cblk,cwhite,cblk,cblk,cblk,cblk,cblk,cblk,cblk,
+                ccyan,cblk,ccyan,cblk,cblk,cblk,cblk,cblk,cblk,cblk,
+                cpurple,cblk,cpurple,cblk,cblk,cblk,cblk,cblk,cblk,cblk,
+                cyellow,cblk,cyellow,cblk,cblk,cblk,cblk,cblk,cblk,cblk,
+                cblue,cblk,cblue,cblk,cblk,cblk,cblk,cblk,cblk,cblk,
+                cred,cblk,cred,cblk,cblk,cblk,cblk,cblk,cblk,cblk
+                )
+    #RotateObject(colorobj, .1, 100, "forward")
+    RotateObject(colorobj, .1, 100, True)
+    time.sleep(wait_time)
+    
+    # RotateObject(coloreObj, delay, cycles, dirrection)
+    print("RotateObject")
+    colorobj = (cgreen,cblk,cblk,cblk,cblk,cblk,
+                cwhite,cblk,cblk,cblk,cblk,cblk,
+                ccyan,cblk,cblk,cblk,cblk,cblk,
+                cpurple,cblk,cblk,cblk,cblk,cblk,
+                cyellow,cblk,cblk,cblk,cblk,cblk,
+                cblue,cblk,cblk,cblk,cblk,cblk,
+                cred,cblk,cblk,cblk,cblk,cblk
+                )
+    #RotateObject(colorobj, .1, 100, "forward")
+    RotateObject(colorobj, .1, 100, True)
     time.sleep(wait_time)
     
     print("PatternRunningLightsFadeTrans")
