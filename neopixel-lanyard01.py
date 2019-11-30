@@ -120,29 +120,17 @@ def colorTransition(color1, color2, percent):
     g2 = color2[1]
     b2 = color2[2]
 
-    rdelta = color1[0] - color2[0]
-    gdelta = color1[1] - color2[1]
-    bdelta = color1[2] - color2[2]
+    rdelta = color2[0] - color1[0]
+    gdelta = color2[1] - color1[1]
+    bdelta = color2[2] - color1[2]
 
-    r = int(percent*rdelta) + r1
-    g = int(percent*gdelta) + g1
-    b = int(percent*bdelta) + b1
+    r = int((1-percent)*rdelta) + r1
+    g = int((1-percent)*gdelta) + g1
+    b = int((1-percent)*bdelta) + b1
     return (int(r), int(g), int(b))
 
 def fadeToBlack(ledNo, fadeValue):
-    #ctypes.c_uint32 oldColor = 0x00000000UL
-    #ctypes.c_uint8 r = 0
-    #ctypes.c_uint8 g = 0
-    #ctypes.c_uint8 b = 0
-
     oldColor = pixels[ledNo]
-#    r = (oldColor & 0x00ff0000) >> 16
-#    g = (oldColor & 0x0000ff00) >> 8
-#    b = (oldColor & 0x000000ff)
-    #print(oldColor)
-#    r = oldColor >> 16
-#    g = (oldColor >> 8) & 0xff
-#    b = oldColor & 0xff
     r = oldColor[0]
     g = oldColor[1]
     b = oldColor[2]
@@ -351,7 +339,6 @@ def theaterChaseGroupCustom(colorobj, colorspace, darkspace, SpeedDelay, cycles)
                 for i in range(0, num_pixels, n):
                     for index in range(0, colorspace, 1):
                         if i+q+index < num_pixels:
-                            #print("pixel=",i+q+index, "index", index,"i",i,"q",q,"colorobj[index]",colorobj[index]) 
                             pixels[i+q+index] = colorobj[k]
                 
                 pixels.show()
@@ -380,7 +367,6 @@ def PatternRunningLightsFade(mainColor, mainLength, spaceColor, spaceLength, isD
         
     for m in range (start, end, increment):
         level = int(m/mainLength*128)
-        print(mainColor)
         stripColor = brightnessRGB(mainColor[0], mainColor[1], mainColor[2], level)
         stripPattern.append(stripColor)
     position = position + mainLength
@@ -431,8 +417,9 @@ def PatternRunningLightsWaveColorObj(colorObj, mainLength, spaceColor, spaceLeng
             level = int(m/halfLength*128)
             stripColor = brightnessRGB(mainColor[0], mainColor[1], mainColor[2], level)
             stripPattern.append(stripColor)
-        
-        if mainLength % 2 == 1: #if odd number replace the missing pixel
+            
+        #if odd number replace the missing pixel
+        if mainLength % 2 == 1: 
             stripPattern.append(mainColor)
 
         # make pixel for second part of wave
@@ -448,32 +435,35 @@ def PatternRunningLightsWaveColorObj(colorObj, mainLength, spaceColor, spaceLeng
     return stripPattern
 
 
-def PatternRunningLightsFadeColorObjTransition(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles):
+def PatternRunningLightsWaveTrans(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles):
 
-    stripPattern = []
-    colorObjCount = len(colorObj)
-    for k in range(colorObjCount):
-        mainColor = colorobj[k]
-        # make pixels for main effect
-        if isDirrectionForward == True:
-            start = mainLength
-            end = 0
-            increment  = -1
-        else:
-            start = 0
-            end = mainLength
-            increment  = 1
-            
-        for m in range (start, end, increment):
-            precentage = m/mainLength
-            stripColor = colorTransition(mainColor, spaceColor, precentage)
-            stripPattern.append(stripColor)
+    stripPattern = []
+    colorObjCount = len(colorObj)
+    halfLength = math.floor(mainLength/2)
+    for k in range(colorObjCount):
+        mainColor = colorobj[k]        
 
-        # make pixels for space
-        for i in range(spaceLength):
-            stripPattern.append(spaceColor)
-    
-    return stripPattern
+        # make pixel for frist part of wave
+        for m in range (0, halfLength, 1):
+            level = m/halfLength
+            stripColor = colorTransition(mainColor, spaceColor, level)
+            stripPattern.append(stripColor)
+            
+        #if odd number replace the missing pixel
+        if mainLength % 2 == 1: 
+            stripPattern.append(mainColor)
+
+        # make pixel for second part of wave
+        for m in range (halfLength, 0, -1):
+            level = m/halfLength
+            stripColor = colorTransition(mainColor, spaceColor, level)
+            stripPattern.append(stripColor)
+
+        # make pixels for space
+        for i in range(spaceLength):
+            stripPattern.append(spaceColor)
+    
+    return stripPattern
 
 while True:
     random.seed()
@@ -506,10 +496,10 @@ while True:
     pixels.show()
     time.sleep(wait_time)
 
-    print("PatternRunningLightsFadeColorObjTransition")
-    # PatternRunningLightsFadeColorObjTransition(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
+    print("PatternRunningLightsWaveTrans")
+    #PatternRunningLightsWaveTrans(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
     colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
-    tempStrip = PatternRunningLightsFadeColorObjTransition(colorobj, 24, (0,0,0), 8, True, 5)
+    tempStrip = PatternRunningLightsWaveTrans(colorobj, 24, cgreen, 8, True, 1)
     RotateObject(tempStrip, .05, 100, True)
     time.sleep(wait_time)
         
