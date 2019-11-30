@@ -465,6 +465,33 @@ def PatternRunningLightsWaveTrans(colorObj, mainLength, spaceColor, spaceLength,
     
     return stripPattern
 
+def PatternRunningLightsFadeTrans(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles):
+
+    stripPattern = []
+    colorObjCount = len(colorObj)
+    for k in range(colorObjCount):
+        mainColor = colorobj[k]
+        # make pixels for main effect
+        if isDirrectionForward == True:
+            start = mainLength
+            end = 0
+            increment  = -1
+        else:
+            start = 0
+            end = mainLength
+            increment  = 1
+            
+        for m in range (start, end, increment):
+            level = m/mainLength
+            stripColor = colorTransition(mainColor, spaceColor, level)
+            stripPattern.append(stripColor)
+
+        # make pixels for space
+        for i in range(spaceLength):
+            stripPattern.append(spaceColor)
+    
+    return stripPattern
+
 while True:
     random.seed()
 
@@ -494,6 +521,13 @@ while True:
     print("fill blue")
     pixels.fill((0, 0, 255))
     pixels.show()
+    time.sleep(wait_time)
+    
+    print("PatternRunningLightsFadeTrans")
+    #PatternRunningLightsWaveTrans(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
+    colorobj = (cwhite, ccyan, cpurple, cyellow, cblue, cred)
+    tempStrip = PatternRunningLightsFadeTrans(colorobj, 16, cgreen, 4, True, 5)
+    RotateObject(tempStrip, .05, 100, True)
     time.sleep(wait_time)
 
     print("PatternRunningLightsWaveTrans")
