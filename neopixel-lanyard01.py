@@ -111,7 +111,24 @@ def brightnessRGB(red, green, blue, bright):
     b = (bright/256.0)*blue
     return (int(r), int(g), int(b))
         
-        
+def colorTransition(color1, color2, percent):
+    r1 = color1[0]
+    g1 = color1[1]
+    b1 = color1[2]
+
+    r2 = color2[0]
+    g2 = color2[1]
+    b2 = color2[2]
+
+    rdelta = color1[0] - color2[0]
+    gdelta = color1[1] - color2[1]
+    bdelta = color1[2] - color2[2]
+
+    r = int(percent*rdelta) + r1
+    g = int(percent*gdelta) + g1
+    b = int(percent*bdelta) + b1
+    return (int(r), int(g), int(b))
+
 def fadeToBlack(ledNo, fadeValue):
     #ctypes.c_uint32 oldColor = 0x00000000UL
     #ctypes.c_uint8 r = 0
@@ -430,6 +447,34 @@ def PatternRunningLightsWaveColorObj(colorObj, mainLength, spaceColor, spaceLeng
     
     return stripPattern
 
+
+def PatternRunningLightsFadeColorObjTransition(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles):
+
+    stripPattern = []
+    colorObjCount = len(colorObj)
+    for k in range(colorObjCount):
+        mainColor = colorobj[k]
+        # make pixels for main effect
+        if isDirrectionForward == True:
+            start = mainLength
+            end = 0
+            increment  = -1
+        else:
+            start = 0
+            end = mainLength
+            increment  = 1
+            
+        for m in range (start, end, increment):
+            precentage = m/mainLength
+            stripColor = colorTransition(mainColor, spaceColor, precentage)
+            stripPattern.append(stripColor)
+
+        # make pixels for space
+        for i in range(spaceLength):
+            stripPattern.append(spaceColor)
+    
+    return stripPattern
+
 while True:
     random.seed()
 
@@ -459,6 +504,13 @@ while True:
     print("fill blue")
     pixels.fill((0, 0, 255))
     pixels.show()
+    time.sleep(wait_time)
+
+    print("PatternRunningLightsFadeColorObjTransition")
+    # PatternRunningLightsFadeColorObjTransition(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
+    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
+    tempStrip = PatternRunningLightsFadeColorObjTransition(colorobj, 24, (0,0,0), 8, True, 5)
+    RotateObject(tempStrip, .05, 100, True)
     time.sleep(wait_time)
         
     print("PatternRunningLightsWaveColorObj")
