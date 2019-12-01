@@ -503,6 +503,76 @@ def PatternRunningLightsFadeTrans(colorObj, mainLength, spaceColor, spaceLength,
     
     return stripPattern
 
+def DotCollection(colorObj, sectionCount, spaceColor, delay, cycles):
+    pixels.fill((0, 0, 0)) # inital fill black
+    pixels.show()
+    collectionCount = 0
+    sectionEnd = sectionCount
+    
+    #for c in range(cycles):
+    for c in range(cycles):
+        dotColor = colorObj[c%len(colorObj)]
+        
+        #animate dots moving
+        for i in range(int(sectionCount)):
+            if sectionEnd == 0:
+                pixels.fill((0, 0, 0)) # inital fill black
+                sectionEnd = sectionCount
+                
+            for q in range(0, int(num_pixels), int(sectionCount)):
+                # add dotcolor
+                if i+q < num_pixels:
+                    pixels[i+q] = dotColor
+                
+                # replace previous dot with space color
+                if i+q-1 < num_pixels and i+q-1 >= 0:
+                    if i > 0:
+                        pixels[i+q-1] = spaceColor
+        
+            pixels.show()
+            if i >=  sectionEnd-1:
+                sectionEnd -=1
+                break
+            else:
+                time.sleep(delay)
+                
+def DotCollectionColorChange(colorObj, sectionCount, spaceColor, delay, cycles):
+    pixels.fill((0, 0, 0)) # inital fill black
+    pixels.show()
+    collectionCount = 0
+    sectionEnd = sectionCount
+    
+    #for c in range(cycles):
+    for c in range(cycles):
+        dotColor = colorObj[c%len(colorObj)]
+        
+        #animate dots moving
+        for i in range(int(sectionCount)):
+            if sectionEnd == 0:
+                pixels.fill((0, 0, 0)) # inital fill black
+                sectionEnd = sectionCount
+                
+            for q in range(0, int(num_pixels), int(sectionCount)):
+                # add dotcolor
+                if i+q < num_pixels:
+                    pixels[i+q] = dotColor
+                
+                # replace previous dot with space color
+                if i+q-1 < num_pixels and i+q-1 >= 0:
+                    if i > 0 and i <  sectionEnd:
+                        pixels[i+q-1] = spaceColor
+                    
+            #check if at end of space section
+            if i >=  sectionEnd-1:
+                dumb=1
+                #pixels[i+q] = dotColor
+            else:
+                pixels.show()
+                time.sleep(delay)
+        pixels.show()
+        sectionEnd -=1
+
+
 while True:
     random.seed()
 
@@ -532,6 +602,19 @@ while True:
     print("fill blue")
     pixels.fill((0, 0, 255))
     pixels.show()
+    time.sleep(wait_time)
+
+
+    print("DotCollectionColorChange")
+    #DotCollectionColorChange(colorObj, sectionCount, spaceColor, delay, cycles):
+    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
+    DotCollectionColorChange(colorobj, 48, cblk, .05, 50)
+    time.sleep(wait_time)
+
+    print("DotCollection")
+    #DotCollection(colorObj, sectionCount, delay, cycles)
+    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
+    DotCollection(colorobj, 48, cblk, .05, 100)
     time.sleep(wait_time)
 
     # RotateObject(coloreObj, delay, cycles, dirrection)
