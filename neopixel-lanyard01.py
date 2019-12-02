@@ -504,7 +504,7 @@ def PatternRunningLightsFadeTrans(colorObj, mainLength, spaceColor, spaceLength,
     return stripPattern
 
 def DotCollection(colorObj, sectionCount, spaceColor, delay, cycles):
-    pixels.fill((0, 0, 0)) # inital fill black
+    pixels.fill(spaceColor) # inital fill black
     pixels.show()
     collectionCount = 0
     sectionEnd = sectionCount
@@ -516,7 +516,7 @@ def DotCollection(colorObj, sectionCount, spaceColor, delay, cycles):
         #animate dots moving
         for i in range(int(sectionCount)):
             if sectionEnd == 0:
-                pixels.fill((0, 0, 0)) # inital fill black
+                pixels.fill(spaceColor) # inital fill black
                 sectionEnd = sectionCount
                 
             for q in range(0, int(num_pixels), int(sectionCount)):
@@ -537,8 +537,9 @@ def DotCollection(colorObj, sectionCount, spaceColor, delay, cycles):
                 time.sleep(delay)
                 
 def DotCollectionColorChange(colorObj, sectionCount, spaceColor, delay, cycles):
-    pixels.fill((0, 0, 0)) # inital fill black
+    pixels.fill(spaceColor) # inital fill black
     pixels.show()
+    
     collectionCount = 0
     sectionEnd = sectionCount
     
@@ -549,8 +550,9 @@ def DotCollectionColorChange(colorObj, sectionCount, spaceColor, delay, cycles):
         #animate dots moving
         for i in range(int(sectionCount)):
             if sectionEnd == 0:
-                pixels.fill((0, 0, 0)) # inital fill black
+                pixels.fill(spaceColor) # inital fill black
                 sectionEnd = sectionCount
+                
                 
             for q in range(0, int(num_pixels), int(sectionCount)):
                 # add dotcolor
@@ -563,15 +565,52 @@ def DotCollectionColorChange(colorObj, sectionCount, spaceColor, delay, cycles):
                         pixels[i+q-1] = spaceColor
                     
             #check if at end of space section
-            if i >=  sectionEnd-1:
-                dumb=1
-                #pixels[i+q] = dotColor
-            else:
+            if i <  sectionEnd-1:
                 pixels.show()
                 time.sleep(delay)
         pixels.show()
         sectionEnd -=1
 
+def DotCollectionMiddleColorChange(colorObj, sectionCount, spaceColor, delay, cycles):
+    pixels.fill(spaceColor) # inital fill black
+    pixels.show()
+    
+    collectionCount = 0
+    sectionCountDouble = sectionCount*2
+    sectionEnd = sectionCount
+    
+    #for c in range(cycles):
+    for c in range(cycles):
+        dotColor = colorObj[c%len(colorObj)]
+        
+        #animate dots moving
+        for i in range(int(sectionCount)):
+            if sectionEnd == 0:
+                pixels.fill(spaceColor) # inital fill black
+                sectionEnd = sectionCount
+                
+            for q in range(0, int(num_pixels), int(sectionCountDouble)):
+                # add dotcolor
+                if i+q < num_pixels:
+                    pixels[i+q] = dotColor
+                if sectionCountDouble-i+q-1 < num_pixels:    
+                    pixels[sectionCountDouble-i+q-1] = dotColor
+                    
+                # replace previous dot with space color
+                if i+q-1 < num_pixels and i+q-1 >= 0:
+                    if i > 0 and i <  sectionEnd:
+                        pixels[i+q-1] = spaceColor    
+                if sectionCountDouble-i+q < num_pixels and sectionCountDouble-i+q >= 0:
+                    if i < num_pixels and i <= sectionEnd-1:
+                        pixels[sectionCountDouble-i+q] = spaceColor       
+
+            #check if at end of space section
+            if i <  sectionEnd-1:
+                pixels.show()
+                time.sleep(delay)
+                
+        pixels.show()
+        sectionEnd -=1
 
 while True:
     random.seed()
@@ -605,6 +644,19 @@ while True:
     time.sleep(wait_time)
 
 
+    print("DotCollectionMiddleColorChange")
+    # DotCollectionMiddleColorChange(colorObj, sectionCount, spaceColor, delay, cycles)
+    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
+    DotCollectionMiddleColorChange(colorobj, 24, cblk, .05, 50)
+    time.sleep(wait_time)
+
+    print("DotCollection-green")
+    #DotCollection(colorObj, sectionCount, delay, cycles)
+    colorobj = (cblue,cblue)
+    DotCollection(colorobj, 48, cltgreen, .05, 100)
+    time.sleep(wait_time)
+
+    
     print("DotCollectionColorChange")
     #DotCollectionColorChange(colorObj, sectionCount, spaceColor, delay, cycles):
     colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
