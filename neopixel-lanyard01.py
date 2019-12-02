@@ -642,7 +642,17 @@ while True:
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
+    
+    # theaterChaseDotCollection(sectionCount, dotColor, delay, cycles)
+    print("theaterChaseDotCollection - green")
+    theaterChaseDotCollection(48, cgreen, .1, 100)
+    time.sleep(wait_time)
 
+    print("DotCollectionMiddleColorChange - cpurple")
+    # DotCollectionMiddleColorChange(colorObj, sectionCount, spaceColor, delay, cycles)
+    colorobj = (cpurple, cpurple)
+    DotCollectionMiddleColorChange(colorobj, 24, cltgreen, .05, 50)
+    time.sleep(wait_time)
 
     print("DotCollectionMiddleColorChange")
     # DotCollectionMiddleColorChange(colorObj, sectionCount, spaceColor, delay, cycles)
