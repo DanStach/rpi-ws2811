@@ -640,7 +640,28 @@ def fill_section(colorObj, sectionCount, spaceColor, delay, isDirrectionForward,
             pixels.show()
             time.sleep(delay)
             
-        
+def drain_section(colorObj, sectionCount, spaceColor, delay, isDirrectionForward, cycles):
+    if isDirrectionForward == True:
+        start = 0
+        end = sectionCount
+        increment  = 1
+    else:
+        start = sectionCount
+        end = 0
+        increment  = -1
+            
+    for c in range(cycles):
+            
+        fillColor = colorObj[c%len(colorObj)]
+        pixels.fill(fillColor) # inital fill
+        pixels.show()
+        for i in range(start, end, increment): 
+            for q in range(0, num_pixels, sectionCount):
+                if i+q < num_pixels:
+                    pixels[i+q] = spaceColor
+                    
+            pixels.show()
+            time.sleep(delay)
         
 
 while True:
@@ -672,6 +693,12 @@ while True:
     print("fill blue")
     pixels.fill((0, 0, 255))
     pixels.show()
+    time.sleep(wait_time)
+
+    # drain_section(colorObj, sectionCount, spaceColor, delay, isDirrectionForward, cycles)
+    print("drain_section")
+    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
+    drain_section(colorobj, 24, cblk, .05, True, 50)
     time.sleep(wait_time)
     
     # fill_section(colorObj, sectionCount, spaceColor, delay, isDirrectionForward, cycles)
