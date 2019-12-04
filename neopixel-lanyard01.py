@@ -611,6 +611,37 @@ def DotCollectionMiddleColorChange(colorObj, sectionCount, spaceColor, delay, cy
                 
         pixels.show()
         sectionEnd -=1
+        
+def fill_section(colorObj, sectionCount, spaceColor, delay, isDirrectionForward, cycles):
+    pixels.fill(spaceColor) # inital fill red
+    pixels.show()
+
+    for c in range(cycles):
+        pixels.fill(spaceColor) # inital fill
+        pixels.show()
+        
+        # make pixels for main effect
+        if isDirrectionForward == True:
+            start = 0
+            end = sectionCount
+            increment  = 1
+        else:
+            start = sectionCount
+            end = 0
+            increment  = -1
+            
+        #for m in range (start, end, increment):
+        fillColor = colorObj[c%len(colorObj)]
+        for i in range(start, end, increment): 
+            for q in range(0, num_pixels, sectionCount):
+                if i+q < num_pixels:
+                    pixels[i+q] = fillColor
+                    
+            pixels.show()
+            time.sleep(delay)
+            
+        
+        
 
 while True:
     random.seed()
@@ -641,6 +672,12 @@ while True:
     print("fill blue")
     pixels.fill((0, 0, 255))
     pixels.show()
+    time.sleep(wait_time)
+    
+    # fill_section(colorObj, sectionCount, spaceColor, delay, isDirrectionForward, cycles)
+    print("fill_section")
+    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
+    fill_section(colorobj, 24, cblk, .05, True, 50)
     time.sleep(wait_time)
     
     # theaterChaseDotCollection(sectionCount, dotColor, delay, cycles)
