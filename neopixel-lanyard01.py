@@ -615,22 +615,20 @@ def DotCollectionMiddleColorChange(colorObj, sectionCount, spaceColor, delay, cy
 def fill_section(colorObj, sectionCount, spaceColor, delay, isDirrectionForward, cycles):
     pixels.fill(spaceColor) # inital fill red
     pixels.show()
-
+    
+    if isDirrectionForward == True:
+        start = 0
+        end = sectionCount
+        increment  = 1
+    else:
+        start = sectionCount
+        end = 0
+        increment  = -1
+        
     for c in range(cycles):
         pixels.fill(spaceColor) # inital fill
         pixels.show()
         
-        # make pixels for main effect
-        if isDirrectionForward == True:
-            start = 0
-            end = sectionCount
-            increment  = 1
-        else:
-            start = sectionCount
-            end = 0
-            increment  = -1
-            
-        #for m in range (start, end, increment):
         fillColor = colorObj[c%len(colorObj)]
         for i in range(start, end, increment): 
             for q in range(0, num_pixels, sectionCount):
@@ -639,7 +637,36 @@ def fill_section(colorObj, sectionCount, spaceColor, delay, isDirrectionForward,
                     
             pixels.show()
             time.sleep(delay)
-            
+
+def fill_section_mid(colorObj, sectionCount, spaceColor, delay, isDirrectionOutward, cycles):
+    pixels.fill(spaceColor) # inital fill red
+    pixels.show()
+    sectionCountDouble = sectionCount * 2
+    
+    if isDirrectionOutward == True:
+        start = sectionCount
+        end = 0
+        increment  = -1
+    else:
+        start = 0
+        end = sectionCount
+        increment  = 1
+        
+    for c in range(cycles):
+        pixels.fill(spaceColor) # inital fill
+        pixels.show()
+        
+        fillColor = colorObj[c%len(colorObj)]
+        for i in range(start, end, increment): 
+            for q in range(0, num_pixels, sectionCountDouble):
+                if i+q < num_pixels:
+                    pixels[i+q] = fillColor
+                if sectionCountDouble-i+q-1 < num_pixels:    
+                    pixels[sectionCountDouble-i+q-1] = fillColor
+                    
+            pixels.show()
+            time.sleep(delay)
+
 def drain_section(colorObj, sectionCount, spaceColor, delay, isDirrectionForward, cycles):
     if isDirrectionForward == True:
         start = 0
@@ -663,7 +690,33 @@ def drain_section(colorObj, sectionCount, spaceColor, delay, isDirrectionForward
             pixels.show()
             time.sleep(delay)
         
-
+def drain_section_mid(colorObj, sectionCount, spaceColor, delay, isDirrectionOutward, cycles):
+    sectionCountDouble = sectionCount * 2
+        
+    if isDirrectionOutward == True:
+        start = 0
+        end = sectionCount
+        increment  = 1
+    else:
+        start = sectionCount
+        end = 0
+        increment  = -1
+            
+    for c in range(cycles):
+            
+        fillColor = colorObj[c%len(colorObj)]
+        pixels.fill(fillColor) # inital fill
+        pixels.show()
+        for i in range(start, end, increment): 
+            for q in range(0, num_pixels, sectionCountDouble):
+                if i+q < num_pixels:
+                    pixels[i+q] = spaceColor
+                if sectionCountDouble-i+q-1 < num_pixels:    
+                    pixels[sectionCountDouble-i+q-1] = spaceColor
+                    
+            pixels.show()
+            time.sleep(delay)
+            
 while True:
     random.seed()
 
@@ -694,7 +747,20 @@ while True:
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
+    
+    # drain_section_mid(colorObj, sectionCount, spaceColor, delay, isDirrectionOutward, cycles)
+    print("drain_section_mid")
+    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
+    drain_section_mid(colorobj, 24, cblk, .1, True, 50)
+    time.sleep(wait_time)
 
+    
+    # fill_section_mid(colorObj, sectionCount, spaceColor, delay, isDirrectionOutward, cycles)
+    print("fill_section_mid")
+    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
+    fill_section_mid(colorobj, 24, cblk, .05, True, 50)
+    time.sleep(wait_time)
+    
     # drain_section(colorObj, sectionCount, spaceColor, delay, isDirrectionForward, cycles)
     print("drain_section")
     colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
