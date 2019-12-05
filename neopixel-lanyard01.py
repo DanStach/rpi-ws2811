@@ -717,6 +717,25 @@ def drain_section_mid(colorObj, sectionCount, spaceColor, delay, isDirrectionOut
             pixels.show()
             time.sleep(delay)
             
+def FadeInOutColors(colorObj, spaceColor, incrementPrecent, delay, cycles):
+    increment = int(incrementPrecent * 100)
+    for c in range(cycles):
+            
+        fillColor = colorObj[c%len(colorObj)]
+        pixels.fill(spaceColor) # inital fill
+        pixels.show()
+        
+        for level in range(0, 100, increment):
+            colorLevel = colorTransition(fillColor, spaceColor, level/100)
+            pixels.fill(colorLevel) 
+            pixels.show()
+            time.sleep(delay)
+        for level in range(100, 0, -increment):
+            colorLevel = colorTransition(fillColor, spaceColor, level/100)
+            pixels.fill(colorLevel) 
+            pixels.show()
+            time.sleep(delay)
+                
 while True:
     random.seed()
 
@@ -746,6 +765,12 @@ while True:
     print("fill blue")
     pixels.fill((0, 0, 255))
     pixels.show()
+    time.sleep(wait_time)
+    
+    #FadeInOutColors(colorObj, spaceColor, incrementPrecent, delay, cycles)
+    print("FadeInOutColors")
+    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
+    FadeInOutColors(colorobj, cblk, 0.01, .001, 20)
     time.sleep(wait_time)
     
     # drain_section_mid(colorObj, sectionCount, spaceColor, delay, isDirrectionOutward, cycles)
