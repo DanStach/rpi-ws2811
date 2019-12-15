@@ -29,3 +29,9 @@ If you need the long full install tutorials:
 - 2 power supplies (each 5volt/10Amp)
 
 Notes: the RPI0W controling 300pixels runs about twice as slow as the RPI3b. I really notice it on the FireEffecT, but barely notice the slowness on other effects.
+
+## Start python script on startup
+- https://www.dexterindustries.com/howto/run-a-program-on-your-raspberry-pi-at-startup/
+   - sudo nano /etc/rc.local
+   - sudo python3 /code/rpi-ws2811/neopixel-xmas-tree.py &
+-stop command: sudo pkill -9 python
