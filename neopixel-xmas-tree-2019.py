@@ -791,10 +791,12 @@ while True:
     pixels.fill((0, 0, 255))
     pixels.show()
     time.sleep(wait_time)
-    
+
+    # shows 2 color every other pixel (red, green)
+
     #TransColors(colorObj, incrementPrecent, delay, cycles)
     print("TransColors")
-     TransColors(xmasColorGroupAll, 0.01, .001, 20)
+    TransColors(xmasColorGroupAll, 0.01, .001, 20)
     time.sleep(wait_time)
     
     #FadeInOutColors(colorObj, spaceColor, incrementPrecent, delay, cycles)
