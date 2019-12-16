@@ -226,6 +226,33 @@ def rainbow_cycle(delay, cycles):
         pixels.show()
         time.sleep(delay)
 
+def candycane_custom(c1, c2, thisbright, delay, cycles):
+    N6  = int(num_pixels/6)
+    N12 = int(num_pixels/12)
+
+    for loop in range(cycles):
+        cSwap = c1
+        c1 = c2
+        c2 = cSwap
+        for i in range(N6):
+            j0 = int(( i + num_pixels - N12) % num_pixels)
+            j1 = int((j0+N6) % num_pixels)
+            j2 = int((j1+N6) % num_pixels)
+            j3 = int((j2+N6) % num_pixels)
+            j4 = int((j3+N6) % num_pixels)
+            j5 = int((j4+N6) % num_pixels)
+            pixels[j0] = brightnessRGB(c1[0], c1[1], c1[2], int(thisbright*.75))
+            pixels[j1] = brightnessRGB(c2[0], c2[1], c2[2], thisbright)
+            pixels[j2] = brightnessRGB(c1[0], c1[1], c1[2], int(thisbright*.75))
+            pixels[j3] = brightnessRGB(c2[0], c2[1], c2[2], thisbright)
+            pixels[j4] = brightnessRGB(c1[0], c1[1], c1[2], int(thisbright*.75))
+            pixels[j5] = brightnessRGB(c2[0], c2[1], c2[2], thisbright)
+
+            # show pixel values 
+            pixels.show()
+            time.sleep(delay)
+
+
 def fill_group_random(groupCount, delay, cycles):
     pixels.fill((255, 0, 0)) # inital fill red
     pixels.show()
@@ -812,6 +839,30 @@ while True:
     print("colorAllColorGroup purple orange")
     colorAllColorGroup(halloweenColorGroupPurpleOrange )
     pixels.show()
+    time.sleep(wait_time)
+
+    # makes the strand of pixels show candycane_custom
+    # candycane_custom(c1, c2, brightness, delay, cycles)
+    pixels.fill((0, 0, 0)) 
+    pixels.show()
+    print("candycane_custom white red")
+    candycane_custom(cwhite, cred, 255, .05, 30)
+    time.sleep(wait_time)
+
+    # makes the strand of pixels show candycane_custom
+    # candycane_custom(c1, c2, brightness, delay, cycles)
+    pixels.fill((0, 0, 0)) 
+    pixels.show()
+    print("candycane_custom white green")
+    candycane_custom(cwhite, cgreen, 255, .05, 30)
+    time.sleep(wait_time)
+
+    # makes the strand of pixels show candycane_custom
+    # candycane_custom(c1, c2, brightness, delay, cycles)
+    pixels.fill((0, 0, 0)) 
+    pixels.show()
+    print("candycane_custom red green")
+    candycane_custom(cred, cgreen, 255, .05, 30)
     time.sleep(wait_time)
 
     #TransColors(colorObj, incrementPrecent, delay, cycles)
