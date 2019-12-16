@@ -846,7 +846,7 @@ while True:
     pixels.fill((0, 0, 0)) 
     pixels.show()
     print("candycane_custom white red")
-    candycane_custom(cwhite, cred, 255, .05, 30)
+    candycane_custom(cwhite, cred, 255, .05, 10)
     time.sleep(wait_time)
 
     # makes the strand of pixels show candycane_custom
@@ -854,7 +854,7 @@ while True:
     pixels.fill((0, 0, 0)) 
     pixels.show()
     print("candycane_custom white green")
-    candycane_custom(cwhite, cgreen, 255, .05, 30)
+    candycane_custom(cwhite, cgreen, 255, .05, 10)
     time.sleep(wait_time)
 
     # makes the strand of pixels show candycane_custom
@@ -862,12 +862,12 @@ while True:
     pixels.fill((0, 0, 0)) 
     pixels.show()
     print("candycane_custom red green")
-    candycane_custom(cred, cgreen, 255, .05, 30)
+    candycane_custom(cred, cgreen, 255, .05, 10)
     time.sleep(wait_time)
 
     #TransColors(colorObj, incrementPrecent, delay, cycles)
     print("TransColors")
-    TransColors(xmasColorGroupAll, 0.01, .001, 20)
+    TransColors(xmasColorGroupAll, 0.01, .001, 10)
     time.sleep(wait_time)
     
     #FadeInOutColors(colorObj, spaceColor, incrementPrecent, delay, cycles)
