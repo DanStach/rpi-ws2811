@@ -802,8 +802,8 @@ while True:
 
     # shows 2 color every other pixel (purple orange)
     # colorAllColorGroup(colorObject)
-    print("colorAllColorGroup purple orange")
-    colorAllColorGroup(halloweenColorGroupPurpleOrange)
+    print("colorAllColorGroup red white")
+    colorAllColorGroup(xmasColorGroupRedWhite)
     pixels.show()
     time.sleep(wait_time)
 
