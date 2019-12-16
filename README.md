@@ -34,4 +34,4 @@ Notes: the RPI0W controling 300pixels runs about twice as slow as the RPI3b. I r
 - https://www.dexterindustries.com/howto/run-a-program-on-your-raspberry-pi-at-startup/
    - sudo nano /etc/rc.local
    - sudo python3 /code/rpi-ws2811/neopixel-xmas-tree.py &
--stop command: sudo pkill -9 python
+- stop command: sudo pkill -9 python
