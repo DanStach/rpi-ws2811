@@ -49,6 +49,7 @@ colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
 xmasColorGroupAll = ((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
 xmasColorGroupRedGreen = ((255, 0, 0), (0, 255, 0)) 
 xmasColorGroupRedWhite = ((255, 0, 0), (255, 255, 255)) 
+halloweenColorGroupPurpleOrange = ((128,0,128), (250,97,35) ) 
 
 
 ### colorAll2Color allows two alternating colors to be shown
@@ -793,6 +794,25 @@ while True:
     time.sleep(wait_time)
 
     # shows 2 color every other pixel (red, green)
+    # colorAllColorGroup(colorObject)
+    print("colorAllColorGroup red green")
+    colorAllColorGroup(xmasColorGroupRedGreen)
+    pixels.show()
+    time.sleep(wait_time)
+
+    # shows 2 color every other pixel (purple orange)
+    # colorAllColorGroup(colorObject)
+    print("colorAllColorGroup purple orange")
+    colorAllColorGroup(halloweenColorGroupPurpleOrange)
+    pixels.show()
+    time.sleep(wait_time)
+
+    # shows 2 color every other pixel (purple, orange)
+    # colorAll2Color((red1, green1, blue1), (red2, green2, blue2))
+    print("colorAllColorGroup purple orange")
+    colorAllColorGroup(halloweenColorGroupPurpleOrange )
+    pixels.show()
+    time.sleep(wait_time)
 
     #TransColors(colorObj, incrementPrecent, delay, cycles)
     print("TransColors")
