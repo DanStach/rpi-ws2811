@@ -20,7 +20,7 @@ num_pixels = 350
 
 # The order of the pixel colors - RGB or GRB. Some NeoPixels have red and green reversed!
 # For RGBW NeoPixels, simply change the ORDER to RGBW or GRBW.
-ORDER = neopixel.GRB
+ORDER = neopixel.RGB
 
 pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=ORDER)
 
@@ -44,6 +44,12 @@ cltcyan = (0, 127, 127)
 cltpurple = (127, 0, 127)
 cltorange = (127, 82, 0)
 cltwhite = (127, 127, 127)
+
+colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
+xmasColorGroupAll = ((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
+xmasColorGroupRedGreen = ((255, 0, 0), (0, 255, 0)) 
+xmasColorGroupRedWhite = ((255, 0, 0), (255, 255, 255)) 
+
 
 ### colorAll2Color allows two alternating colors to be shown
 #
@@ -788,39 +794,33 @@ while True:
     
     #TransColors(colorObj, incrementPrecent, delay, cycles)
     print("TransColors")
-    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
-    TransColors(colorobj, 0.01, .001, 20)
+     TransColors(xmasColorGroupAll, 0.01, .001, 20)
     time.sleep(wait_time)
     
     #FadeInOutColors(colorObj, spaceColor, incrementPrecent, delay, cycles)
     print("FadeInOutColors")
-    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
-    FadeInOutColors(colorobj, cblk, 0.01, .001, 20)
+    FadeInOutColors(xmasColorGroupAll, cblk, 0.01, .001, 20)
     time.sleep(wait_time)
     
     # drain_section_mid(colorObj, sectionCount, spaceColor, delay, isDirrectionOutward, cycles)
     print("drain_section_mid")
-    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
-    drain_section_mid(colorobj, 24, cblk, .1, True, 50)
+    drain_section_mid(xmasColorGroupAll, 24, cblk, .1, True, 50)
     time.sleep(wait_time)
 
     
     # fill_section_mid(colorObj, sectionCount, spaceColor, delay, isDirrectionOutward, cycles)
     print("fill_section_mid")
-    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
-    fill_section_mid(colorobj, 24, cblk, .05, True, 50)
+    fill_section_mid(xmasColorGroupAll, 24, cblk, .05, True, 50)
     time.sleep(wait_time)
     
     # drain_section(colorObj, sectionCount, spaceColor, delay, isDirrectionForward, cycles)
     print("drain_section")
-    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
-    drain_section(colorobj, 24, cblk, .05, True, 50)
+    drain_section(xmasColorGroupAll, 24, cblk, .05, True, 50)
     time.sleep(wait_time)
     
     # fill_section(colorObj, sectionCount, spaceColor, delay, isDirrectionForward, cycles)
     print("fill_section")
-    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
-    fill_section(colorobj, 24, cblk, .05, True, 50)
+    fill_section(xmasColorGroupAll, 24, cblk, .05, True, 50)
     time.sleep(wait_time)
     
     # theaterChaseDotCollection(sectionCount, dotColor, delay, cycles)
@@ -836,8 +836,7 @@ while True:
 
     print("DotCollectionMiddleColorChange")
     # DotCollectionMiddleColorChange(colorObj, sectionCount, spaceColor, delay, cycles)
-    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
-    DotCollectionMiddleColorChange(colorobj, 24, cblk, .05, 50)
+    DotCollectionMiddleColorChange(xmasColorGroupAll, 24, cblk, .05, 50)
     time.sleep(wait_time)
 
     print("DotCollection-green")
@@ -849,14 +848,12 @@ while True:
     
     print("DotCollectionColorChange")
     #DotCollectionColorChange(colorObj, sectionCount, spaceColor, delay, cycles):
-    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
-    DotCollectionColorChange(colorobj, 48, cblk, .05, 50)
+    DotCollectionColorChange(xmasColorGroupAll, 48, cblk, .05, 50)
     time.sleep(wait_time)
 
     print("DotCollection")
     #DotCollection(colorObj, sectionCount, delay, cycles)
-    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
-    DotCollection(colorobj, 48, cblk, .05, 100)
+    DotCollection(xmasColorGroupAll, 48, cblk, .05, 100)
     time.sleep(wait_time)
 
     # RotateObject(coloreObj, delay, cycles, dirrection)
@@ -903,29 +900,25 @@ while True:
     
     print("PatternRunningLightsFadeTrans")
     #PatternRunningLightsWaveTrans(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
-    colorobj = (cwhite, ccyan, cpurple, cyellow, cblue, cred)
-    tempStrip = PatternRunningLightsFadeTrans(colorobj, 16, cgreen, 4, True, 5)
+    tempStrip = PatternRunningLightsFadeTrans(xmasColorGroupAll, 16, cgreen, 4, True, 5)
     RotateObject(tempStrip, .05, 100, True)
     time.sleep(wait_time)
 
     print("PatternRunningLightsWaveTrans")
     #PatternRunningLightsWaveTrans(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
-    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
-    tempStrip = PatternRunningLightsWaveTrans(colorobj, 24, cgreen, 8, True, 1)
+    tempStrip = PatternRunningLightsWaveTrans(xmasColorGroupAll, 24, cgreen, 8, True, 1)
     RotateObject(tempStrip, .05, 100, True)
     time.sleep(wait_time)
         
     print("PatternRunningLightsWaveColorObj")
     # PatternRunningLightsWaveColorObj(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
-    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
-    tempStrip = PatternRunningLightsWaveColorObj(colorobj, 24, (0,0,0), 8, True, 5)
+    tempStrip = PatternRunningLightsWaveColorObj(xmasColorGroupAll, 24, (0,0,0), 8, True, 5)
     RotateObject(tempStrip, .05, 100, True)
     time.sleep(wait_time)
 
     print("PatternRunningLightsFadeColorObj")
     # PatternRunningLightsFadeColorObj(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
-    colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
-    tempStrip = PatternRunningLightsFadeColorObj(colorobj, 15, (0,0,0), 5, True, 0)
+    tempStrip = PatternRunningLightsFadeColorObj(xmasColorGroupAll, 15, (0,0,0), 5, True, 0)
     RotateObject(tempStrip, .05, 100, True)
     time.sleep(wait_time)
 
@@ -948,12 +941,6 @@ while True:
     #RotateObject(colorobj, .1, 100, "forward")
     RotateObject(colorobj, .05, 100, True)
     time.sleep(wait_time)
-    
-    # theaterChaseGroupCustom(colorobj, darkspace, SpeedDelay, cycles):
-    #print("theaterChaseGroupCustom")
-    #colorobj = (cwhite,cred,cgreen,cblue,cyellow,cpurple)
-    #theaterChaseGroupCustom(colorobj, 5, 2, .1, 100)
-    #time.sleep(wait_time)
 
     # theaterChaseDotCollection(sectionCount, dotColor, delay, cycles)
     print("theaterChaseDotCollectionMiddle")
