@@ -898,35 +898,35 @@ while True:
     
     # theaterChaseDotCollection(sectionCount, dotColor, delay, cycles)
     print("theaterChaseDotCollection - green")
-    theaterChaseDotCollection(48, cgreen, .1, 100)
+    theaterChaseDotCollection(100, cgreen, .1, 100)
     time.sleep(wait_time)
 
-    print("DotCollectionMiddleColorChange - cpurple")
+    print("DotCollectionMiddleColorChange - red")
     # DotCollectionMiddleColorChange(colorObj, sectionCount, spaceColor, delay, cycles)
-    colorobj = (cpurple, cpurple)
-    DotCollectionMiddleColorChange(colorobj, 24, cltgreen, .05, 50)
+    colorobj = (cred, cred)
+    DotCollectionMiddleColorChange(colorobj, 24, cltgreen, .1, 50)
     time.sleep(wait_time)
 
     print("DotCollectionMiddleColorChange")
     # DotCollectionMiddleColorChange(colorObj, sectionCount, spaceColor, delay, cycles)
-    DotCollectionMiddleColorChange(xmasColorGroupAll, 24, cblk, .05, 50)
+    DotCollectionMiddleColorChange(xmasColorGroupAll, 24, cblk, .1, 50)
     time.sleep(wait_time)
 
-    print("DotCollection-green")
+    print("DotCollection-red white")
     #DotCollection(colorObj, sectionCount, delay, cycles)
-    colorobj = (cblue,cblue)
-    DotCollection(colorobj, 48, cltgreen, .05, 100)
+    colorobj = (cred, cred)
+    DotCollection(colorobj, 48, cltwhite, .05, 100)
     time.sleep(wait_time)
 
     
     print("DotCollectionColorChange")
     #DotCollectionColorChange(colorObj, sectionCount, spaceColor, delay, cycles):
-    DotCollectionColorChange(xmasColorGroupAll, 48, cblk, .05, 50)
+    DotCollectionColorChange(xmasColorGroupAll, 48, cblk, .1, 50)
     time.sleep(wait_time)
 
     print("DotCollection")
     #DotCollection(colorObj, sectionCount, delay, cycles)
-    DotCollection(xmasColorGroupAll, 48, cblk, .05, 100)
+    DotCollection(xmasColorGroupAll, 48, cblk, .1, 100)
     time.sleep(wait_time)
 
     # RotateObject(coloreObj, delay, cycles, dirrection)
@@ -934,7 +934,6 @@ while True:
     colorobj = (cgreen,cltgreen,cgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,
                 cwhite,cltgreen,cwhite,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,
                 ccyan,cltgreen,ccyan,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,
-                cpurple,cltgreen,cpurple,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,
                 cyellow,cltgreen,cyellow,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,
                 cblue,cltgreen,cblue,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,
                 cred,cltgreen,cred,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen
@@ -948,7 +947,6 @@ while True:
     colorobj = (cgreen,cblk,cgreen,cblk,cblk,cblk,cblk,cblk,cblk,cblk,
                 cwhite,cblk,cwhite,cblk,cblk,cblk,cblk,cblk,cblk,cblk,
                 ccyan,cblk,ccyan,cblk,cblk,cblk,cblk,cblk,cblk,cblk,
-                cpurple,cblk,cpurple,cblk,cblk,cblk,cblk,cblk,cblk,cblk,
                 cyellow,cblk,cyellow,cblk,cblk,cblk,cblk,cblk,cblk,cblk,
                 cblue,cblk,cblue,cblk,cblk,cblk,cblk,cblk,cblk,cblk,
                 cred,cblk,cred,cblk,cblk,cblk,cblk,cblk,cblk,cblk
@@ -962,7 +960,6 @@ while True:
     colorobj = (cgreen,cblk,cblk,cblk,cblk,cblk,
                 cwhite,cblk,cblk,cblk,cblk,cblk,
                 ccyan,cblk,cblk,cblk,cblk,cblk,
-                cpurple,cblk,cblk,cblk,cblk,cblk,
                 cyellow,cblk,cblk,cblk,cblk,cblk,
                 cblue,cblk,cblk,cblk,cblk,cblk,
                 cred,cblk,cblk,cblk,cblk,cblk
