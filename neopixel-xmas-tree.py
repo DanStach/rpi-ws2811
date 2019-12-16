@@ -25,8 +25,10 @@ ORDER = neopixel.RGB
 pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=ORDER)
 
 wait_time = 1
-wait_animate = .2
+wait_animate = .1
 levelobj = (43, 73, 103, 135, 160, 188, 213, 236, 255, 272, 286, 295, 300)
+levelgroups = (43, 39, 35, 32, 30, 28, 25, 23, 19, 17, 14, 9, 5)
+
 levelobjcount = len(levelobj)
 
 ### colorAll2Color allows two alternating colors to be shown
