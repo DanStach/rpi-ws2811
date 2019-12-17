@@ -846,7 +846,7 @@ while True:
     pixels.fill((0, 0, 0)) 
     pixels.show()
     print("candycane_custom white red")
-    candycane_custom(cwhite, cred, 255, .1, 10)
+    candycane_custom(cwhite, cred, 255, .08, 10)
     time.sleep(wait_time)
 
     # makes the strand of pixels show candycane_custom
