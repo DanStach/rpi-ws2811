@@ -47,9 +47,10 @@ cltorange = (127, 82, 0)
 cltwhite = (127, 127, 127)
 
 colorobj = (cgreen, cwhite, ccyan, cpurple, cyellow, cblue, cred)
-xmasColorGroupAll = ((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
-xmasColorGroupRedGreen = ((255, 0, 0), (0, 255, 0)) 
-xmasColorGroupRedWhite = ((255, 0, 0), (255, 255, 255)) 
+xmasColorGroupAll = (cgreen, cwhite, ccyan, cyellow, cblue, cred)
+xmasColorGroupDimAll = (cltgreen, cltwhite, cltcyan, cltyellow, cltblue, cltred)
+xmasColorGroupRedGreen = (cred, cgreen) 
+xmasColorGroupRedWhite = (cred, cwhite) 
 halloweenColorGroupPurpleOrange = ((128,0,128), (250,97,35) ) 
 
 
