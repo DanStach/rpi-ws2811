@@ -25,6 +25,7 @@ ORDER = neopixel.RGB
 pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=ORDER)
 
 wait_time = .5
+wait_animate = .2
 
 cred = (255, 0, 0)
 cblue = (0, 0, 255)
@@ -1911,7 +1912,7 @@ while True:
     pixels.fill((0, 0, 0)) 
     pixels.show()
     print("candycane_custom white red")
-    candycane_custom(cwhite, cred, 255, .05, 5)
+    candycane_custom(cwhite, cred, 255, .2, 5)
     time.sleep(wait_time)
 
     # makes the strand of pixels show candycane_custom
@@ -1919,7 +1920,7 @@ while True:
     pixels.fill((0, 0, 0)) 
     pixels.show()
     print("candycane_custom white green")
-    candycane_custom(cwhite, cgreen, 255, .05, 5)
+    candycane_custom(cwhite, cgreen, 255, .2, 5)
     time.sleep(wait_time)
 
     # makes the strand of pixels show candycane_custom
@@ -1927,7 +1928,7 @@ while True:
     pixels.fill((0, 0, 0)) 
     pixels.show()
     print("candycane_custom red green")
-    candycane_custom(cred, cgreen, 255, .05, 5)
+    candycane_custom(cred, cgreen, 255, .2, 5)
     time.sleep(wait_time)
 
 
