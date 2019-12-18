@@ -1912,7 +1912,7 @@ while True:
     pixels.fill(cred) 
     pixels.show()
     print("candycane_custom white red")
-    candycane_custom(cwhite, cred, 255, .1, 5)
+    candycane_custom(cwhite, cred, 255, .15, 5)
     time.sleep(wait_time)
 
     # makes the strand of pixels show candycane_custom
@@ -1920,7 +1920,7 @@ while True:
     pixels.fill(cgreen) 
     pixels.show()
     print("candycane_custom white green")
-    candycane_custom(cwhite, cgreen, 255, .1, 5)
+    candycane_custom(cwhite, cgreen, 255, .15, 5)
     time.sleep(wait_time)
 
     # makes the strand of pixels show candycane_custom
@@ -1928,7 +1928,7 @@ while True:
     pixels.fill(cred) 
     pixels.show()
     print("candycane_custom red green")
-    candycane_custom(cred, cgreen, 255, .1, 5)
+    candycane_custom(cred, cgreen, 255, .15, 5)
     time.sleep(wait_time)
 
 
