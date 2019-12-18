@@ -28,6 +28,8 @@ pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=Fal
 wait_time = 1
 thisbright = 255
 levelobj = (43, 73, 103, 135, 160, 188, 213, 236, 255, 272, 286, 295, 300)
+levelgroups = (5, 9, 14, 17, 19, 23, 25, 28, 30, 32, 35, 39, 43)
+
 #levelobj = (50, 100, 150, 200, 220, 240, 260, 280, 295, 300)
 levelobjcount = len(levelobj)
 
@@ -367,14 +369,9 @@ def drain(level, delay):
             time.sleep(delay)
 
 
-def pancake(NUM_LEVELS, delay):
-    interrupt = False
+def pancake(groupsObj, delay):
+    NUM_LEVELS = len(groupsObj)
     for pancakeLevel in range(NUM_LEVELS):
-        # only needed if you ouput to a small display 
-        # updateControlVars()  
-
-        if (interrupt):
-            return
         
         for level in range(NUM_LEVELS-1, pancakeLevel-1, -1):
             # only needed if you ouput to a small display 
@@ -443,8 +440,7 @@ while True:
     print("pancake")
     pixels.fill((0, 0, 0))
     time.sleep(wait_time)
-    #pancake(8, 0.5)
-    pancake(levelobjcount, 0)
+    pancake(levelgroups, 0)
     time.sleep(wait_time)
 
     # makes the strand of pixels show drain
