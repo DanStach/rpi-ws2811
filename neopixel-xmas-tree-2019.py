@@ -26,6 +26,7 @@ pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=Fal
 
 wait_time = .5
 wait_animate = .1
+cycleFactor = 100
 
 cred = (255, 0, 0)
 cblue = (0, 0, 255)
@@ -1871,42 +1872,42 @@ while True:
     print("fill red")
     pixels.fill((255, 0, 0)) # red
     pixels.show()
-    time.sleep(wait_time)
+    time.sleep(wait_time+cycleFactor)
 
     # make all pixels Green
     # fill(red, green, blue)
     print("fill green")
     pixels.fill((0, 255, 0))
     pixels.show()
-    time.sleep(wait_time)
+    time.sleep(wait_time+cycleFactor)
 
     # make all pixels Blue
     # fill(red, green, blue)
     print("fill blue")
     pixels.fill((0, 0, 255))
     pixels.show()
-    time.sleep(wait_time)
+    time.sleep(wait_time+cycleFactor)
 
     # shows 2 color every other pixel (red, green)
     # colorAllColorGroup(colorObject)
     print("colorAllColorGroup red green")
     colorAllColorGroup(xmasColorGroupRedGreen)
     pixels.show()
-    time.sleep(wait_time)
+    time.sleep(wait_time+cycleFactor)
 
     # shows 2 color every other pixel (purple orange)
     # colorAllColorGroup(colorObject)
     print("colorAllColorGroup red white")
     colorAllColorGroup(xmasColorGroupRedWhite)
     pixels.show()
-    time.sleep(wait_time)
+    time.sleep(wait_time+cycleFactor)
 
     # shows 2 color every other pixel (purple, orange)
     # colorAll2Color((red1, green1, blue1), (red2, green2, blue2))
     print("colorAllColorGroup purple orange")
     colorAllColorGroup(halloweenColorGroupPurpleOrange )
     pixels.show()
-    time.sleep(wait_time)
+    time.sleep(wait_time+cycleFactor)
 
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)
@@ -1914,14 +1915,14 @@ while True:
     pixels.show()
     print("candycane_custom white red")
     candycane_custom(cwhite, cred, 255, wait_animate/2, 5)
-    time.sleep(wait_time)
+    time.sleep(wait_time+cycleFactor)
 
     # makes the strand of pixels show candycane_custom
     # candycane_custom(c1, c2, brightness, delay, cycles)
     pixels.fill(cgreen) 
     pixels.show()
     print("candycane_custom white green")
-    candycane_custom(cwhite, cgreen, 255, wait_animate/2, 5)
+    candycane_custom(cwhite, cgreen, 255, wait_animate/2, 5*cycleFactor)
     time.sleep(wait_time)
 
     # makes the strand of pixels show candycane_custom
@@ -1929,7 +1930,7 @@ while True:
     pixels.fill(cred) 
     pixels.show()
     print("candycane_custom red green")
-    candycane_custom(cred, cgreen, 255, wait_animate/2, 5)
+    candycane_custom(cred, cgreen, 255, wait_animate/2, 5*cycleFactor)
     time.sleep(wait_time)
 
 
@@ -1938,7 +1939,7 @@ while True:
     pixels.fill((0, 0, 0)) 
     pixels.show()
     print("twinkle2")
-    twinkle2(wait_animate, 100) 
+    twinkle2(wait_animate, 100*cycleFactor) 
     time.sleep(wait_time)
 
 # makes the strand of pixels show random_march
@@ -1946,7 +1947,7 @@ while True:
     pixels.fill((0, 0, 0)) 
     pixels.show()
     print("random_march")
-    random_march(wait_animate/2, 80) 
+    random_march(wait_animate/2, 80*cycleFactor) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show matrix
@@ -1954,13 +1955,13 @@ while True:
     pixels.fill((0, 0, 0)) 
     pixels.show()
     print("matrix")
-    matrix(10, wait_animate, 100) 
+    matrix(10, wait_animate, 100*cycleFactor) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show rainbow_fade
     # rainbow_fade(delay, cycles):
     print("rainbow_fade")
-    rainbow_fade(wait_animate, 256) 
+    rainbow_fade(wait_animate, 256*cycleFactor) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show rainbow_loop
@@ -1968,7 +1969,7 @@ while True:
     pixels.fill((0, 0, 0))
     pixels.show()
     print("rainbow_loop")
-    rainbow_loop(wait_animate/4, 10, 500) 
+    rainbow_loop(wait_animate/4, 10, 500*cycleFactor) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show rainbow
@@ -1977,7 +1978,7 @@ while True:
     pixels.show()
     time.sleep(wait_time)
     print("rainbow")
-    rainbow(wait_animate/4, 10, 200) 
+    rainbow(wait_animate/4, 10, 200*cycleFactor) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
@@ -1986,7 +1987,7 @@ while True:
     pixels.show()
     time.sleep(wait_time)
     print("rgbPropellerCustom")
-    rgbPropellerCustom(wait_animate, 200)
+    rgbPropellerCustom(wait_animate, 200*cycleFactor)
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
@@ -1994,14 +1995,14 @@ while True:
     pixels.fill((0, 0, 0))
     pixels.show()
     print("random_burst")
-    random_burst(0, wait_animate, 1000)
+    random_burst(0, wait_animate, 1000*cycleFactor)
     time.sleep(wait_time)
 
 
     # makes the strand of pixels show Fire
     # Fire(Cooling, Sparking, SpeedDelay, LoopCount)
     print("Fire")
-    Fire(15, 200, wait_animate/4, 800)
+    Fire(15, 200, wait_animate/4, 800*cycleFactor)
     time.sleep(wait_time)
 
     # makes the strand of pixels show theaterChaseRainbow
@@ -2013,7 +2014,7 @@ while True:
     # makes the strand of pixels show theaterChase
     # theaterChase(red, green, blue, cycles, SpeedDelay)
     print("theaterChase")
-    theaterChase(255,0,0, 200, wait_animate)
+    theaterChase(255,0,0, 200*cycleFactor, wait_animate)
     time.sleep(wait_time)
 
     # makes the strand of pixels show colorWipe (green)
@@ -2045,22 +2046,22 @@ while True:
     # SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay)
     # SnowSparkle(16, 16, 16, 100, 0.020, random.randint(100,1000)/1000)
     print("SnowSparkle")
-    SnowSparkle(16, 16, 16, 100, 0, wait_animate/2)
+    SnowSparkle(16, 16, 16, 100*cycleFactor, 0, wait_animate/2)
 
     # makes the strand of pixels show Sparkle (white)
     # Sparkle(red, green, blue, Count, SpeedDelay)
     print("Sparkle")
-    Sparkle(255, 255, 255, 100, wait_animate/)
+    Sparkle(255, 255, 255, 100*cycleFactor, wait_animate/)
 
     # makes the strand of pixels show TwinkleRandom
     # TwinkleRandom( Count, SpeedDelay, OnlyOne)
     print("TwinkleRandom")
-    TwinkleRandom(1000, wait_animate/2, False)
+    TwinkleRandom(1000*cycleFactor, wait_animate/2, False)
 
     # makes the strand of pixels show Twinkle
     # Twinkle(red, green, blue, Count, SpeedDelay, OnlyOne)
     print("Twinkle")
-    Twinkle(255, 0, 0, 1000, wait_animate/2, False)
+    Twinkle(255, 0, 0, 1000*cycleFactor, wait_animate/2, False)
 
     # fade in/out a single color (red / green / blue / white)
     # FadeInOut(red, green, blue, delay)
@@ -2073,7 +2074,7 @@ while True:
     # rainbow cycle with 1ms delay per step, 5 cycles
     # rainbow_cycle(delay, cycles)
     print("rainbow_cycle")
-    rainbow_cycle(wait_animate/2, 20) 
+    rainbow_cycle(wait_animate/2, 20*cycleFactor) 
     time.sleep(wait_time)
 
 
@@ -2087,7 +2088,7 @@ while True:
     #   SparkingRangeEnd: (0- number of pixels) spark position random value, end range
     #   SpeedDelay: (0-...) slow down the effect by injecting a delay in Sec. 0=no delay, .05=50msec, 2=2sec
     print("FireCustom")
-    FireCustom(0, 4, 90, 0, int(num_pixels/3), wait_animate/2, 900) # red fire
+    FireCustom(0, 4, 90, 0, int(num_pixels/3), wait_animate/2, 900*cycleFactor) # red fire
     time.sleep(wait_time)
 
 
@@ -2120,7 +2121,7 @@ while True:
     print("blink - pixel 0")
     pixels.fill((0, 0, 0))
     pixels.show()
-    blink(num_pixels-1, wait_animate, 100)
+    blink(num_pixels-1, wait_animate, 100*cycleFactor)
     time.sleep(wait_time)
 
 
@@ -2128,7 +2129,7 @@ while True:
     # randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles )
     #levels = (110, 200, 270, 340, 390, 400)
     print("randomLevelsCustom2Colors")
-    randomLevelsCustom2Colors((100,100,100),(0,100,0), levels, True, wait_animate, 10)
+    randomLevelsCustom2Colors((100,100,100),(0,100,0), levels, True, wait_animate, 10*cycleFactor)
     time.sleep(wait_time)
     
     # makes the strand of pixels show randomLevelsCustomColors
@@ -2136,7 +2137,7 @@ while True:
     #levels = (110, 200, 270, 340, 390, 400)
     print("randomLevelsCustomColors")
     colorobj = ( (100,100,100), (0,100,0), (100,0,0) )
-    randomLevelsCustomColors(colorobj, levels, 1, wait_animate, 10)
+    randomLevelsCustomColors(colorobj, levels, 1, wait_animate, 10*cycleFactor)
     time.sleep(wait_time)
 
     # makes the strand of pixels show LevelsColorsCustom
@@ -2152,21 +2153,21 @@ while True:
     print("colorAllColorGroup multi")
     xmasColorGroup = ((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
     colorAllColorGroup(xmasColorGroup) 
-    time.sleep(wait_time)
+    time.sleep(wait_time+cycleFactor)
 
 
     # shows 2 color every other pixel (red, green)
     # SnowSparkleExisting(Count, SparkleDelay, SpeedDelay)
     print("SnowSparkleExisting purple orange")
     colorAll2Color((75,0,130), (255,165,0) )
-    SnowSparkleExisting(1000, .1, wait_animate)
+    SnowSparkleExisting(1000*cycleFactor, .1, wait_animate)
     time.sleep(wait_time)
 
     # shows 2 color every other pixel (red, green)
     # RunningLightsPreExisting(WaveDelay, cycles):
     print("RunningLightsPreExisting red green")
     colorAll2Color((255, 0, 0), (0, 255, 0)) 
-    RunningLightsPreExisting(wait_animate, 1000)
+    RunningLightsPreExisting(wait_animate, 1000*cycleFactor)
     time.sleep(wait_time)
 
 
@@ -2174,7 +2175,7 @@ while True:
     # RunningLightsPreExisting(WaveDelay, cycles):
     print("RunningLightsPreExisting multi")
     colorAllColorGroup(xmasColorGroup) 
-    RunningLightsPreExisting(wait_animate, 1000)
+    RunningLightsPreExisting(wait_animate, 1000*cycleFactor)
     time.sleep(wait_time)
 
 
@@ -2183,62 +2184,62 @@ while True:
 
     #TransColors(colorObj, incrementPrecent, delay, cycles)
     print("TransColors")
-    TransColors(xmasColorGroupAll, 0.01, wait_animate/10, 50)
+    TransColors(xmasColorGroupAll, 0.01, wait_animate/10, 50*cycleFactor)
     time.sleep(wait_time)
     
     #FadeInOutColors(colorObj, spaceColor, incrementPrecent, delay, cycles)
     print("FadeInOutColors")
-    FadeInOutColors(xmasColorGroupAll, cblk, 0.01, wait_animate/100, 2)
+    FadeInOutColors(xmasColorGroupAll, cblk, 0.01, wait_animate/100, 2*cycleFactor)
     time.sleep(wait_time)
     
     # drain_section_mid(colorObj, sectionCount, spaceColor, delay, isDirrectionOutward, cycles)
     print("drain_section_mid")
-    drain_section_mid(xmasColorGroupAll, 24, cblk, wait_animate*2, True, 5)
+    drain_section_mid(xmasColorGroupAll, 24, cblk, wait_animate*2, True, 5*cycleFactor)
     time.sleep(wait_time)
 
     
     # fill_section_mid(colorObj, sectionCount, spaceColor, delay, isDirrectionOutward, cycles)
     print("fill_section_mid")
-    fill_section_mid(xmasColorGroupAll, 24, cblk, wait_animate*2, True, 5)
+    fill_section_mid(xmasColorGroupAll, 24, cblk, wait_animate*2, True, 5*cycleFactor)
     time.sleep(wait_time)
     
     # drain_section(colorObj, sectionCount, spaceColor, delay, isDirrectionForward, cycles)
     print("drain_section")
-    drain_section(xmasColorGroupAll, 24, cblk, wait_animate*2, True, 5)
+    drain_section(xmasColorGroupAll, 24, cblk, wait_animate*2, True, 5*cycleFactor)
     time.sleep(wait_time)
     
     # fill_section(colorObj, sectionCount, spaceColor, delay, isDirrectionForward, cycles)
     print("fill_section")
-    fill_section(xmasColorGroupAll, 24, cblk, wait_animate*2, True, 5)
+    fill_section(xmasColorGroupAll, 24, cblk, wait_animate*2, True, 5*cycleFactor)
     time.sleep(wait_time)
     
     # theaterChaseDotCollection(sectionCount, dotColor, delay, cycles)
     print("theaterChaseDotCollection - green")
-    theaterChaseDotCollection(100, cgreen, wait_animate, 100)
+    theaterChaseDotCollection(100, cgreen, wait_animate, 100*cycleFactor)
     time.sleep(wait_time)
 
     print("DotCollectionMiddleColorChange - red")
     # DotCollectionMiddleColorChange(colorObj, sectionCount, spaceColor, delay, cycles)
     colorobj = (cred, cred)
-    DotCollectionMiddleColorChange(colorobj, 24, cltgreen, wait_animate, 5)
+    DotCollectionMiddleColorChange(colorobj, 24, cltgreen, wait_animate, 5*cycleFactor)
     time.sleep(wait_time)
 
 
     print("DotCollection-red white")
     #DotCollection(colorObj, sectionCount, delay, cycles)
     colorobj = (cred, cred)
-    DotCollection(colorobj, 48, cltwhite, wait_animate/2, 5)
+    DotCollection(colorobj, 48, cltwhite, wait_animate/2, 5*cycleFactor)
     time.sleep(wait_time)
 
     
     print("DotCollectionColorChange")
     #DotCollectionColorChange(colorObj, sectionCount, spaceColor, delay, cycles):
-    DotCollectionColorChange(xmasColorGroupAll, 48, cblk, wait_animate*2, 1)
+    DotCollectionColorChange(xmasColorGroupAll, 48, cblk, wait_animate*2, 1*cycleFactor)
     time.sleep(wait_time)
 
     print("DotCollection")
     #DotCollection(colorObj, sectionCount, delay, cycles)
-    DotCollection(xmasColorGroupAll, 48, cblk, wait_animate, 1)
+    DotCollection(xmasColorGroupAll, 48, cblk, wait_animate, 1*cycleFactor)
     time.sleep(wait_time)
 
     # RotateObject(coloreObj, delay, cycles, dirrection)
@@ -2251,7 +2252,7 @@ while True:
                 cred,cltgreen,cred,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen
                 )
     #RotateObject(colorobj, .1, 100, "forward")
-    RotateObject(colorobj, wait_animate, 10, True)
+    RotateObject(colorobj, wait_animate, 10*cycleFactor, True)
     time.sleep(wait_time)
     
     # RotateObject(coloreObj, delay, cycles, dirrection)
@@ -2264,7 +2265,7 @@ while True:
                 cred,cblk,cred,cblk,cblk,cblk,cblk,cblk,cblk,cblk
                 )
     #RotateObject(colorobj, .1, 100, "forward")
-    RotateObject(colorobj, wait_animate, 10, True)
+    RotateObject(colorobj, wait_animate, 10*cycleFactor, True)
     time.sleep(wait_time)
     
     # RotateObject(coloreObj, delay, cycles, dirrection)
@@ -2277,32 +2278,32 @@ while True:
                 cred,cblk,cblk,cblk,cblk,cblk
                 )
     #RotateObject(colorobj, .1, 100, "forward")
-    RotateObject(colorobj, .1, 100, True)
+    RotateObject(colorobj, .1, 100*cycleFactor, True)
     time.sleep(wait_time)
     
 
     print("PatternRunningLightsWaveTrans")
     #PatternRunningLightsWaveTrans(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
     tempStrip = PatternRunningLightsWaveTrans(xmasColorGroupAll, 24, cgreen, 8, True, 1)
-    RotateObject(tempStrip, wait_animate/2, 1000, True)
+    RotateObject(tempStrip, wait_animate/2, 1000*cycleFactor, True)
     time.sleep(wait_time)
         
     print("PatternRunningLightsWaveColorObj")
     # PatternRunningLightsWaveColorObj(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
     tempStrip = PatternRunningLightsWaveColorObj(xmasColorGroupAll, 24, (0,0,0), 8, True, 5)
-    RotateObject(tempStrip, wait_animate/2, 1000, True)
+    RotateObject(tempStrip, wait_animate/2, 1000*cycleFactor, True)
     time.sleep(wait_time)
 
     print("PatternRunningLightsFadeColorObj")
     # PatternRunningLightsFadeColorObj(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
     tempStrip = PatternRunningLightsFadeColorObj(xmasColorGroupAll, 15, (0,0,0), 5, True, 0)
-    RotateObject(tempStrip, wait_animate/2, 1000, True)
+    RotateObject(tempStrip, wait_animate/2, 1000*cycleFactor, True)
     time.sleep(wait_time)
 
     print("PatternRunningLightsFade")
     # PatternRunningLightsFade(mainColor, mainLength, spaceColor, spaceLength, patternCycles)
     tempStrip = PatternRunningLightsFade((255,255,0), 15, (0,0,0), 5, True, 0)
-    RotateObject(tempStrip, wait_animate/2, 1000, True)
+    RotateObject(tempStrip, wait_animate/2, 1000*cycleFactor, True)
     time.sleep(wait_time)
 
     # RotateObject(coloreObj, delay, cycles, dirrection)
@@ -2316,31 +2317,31 @@ while True:
                 cred,cred,cred,cred,cred,cred,cred,cred,cred,cred
                 )
     #RotateObject(colorobj, .1, 100, "forward")
-    RotateObject(colorobj, wait_animate/2, 1000, True)
+    RotateObject(colorobj, wait_animate/2, 1000*cycleFactor, True)
     time.sleep(wait_time)
 
     # theaterChaseDotCollection(sectionCount, dotColor, delay, cycles)
     print("theaterChaseDotCollectionMiddle white")
-    theaterChaseDotCollectionMiddle(40, cwhite, wait_animate, 10)
+    theaterChaseDotCollectionMiddle(40, cwhite, wait_animate, 10*cycleFactor)
     time.sleep(wait_time)
     
     # theaterChaseDotCollection(sectionCount, dotColor, delay, cycles)
     print("theaterChaseDotCollection - cltwhite")
-    theaterChaseDotCollection(20, cltwhite, wait_animate, 10)
+    theaterChaseDotCollection(20, cltwhite, wait_animate, 10*cycleFactor)
     time.sleep(wait_time)
     
     # theaterChaseDotCollection(sectionCount, dotColor, delay, cycles)
     print("theaterChaseDot")
-    theaterChaseDot(20, cred, wait_animate, 5)
+    theaterChaseDot(20, cred, wait_animate, 5*cycleFactor)
     time.sleep(wait_time)
 
     # fill_group(groupCount, delay, cycles)
     print("fill_group_random")
-    fill_group_random(50, wait_animate, 4)
+    fill_group_random(50, wait_animate, 4*cycleFactor)
     time.sleep(wait_time)
     
     # rainbow cycle
     # rainbow_cycle(delay, cycles) 
     print("rainbow_cycle")
-    rainbow_cycle(wait_animate, 1) 
+    rainbow_cycle(wait_animate, 1*cycleFactor) 
     time.sleep(wait_time)
