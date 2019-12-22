@@ -2120,14 +2120,14 @@ while True:
     # randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles )
     #levels = (110, 200, 270, 340, 390, 400)
     print("randomLevelsCustom2Colors")
-    randomLevelsCustom2Colors((100,100,100),(0,100,0), levels, True, wait_animate, 10*cycleFactor)
+    randomLevelsCustom2Colors(cltwhite,cltgreen, levels, True, wait_animate, 10*cycleFactor)
     time.sleep(wait_time)
     
     # makes the strand of pixels show randomLevelsCustomColors
     # randomLevelsCustomColors( colorobj levelobj, clearall, delay, cycles ):
     #levels = (110, 200, 270, 340, 390, 400)
     print("randomLevelsCustomColors")
-    colorobj = ( (100,100,100), (0,100,0), (100,0,0) )
+    colorobj = ( cltwhite, cltgreen, cltred )
     randomLevelsCustomColors(colorobj, levels, 1, wait_animate, 10*cycleFactor)
     time.sleep(wait_time)
 
@@ -2135,7 +2135,7 @@ while True:
     #LevelsColorsCustom( colorobj, levelobj, delay )
     #levels = (110, 200, 270, 340, 390, 400)
     print("LevelsColorsCustom")
-    colorobj = ( (100,100,100), (100,0,0), (0,100,0), (0,0,100),  (0,100,100) )
+    colorobj = ( cltwhite, cltred, cltgreen, cltblue, cltcyan)
     LevelsColorsCustom(colorobj, levels, wait_animate)
     time.sleep(wait_time*5)
     
