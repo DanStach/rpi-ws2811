@@ -55,6 +55,10 @@ xmasColorGroupRedWhite = (cred, cwhite)
 halloweenColorGroupPurpleOrange = ((128,0,128), (250,97,35) ) 
 
 
+levels = (43, 73, 103, 135, 160, 188, 213, 236, 255, 272, 286, 295, 300)
+#levels = (58, 108, 149, 187, 224, 264, 292, 300)
+#levels = (110, 200, 270, 300)
+
 ### colorAll2Color allows two alternating colors to be shown
 #
 def colorAll2Color(c1, c2):
@@ -1870,27 +1874,52 @@ while True:
     # make all pixels Red
     # fill(red, green, blue)
     print("fill red")
-    pixels.fill((255, 0, 0)) # red
+    pixels.fill(cred) # red
     pixels.show()
     time.sleep(wait_time+cycleFactor)
 
     # make all pixels Green
     # fill(red, green, blue)
     print("fill green")
-    pixels.fill((0, 255, 0))
+    pixels.fill(cgreen)
     pixels.show()
     time.sleep(wait_time+cycleFactor)
 
     # make all pixels Blue
     # fill(red, green, blue)
     print("fill blue")
-    pixels.fill((0, 0, 255))
+    pixels.fill(cblue)
     pixels.show()
     time.sleep(wait_time+cycleFactor)
 
+
+    ### this code tests that the levels are correct ##### 
+    cw = (255,255,255)
+    cr = (255,0,0)
+    cg = (0,255,0)
+    cb = (0,0,255)
+    cy = (255,255,0)
+
+    print("LevelsColorsCustom  - level  test ")
+    colorobj = (cwhite, cred, cgreen, cblue, cyellow, 
+                cwhite, cred, cgreen, cblue, cyellow,
+                cwhite, cred, cgreen, cblue, cyellow,
+                cwhite, cred, cgreen, cblue, cyellow ) 
+    LevelsColorsCustom(colorobj, levels, wait_animate)
+    time.sleep(wait_time+10)
+
+    print("colorAllColorGroup - level test c10")
+    colorobj = ( cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,
+                 cred,cred,cred,cred,cred,cred,cred,cred,cred,cred,
+                 cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,
+                 cblue,cblue,cblue,cblue,cblue,cblue,cblue,cblue,cblue,cblue,
+                 cyellow,cyellow,cyellow,cyellow,cyellow,cyellow,cyellow,cyellow,cyellow,cyellow)
+    colorAllColorGroup(colorobj)
+    time.sleep(wait_time+10)
+
     # shows 2 color every other pixel (red, green)
     # colorAllColorGroup(colorObject)
-    print("colorAllColorGroup red green")
+    print("colorAllColorGroup - red green")
     colorAllColorGroup(xmasColorGroupRedGreen)
     pixels.show()
     time.sleep(wait_time+cycleFactor)
@@ -2091,31 +2120,6 @@ while True:
     FireCustom(0, 4, 90, 0, int(num_pixels/3), wait_animate/2, 900*cycleFactor) # red fire
     time.sleep(wait_time)
 
-
-
-    ### this code tests that the levels are correct ##### 
-    cw = (255,255,255)
-    cr = (255,0,0)
-    cg = (0,255,0)
-    cb = (0,0,255)
-    cy = (255,255,0)
-    levels = (43, 73, 103, 135, 160, 188, 213, 236, 255, 272, 286, 295, 300)
-    #levels = (58, 108, 149, 187, 224, 264, 292, 300)
-    #levels = (110, 200, 270, 300)
-    print("LevelsColorsCustom  - level  test ")
-    colorobj = ( cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy, cw, cr, cg, cb, cy ) 
-    LevelsColorsCustom(colorobj, levels, wait_animate)
-    time.sleep(wait_time)
-
-    print("colorAllColorGroup - level test")
-    colorobj = ( cw,cw,cw,cw,cw,cw,cw,cw,cw,cw,
-                 cr,cr,cr,cr,cr,cr,cr,cr,cr,cr,
-                 cg,cg,cg,cg,cg,cg,cg,cg,cg,cg,
-                 cb,cb,cb,cb,cb,cb,cb,cb,cb,cb,
-                 cy,cy,cy,cy,cy,cy,cy,cy,cy,cy )
-    colorAllColorGroup(colorobj)
-    time.sleep(wait_time)
-
     # makes the strand of pixels show blink
     # blink(index, delay, cycles)
     print("blink - pixel 0")
@@ -2151,7 +2155,6 @@ while True:
     # shows pattern of colors on the given pixels 
     # colorAllColorGroup((red1, green1, blue1), (red2, green2, blue2), ...) 
     print("colorAllColorGroup multi")
-    xmasColorGroup = ((255, 0, 0), (0, 255, 0), (0, 0, 255), (0, 255, 255), (255, 255, 0), (255, 255, 255)) 
     colorAllColorGroup(xmasColorGroup) 
     time.sleep(wait_time+cycleFactor)
 
@@ -2166,7 +2169,7 @@ while True:
     # shows 2 color every other pixel (red, green)
     # RunningLightsPreExisting(WaveDelay, cycles):
     print("RunningLightsPreExisting red green")
-    colorAll2Color((255, 0, 0), (0, 255, 0)) 
+    colorAll2Color(cred, cgreen) 
     RunningLightsPreExisting(wait_animate, 1000*cycleFactor)
     time.sleep(wait_time)
 
@@ -2232,7 +2235,7 @@ while True:
     time.sleep(wait_time)
 
     
-    print("DotCollectionColorChange")
+    print("DotCollectionColorChange - xmas blk")
     #DotCollectionColorChange(colorObj, sectionCount, spaceColor, delay, cycles):
     DotCollectionColorChange(xmasColorGroupAll, 48, cblk, wait_animate*2, 1*cycleFactor)
     time.sleep(wait_time)
@@ -2243,7 +2246,7 @@ while True:
     time.sleep(wait_time)
 
     # RotateObject(coloreObj, delay, cycles, dirrection)
-    print("RotateObject")
+    print("RotateObject - multicolorn c ltgrn c 7ltgrn")
     colorobj = (cgreen,cltgreen,cgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,
                 cwhite,cltgreen,cwhite,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,
                 ccyan,cltgreen,ccyan,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,
@@ -2251,12 +2254,11 @@ while True:
                 cblue,cltgreen,cblue,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,
                 cred,cltgreen,cred,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen,cltgreen
                 )
-    #RotateObject(colorobj, .1, 100, "forward")
     RotateObject(colorobj, wait_animate, 10*cycleFactor, True)
     time.sleep(wait_time)
     
     # RotateObject(coloreObj, delay, cycles, dirrection)
-    print("RotateObject")
+    print("RotateObject - multicolorn c b c 7b")
     colorobj = (cgreen,cblk,cgreen,cblk,cblk,cblk,cblk,cblk,cblk,cblk,
                 cwhite,cblk,cwhite,cblk,cblk,cblk,cblk,cblk,cblk,cblk,
                 ccyan,cblk,ccyan,cblk,cblk,cblk,cblk,cblk,cblk,cblk,
@@ -2264,12 +2266,11 @@ while True:
                 cblue,cblk,cblue,cblk,cblk,cblk,cblk,cblk,cblk,cblk,
                 cred,cblk,cred,cblk,cblk,cblk,cblk,cblk,cblk,cblk
                 )
-    #RotateObject(colorobj, .1, 100, "forward")
+    # RotateObject(coloreObj, delay, cycles, dirrection)
     RotateObject(colorobj, wait_animate, 10*cycleFactor, True)
     time.sleep(wait_time)
     
-    # RotateObject(coloreObj, delay, cycles, dirrection)
-    print("RotateObject")
+    print("RotateObject - multicolorn c 6b")
     colorobj = (cgreen,cblk,cblk,cblk,cblk,cblk,
                 cwhite,cblk,cblk,cblk,cblk,cblk,
                 ccyan,cblk,cblk,cblk,cblk,cblk,
@@ -2277,37 +2278,41 @@ while True:
                 cblue,cblk,cblk,cblk,cblk,cblk,
                 cred,cblk,cblk,cblk,cblk,cblk
                 )
-    #RotateObject(colorobj, .1, 100, "forward")
+    # RotateObject(coloreObj, delay, cycles, dirrection)
     RotateObject(colorobj, .1, 100*cycleFactor, True)
     time.sleep(wait_time)
     
 
     print("PatternRunningLightsWaveTrans")
-    #PatternRunningLightsWaveTrans(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
+    # PatternRunningLightsWaveTrans(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
+    # RotateObject(coloreObj, delay, cycles, dirrection)
     tempStrip = PatternRunningLightsWaveTrans(xmasColorGroupAll, 24, cgreen, 8, True, 1)
     RotateObject(tempStrip, wait_animate/2, 1000*cycleFactor, True)
     time.sleep(wait_time)
         
     print("PatternRunningLightsWaveColorObj")
     # PatternRunningLightsWaveColorObj(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
-    tempStrip = PatternRunningLightsWaveColorObj(xmasColorGroupAll, 24, (0,0,0), 8, True, 5)
+    # RotateObject(coloreObj, delay, cycles, dirrection)
+    tempStrip = PatternRunningLightsWaveColorObj(xmasColorGroupAll, 24, cblk, 8, True, 5)
     RotateObject(tempStrip, wait_animate/2, 1000*cycleFactor, True)
     time.sleep(wait_time)
 
     print("PatternRunningLightsFadeColorObj")
     # PatternRunningLightsFadeColorObj(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
+    # RotateObject(coloreObj, delay, cycles, dirrection)
     tempStrip = PatternRunningLightsFadeColorObj(xmasColorGroupAll, 15, (0,0,0), 5, True, 0)
     RotateObject(tempStrip, wait_animate/2, 1000*cycleFactor, True)
     time.sleep(wait_time)
 
     print("PatternRunningLightsFade")
     # PatternRunningLightsFade(mainColor, mainLength, spaceColor, spaceLength, patternCycles)
+    # RotateObject(coloreObj, delay, cycles, dirrection)
     tempStrip = PatternRunningLightsFade((255,255,0), 15, (0,0,0), 5, True, 0)
     RotateObject(tempStrip, wait_animate/2, 1000*cycleFactor, True)
     time.sleep(wait_time)
 
     # RotateObject(coloreObj, delay, cycles, dirrection)
-    print("RotateObject")
+    print("RotateObject - c11")
     colorobj = (cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,
                 cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,
                 ccyan,ccyan,ccyan,ccyan,ccyan,ccyan,ccyan,ccyan,ccyan,ccyan,
