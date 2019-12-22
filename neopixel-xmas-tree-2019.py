@@ -191,7 +191,6 @@ def RotateExisting( delay, cycles):
             pixels[i] = pixels[i-1]
         
         # there is an issue with first 2 pixels are same color 
-        #pixels[0] = (0,0,0)
         pixels.show()
         time.sleep(delay)
 
@@ -308,7 +307,7 @@ def theaterChaseDot(sectionCount, dotColor, delay, cycles):
                 if i+q < num_pixels:
                     pixels[i+q] = dotColor
                 if i+q-1 < num_pixels and i+q-1 >= 0:
-                    pixels[i+q-1] = (0,0,0)
+                    pixels[i+q-1] = cblk
 
             pixels.show()
             time.sleep(delay)
@@ -330,7 +329,7 @@ def theaterChaseDotCollection(sectionCount, dotColor, delay, cycles):
                     pixels[i+q] = dotColor 
                 if i+q-1 < num_pixels and i+q-1 >= 0:
                     if i > 1:
-                        pixels[i+q-1] = (0,0,0)
+                        pixels[i+q-1] = cblk
         
             pixels.show()
             if i >=  sectionEnd-1:
@@ -353,13 +352,13 @@ def theaterChaseDotCollectionMiddle(sectionCount, dotColor, delay, cycles):
                     pixels[i+q] = dotColor 
                 if i+q-1 < num_pixels and i+q-1 >= 0:
                     if i > 1:
-                        pixels[i+q-1] = (0,0,0)
+                        pixels[i+q-1] = cblk
                         
                 if sectionCount-i+q < num_pixels:    
                     pixels[sectionCount-i+q] = dotColor
                 if sectionCount-i+q+1 < num_pixels and sectionCount-i+q+1 >= 0:
                     if i < num_pixels:
-                        pixels[sectionCount-i+q+1] = (0,0,0)
+                        pixels[sectionCount-i+q+1] = cblk
         
             pixels.show()
 
@@ -400,7 +399,7 @@ def theaterChaseGroupCustom(colorobj, colorspace, darkspace, SpeedDelay, cycles)
                 for i in range(0, num_pixels, n):
                     for index in range(0, colorObjCount, 1):
                         if i+q+index < num_pixels:
-                            pixels[i+q+index] = (0,0,0)        
+                            pixels[i+q+index] = cblk        
 
 
 def PatternRunningLightsFade(mainColor, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles):
@@ -842,27 +841,27 @@ def FadeInOut(red, green, blue, delay):
         time.sleep(delay)
 
 def Twinkle(red, green, blue, Count, SpeedDelay, OnlyOne):
-    pixels.fill((0,0,0))
+    pixels.fill(cblk)
   
     for i in range(Count):
         pixels[random.randint(0, num_pixels-1)] = (red, green, blue)
         pixels.show()
         time.sleep(SpeedDelay)
         if OnlyOne:
-            pixels.fill((0,0,0))
+            pixels.fill(cblk)
 
     time.sleep(SpeedDelay)
 
 
 def TwinkleRandom(Count, SpeedDelay, OnlyOne):
-    pixels.fill((0,0,0))
+    pixels.fill(cblk)
 
     for i in range(Count):
         pixels[random.randint(0, num_pixels-1)] = (random.randint(0,255), random.randint(0,255), random.randint(0,255))
         pixels.show()
         time.sleep(SpeedDelay)
         if OnlyOne:
-            pixels.fill((0,0,0))
+            pixels.fill(cblk)
 
     time.sleep(SpeedDelay)
 
@@ -874,7 +873,7 @@ def Sparkle(red, green, blue, Count, SpeedDelay):
         pixels[Pixel] = (red,green,blue)
         pixels.show()
         time.sleep(SpeedDelay)
-        pixels[Pixel] = (0,0,0)
+        pixels[Pixel] = cblk
 
 def SnowSparkle(red, green, blue, Count, SparkleDelay, SpeedDelay):
     pixels.fill((red,green,blue))
@@ -932,7 +931,7 @@ def theaterChase(red, green, blue, cycles, SpeedDelay):
             for i in range(0, num_pixels, 3):
                 if i+q < num_pixels:
                     # turn every third pixel off
-                    pixels[i+q] = (0,0,0)
+                    pixels[i+q] = cblk
 
 
 
@@ -960,7 +959,7 @@ def theaterChaseRainbow(SpeedDelay):
                 # check that pixel index is not greater than number of pixels
                 if i+q < num_pixels:
                     # turn every third pixel off
-                    pixels[i+q] = (0,0,0)
+                    pixels[i+q] = cblk
 
 
 
@@ -1025,7 +1024,7 @@ def setPixelHeatColor (Pixel, temperature):
 
 def meteorRain(red, green, blue, meteorSize, meteorTrailDecay, meteorRandomDecay, LoopCount, SpeedDelay): 
     for loop in range(LoopCount):
-        pixels.fill((0,0,0))
+        pixels.fill(cblk)
         
         for i in range(num_pixels*2):
             # fade brightness all LEDs one step
@@ -1358,7 +1357,7 @@ def matrix(random_percent, delay, cycles):
         if rand <= random_percent:
             pixels[0] = wheelBrightLevel(random.randint(0, 255), 255)
         else:
-            pixels[0] = (0,0,0)
+            pixels[0] = cblk
         
         # show pixels 
         pixels.show()
@@ -1367,12 +1366,6 @@ def matrix(random_percent, delay, cycles):
         # rotate pixel positon
         for i in range(num_pixels - 1, 0, -1):
             pixels[i] = pixels[i-1]
-        
-        # there is an issue with first 2 pixels are same color 
-        #pixels[0] = (0,0,0)
-        #pixels.show()
-        #time.sleep(delay)
-
 
  
 def random_march(delay, cycles):
@@ -1505,7 +1498,7 @@ def clear_level( level):
     else:
         startPxl = levels[level-1]
     for i in range(startPxl, levels[level]):
-        pixels[i] = (0,0,0)  #CRGB::Black;
+        pixels[i] = cblk  #CRGB::Black;
 
 
 def FireCustom(CoolingRangeStart, CoolingRangeEnd, Sparking, SparkingRangeStart, SparkingRangeEnd, SpeedDelay, cycles):
@@ -1856,7 +1849,7 @@ def blink(index, delay, cycles):
         pixels.show()
         time.sleep(delay)
         # Now turn the LED off, then pause
-        pixels[index] = (0,0,0) #CRGB::Black
+        pixels[index] = cblk #CRGB::Black
         pixels.show()
         time.sleep(delay)
 
@@ -1998,7 +1991,6 @@ while True:
 
     # makes the strand of pixels show rainbow
     # rainbow(delay, step, cycles):
-    pixels.fill((255, 255, 0))
     pixels.show()
     time.sleep(wait_time)
     print("rainbow")
@@ -2295,14 +2287,14 @@ while True:
     print("PatternRunningLightsFadeColorObj")
     # PatternRunningLightsFadeColorObj(colorObj, mainLength, spaceColor, spaceLength, isDirrectionForward, patternCycles)
     # RotateObject(coloreObj, delay, cycles, dirrection)
-    tempStrip = PatternRunningLightsFadeColorObj(xmasColorGroupAll, 15, (0,0,0), 5, True, 0)
+    tempStrip = PatternRunningLightsFadeColorObj(xmasColorGroupAll, 15, cblk, 5, True, 0)
     RotateObject(tempStrip, wait_animate/2, 1000*cycleFactor, True)
     time.sleep(wait_time)
 
     print("PatternRunningLightsFade")
     # PatternRunningLightsFade(mainColor, mainLength, spaceColor, spaceLength, patternCycles)
     # RotateObject(coloreObj, delay, cycles, dirrection)
-    tempStrip = PatternRunningLightsFade((255,255,0), 15, (0,0,0), 5, True, 0)
+    tempStrip = PatternRunningLightsFade(cyellow, 15, cblk, 5, True, 0)
     RotateObject(tempStrip, wait_animate/2, 1000*cycleFactor, True)
     time.sleep(wait_time)
 
