@@ -298,7 +298,7 @@ def fill_group_expand_random(groupCount, delay, cycles):
         wheelPos = random.randint(0, 255)
         
 def theaterChaseDot(sectionCount, dotColor, delay, cycles):
-    pixels.fill((0, 0, 0)) # inital fill black
+    pixels.fill(cblk) # inital fill black
     pixels.show()
     startPos = 0
     for c in range(cycles):
@@ -315,14 +315,14 @@ def theaterChaseDot(sectionCount, dotColor, delay, cycles):
 
 
 def theaterChaseDotCollection(sectionCount, dotColor, delay, cycles):
-    pixels.fill((0, 0, 0)) # inital fill black
+    pixels.fill(cblk) # inital fill black
     pixels.show()
     sectionEnd = sectionCount
     for c in range(cycles):
 
         for i in range(int(sectionCount)):
             if sectionEnd == 0:
-                pixels.fill((0, 0, 0)) # inital fill black
+                pixels.fill(cblk) # inital fill black
                 sectionEnd = sectionCount
                 
             for q in range(0, int(num_pixels), int(sectionCount)):
@@ -341,7 +341,7 @@ def theaterChaseDotCollection(sectionCount, dotColor, delay, cycles):
                 
                 
 def theaterChaseDotCollectionMiddle(sectionCount, dotColor, delay, cycles):
-    pixels.fill((0, 0, 0)) # inital fill black
+    pixels.fill(cblk) # inital fill black
     pixels.show()
     sectionCountHalf= int(sectionCount/2+1)
     sectionEnd = sectionCountHalf-1
@@ -368,7 +368,7 @@ def theaterChaseDotCollectionMiddle(sectionCount, dotColor, delay, cycles):
                 pixels.show()
                 time.sleep(delay)
                 
-                pixels.fill((0, 0, 0)) # inital fill black
+                pixels.fill(cblk) # inital fill black
                 pixels.show()
                 time.sleep(delay)
                 sectionCountHalf= int(sectionCount/2+1)
@@ -395,7 +395,7 @@ def theaterChaseGroupCustom(colorobj, colorspace, darkspace, SpeedDelay, cycles)
                 
                 pixels.show()
                 time.sleep(SpeedDelay)
-                pixels.fill((0, 0, 0))
+                pixels.fill(cblk)
                 
                 for i in range(0, num_pixels, n):
                     for index in range(0, colorObjCount, 1):
@@ -1139,7 +1139,7 @@ def BouncingBalls(red, green, blue, BallCount, LoopCount):
             pixels[Position[i]] = (red,green,blue)
         
         pixels.show()
-        pixels.fill((0, 0, 0))
+        pixels.fill(cblk)
         
 
 
@@ -1204,7 +1204,7 @@ def BouncingColoredBalls(BallCount, colors, LoopCount):
             pixels[Position[i]] = (colors[i][0],colors[i][1],colors[i][2])
         
         pixels.show()
-        pixels.fill((0, 0, 0))
+        pixels.fill(cblk)
 
 
 def wheelBrightLevel(pos, bright):
@@ -1429,7 +1429,7 @@ def random_levels( NUM_LEVELS, delay, cycles ):
 def light_level_random( level,  clearall ):
     levels = levelobj
     if (clearall):
-        pixels.fill((0, 0, 0)) # clear all
+        pixels.fill(cblk) # clear all
         pixels.show()
     
     startPxl = 0
@@ -1800,7 +1800,7 @@ def randomLevelsCustom2Colors( c1, c2, levelobj, clearall, delay, cycles ):
 def LevelsCustomColors(color, levels, level, clearall ):
 
     if (clearall):
-        pixels.fill((0, 0, 0)) # clear all
+        pixels.fill(cblk) # clear all
         pixels.show()
     
     startPxl = 0
@@ -1835,7 +1835,7 @@ def LevelsColorsCustom( colorobj, levelobj, delay ):
 def light_level_random_color(color, levels, level, clearall ):
 
     if (clearall):
-        pixels.fill((0, 0, 0)) # clear all
+        pixels.fill(cblk) # clear all
         pixels.show()
     
     startPxl = 0
@@ -1867,7 +1867,7 @@ while True:
     # make all pixels black
     # fill(red, green, blue)
     print("fill black")
-    pixels.fill((0, 0, 0))
+    pixels.fill(cblk)
     pixels.show()
     time.sleep(2)
     
@@ -1894,11 +1894,6 @@ while True:
 
 
     ### this code tests that the levels are correct ##### 
-    cw = (255,255,255)
-    cr = (255,0,0)
-    cg = (0,255,0)
-    cb = (0,0,255)
-    cy = (255,255,0)
 
     print("LevelsColorsCustom  - level  test ")
     colorobj = (cwhite, cred, cgreen, cblue, cyellow, 
@@ -1965,7 +1960,7 @@ while True:
 
     # makes the strand of pixels show twinkle
     # twinkle(delay, cycles)
-    pixels.fill((0, 0, 0)) 
+    pixels.fill(cblk) 
     pixels.show()
     print("twinkle2")
     twinkle2(wait_animate, 100*cycleFactor) 
@@ -1973,7 +1968,7 @@ while True:
 
 # makes the strand of pixels show random_march
     # random_march( delay, cycles)
-    pixels.fill((0, 0, 0)) 
+    pixels.fill(cblk) 
     pixels.show()
     print("random_march")
     random_march(wait_animate/2, 80*cycleFactor) 
@@ -1981,7 +1976,7 @@ while True:
 
     # makes the strand of pixels show matrix
     # matrix(random_percent, delay, cycles)
-    pixels.fill((0, 0, 0)) 
+    pixels.fill(cblk) 
     pixels.show()
     print("matrix")
     matrix(10, wait_animate, 100*cycleFactor) 
@@ -1995,7 +1990,7 @@ while True:
 
     # makes the strand of pixels show rainbow_loop
     # rainbow_loop(delay, step, cycles):
-    pixels.fill((0, 0, 0))
+    pixels.fill(cblk)
     pixels.show()
     print("rainbow_loop")
     rainbow_loop(wait_animate/4, 10, 500*cycleFactor) 
@@ -2012,7 +2007,7 @@ while True:
 
     # makes the strand of pixels show random_burst
     # rgbPropellerCustom(hue, LoopCount)
-    pixels.fill((0, 0, 0))
+    pixels.fill(cblk)
     pixels.show()
     time.sleep(wait_time)
     print("rgbPropellerCustom")
@@ -2021,7 +2016,7 @@ while True:
 
     # makes the strand of pixels show random_burst
     # random_burst(delayStart, delayEnd , LoopCount)
-    pixels.fill((0, 0, 0))
+    pixels.fill(cblk)
     pixels.show()
     print("random_burst")
     random_burst(0, wait_animate, 1000*cycleFactor)
@@ -2123,7 +2118,7 @@ while True:
     # makes the strand of pixels show blink
     # blink(index, delay, cycles)
     print("blink - pixel 0")
-    pixels.fill((0, 0, 0))
+    pixels.fill(cblk)
     pixels.show()
     blink(num_pixels-1, wait_animate, 100*cycleFactor)
     time.sleep(wait_time)
