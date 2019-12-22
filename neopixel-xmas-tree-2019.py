@@ -1488,9 +1488,6 @@ def pancake(NUM_LEVELS, delay):
 
 
 def clear_level( level):
-    #levels = (58, 108, 149, 187, 224, 264, 292, 309, 321, 327, 336, 348) #this only works if you have 350 lights
-    #levels = (11, 20, 27, 34, 39, 43, 47, 50) #this works for 50 lights
-    #levels = (20, 34, 43, 50) #this works for 50 lights
     levels = levelobj
     startPxl = 0
     if (level == 0):
