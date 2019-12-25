@@ -26,7 +26,7 @@ pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=Fal
 
 wait_time = .5
 wait_animate = .1
-cycleFactor = 1
+cycleFactor = 10
 
 cred = (255, 0, 0)
 cblue = (0, 0, 255)
