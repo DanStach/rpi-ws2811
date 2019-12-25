@@ -1892,8 +1892,8 @@ while True:
                 cwhite, cred, cgreen, cblue, cyellow,
                 cwhite, cred, cgreen, cblue, cyellow,
                 cwhite, cred, cgreen, cblue, cyellow ) 
-    LevelsColorsCustom(colorobj, levels, wait_animate)
-    time.sleep(wait_time+10)
+    #LevelsColorsCustom(colorobj, levels, wait_animate)
+    #time.sleep(wait_time+10)
 
     print("colorAllColorGroup - level test c10")
     colorobj = ( cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,cwhite,
@@ -1901,8 +1901,8 @@ while True:
                  cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,cgreen,
                  cblue,cblue,cblue,cblue,cblue,cblue,cblue,cblue,cblue,cblue,
                  cyellow,cyellow,cyellow,cyellow,cyellow,cyellow,cyellow,cyellow,cyellow,cyellow)
-    colorAllColorGroup(colorobj)
-    time.sleep(wait_time+10)
+    #colorAllColorGroup(colorobj)
+    #time.sleep(wait_time+10)
 
     # shows 2 color every other pixel (red, green)
     # colorAllColorGroup(colorObject)
@@ -1963,7 +1963,7 @@ while True:
     pixels.fill(cblk) 
     pixels.show()
     print("random_march")
-    random_march(wait_animate/2, 80*cycleFactor) 
+    random_march(wait_animate/2, 200*cycleFactor) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show matrix
@@ -1971,7 +1971,7 @@ while True:
     pixels.fill(cblk) 
     pixels.show()
     print("matrix")
-    matrix(10, wait_animate, 100*cycleFactor) 
+    matrix(10, wait_animate, 200*cycleFactor) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show rainbow_fade
