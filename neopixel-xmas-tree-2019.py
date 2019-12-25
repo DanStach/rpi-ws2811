@@ -2051,7 +2051,7 @@ while True:
     # makes the strand of pixels show Sparkle (white)
     # Sparkle(red, green, blue, Count, SpeedDelay)
     print("Sparkle")
-    Sparkle(255, 255, 255, 100*cycleFactor, wait_animate/)
+    Sparkle(255, 255, 255, 100*cycleFactor, wait_animate/2)
 
     # makes the strand of pixels show TwinkleRandom
     # TwinkleRandom( Count, SpeedDelay, OnlyOne)
