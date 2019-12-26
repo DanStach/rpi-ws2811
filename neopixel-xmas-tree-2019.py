@@ -2002,7 +2002,7 @@ while True:
     pixels.show()
     time.sleep(wait_time)
     print("rgbPropellerCustom")
-    rgbPropellerCustom(wait_animate, 200*cycleFactor)
+    rgbPropellerCustom(wait_animate, 20*cycleFactor)
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
