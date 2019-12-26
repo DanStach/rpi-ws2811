@@ -1993,7 +1993,7 @@ while True:
     pixels.show()
     time.sleep(wait_time)
     print("rainbow")
-    rainbow(wait_animate/4, 10, 200*cycleFactor) 
+    rainbow(wait_animate/4, 10, 20*cycleFactor) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
