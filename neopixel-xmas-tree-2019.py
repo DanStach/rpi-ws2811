@@ -26,7 +26,7 @@ pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=Fal
 
 wait_time = .5
 wait_animate = .1
-cycleFactor = 10
+cycleFactor = 1
 
 cred = (255, 0, 0)
 cblue = (0, 0, 255)
@@ -1308,7 +1308,7 @@ def rgbPropellerCustom(hue1, LoopCount):
 
 
 def rainbow(delay, step, cycles):
-    for j in range(255 * cycles):
+    for j in range(cycles):
         for i in range(num_pixels):
             # " // "  this divides and returns the integer value of the quotient. 
             # It dumps the digits after the decimal
