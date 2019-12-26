@@ -2044,17 +2044,17 @@ while True:
 
     # makes the strand of pixels show RunningLights (red)
     # RunningLights(red, green, blue, WaveDelay)
-    print("RunningLights")
+    print("RunningLights - red")
     RunningLights(255,0,0, wait_animate/2)
 
     # makes the strand of pixels show RunningLights (red)
     # RunningLights(red, green, blue, WaveDelay)
-    print("RunningLights")
+    print("RunningLights - green")
     RunningLights(0,255,0, wait_animate/2)
 
     # makes the strand of pixels show RunningLights (red)
     # RunningLights(red, green, blue, WaveDelay)
-    print("RunningLights")
+    print("RunningLights - white")
     RunningLights(255,255,255, wait_animate/2)
 
     # makes the strand of pixels show SnowSparkle (random)
@@ -2082,7 +2082,7 @@ while True:
     # FadeInOut(red, green, blue, delay)
     print("FadeInOut")
     FadeInOut(255, 0, 0, wait_animate/4)
-    FadeInOut(0, 255, 0, wait_animate)/4
+    FadeInOut(0, 255, 0, wait_animate/4)
     FadeInOut(255, 255, 255, wait_animate/4)
 
     # rainbow cycle
