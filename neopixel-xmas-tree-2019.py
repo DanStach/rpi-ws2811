@@ -2132,7 +2132,7 @@ while True:
     # shows pattern of colors on the given pixels 
     # colorAllColorGroup((red1, green1, blue1), (red2, green2, blue2), ...) 
     print("colorAllColorGroup multi")
-    colorAllColorGroup(xmasColorGroup) 
+    colorAllColorGroup(xmasColorGroupAll) 
     time.sleep(wait_time+cycleFactor)
 
 
@@ -2154,7 +2154,7 @@ while True:
     # shows 2 color every other pixel (red, green)
     # RunningLightsPreExisting(WaveDelay, cycles):
     print("RunningLightsPreExisting multi")
-    colorAllColorGroup(xmasColorGroup) 
+    colorAllColorGroup(xmasColorGroupAll) 
     RunningLightsPreExisting(wait_animate, 1000*cycleFactor)
     time.sleep(wait_time)
 
