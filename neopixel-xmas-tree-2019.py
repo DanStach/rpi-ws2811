@@ -215,17 +215,7 @@ def RotateObject(coloreObj, delay, cycles, isDirrectionForward):
         time.sleep(delay)
 
 def rainbow_cycle(delay, cycles):
-    for j in range(255 * cycles):
-        for i in range(num_pixels):
-            # " // "  this divides and returns the integer value of the quotient. 
-            # It dumps the digits after the decimal
-            pixel_index = (i * 256 // num_pixels) + j
-            pixels[i] = wheel(pixel_index & 255)
-        pixels.show()
-        time.sleep(delay)
-
-def rainbow_cycle(delay, cycles):
-    for j in range(255 * cycles):
+    for j in range(cycles):
         for i in range(num_pixels):
             # " // "  this divides and returns the integer value of the quotient. 
             # It dumps the digits after the decimal
@@ -1978,7 +1968,7 @@ while True:
     # makes the strand of pixels show rainbow_fade
     # rainbow_fade(delay, cycles):
     print("rainbow_fade")
-    rainbow_fade(wait_animate, 256*cycleFactor) 
+    rainbow_fade(wait_animate, 20*cycleFactor) 
     time.sleep(wait_time)
 
     # makes the strand of pixels show rainbow_loop
