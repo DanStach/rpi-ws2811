@@ -1280,8 +1280,7 @@ def random_burst(delayStart, delayEnd , LoopCount):
         time.sleep(delay)
 
   
-def rgbPropellerCustom(hue1, LoopCount):
-    hue1 = 0
+def rgbPropellerCustom(hue1, delay, LoopCount):
     index= 0
 
     hue2 = (hue1 + 80) % 255
@@ -1304,7 +1303,9 @@ def rgbPropellerCustom(hue1, LoopCount):
             pixels[j0] = wheel(hue1)
             pixels[j1] = wheel(hue2)
             pixels[j2] = wheel(hue3)
-            pixels.show()
+            
+        pixels.show()
+        time.sleep(delay)
 
 
 def rainbow(delay, step, cycles):
@@ -1997,12 +1998,12 @@ while True:
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
-    # rgbPropellerCustom(hue, LoopCount)
+    # rgbPropellerCustom(hue, SpeedDelay, LoopCount)
     pixels.fill(cblk)
     pixels.show()
     time.sleep(wait_time)
     print("rgbPropellerCustom")
-    rgbPropellerCustom(wait_animate, 20*cycleFactor)
+    rgbPropellerCustom(0, wait_animate, 20*cycleFactor)
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_burst
