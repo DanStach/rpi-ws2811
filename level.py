@@ -9,10 +9,17 @@ import random
 import math
 import ctypes
 
+import board
+import neopixel
+import serial
 
-# The number of NeoPixels
-num_pixels = 300
 wait_time = 300
+
+num_pixels = 300
+pixel_pin = board.D18
+ORDER = neopixel.RGB
+pixels = neopixel.NeoPixel(pixel_pin, num_pixels, brightness=0.2, auto_write=False, pixel_order=ORDER)
+
 
 def wheel(pos):
     # Input a value 0 to 255 to get a color value.
