@@ -13,7 +13,7 @@ import board
 import neopixel
 import serial
 
-wait_time = 300
+wait_time = 1
 
 num_pixels = 300
 pixel_pin = board.D18
