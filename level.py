@@ -163,9 +163,6 @@ def pancake(groupsObj, delay):
             # only needed if you ouput to a small display 
             # updateControlVars()   
 
-            if (interrupt):
-                return
-
             if (level < NUM_LEVELS-1):
                 clear_level(level+1, groupsObj)
                 
