@@ -125,8 +125,8 @@ def random_levels( levelobj, delay, cycles ):
         pixels.show()
         time.sleep(delay)
 
-def light_level_random( level, levelobj,  clearall ):
-    levels = level_object_creator(levelobj)
+def light_level_random( level, levels,  clearall ):
+    #levels = level_object_creator(levelobj)
     if (clearall):
         pixels.fill((0, 0, 0)) # clear all
         pixels.show()
@@ -135,6 +135,7 @@ def light_level_random( level, levelobj,  clearall ):
     if (level == 0):
         startPxl = 0
     else:
+        print(level)
         startPxl = levels[level-1]
     
     for i in range(startPxl, levels[level]):
