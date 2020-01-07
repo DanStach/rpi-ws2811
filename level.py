@@ -157,7 +157,8 @@ def drain(levelobj, delay):
 
 
 def pancake(groupsObj, delay):
-    NUM_LEVELS = len(groupsObj)
+    levels = level_object_creator(groupsObj)
+    NUM_LEVELS = len(levels)
     for pancakeLevel in range(NUM_LEVELS):
         
         for level in range(NUM_LEVELS-1, pancakeLevel-1, -1):
@@ -165,9 +166,9 @@ def pancake(groupsObj, delay):
             # updateControlVars()   
 
             if (level < NUM_LEVELS-1):
-                clear_level(level+1, groupsObj)
+                clear_level(level+1, levels)
                 
-            light_level_random(level, 0)
+            light_level_random(level, levels, 0)
 
             # show pixel values 
             pixels.show()
