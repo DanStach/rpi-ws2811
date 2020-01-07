@@ -99,6 +99,7 @@ def hsv_to_rgb(h, s, v):
         return (v, p, q)
 
 def level_object_creator(levelgp):
+    print(levelgp)
     levels = []
     levels.append(num_pixels)
     pixel_remaining = num_pixels
@@ -124,7 +125,7 @@ def random_levels( levelobj, delay, cycles ):
         pixels.show()
         time.sleep(delay)
 
-def light_level_random( levelobj,  clearall ):
+def light_level_random( level, levelobj,  clearall ):
     levels = level_object_creator(levelobj)
     if (clearall):
         pixels.fill((0, 0, 0)) # clear all
@@ -148,7 +149,7 @@ def drain(levelobj, delay):
         for level in range(pancakeLevel, -1, -1):
             clear_level(level, levelobj)
             if (level >= 1) :
-                light_level_random(level-1, 0)
+                light_level_random(level-1, levelobj, 0)
 
             # show pixel values 
             pixels.show()
