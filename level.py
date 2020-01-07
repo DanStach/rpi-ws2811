@@ -145,7 +145,7 @@ def light_level_random( level, levels,  clearall ):
 
 def drain(levelobj, delay):
     levels = level_object_creator(levelobj)
-    for pancakeLevel in range(levels):
+    for pancakeLevel in range(len(levels)):
 
         for level in range(pancakeLevel, -1, -1):
             clear_level(level, levelobj)
