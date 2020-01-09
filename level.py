@@ -107,10 +107,11 @@ def level_object_creator(levelgp):
         level_num = pixel_remaining - item 
         if (level_num > 0):
             levels.insert(0,level_num)
-        else: 
+        else:
+            del levels[0] #remove last element from list
             break
         pixel_remaining = level_num
-    
+    print(levels)
     return(levels)
 
 def random_levels( levelobj, delay, cycles ):
@@ -223,7 +224,7 @@ while True:
     print("pancake")
     pixels.fill((0, 0, 0))
     time.sleep(wait_time)
-    pancake(levelgroups, 0)
+    pancake(levelgroups, .5)
     time.sleep(wait_time)
 
     # makes the strand of pixels show drain
