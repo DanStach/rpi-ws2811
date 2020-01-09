@@ -127,7 +127,7 @@ def random_levels( levelobj, delay, cycles ):
         time.sleep(delay)
 
 def light_level_random( level, levels,  clearall ):
-    #levels = level_object_creator(levelobj)
+    print("l=", level, " ls=", levels)
     if (clearall):
         pixels.fill((0, 0, 0)) # clear all
         pixels.show()
@@ -136,7 +136,6 @@ def light_level_random( level, levels,  clearall ):
     if (level == 0):
         startPxl = 0
     else:
-        print(level)
         startPxl = levels[level-1]
     
     for i in range(startPxl, levels[level]):
@@ -149,9 +148,9 @@ def drain(levelobj, delay):
     for pancakeLevel in range(len(levels)):
 
         for level in range(pancakeLevel, -1, -1):
-            clear_level(level, levelobj)
+            clear_level(level, levels)
             if (level >= 1) :
-                light_level_random(level-1, levelobj, 0)
+                light_level_random(level-1, levels, 0)
 
             # show pixel values 
             pixels.show()
@@ -215,7 +214,6 @@ while True:
     levelgroups = (5, 9, 14, 17, 19, 23, 25, 28, 30, 32, 30, 30, 43)
     level_object_creator(levelgroups)
     time.sleep(wait_time)
-    levelobj = (43, 73, 103, 135, 160, 188, 213, 236, 255, 272, 286, 295, 300)
 
 
 
@@ -224,14 +222,14 @@ while True:
     print("pancake")
     pixels.fill((0, 0, 0))
     time.sleep(wait_time)
-    pancake(levelgroups, .5)
+    pancake(levelgroups, .1)
     time.sleep(wait_time)
 
     # makes the strand of pixels show drain
     # drain(level, delay)
     print("drain")
     #drain(8, 0.5)
-    drain(levelgroups, 0)
+    drain(levelgroups, 1)
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_levels
