@@ -122,7 +122,7 @@ def random_levels( levelobj, delay, cycles ):
         level = random.randint(0, NUM_LEVELS)
         if (NUM_LEVELS == level):
             level = 0
-        light_level_random(level, levelobj, 1)
+        light_level_random(level, levels, 1)
         pixels.show()
         time.sleep(delay)
 
@@ -229,7 +229,7 @@ while True:
     # drain(level, delay)
     print("drain")
     #drain(8, 0.5)
-    drain(levelgroups, 1)
+    drain(levelgroups, .1)
     time.sleep(wait_time)
 
     # makes the strand of pixels show random_levels
