@@ -189,6 +189,13 @@ def clear_level( level, levelobj):
 
 while True:
     random.seed(num_pixels)
+    
+    # make all pixels black
+    # fill(red, green, blue)
+    print("fill - blk")
+    pixels.fill((0, 0, 0)) # red
+    pixels.show()
+    time.sleep(2)
 
     # make all pixels Red
     # fill(red, green, blue)
