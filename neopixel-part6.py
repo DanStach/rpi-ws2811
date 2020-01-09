@@ -1,5 +1,6 @@
 ### Sample python code for NeoPixels on Raspberry Pi
-### this code is ported from Arduino NeoPixels effects in C++, from tweaking4all
+### this code is an improvement on the level effects from 
+### Arduino NeoPixels effects in C++, from tweaking4all
 ### Arduino Controlled Tree - http://youtu.be/MD3-YBaFQvw
 ### orginal code: https://pastebin.com/Qe0Jttme
 
