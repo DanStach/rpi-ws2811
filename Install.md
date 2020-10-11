@@ -2,7 +2,16 @@
 this is the simplified install process needed to run the xmas lights ws2811 on a raspberry pi
 refernce to full instuctions: https://learn.adafruit.com/neopixels-on-raspberry-pi/overview
 
-## Install Process
+## Hardware Install Process
+Choose an open pin connected to the Data In of the NeoPixel strip, i.e. board.D18 NeoPixels must be connected to D10, D12, D18 or D21 to work. I prefer  D12 (pin12)
+https://pinout.xyz/pinout/pin12_gpio18
+ - connect neopixels to pins
+    - 5V (Pin2)
+    - Ground (Pin 6)
+    - Data (Pin 12)
+    
+
+## Software Install Process
 
 ### install OS
 - install raspbain os
