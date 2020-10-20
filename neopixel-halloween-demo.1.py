@@ -354,8 +354,8 @@ def HeartBeat(redo, greeno, blueo, cycles):
         #blueo = random.randint(0, 255)
         
         #strip.setPixelColor(2, redo, greeno, blueo)
-        pixels.fill((redo, greeno, blueo))
-        pixels.show()
+        #pixels.fill((redo, greeno, blueo))
+        #pixels.show()
         time.sleep(.020)
         
         x = 3
