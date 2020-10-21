@@ -87,19 +87,8 @@ def FadeInOut(red, green, blue, delay):
         
         
 def fadeToBlack(ledNo, fadeValue):
-    #ctypes.c_uint32 oldColor = 0x00000000UL
-    #ctypes.c_uint8 r = 0
-    #ctypes.c_uint8 g = 0
-    #ctypes.c_uint8 b = 0
 
     oldColor = pixels[ledNo]
-#    r = (oldColor & 0x00ff0000) >> 16
-#    g = (oldColor & 0x0000ff00) >> 8
-#    b = (oldColor & 0x000000ff)
-    #print(oldColor)
-#    r = oldColor >> 16
-#    g = (oldColor >> 8) & 0xff
-#    b = oldColor & 0xff
     r = oldColor[0]
     g = oldColor[1]
     b = oldColor[2]
@@ -290,7 +279,6 @@ def HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, 
     time.sleep(EndPause)
 
 # colorAllColorGroup(colorObject) allows colors to be 
-# - colorObject: list of color objects. example ((255, 0, 0), (0, 255, 0))  
 def colorAllColorGroup(colorObject):
     colorCount = len(colorObject)
 
@@ -334,10 +322,6 @@ def RunningLights(red, green, blue, WaveDelay):
         Position = Position + 1
         
         for i in range(num_pixels):
-            # sine wave, 3 offset waves make a rainbow!
-            # float level = sin(i+Position) * 127 + 128;
-            # setPixel(i,level,0,0);
-            # float level = sin(i+Position) * 127 + 128;
             level = math.sin(i + Position) * 127 + 128
             r = int((level/255)*red)
             g = int((level/255)*green)
@@ -349,13 +333,6 @@ def RunningLights(red, green, blue, WaveDelay):
 
 def HeartBeat(redo, greeno, blueo, cycles):
     for loop in range(cycles):
-        #redo =random.randint(0, 255)
-        #greeno = random.randint(0, 255)
-        #blueo = random.randint(0, 255)
-        
-        #strip.setPixelColor(2, redo, greeno, blueo)
-        #pixels.fill((redo, greeno, blueo))
-        #pixels.show()
         time.sleep(.020)
         
         x = 3
@@ -452,9 +429,6 @@ while True:
     ### HALLOWEEN idea
     # make the strand of pixels show HalloweenEyes
     # HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause)
-    #print("fill indigo")
-    #pixels.fill((75,0,130)) # indigo
-    #pixels.show()
     print("HalloweenEyes")
     HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
     HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
