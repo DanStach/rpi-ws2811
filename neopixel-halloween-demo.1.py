@@ -425,22 +425,22 @@ while True:
     time.sleep(wait_time)
 
     ### HALLOWEEN idea
-    # shows RunningLights in 2 or more colorcolor
+    # shows RunningLights in 2 or more color
 
     ### HALLOWEEN idea
     # make the strand of pixels show HalloweenEyes
     # HalloweenEyes(red, green, blue, EyeWidth, EyeSpace, Fade, Steps, FadeDelay, EndPause)
-    print("HalloweenEyes")
-    HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
-    HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
-    HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
-    time.sleep(wait_time)
+    #print("HalloweenEyes")
+    #HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
+    #HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
+    #HalloweenEyes(255, 0, 0, 1, 1, True, 10, 1, 3)
+    #time.sleep(wait_time)
 
     # makes the strand of pixels show HeartBeat
     # HeartBeat(red, green, blue, cycles):
     print("HeartBeat")
     pixels.fill((0, 0, 0))
-    time.sleep(wait_time)
+    #time.sleep(wait_time)
     HeartBeat(75,0,130, 2)
 
     # makes the strand of pixels show SnowSparkle (random)
@@ -452,5 +452,5 @@ while True:
     # candycane_custom(c1, c2, brightness, delay, cycles)
     print("candycane_custom  indigo green")
     candycane_custom((75,0,130), (0,200,0), 255, 0, 10)
-    time.sleep(wait_time)
+    #time.sleep(wait_time)
 
