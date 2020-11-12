@@ -19,7 +19,7 @@ pixel_pin = board.D18
 num_pixels = 93
 
 #rings 1px, 8px, 12px, 16px, 24px, 32px
-levels = (1, , 9, 21, 37, 61, 93)
+levels = (1, 9, 21, 37, 61, 93)
 
 
 # The order of the pixel colors - RGB or GRB. Some NeoPixels have red and green reversed!
